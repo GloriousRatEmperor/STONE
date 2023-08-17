@@ -10,6 +10,8 @@ public class Rigidbody2D extends Component {
     private Collider2D collider;
 
     private Vector2f position = new Vector2f();
+    private Vector2f pastPos = new Vector2f();
+    private Vector2f drawPos = new Vector2f();
     private float rotation = 0.0f;
     private float mass = 0.0f;
     private float inverseMass = 0.0f;
@@ -28,22 +30,27 @@ public class Rigidbody2D extends Component {
     public Vector2f getPosition() {
         return position;
     }
-
+    public Vector2f getDrawPosition() {
+        return drawPos;
+    }
+    public Vector2f getPastPosition() {
+        return pastPos;
+    }
+    public void updatePastPos(){pastPos=new Vector2f(position);};
+    public void updateDrawPos(float fraction){
+        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
+        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
+    };
     public void physicsUpdate(float dt) {
         if (this.mass == 0.0f) return;
 
         // Calculate linear velocity
         Vector2f acceleration = new Vector2f(forceAccum).mul(this.inverseMass);
         linearVelocity.add(acceleration.mul(dt));
-
+        this.position.add(new Vector2f(linearVelocity).mul(dt));
         synchCollisionTransforms();
         clearAccumulators();
     }
-    public void positionUpdate(float dt) {
-        // Update the linear position
-        this.position.add(new Vector2f(linearVelocity).mul(dt));
-    }
-
     public void synchCollisionTransforms() {
         if (rawTransform != null) {
             rawTransform.position.set(this.position);
@@ -118,4 +125,5 @@ public class Rigidbody2D extends Component {
     public void setCor(float cor) {
         this.cor = cor;
     }
+
 }

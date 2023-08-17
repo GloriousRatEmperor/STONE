@@ -9,6 +9,7 @@ import imgui.ImGui;
 import jade.*;
 import org.joml.Vector2f;
 import physics2d.Physics2D;
+import physics2dtmp.rigidbody.Rigidbody2D;
 import renderer.Renderer;
 
 import java.io.FileWriter;
@@ -136,9 +137,15 @@ public class Scene {
         return result.orElse(null);
     }
 
-    public void update(float dt) {
-        this.camera.adjustProjection();
-
+    public void update(float dt,boolean complete) {
+        if(complete){
+            for (GameObject go : gameObjects) {
+                Rigidbody2D rb = go.getComponent(Rigidbody2D.class);
+                if (rb != null) {
+                    rb.updatePastPos();
+                }
+            }
+        }
         this.physics2D.update(dt);
 
         for (int i=0; i < gameObjects.size(); i++) {
@@ -161,8 +168,14 @@ public class Scene {
         }
         pendingObjects.clear();
     }
-    public void visualUpdate(float dt) {
+    public void visualUpdate(float fractionPassed) { //fractionpassed=dt/physicsframetime
         this.camera.adjustProjection();
+        for (GameObject go : gameObjects) {
+            Rigidbody2D rb=go.getComponent(Rigidbody2D.class);
+            if(rb != null){
+                rb.updateDrawPos(fractionPassed);
+            }
+        }
     }
 
     public void render() {
