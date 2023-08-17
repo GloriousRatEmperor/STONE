@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="Working version, shit ass sync, but like it's runnable it's got multi...">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CopyIfPermalevelBroken.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/bigSpritesheet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/blendImage1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/blendImage2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/gizmos.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/items.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/pipes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/spritesheet.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/spritesheets/decorationsAndBlocks.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/spritesheets/icons.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/spritesheets/pipes.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/testImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/testImage2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/turtle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/debugLine2D.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/shaders/pickingShader.glsl" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/1-up.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/bowserfalls.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/bowserfire.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/break_block.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/bump.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/coin.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/fireball.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/fireworks.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/flagpole.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/gameover.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/invincible.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/jump-small.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/jump-super.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/kick.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/main-theme-overworld.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/mario_die.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/pipe.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/powerup.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/powerup_appears.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/stage_clear.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/stomp.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/vine.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/warning.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/sounds/world_clear.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/permagui.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/permalevel.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ClientBooter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Data.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Processor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ServerBooter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/AnimationState.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Block.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/BlockCoin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/BreakableBrick.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Coin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/ComponentDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/EditorCamera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Fireball.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Flagpole.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Flower.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/FontRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Frame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Gizmo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/GizmoSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/GoombaAI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/GridLines.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Ground.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Hitter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/ImInt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/KeyControls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Mortal.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/MushroomAI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/NonPickable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Pipe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/PlayerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Projectile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/QuestionBlock.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/ScaleGizmo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Sprite.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/Spritesheet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/StateMachine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/TranslateGizmo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/TurtleAI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/UnitBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/JImGui.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/MenuBar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/editor/SceneHierarchyWindow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Camera.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Direction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/FileUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/GameObjectDeserializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/ImGuiLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/KeyListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/MouseListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Prefabs.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/SelectedModifier.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Sound.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Transform.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/observers/EventSystem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/observers/Observer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/observers/events/Event.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/observers/events/EventType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/JadeContactListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/RaycastInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Box2DCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/MoveContollable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/PillboxCollider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2d/enums/BodyType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/PhysicsSystem2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/forces/ForceGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/forces/ForceRegistration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/forces/ForceRegistry.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/forces/Gravity2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/AABB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/Box2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/Circle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/Collider2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/Ray2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/primitives/RaycastResult.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/CollisionManifold.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Collisions.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/IntersectionDetector2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/DebugDraw.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/Framebuffer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/Line2D.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/PickingTexture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/Renderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/Shader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorSceneInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelSceneInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/scenes/SceneInitializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/AssetPool.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/JMath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/util/Settings.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="STONE" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="STONE" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="STONE" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="ProjectErrors" />
+  </component>
+  <component name="ProjectId" id="2U19947DOEYbnf8K4vTTSndsWnW" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/IdeaProjects/STONE&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frant\IdeaProjects\STONE" />
+      <recent name="C:\Users\frant\IdeaProjects\STONE\src" />
+      <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle" />
+      <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle\8.0.2" />
+      <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle\7.5.1" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="ClientBooter" />
+      <module name="STONE.main" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;localhost&quot;" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="ServerBooter" />
+      <module name="STONE.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Singleplayer" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Singleplayer" />
+      <module name="STONE.main" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="STONE [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="STONE [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Client" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Singleplayer" />
+      <item itemvalue="Gradle.STONE [build]" />
+      <item itemvalue="Gradle.STONE [clean]" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.STONE [build]" />
+        <item itemvalue="Gradle.STONE [clean]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="" />
+      <created>1692096064926</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1692096064926</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Working version, shit ass sync, but like it's runnable it's got multi..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Working version, shit ass sync, but like it's runnable it's got multi..." />
+  </component>
+</project>

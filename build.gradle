@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'org.beryx.jlink' version '2.25.0'
+}
+
+
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+}
+
+
+project.ext.lwjglVersion = "3.3.2"
+project.ext.lwjglNatives = "natives-windows"
+
+project.ext.imguiVersion = '1.81.0'
+
+dependencies {
+    implementation group: 'junit', name: 'junit', version: '4.12'
+
+    implementation group: 'io.netty', name: 'netty-all', version: '4.1.94.Final'
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
+    // ImGUI stuff
+    implementation "io.github.spair:imgui-java-app:$imguiVersion"
+
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation group: 'org.jbox2d', name: 'jbox2d-library', version: '2.2.1.1'
+
+
+    implementation group: 'org.joml', name: 'joml', version: '1.10.5'
+
+
+
+    //lwjgl
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+
+
+    implementation group: 'org.lwjgl', name: 'lwjgl-openal', version: '3.3.2'
+
+
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-cuda"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-opencl"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+}
+
+
+test {
+    useJUnitPlatform()
+}
