@@ -129,6 +129,7 @@ public class PlayerController extends Component {
                 this.stateMachine.trigger("startRunning");
             }
         } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT) || KeyListener.isKeyPressed(GLFW_KEY_A)) {
+
             this.gameObject.transform.scale.x = -playerWidth;
             this.acceleration.x = -walkSpeed;
 

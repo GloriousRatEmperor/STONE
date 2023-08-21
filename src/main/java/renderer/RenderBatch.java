@@ -136,7 +136,6 @@ public class RenderBatch implements Comparable<RenderBatch> {
 
             // TODO: get better solution for this
             if (spr.gameObject.transform.zIndex != this.zIndex) {
-                System.out.println(2);
                 destroyIfExists(spr.gameObject);
                 renderer.add(spr.gameObject);
                 i--;
@@ -211,8 +210,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
         boolean isRotated = sprite.gameObject.transform.rotation != 0.0f;
         Matrix4f transformMatrix = new Matrix4f().identity();
         if (isRotated) {
-            transformMatrix.translate(sprite.gameObject.transform.position.x,
-                                        sprite.gameObject.transform.position.y, 0f);
+            transformMatrix.translate(sprite.gameObject.transform.drawPos.x,
+                                        sprite.gameObject.transform.drawPos.y, 0f);
             transformMatrix.rotate((float)Math.toRadians(sprite.gameObject.transform.rotation),
                     0, 0, 1);
             transformMatrix.scale(sprite.gameObject.transform.scale.x,
@@ -231,8 +230,8 @@ public class RenderBatch implements Comparable<RenderBatch> {
                 yAdd = 0.5f;
             }
 
-            Vector4f currentPos = new Vector4f(sprite.gameObject.transform.position.x + (xAdd * sprite.gameObject.transform.scale.x),
-                    sprite.gameObject.transform.position.y + (yAdd * sprite.gameObject.transform.scale.y),
+            Vector4f currentPos = new Vector4f(sprite.gameObject.transform.drawPos.x + (xAdd * sprite.gameObject.transform.scale.x),
+                    sprite.gameObject.transform.drawPos.y + (yAdd * sprite.gameObject.transform.scale.y),
                     0, 1);
             if (isRotated) {
                 currentPos = new Vector4f(xAdd, yAdd, 0, 1).mul(transformMatrix);

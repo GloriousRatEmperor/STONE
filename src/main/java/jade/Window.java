@@ -2,6 +2,7 @@ package jade;
 
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
+import components.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
@@ -22,6 +23,8 @@ import scenes.Scene;
 import scenes.SceneInitializer;
 import util.AssetPool;
 
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
@@ -37,10 +40,22 @@ public class Window implements Observer {
     private int width, height;
     private String title;
     private long glfwWindow;
+    private String levelname;
     private ImGuiLayer imguiLayer;
     private Framebuffer framebuffer;
     private PickingTexture pickingTexture;
     private boolean runtimePlaying = false;
+    private float beginTime;
+    private float endTime;
+    private float dt;
+    boolean start=false;
+    boolean ready=false;
+    public Time time=new Time();
+
+    private int physicsTimes;
+    private float fractionPassed;
+    private float physicsStep;
+    private float lastPhysics;
 
     private static Window window = null;
 
@@ -62,7 +77,7 @@ public class Window implements Observer {
         }
 
         getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
-        currentScene = new Scene(sceneInitializer);
+        currentScene = new Scene(sceneInitializer, get().levelname);
         currentScene.load();
         currentScene.init();
         currentScene.start();
@@ -167,22 +182,38 @@ public class Window implements Observer {
         this.pickingTexture = new PickingTexture(3840, 2160);
         glViewport(0, 0, 3840, 2160);
 
-        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture);
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder(targetStringLength);
+        for (int i = 0; i < targetStringLength; i++) {
+            int randomLimitedInt = leftLimit + (int)
+                    (random.nextFloat() * (rightLimit - leftLimit + 1));
+            buffer.append((char) randomLimitedInt);
+        }
+        this.levelname = buffer.toString();
+
+        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,levelname);
         this.imguiLayer.initImGui();
 
         Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
     }
 
     public void loop() throws NoSuchFieldException {
-        float beginTime = (float)glfwGetTime();
-        float endTime;
-        float dt = -1.0f;
+         beginTime = time.getTime();
+         dt = -1.0f;
+         physicsTimes=0;
+         fractionPassed=0f;
+         physicsStep=1/60f;
+         lastPhysics=time.getTime();
 
         Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
         Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
 
         while (!glfwWindowShouldClose(glfwWindow)) {
+
             // Poll events
             glfwPollEvents();
 
@@ -208,27 +239,67 @@ public class Window implements Observer {
             glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
             glClear(GL_COLOR_BUFFER_BIT);
 
+
+
+            //actual physics n non render shite bein done here
             if (dt >= 0) {
                 Renderer.bindShader(defaultShader);
                 if (runtimePlaying) {
-                    currentScene.update(dt);
+                    //currentScene.update(dt,true);
+                    while(physicsTimes>0) {
+                        physicsTimes--;
+                        currentScene.update(physicsStep, physicsTimes == 1);
+                        currentScene.visualUpdate(fractionPassed);
+                        KeyListener.endFrame();
+                        MouseListener.endFrame();
+                    }
                 } else {
                     currentScene.editorUpdate(dt);
+                    KeyListener.endFrame();
+                    MouseListener.endFrame();
                 }
                 currentScene.render();
                 DebugDraw.draw();
             }
+
+
+
+
+
+
+
+
+
             this.framebuffer.unbind();
 
             this.imguiLayer.update(currentScene,runtimePlaying);
+            if(start){
+                start=false;
+                ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+                long StartTime=inputs.getStartTime();
+                time.setBeginTime(StartTime);
+                beginTime=0f;
+                lastPhysics = 0f;
 
-            KeyListener.endFrame();
-            MouseListener.endFrame();
+
+
+                currentScene.save(false);
+
+                Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
+                ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+                newInputs.setTime(time.getTime());
+            }
+
             glfwSwapBuffers(glfwWindow);
 
-            endTime = (float)glfwGetTime();
+            endTime = time.getTime();
             dt = endTime - beginTime;
             beginTime = endTime;
+            while(lastPhysics<=endTime){
+                lastPhysics+=physicsStep;
+                physicsTimes+=1;
+            }
+            fractionPassed=(lastPhysics-endTime)/physicsStep;
         }
     }
 
@@ -262,14 +333,31 @@ public class Window implements Observer {
     @Override
     public void onNotify(GameObject object, Event event) {
         switch (event.type) {
+            case GameRequestPlay -> {
+                if (!ready) {
+                    ready = true;
+                    ClientData request = new ClientData();
+                    request.setName("start");
+                    requests.add(request);
+
+                }
+            }
             case GameEngineStartPlay -> {
-                this.runtimePlaying = true;
-                currentScene.save(false);
-                Window.changeScene(new LevelSceneInitializer(clientThread, requests,responses));
+                if(!runtimePlaying) {
+                    ready = true;
+                    start=true;
+                    this.runtimePlaying = true;
+                }else {
+                    System.out.println("ALREADY RUNNIN YOU BOZO, what the f are you even doing???");
+                }
+
             }
             case GameEngineStopPlay -> {
-                this.runtimePlaying = false;
-                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+                //if(ready) {
+                    ready=false;
+                    this.runtimePlaying = false;
+                    Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
+               // }
             }
             case LoadLevel -> Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
             case SaveLevel -> currentScene.save(true);

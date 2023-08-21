@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="Working version, shit ass sync, but like it's runnable it's got multi...">
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="starting work on sync... please hold">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Time.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/permalevel.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Processor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/GoombaAI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/GoombaAI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/KeyControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/KeyControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/PlayerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/PlayerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/ImGuiLayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/ImGuiLayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/observers/events/EventType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/observers/events/EventType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2dtmp/PhysicsSystem2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/PhysicsSystem2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/LevelSceneInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelSceneInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -66,7 +83,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2U19947DOEYbnf8K4vTTSndsWnW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -78,6 +95,7 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/IdeaProjects/STONE&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -92,6 +110,9 @@
       <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle\8.0.2" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\.gradle\7.5.1" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="jade" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
@@ -197,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692304997819</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="starting work on sync... please hold">
+      <created>1692311660468</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1692311660468</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -213,6 +241,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Working version, shit ass sync, but like it's runnable it's got multi..." />
-    <option name="LAST_COMMIT_MESSAGE" value="Working version, shit ass sync, but like it's runnable it's got multi..." />
+    <MESSAGE value="starting work on sync... please hold" />
+    <option name="LAST_COMMIT_MESSAGE" value="starting work on sync... please hold" />
   </component>
 </project>

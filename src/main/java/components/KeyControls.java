@@ -4,6 +4,7 @@ import Multiplayer.ClientData;
 import editor.PropertiesWindow;
 import jade.GameObject;
 import jade.KeyListener;
+import jade.MouseListener;
 import jade.Window;
 import util.Settings;
 
@@ -22,7 +23,28 @@ public class KeyControls extends Component {
         this.clientThread=clientThread;
         this.requests=requests;
     }
+    @Override
+    public void update(float dt){
+        debounce -= dt;
 
+        PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
+        GameObject activeGameObject = propertiesWindow.getActiveGameObject();
+        List<GameObject> activeGameObjects = propertiesWindow.getActiveGameObjects();
+        float multiplier = KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT) ? 0.1f : 1.0f;
+        if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) &&
+                KeyListener.keyBeginPress(GLFW_KEY_V)) {
+
+            ClientData clientData = new ClientData();
+            clientData.setName("Move");
+            KeyListener.endFrame();
+            clientData.setGameObjects(Window.getImguiLayer().getMenu().getIds());
+            List<Float> position = new ArrayList<>();
+            position.add(MouseListener.getWorldX());
+            position.add(MouseListener.getWorldY());
+            clientData.setPos(position);
+            requests.add(clientData);
+        }
+    }
     @Override
     public void editorUpdate(float dt) {
         debounce -= dt;

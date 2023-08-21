@@ -14,11 +14,16 @@ public class Transform extends Component {
         return new Transform();
     }
     public Vector2f position;
-
+    public Vector2f drawPos;
+    public Vector2f pastPos;
     public Vector2f scale;
     public float rotation = 0.0f;
     public int zIndex;
-
+    public void updatePastPos(){pastPos=new Vector2f(position);};
+    public void updateDrawPos(float fraction){
+        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
+        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
+    };
     public Transform() {
         init(new Vector2f(), new Vector2f());
     }
@@ -33,6 +38,8 @@ public class Transform extends Component {
 
     public void init(Vector2f position, Vector2f scale) {
         this.position = position;
+        this.drawPos = position;
+        this.pastPos = position;
         this.scale = scale;
         this.zIndex = 0;
     }

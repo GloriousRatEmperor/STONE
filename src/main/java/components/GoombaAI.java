@@ -15,7 +15,7 @@ public class GoombaAI extends Component {
     }
     private transient boolean goingRight = false;
     private transient Rigidbody2D rb;
-    private transient float walkSpeed = 0.6f;
+    private transient float walkSpeed = 0.06f;
     private transient Vector2f velocity = new Vector2f();
     private transient Vector2f acceleration = new Vector2f();
     private transient Vector2f terminalVelocity = new Vector2f();
@@ -49,9 +49,9 @@ public class GoombaAI extends Component {
         }
 
         if (goingRight) {
-            velocity.x = walkSpeed;
+            velocity.x += walkSpeed;
         } else {
-            velocity.x = -walkSpeed;
+            velocity.x -= walkSpeed;
         }
 
         checkOnGround();
@@ -65,9 +65,6 @@ public class GoombaAI extends Component {
         this.velocity.y += this.acceleration.y * dt;
         this.velocity.y = Math.max(Math.min(this.velocity.y, this.terminalVelocity.y), -terminalVelocity.y);
         this.rb.setVelocity(velocity);
-        if (this.gameObject.transform.position.x < Window.getScene().camera().position.x - 0.5f) {
-            this.gameObject.destroy();
-        }
     }
 
     public void checkOnGround() {
@@ -98,6 +95,7 @@ public class GoombaAI extends Component {
             }
         } else if (Math.abs(contactNormal.y) < 0.1f) {
             goingRight = contactNormal.x < 0;
+            velocity.zero();
         }
 
         if (obj.getComponent(Fireball.class) != null) {

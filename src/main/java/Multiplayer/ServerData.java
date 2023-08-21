@@ -7,6 +7,7 @@ import java.util.List;
 public class ServerData {
     public int intValue;
     public float time;
+    public long start;
     public String name;
     public int getIntValue(){
         return intValue;
@@ -16,6 +17,9 @@ public class ServerData {
     }
     public void setIntValue(int newval){
         intValue=newval;
+    }
+    public void setStart(long newval){
+        start=newval;
     }
     public void setName(String newval){ name =newval;}
     public List<Integer> GameObjects;
@@ -29,4 +33,7 @@ public class ServerData {
     }
     public void setPos(List<Float> pos){position=pos;}
     public List<Float> getPos(){return position;}
+    public void setTime(float tim){time=tim;}
+    public float getTime(){return time;}
+    public Long getStart(){return start;}
 }

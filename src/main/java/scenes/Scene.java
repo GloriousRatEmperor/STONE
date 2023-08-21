@@ -2,6 +2,7 @@ package scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.stream.JsonReader;
 import components.Component;
 import components.ComponentDeserializer;
 import components.NonPickable;
@@ -9,7 +10,6 @@ import imgui.ImGui;
 import jade.*;
 import org.joml.Vector2f;
 import physics2d.Physics2D;
-import physics2dtmp.rigidbody.Rigidbody2D;
 import renderer.Renderer;
 
 import java.io.FileWriter;
@@ -28,16 +28,18 @@ public class Scene {
     private List<GameObject> gameObjects;
     private List<GameObject> pendingObjects;
     private Physics2D physics2D;
+    String levelName;
 
     private SceneInitializer sceneInitializer;
 
-    public Scene(SceneInitializer sceneInitializer) {
+    public Scene(SceneInitializer sceneInitializer,String levelName) {
         this.sceneInitializer = sceneInitializer;
         this.physics2D = new Physics2D();
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
         this.pendingObjects = new ArrayList<>();
         this.isRunning = false;
+        this.levelName=levelName;
     }
 
     public Physics2D getPhysics() {
@@ -120,6 +122,12 @@ public class Scene {
                 i--;
             }
         }
+        for (GameObject go : gameObjects) {
+            Transform tr = go.getComponent(Transform.class);
+            if (tr != null) {
+                tr.drawPos.set(tr.position);
+            }
+        }
 
         for (GameObject go : pendingObjects) {
             gameObjects.add(go);
@@ -136,13 +144,48 @@ public class Scene {
                 .findFirst();
         return result.orElse(null);
     }
+    public void soloUpdate(float dt) {
+        this.camera.adjustProjection();
 
+        this.physics2D.update(dt);
+
+        for (int i=0; i < gameObjects.size(); i++) {
+            GameObject go = gameObjects.get(i);
+            go.update(dt);
+
+            if (go.isDead()) {
+                gameObjects.remove(i);
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                i--;
+            }
+            Transform tr = go.getComponent(Transform.class);
+            if (tr != null) {
+                tr.drawPos.set(tr.position);
+            }
+        }
+        for (GameObject go : pendingObjects) {
+            gameObjects.add(go);
+            go.start();
+
+
+            this.renderer.add(go);
+            this.physics2D.add(go);
+
+            Transform tr = go.getComponent(Transform.class);
+            if (tr != null) {
+                tr.drawPos.set(tr.position);
+            }
+        }
+        pendingObjects.clear();
+
+    }
     public void update(float dt,boolean complete) {
         if(complete){
             for (GameObject go : gameObjects) {
-                Rigidbody2D rb = go.getComponent(Rigidbody2D.class);
-                if (rb != null) {
-                    rb.updatePastPos();
+                Transform tr = go.getComponent(Transform.class);
+                if (tr != null) {
+                    tr.updatePastPos();
                 }
             }
         }
@@ -171,9 +214,9 @@ public class Scene {
     public void visualUpdate(float fractionPassed) { //fractionpassed=dt/physicsframetime
         this.camera.adjustProjection();
         for (GameObject go : gameObjects) {
-            Rigidbody2D rb=go.getComponent(Rigidbody2D.class);
-            if(rb != null){
-                rb.updateDrawPos(fractionPassed);
+            Transform tr = go.getComponent(Transform.class);
+            if (tr != null) {
+                tr.updateDrawPos(fractionPassed);
             }
         }
     }
@@ -210,7 +253,7 @@ public class Scene {
             if (permanent){
                 writer = new FileWriter("permalevel.txt");
             }else{
-                writer = new FileWriter("level.txt");
+                writer = new FileWriter("level"+levelName+".txt");
             }
 
             List<GameObject> objsToSerialize = new ArrayList<>();
@@ -239,7 +282,9 @@ public class Scene {
 
         String inFile = "";
         try {
-            inFile = new String(Files.readAllBytes(Paths.get("level.txt")));
+
+            inFile = new String(Files.readAllBytes(Paths.get("level"+levelName+".txt")));
+
         } catch (IOException e) {
             e.printStackTrace();
         }

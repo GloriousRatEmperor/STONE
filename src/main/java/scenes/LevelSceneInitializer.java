@@ -30,13 +30,12 @@ public class LevelSceneInitializer extends SceneInitializer {
     @Override
     public void init(Scene scene) {
         //added this
-
         Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
 
         gamestuff = scene.createGameObject("LevelEditor");
         gamestuff.setNoSerialize();
         gamestuff.addComponent(new MouseControls(clientThread,requests));//working
-        //gamestuff.addComponent(new KeyControls()); (normally allows selected units movement)
+        gamestuff.addComponent(new KeyControls(clientThread,requests));
         //gamestuff.addComponent(new GridLines()); (normally adds grid... kina obvious tbh)
         gamestuff.addComponent(new GizmoSystem(gizmos)); //(whatever the f a gizmo is...) #NEW WARNING
         gamestuff.addComponent(new ServerInputs(clientThread,responses));

@@ -125,5 +125,4 @@ public class Rigidbody2D extends Component {
     public void setCor(float cor) {
         this.cor = cor;
     }
-
 }

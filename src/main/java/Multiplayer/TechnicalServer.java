@@ -9,6 +9,9 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import static org.lwjgl.glfw.GLFW.glfwGetTime;
+import static org.lwjgl.glfw.GLFW.glfwInit;
+
 public class TechnicalServer {
 
     private final int port;
@@ -21,7 +24,7 @@ public class TechnicalServer {
     public void run() throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        Processor processor=new Processor();
+        Server server =new Server();
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -32,7 +35,7 @@ public class TechnicalServer {
                                 throws Exception {
                             ch.pipeline().addLast(new ServerDecoder(),
                                     new Responder(),
-                                    processor);
+                                    server);
                         }
                     }).option(ChannelOption.SO_BACKLOG, 128)
                     .childOption(ChannelOption.SO_KEEPALIVE, true);

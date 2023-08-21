@@ -15,6 +15,9 @@ import scenes.Scene;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Random;
 
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
@@ -33,14 +36,18 @@ public class ImGuiLayer {
     private GameViewWindow gameViewWindow;
     private PropertiesWindow propertiesWindow;
     private MenuBar menuBar;
+    private String levelname;
     private SceneHierarchyWindow sceneHeirarchyWindow;
 
-    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture) {
+    public ImGuiLayer(long glfwWindow, PickingTexture pickingTexture,String levelname) {
         this.glfwWindow = glfwWindow;
         this.gameViewWindow = new GameViewWindow();
         this.propertiesWindow = new PropertiesWindow(pickingTexture);
         this.menu = new Menu(pickingTexture);
         this.sceneHeirarchyWindow = new SceneHierarchyWindow();
+        this.levelname=levelname;
+
+
     }
 
     public GameViewWindow getGameViewWindow() {
@@ -59,7 +66,7 @@ public class ImGuiLayer {
         // Initialize ImGuiIO config
         final ImGuiIO io = ImGui.getIO();
         FileUtil.copyFile("permagui.ini","imgui.ini",true);
-        FileUtil.copyFile("permalevel.txt","level.txt",true);
+        FileUtil.copyFile("permalevel.txt","level"+levelname+".txt",true);
         io.setIniFilename("imgui.ini"); // We don't want to save .ini file
         io.addConfigFlags(ImGuiConfigFlags.DockingEnable);
         io.addConfigFlags(ImGuiConfigFlags.ViewportsEnable);
