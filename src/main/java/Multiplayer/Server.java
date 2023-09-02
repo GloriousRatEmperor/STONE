@@ -12,7 +12,8 @@ public class Server extends ChannelInboundHandlerAdapter {
     public Time time=new Time();
     private ArrayList<ChannelHandlerContext> ctxlist=new ArrayList<>();
     private float delay=2;
-    private int maxPlayerCount=2;
+    private int maxPlayerCountAdd=1;
+    private int maxPlayerCount=1;
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
@@ -32,7 +33,7 @@ public class Server extends ChannelInboundHandlerAdapter {
                 if (playerCount < maxPlayerCount) {
                     playerCount += 1;
                     if (playerCount == maxPlayerCount) {
-
+                        maxPlayerCount+=maxPlayerCountAdd;
                         ServerData ServerData = new ServerData();
                         long curTime=System.currentTimeMillis();
                         ServerData.setStart(curTime);

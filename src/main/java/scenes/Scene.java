@@ -6,12 +6,14 @@ import com.google.gson.stream.JsonReader;
 import components.Component;
 import components.ComponentDeserializer;
 import components.NonPickable;
+import components.SpriteRenderer;
 import imgui.ImGui;
 import jade.*;
 import org.joml.Vector2f;
 import physics2d.Physics2D;
 import renderer.Renderer;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -28,18 +30,18 @@ public class Scene {
     private List<GameObject> gameObjects;
     private List<GameObject> pendingObjects;
     private Physics2D physics2D;
-    String levelName;
+    private File leveltemp;
 
     private SceneInitializer sceneInitializer;
 
-    public Scene(SceneInitializer sceneInitializer,String levelName) {
+    public Scene(SceneInitializer sceneInitializer,File leveltemp) {
         this.sceneInitializer = sceneInitializer;
         this.physics2D = new Physics2D();
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
         this.pendingObjects = new ArrayList<>();
         this.isRunning = false;
-        this.levelName=levelName;
+        this.leveltemp=leveltemp;
     }
 
     public Physics2D getPhysics() {
@@ -216,8 +218,11 @@ public class Scene {
         for (GameObject go : gameObjects) {
             Transform tr = go.getComponent(Transform.class);
             if (tr != null) {
-                tr.updateDrawPos(fractionPassed);
+                if(tr.position.x!=0f) {
+                    tr.updateDrawPos(fractionPassed);
+                }
             }
+            go.updateDraw();
         }
     }
 
@@ -253,7 +258,7 @@ public class Scene {
             if (permanent){
                 writer = new FileWriter("permalevel.txt");
             }else{
-                writer = new FileWriter("level"+levelName+".txt");
+                writer = new FileWriter(leveltemp);
             }
 
             List<GameObject> objsToSerialize = new ArrayList<>();
@@ -283,7 +288,7 @@ public class Scene {
         String inFile = "";
         try {
 
-            inFile = new String(Files.readAllBytes(Paths.get("level"+levelName+".txt")));
+            inFile = new String(Files.readAllBytes(Paths.get(leveltemp.getPath())));
 
         } catch (IOException e) {
             e.printStackTrace();

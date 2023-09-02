@@ -1,9 +1,6 @@
 package editor;
 
-import components.Hitter;
-import components.SpriteRenderer;
-import components.Mortal;
-import components.UnitBuilder;
+import components.*;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
@@ -38,6 +35,13 @@ public class PropertiesWindow {
                     for (GameObject go : activeGameObjects) {
                         if (go.getComponent(MoveContollable.class) == null) {
                             go.addComponent(new MoveContollable());
+                        }
+                    }
+                }
+                if (ImGui.menuItem("Add Abilities")) {
+                    for (GameObject go : activeGameObjects) {
+                        if (go.getComponent(CastAbilities.class) == null) {
+                            go.addComponent(new CastAbilities());
                         }
                     }
                 }

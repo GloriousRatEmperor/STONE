@@ -23,7 +23,13 @@ import scenes.Scene;
 import scenes.SceneInitializer;
 import util.AssetPool;
 
+import javax.swing.plaf.synth.Region;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.BlockingQueue;
 
@@ -40,7 +46,7 @@ public class Window implements Observer {
     private int width, height;
     private String title;
     private long glfwWindow;
-    private String levelname;
+    private File leveltemp;
     private ImGuiLayer imguiLayer;
     private Framebuffer framebuffer;
     private PickingTexture pickingTexture;
@@ -77,7 +83,7 @@ public class Window implements Observer {
         }
 
         getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
-        currentScene = new Scene(sceneInitializer, get().levelname);
+        currentScene = new Scene(sceneInitializer, get().leveltemp);
         currentScene.load();
         currentScene.init();
         currentScene.start();
@@ -115,7 +121,31 @@ public class Window implements Observer {
         glfwTerminate();
         glfwSetErrorCallback(null).free();
     }
+    private void cleanTemps(File dir){
+        List<File> cleans =getFilesOF(dir.getAbsolutePath());
+        for (File f:cleans){
+            if(f.lastModified()<System.currentTimeMillis()-300000){
+                if(!f.delete()){
+                    System.out.println("ÜGH deletion failed");
+                }
+            }
 
+        }
+    }
+    private List<File> getFilesOF(String directory) {
+        File directoryFile = new File(directory);
+
+        if(!directoryFile.isDirectory()) {
+            throw new IllegalArgumentException("path must be a directory");
+        }
+
+        List<File> results = new ArrayList<>();
+
+        for(File temp : Objects.requireNonNull(directoryFile.listFiles())) {
+                results.add(temp);
+        }
+        return results;
+    }
     public void init() {
         // Setup an error callback
         GLFWErrorCallback.createPrint(System.err).set();
@@ -192,9 +222,22 @@ public class Window implements Observer {
                     (random.nextFloat() * (rightLimit - leftLimit + 1));
             buffer.append((char) randomLimitedInt);
         }
-        this.levelname = buffer.toString();
+        try {
 
-        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,levelname);
+            File dir=new File("Leveltemps");
+            if(!dir.isDirectory()){
+                System.out.println("FUCK,this shit ain't a directory");
+            }
+            cleanTemps(dir);
+            leveltemp = File.createTempFile("level", ".tmp",dir);
+            //File tempFile = File.createTempFile("MyAppName-", ".tmp");
+            leveltemp.deleteOnExit();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,leveltemp);
         this.imguiLayer.initImGui();
 
         Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
@@ -248,23 +291,25 @@ public class Window implements Observer {
                     //currentScene.update(dt,true);
                     while(physicsTimes>0) {
                         physicsTimes--;
-                        currentScene.update(physicsStep, physicsTimes == 1);
-                        currentScene.visualUpdate(fractionPassed);
+                        currentScene.update(physicsStep, physicsTimes == 0);
+
                         KeyListener.endFrame();
                         MouseListener.endFrame();
+
                     }
+                    currentScene.visualUpdate(fractionPassed);
                 } else {
                     currentScene.editorUpdate(dt);
                     KeyListener.endFrame();
                     MouseListener.endFrame();
                 }
-                currentScene.render();
-                DebugDraw.draw();
+
             }
 
 
 
-
+            currentScene.render();
+            DebugDraw.draw();
 
 
 
@@ -278,16 +323,17 @@ public class Window implements Observer {
                 ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
                 long StartTime=inputs.getStartTime();
                 time.setBeginTime(StartTime);
+                inputs.setTime(0f);
                 beginTime=0f;
                 lastPhysics = 0f;
-
+                physicsTimes=0;
 
 
                 currentScene.save(false);
 
                 Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
                 ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-                newInputs.setTime(time.getTime());
+                newInputs.setTime(0f);
             }
 
             glfwSwapBuffers(glfwWindow);
@@ -299,7 +345,7 @@ public class Window implements Observer {
                 lastPhysics+=physicsStep;
                 physicsTimes+=1;
             }
-            fractionPassed=(lastPhysics-endTime)/physicsStep;
+            fractionPassed=1-(lastPhysics-endTime)/physicsStep;
         }
     }
 

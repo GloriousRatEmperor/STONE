@@ -25,6 +25,7 @@ public class ServerInputs extends Component {
     }
     @Override
     public void update(float dt) {
+
         time+=dt;
         try {
             while (!responses.isEmpty()) {
@@ -46,25 +47,11 @@ public class ServerInputs extends Component {
         throw new RuntimeException(e);
         }
     }
-    private ArrayList<ServerData> sortedIndex(ArrayList<ServerData> array,ServerData value) {
-        int low = 0;
-        int high = array.size();
 
-        while (low < high) {
-            var mid = (low + high) >>> 1;
-            if (array.get(mid).getTime() < value.getTime()){
-                low = mid + 1;
-            }
-            else {
-                high = mid;
-            }
-        }
-        array.add(low,value);
-        return array;
-    }
     @Override
     public void editorUpdate(float dt) {
         time += dt;
+
         try {
             while (!responses.isEmpty()) {
                 apply(responses.take());
@@ -91,6 +78,7 @@ public class ServerInputs extends Component {
         return startTime;
     }
     public void setTime(float tim){
+
         time=tim;
     }
 

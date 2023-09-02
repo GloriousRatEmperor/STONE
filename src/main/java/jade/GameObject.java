@@ -1,12 +1,11 @@
 package jade;
 
+import SubComponents.Ability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import components.Component;
-import components.ComponentDeserializer;
-import components.Sprite;
-import components.SpriteRenderer;
+import components.*;
 import imgui.ImGui;
+import imgui.flag.ImGuiWindowFlags;
 import org.joml.Vector2f;
 import util.AssetPool;
 
@@ -73,6 +72,12 @@ public class GameObject {
         }
     }
 
+    public void updateDraw() {
+        for (int i=0; i < components.size(); i++) {
+
+            components.get(i).updateDraw();
+        }
+    }
     public void editorUpdate(float dt) {
         for (int i=0; i < components.size(); i++) {
             components.get(i).editorUpdate(dt);
@@ -98,7 +103,46 @@ public class GameObject {
         if(this.getComponent(SpriteRenderer.class)!=null) {
             Sprite sprite= this.getComponent(SpriteRenderer.class).getSprite();
             Vector2f[] texCoords = sprite.getTexCoords();
-            ImGui.image(sprite.getTexture().getId(), 200, 200,texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y);
+            imgui.ImGuiIO io = ImGui.getIO();
+
+            ImGui.setNextWindowPos(10,io.getDisplaySizeY()*3/4+50);
+            if(ImGui.beginChild("mainImage",200,200)) {
+                ImGui.image(sprite.getTexture().getId(), 200, 200, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y);
+            }ImGui.endChild();
+
+            int AbilitySize=80;
+            CastAbilities caster=this.getComponent(CastAbilities.class);
+            int columns=(int)(io.getDisplaySizeX()-250)/AbilitySize;
+            if(columns>0 & caster!=null) { //in case screen is minimized
+                ImGui.setNextWindowPos(250,io.getDisplaySizeY()*3/4+50);
+                if (ImGui.beginChild("Abilities", columns * AbilitySize, AbilitySize, false, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
+                    if (ImGui.beginTable("null", columns, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
+                        ImGui.tableNextColumn();
+                        int id=1;
+                        for(Ability a:caster.abilities) {
+                            ImGui.pushID(id++);
+                            sprite=a.getSprite();
+                            texCoords = sprite.getTexCoords();
+                            if (ImGui.imageButton(sprite.getTexture().getId(), AbilitySize, AbilitySize, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                                for (GameObject go:activeGameObjects) {
+                                    CastAbilities cast= go.getComponent(CastAbilities.class);
+                                    if (!(cast ==null)){
+                                        cast.castAbility(a.name,MouseListener.getScreen());
+                                    }
+                                }
+                            }ImGui.popID();
+                        }
+
+                        ImGui.endTable();
+
+                    }
+
+                }
+
+                ImGui.endChild();
+            }
+
+
         }
 //        for (Component c : components) {
 //            if (ImGui.collapsingHeader(c.getClass().getSimpleName()))
@@ -115,7 +159,8 @@ public class GameObject {
     }
     public GameObject mengui(GameObject master) {
         for (Component c : components) {
-            if (master.getComponent(c.getClass())==null){
+            Component masterComp=master.getComponent(c.getClass());
+            if (masterComp==null){
                 Component clone=c.Clone();
                 Field[] fields = c.getClass().getDeclaredFields();
                 try{
@@ -139,6 +184,8 @@ public class GameObject {
                     throw new RuntimeException(ex);
                 }
                 master.addComponent(clone);
+            }else{
+                c.mengui(masterComp);
             }
         }
         return master;

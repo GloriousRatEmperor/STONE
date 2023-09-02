@@ -23,7 +23,12 @@ public abstract class Component {
     public Component Clone(){
         throw new RuntimeException("you fucktart cloning dumbly dumass"+this.getClass()+" is the class you clonin and it has no clown function STUPID");
     }
+    public void updateDraw(){
 
+    }
+    public void mengui(Component mastercComponent){
+
+    }
     public void start() {
 
     }
@@ -267,7 +272,7 @@ public abstract class Component {
         }
     }
 
-    private <T extends Enum<T>> String[] getEnumValues(Class<T> enumType) {
+    protected  <T extends Enum<T>> String[] getEnumValues(Class<T> enumType) {
         String[] enumValues = new String[enumType.getEnumConstants().length];
         int i = 0;
         for (T enumIntegerValue : enumType.getEnumConstants()) {

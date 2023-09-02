@@ -21,8 +21,11 @@ public class Transform extends Component {
     public int zIndex;
     public void updatePastPos(){pastPos=new Vector2f(position);};
     public void updateDrawPos(float fraction){
+
         drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
         drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
+
+
     };
     public Transform() {
         init(new Vector2f(), new Vector2f());

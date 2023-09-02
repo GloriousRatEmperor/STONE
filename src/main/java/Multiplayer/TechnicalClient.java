@@ -14,6 +14,8 @@ import io.netty.channel.socket.nio.NioSocketChannel;
 
 import org.junit.runner.Request;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
@@ -30,6 +32,7 @@ public class TechnicalClient implements Runnable{
 
     @Override
     public void run() {
+
         int port = 8080;
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         Client client= new Client(responses);
