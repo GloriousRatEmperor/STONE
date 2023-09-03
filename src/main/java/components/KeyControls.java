@@ -6,6 +6,7 @@ import jade.GameObject;
 import jade.KeyListener;
 import jade.MouseListener;
 import jade.Window;
+import org.joml.Vector2f;
 import util.Settings;
 
 import java.util.ArrayList;
@@ -34,15 +35,9 @@ public class KeyControls extends Component {
         if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) &&
                 KeyListener.keyBeginPress(GLFW_KEY_V)) {
 
-            ClientData clientData = new ClientData();
-            clientData.setName("Move");
-            KeyListener.endFrame();
-            clientData.setGameObjects(Window.getImguiLayer().getMenu().getIds());
-            List<Float> position = new ArrayList<>();
-            position.add(MouseListener.getWorldX());
-            position.add(MouseListener.getWorldY());
-            clientData.setPos(position);
-            requests.add(clientData);
+            Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
+
+            Window.sendMove(position,Window.getImguiLayer().getMenu().getIds());
         }
     }
     @Override

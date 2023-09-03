@@ -102,8 +102,11 @@ public class GameObject {
     public List<GameObject> masterGui(List<GameObject> activeGameObjects) {
         if(this.getComponent(SpriteRenderer.class)!=null) {
             Sprite sprite= this.getComponent(SpriteRenderer.class).getSprite();
+
             Vector2f[] texCoords = sprite.getTexCoords();
             imgui.ImGuiIO io = ImGui.getIO();
+
+
 
             ImGui.setNextWindowPos(10,io.getDisplaySizeY()*3/4+50);
             if(ImGui.beginChild("mainImage",200,200)) {
@@ -117,13 +120,17 @@ public class GameObject {
                 ImGui.setNextWindowPos(250,io.getDisplaySizeY()*3/4+50);
                 if (ImGui.beginChild("Abilities", columns * AbilitySize, AbilitySize, false, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
                     if (ImGui.beginTable("null", columns, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
-                        ImGui.tableNextColumn();
                         int id=1;
                         for(Ability a:caster.abilities) {
+                            ImGui.tableNextColumn();
                             ImGui.pushID(id++);
-                            sprite=a.getSprite();
-                            texCoords = sprite.getTexCoords();
-                            if (ImGui.imageButton(sprite.getTexture().getId(), AbilitySize, AbilitySize, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                            Sprite Asprite=a.getSprite();
+                            Asprite.setTexture(sprite.getTexture());
+                            Vector2f[] AtexCoords = Asprite.getTexCoords();
+
+
+                                // TODO Texture Id is mysteriously 6??? it should be five? one ugly fiox later and it works I guess??
+                            if (ImGui.imageButton(5, AbilitySize, AbilitySize, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y)) {
                                 for (GameObject go:activeGameObjects) {
                                     CastAbilities cast= go.getComponent(CastAbilities.class);
                                     if (!(cast ==null)){

@@ -56,6 +56,26 @@ public class Server extends ChannelInboundHandlerAdapter {
                 ServerData.setPos(ClientData.getPos());
                 toClients(ServerData);
             }
+
+            case "Speed" -> {
+
+                ServerData ServerData = new ServerData();
+                ServerData.setTime(time.getTime() + delay);
+                ServerData.setIntValue(ClientData.getIntValue());
+                ServerData.setGameObjects(ClientData.getGameObjects());
+                ServerData.setName(ClientData.getName());
+                toClients(ServerData);
+            }
+
+            case "Heal" -> {
+
+                ServerData ServerData = new ServerData();
+                ServerData.setTime(time.getTime() + delay);
+                ServerData.setIntValue(ClientData.getIntValue());
+                ServerData.setGameObjects(ClientData.getGameObjects());
+                ServerData.setName(ClientData.getName());
+                toClients(ServerData);
+            }
         }
 
     }

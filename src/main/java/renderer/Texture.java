@@ -20,6 +20,7 @@ public class Texture {
     }
 
     public Texture(int width, int height) {
+
         this.filepath = "Generated";
 
         // Generate texture on GPU

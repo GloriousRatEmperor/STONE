@@ -52,8 +52,8 @@ public class PlayerController extends Component {
     private transient boolean isDead = false;
     private transient int enemyBounce = 0;
 
-    private transient float hurtInvincibilityTimeLeft = 0;
-    private transient float hurtInvincibilityTime = 1.4f;
+    private transient float hurtInvinciAbilityTimeLeft = 0;
+    private transient float hurtInvinciAbilityTime = 1.4f;
     private transient float deadMaxHeight = 0;
     private transient float deadMinHeight = 0;
     private transient boolean deadGoingUp = true;
@@ -100,8 +100,8 @@ public class PlayerController extends Component {
             return;
         }
 
-        if (hurtInvincibilityTimeLeft > 0) {
-            hurtInvincibilityTimeLeft -= dt;
+        if (hurtInvinciAbilityTimeLeft > 0) {
+            hurtInvinciAbilityTimeLeft -= dt;
             blinkTime -= dt;
 
             if (blinkTime <= 0) {
@@ -265,12 +265,12 @@ public class PlayerController extends Component {
     }
 
     public boolean isHurtInvincible() {
-        return this.hurtInvincibilityTimeLeft > 0 || playWinAnimation;
+        return this.hurtInvinciAbilityTimeLeft > 0 || playWinAnimation;
     }
 
     public boolean isInvincible() {
         return this.playerState == PlayerState.Invincible ||
-                this.hurtInvincibilityTimeLeft > 0 || playWinAnimation;
+                this.hurtInvinciAbilityTimeLeft > 0 || playWinAnimation;
     }
 
     public void die() {
@@ -297,11 +297,11 @@ public class PlayerController extends Component {
                 walkSpeed /= bigJumpBoostFactor;
                 pb.setHeight(0.25f);
             }
-            hurtInvincibilityTimeLeft = hurtInvincibilityTime;
+            hurtInvinciAbilityTimeLeft = hurtInvinciAbilityTime;
             AssetPool.getSound("assets/sounds/pipe.ogg").play();
         } else if (playerState == PlayerState.Fire) {
             this.playerState = PlayerState.Big;
-            hurtInvincibilityTimeLeft = hurtInvincibilityTime;
+            hurtInvinciAbilityTimeLeft = hurtInvinciAbilityTime;
             AssetPool.getSound("assets/sounds/pipe.ogg").play();
         }
     }

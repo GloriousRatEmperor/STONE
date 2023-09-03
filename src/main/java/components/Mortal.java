@@ -4,6 +4,8 @@ import physics2d.components.Rigidbody2D;
 
 public class Mortal extends Component {
     public float health=20;
+    public float maxHealth=20;
+
     public int allied =1;
     private transient Rigidbody2D rb;
     @Override

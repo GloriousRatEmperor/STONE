@@ -11,7 +11,7 @@ public class QuestionBlock extends Block {
     private enum BlockType {
         Coin,
         Powerup,
-        Invincibility
+        InvinciAbility
     }
 
     public BlockType blockType = BlockType.Coin;
@@ -25,8 +25,8 @@ public class QuestionBlock extends Block {
             case Powerup:
                 doPowerup(playerController);
                 break;
-            case Invincibility:
-                doInvincibility(playerController);
+            case InvinciAbility:
+                doInvinciAbility(playerController);
                 break;
         }
 
@@ -37,7 +37,7 @@ public class QuestionBlock extends Block {
         }
     }
 
-    private void doInvincibility(PlayerController playerController) {
+    private void doInvinciAbility(PlayerController playerController) {
     }
 
     private void doPowerup(PlayerController playerController) {

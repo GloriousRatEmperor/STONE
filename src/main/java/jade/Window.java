@@ -6,6 +6,7 @@ import components.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
+import org.joml.Vector2f;
 import org.joml.Vector4f;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
@@ -348,7 +349,24 @@ public class Window implements Observer {
             fractionPassed=1-(lastPhysics-endTime)/physicsStep;
         }
     }
+    public static void sendMove(Vector2f position,List<Integer> Ids){
 
+        ClientData clientData = new ClientData();
+        clientData.setName("Move");
+        clientData.setGameObjects(Ids);
+        List<Float> pos = new ArrayList<>();
+        pos.add(position.get(0));
+        pos.add(position.get(1));
+        clientData.setPos(pos);
+        get().requests.add(clientData);
+    }
+    public static void sendSelfcast(List<Integer> Ids,String AbilityName){
+
+        ClientData clientData = new ClientData();
+        clientData.setName(AbilityName);
+        clientData.setGameObjects(Ids);
+        get().requests.add(clientData);
+    }
     public static int getWidth() {
         return 3840;//get().width;
     }
@@ -376,9 +394,11 @@ public class Window implements Observer {
     public static ImGuiLayer getImguiLayer() {
         return get().imguiLayer;
     }
+
     @Override
     public void onNotify(GameObject object, Event event) {
         switch (event.type) {
+
             case GameRequestPlay -> {
                 if (!ready) {
                     ready = true;

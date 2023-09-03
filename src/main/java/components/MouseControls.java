@@ -63,18 +63,8 @@ public class MouseControls extends Component {
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
-            ClientData clientData=new ClientData();
-            clientData.setName("Move");
-
-            clientData.setGameObjects(Window.getImguiLayer().getMenu().getIds());
-            List<Float> position=new ArrayList<>();
-            position.add(MouseListener.getWorldX());
-            position.add(MouseListener.getWorldY());
-            clientData.setPos(position);
-            requests.add(clientData);
-
-
-
+            Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
+            Window.sendMove(position,Window.getImguiLayer().getMenu().getIds());
         }
         else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
             int x = (int)MouseListener.getScreenX();

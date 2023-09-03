@@ -52,6 +52,11 @@ public class LevelSceneInitializer extends SceneInitializer {
     public void loadResources(Scene scene) {
         AssetPool.getShader("assets/shaders/default.glsl");
 
+
+        AssetPool.addSpritesheet("assets/images/abilities.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/abilities.png"),
+                        80, 80, 3, 0));
+
         AssetPool.addSpritesheet("assets/images/spritesheets/decorationsAndBlocks.png",
                 new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/decorationsAndBlocks.png"),
                         16, 16, 81, 0));

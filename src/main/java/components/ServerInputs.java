@@ -9,6 +9,7 @@ import jade.Window;
 import observers.EventSystem;
 import observers.events.Event;
 import observers.events.EventType;
+import org.joml.Vector2f;
 
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
@@ -71,6 +72,43 @@ public class ServerInputs extends Component {
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
                 startTime = serverData.getStart();
                 setTime(startTime);
+            }
+            case "Heal" -> {
+                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                for (GameObject go:
+                     selectedObjects) {
+                    CastAbilities cast=go.getComponent(CastAbilities.class);
+                    if(cast!=null){
+                        cast.castAbility("Heal",new Vector2f());
+                    }
+
+                }
+            }
+            case "Speed" -> {
+                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                for (GameObject go:
+                        selectedObjects) {
+                    CastAbilities cast=go.getComponent(CastAbilities.class);
+                    if(cast!=null){
+                        cast.castAbility("Speed",new Vector2f());
+                    }
+
+                }
+                ServerData endEffect=new ServerData();
+                endEffect.setName("slow");
+                endEffect.setTime(time+5000);
+                responseList.add(endEffect);
+            }
+            case "Slow" -> {
+                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                for (GameObject go:
+                        selectedObjects) {
+                    CastAbilities cast=go.getComponent(CastAbilities.class);
+                    if(cast!=null){
+                        cast.castAbility("Slow",new Vector2f());
+                    }
+
+                }
             }
         }
     }
