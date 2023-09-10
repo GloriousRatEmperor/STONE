@@ -1,6 +1,6 @@
 [
   {
-    "uid": 445,
+    "uid": 2,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -79,7 +79,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -115,7 +115,7 @@
     "isDead": false
   },
   {
-    "uid": 446,
+    "uid": 3,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -194,7 +194,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -230,7 +230,7 @@
     "isDead": false
   },
   {
-    "uid": 447,
+    "uid": 4,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -309,7 +309,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -345,7 +345,7 @@
     "isDead": false
   },
   {
-    "uid": 448,
+    "uid": 5,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -424,7 +424,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -460,7 +460,7 @@
     "isDead": false
   },
   {
-    "uid": 449,
+    "uid": 6,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -539,7 +539,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -575,7 +575,7 @@
     "isDead": false
   },
   {
-    "uid": 450,
+    "uid": 7,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -654,7 +654,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -690,7 +690,7 @@
     "isDead": false
   },
   {
-    "uid": 451,
+    "uid": 8,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -769,7 +769,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -805,7 +805,7 @@
     "isDead": false
   },
   {
-    "uid": 452,
+    "uid": 9,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -884,7 +884,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -920,7 +920,7 @@
     "isDead": false
   },
   {
-    "uid": 453,
+    "uid": 10,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -999,7 +999,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1035,7 +1035,7 @@
     "isDead": false
   },
   {
-    "uid": 454,
+    "uid": 11,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1114,7 +1114,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1150,7 +1150,7 @@
     "isDead": false
   },
   {
-    "uid": 455,
+    "uid": 12,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1229,7 +1229,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1265,7 +1265,7 @@
     "isDead": false
   },
   {
-    "uid": 456,
+    "uid": 13,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1344,7 +1344,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1380,7 +1380,7 @@
     "isDead": false
   },
   {
-    "uid": 457,
+    "uid": 14,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1459,7 +1459,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1495,7 +1495,7 @@
     "isDead": false
   },
   {
-    "uid": 458,
+    "uid": 15,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1574,7 +1574,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1610,7 +1610,7 @@
     "isDead": false
   },
   {
-    "uid": 459,
+    "uid": 16,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1689,7 +1689,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1725,7 +1725,7 @@
     "isDead": false
   },
   {
-    "uid": 460,
+    "uid": 17,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1804,7 +1804,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1840,7 +1840,7 @@
     "isDead": false
   },
   {
-    "uid": 461,
+    "uid": 18,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -1919,7 +1919,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -1955,7 +1955,7 @@
     "isDead": false
   },
   {
-    "uid": 462,
+    "uid": 19,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2034,7 +2034,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2070,7 +2070,7 @@
     "isDead": false
   },
   {
-    "uid": 463,
+    "uid": 20,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2149,7 +2149,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2185,7 +2185,7 @@
     "isDead": false
   },
   {
-    "uid": 464,
+    "uid": 21,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2264,7 +2264,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2300,7 +2300,7 @@
     "isDead": false
   },
   {
-    "uid": 465,
+    "uid": 22,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2379,7 +2379,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2415,7 +2415,7 @@
     "isDead": false
   },
   {
-    "uid": 466,
+    "uid": 23,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2494,7 +2494,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2530,7 +2530,7 @@
     "isDead": false
   },
   {
-    "uid": 467,
+    "uid": 24,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2609,7 +2609,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2645,7 +2645,7 @@
     "isDead": false
   },
   {
-    "uid": 468,
+    "uid": 25,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2724,7 +2724,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2760,7 +2760,7 @@
     "isDead": false
   },
   {
-    "uid": 469,
+    "uid": 26,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2839,7 +2839,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2875,7 +2875,7 @@
     "isDead": false
   },
   {
-    "uid": 470,
+    "uid": 27,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -2954,7 +2954,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -2990,7 +2990,7 @@
     "isDead": false
   },
   {
-    "uid": 471,
+    "uid": 28,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3069,7 +3069,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3105,7 +3105,7 @@
     "isDead": false
   },
   {
-    "uid": 472,
+    "uid": 29,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3184,7 +3184,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3220,7 +3220,7 @@
     "isDead": false
   },
   {
-    "uid": 473,
+    "uid": 30,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3299,7 +3299,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3335,7 +3335,7 @@
     "isDead": false
   },
   {
-    "uid": 474,
+    "uid": 31,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3414,7 +3414,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3450,7 +3450,7 @@
     "isDead": false
   },
   {
-    "uid": 475,
+    "uid": 32,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3529,7 +3529,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3565,7 +3565,7 @@
     "isDead": false
   },
   {
-    "uid": 476,
+    "uid": 33,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3644,7 +3644,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3680,7 +3680,7 @@
     "isDead": false
   },
   {
-    "uid": 477,
+    "uid": 34,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3759,7 +3759,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3795,7 +3795,7 @@
     "isDead": false
   },
   {
-    "uid": 478,
+    "uid": 35,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3874,7 +3874,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -3910,7 +3910,7 @@
     "isDead": false
   },
   {
-    "uid": 479,
+    "uid": 36,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -3989,7 +3989,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4025,7 +4025,7 @@
     "isDead": false
   },
   {
-    "uid": 480,
+    "uid": 37,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4104,7 +4104,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4140,7 +4140,7 @@
     "isDead": false
   },
   {
-    "uid": 481,
+    "uid": 38,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4219,7 +4219,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4255,7 +4255,7 @@
     "isDead": false
   },
   {
-    "uid": 482,
+    "uid": 39,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4334,7 +4334,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4370,7 +4370,7 @@
     "isDead": false
   },
   {
-    "uid": 483,
+    "uid": 40,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4449,7 +4449,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4485,7 +4485,7 @@
     "isDead": false
   },
   {
-    "uid": 484,
+    "uid": 41,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4564,7 +4564,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4600,7 +4600,7 @@
     "isDead": false
   },
   {
-    "uid": 485,
+    "uid": 42,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4679,7 +4679,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4715,7 +4715,7 @@
     "isDead": false
   },
   {
-    "uid": 486,
+    "uid": 43,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4794,7 +4794,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4830,7 +4830,7 @@
     "isDead": false
   },
   {
-    "uid": 487,
+    "uid": 44,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -4909,7 +4909,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -4945,7 +4945,7 @@
     "isDead": false
   },
   {
-    "uid": 488,
+    "uid": 45,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5024,7 +5024,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5060,7 +5060,7 @@
     "isDead": false
   },
   {
-    "uid": 489,
+    "uid": 46,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5139,7 +5139,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5175,7 +5175,7 @@
     "isDead": false
   },
   {
-    "uid": 490,
+    "uid": 47,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5254,7 +5254,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5290,7 +5290,7 @@
     "isDead": false
   },
   {
-    "uid": 491,
+    "uid": 48,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5369,7 +5369,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5405,7 +5405,7 @@
     "isDead": false
   },
   {
-    "uid": 492,
+    "uid": 49,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5484,7 +5484,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5520,7 +5520,7 @@
     "isDead": false
   },
   {
-    "uid": 493,
+    "uid": 50,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5599,7 +5599,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5635,7 +5635,7 @@
     "isDead": false
   },
   {
-    "uid": 494,
+    "uid": 51,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5714,7 +5714,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5750,7 +5750,7 @@
     "isDead": false
   },
   {
-    "uid": 495,
+    "uid": 52,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5829,7 +5829,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5865,7 +5865,7 @@
     "isDead": false
   },
   {
-    "uid": 496,
+    "uid": 53,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -5944,7 +5944,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -5980,7 +5980,7 @@
     "isDead": false
   },
   {
-    "uid": 497,
+    "uid": 54,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6059,7 +6059,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6095,7 +6095,7 @@
     "isDead": false
   },
   {
-    "uid": 498,
+    "uid": 55,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6174,7 +6174,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6210,7 +6210,7 @@
     "isDead": false
   },
   {
-    "uid": 499,
+    "uid": 56,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6289,7 +6289,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6325,7 +6325,7 @@
     "isDead": false
   },
   {
-    "uid": 500,
+    "uid": 57,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6404,7 +6404,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6440,7 +6440,7 @@
     "isDead": false
   },
   {
-    "uid": 501,
+    "uid": 58,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6519,7 +6519,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6555,7 +6555,7 @@
     "isDead": false
   },
   {
-    "uid": 502,
+    "uid": 59,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6634,7 +6634,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6670,7 +6670,7 @@
     "isDead": false
   },
   {
-    "uid": 503,
+    "uid": 60,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6749,7 +6749,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6785,7 +6785,7 @@
     "isDead": false
   },
   {
-    "uid": 504,
+    "uid": 61,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6864,7 +6864,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -6900,7 +6900,7 @@
     "isDead": false
   },
   {
-    "uid": 505,
+    "uid": 62,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -6979,7 +6979,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7015,7 +7015,7 @@
     "isDead": false
   },
   {
-    "uid": 506,
+    "uid": 63,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7094,7 +7094,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7130,7 +7130,7 @@
     "isDead": false
   },
   {
-    "uid": 507,
+    "uid": 64,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7209,7 +7209,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7245,7 +7245,7 @@
     "isDead": false
   },
   {
-    "uid": 508,
+    "uid": 65,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7324,7 +7324,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7360,7 +7360,7 @@
     "isDead": false
   },
   {
-    "uid": 509,
+    "uid": 66,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7439,7 +7439,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7475,7 +7475,7 @@
     "isDead": false
   },
   {
-    "uid": 510,
+    "uid": 67,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7554,7 +7554,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7590,7 +7590,7 @@
     "isDead": false
   },
   {
-    "uid": 511,
+    "uid": 68,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7669,7 +7669,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7705,7 +7705,7 @@
     "isDead": false
   },
   {
-    "uid": 512,
+    "uid": 69,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7784,7 +7784,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7820,7 +7820,7 @@
     "isDead": false
   },
   {
-    "uid": 513,
+    "uid": 70,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -7899,7 +7899,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -7935,7 +7935,7 @@
     "isDead": false
   },
   {
-    "uid": 514,
+    "uid": 71,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8014,7 +8014,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8050,7 +8050,7 @@
     "isDead": false
   },
   {
-    "uid": 515,
+    "uid": 72,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8129,7 +8129,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8165,7 +8165,7 @@
     "isDead": false
   },
   {
-    "uid": 516,
+    "uid": 73,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8244,7 +8244,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8280,7 +8280,7 @@
     "isDead": false
   },
   {
-    "uid": 517,
+    "uid": 74,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8359,7 +8359,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8395,7 +8395,7 @@
     "isDead": false
   },
   {
-    "uid": 518,
+    "uid": 75,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8474,7 +8474,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8510,7 +8510,7 @@
     "isDead": false
   },
   {
-    "uid": 519,
+    "uid": 76,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8589,7 +8589,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8625,7 +8625,7 @@
     "isDead": false
   },
   {
-    "uid": 520,
+    "uid": 77,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8704,7 +8704,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8740,7 +8740,7 @@
     "isDead": false
   },
   {
-    "uid": 521,
+    "uid": 78,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8819,7 +8819,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8855,7 +8855,7 @@
     "isDead": false
   },
   {
-    "uid": 522,
+    "uid": 79,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -8934,7 +8934,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -8970,7 +8970,7 @@
     "isDead": false
   },
   {
-    "uid": 523,
+    "uid": 80,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9049,7 +9049,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9085,7 +9085,7 @@
     "isDead": false
   },
   {
-    "uid": 524,
+    "uid": 81,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9164,7 +9164,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9200,7 +9200,7 @@
     "isDead": false
   },
   {
-    "uid": 525,
+    "uid": 82,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9279,7 +9279,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9315,7 +9315,7 @@
     "isDead": false
   },
   {
-    "uid": 526,
+    "uid": 83,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9394,7 +9394,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9430,7 +9430,7 @@
     "isDead": false
   },
   {
-    "uid": 527,
+    "uid": 84,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9509,7 +9509,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9545,7 +9545,7 @@
     "isDead": false
   },
   {
-    "uid": 528,
+    "uid": 85,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9624,7 +9624,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9660,7 +9660,7 @@
     "isDead": false
   },
   {
-    "uid": 529,
+    "uid": 86,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9739,7 +9739,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9775,7 +9775,7 @@
     "isDead": false
   },
   {
-    "uid": 530,
+    "uid": 87,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9854,7 +9854,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -9890,7 +9890,7 @@
     "isDead": false
   },
   {
-    "uid": 531,
+    "uid": 88,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -9969,7 +9969,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10005,7 +10005,7 @@
     "isDead": false
   },
   {
-    "uid": 532,
+    "uid": 89,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10084,7 +10084,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10120,7 +10120,7 @@
     "isDead": false
   },
   {
-    "uid": 533,
+    "uid": 90,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10199,7 +10199,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10235,7 +10235,7 @@
     "isDead": false
   },
   {
-    "uid": 534,
+    "uid": 91,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10314,7 +10314,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10350,7 +10350,7 @@
     "isDead": false
   },
   {
-    "uid": 535,
+    "uid": 92,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10429,7 +10429,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10465,7 +10465,7 @@
     "isDead": false
   },
   {
-    "uid": 536,
+    "uid": 93,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10544,7 +10544,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10580,7 +10580,7 @@
     "isDead": false
   },
   {
-    "uid": 537,
+    "uid": 94,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10659,7 +10659,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10695,7 +10695,7 @@
     "isDead": false
   },
   {
-    "uid": 538,
+    "uid": 95,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10774,7 +10774,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10810,7 +10810,7 @@
     "isDead": false
   },
   {
-    "uid": 539,
+    "uid": 96,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -10889,7 +10889,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -10925,7 +10925,7 @@
     "isDead": false
   },
   {
-    "uid": 540,
+    "uid": 97,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11004,7 +11004,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11040,7 +11040,7 @@
     "isDead": false
   },
   {
-    "uid": 541,
+    "uid": 98,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11119,7 +11119,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11155,7 +11155,7 @@
     "isDead": false
   },
   {
-    "uid": 542,
+    "uid": 99,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11234,7 +11234,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11270,7 +11270,7 @@
     "isDead": false
   },
   {
-    "uid": 543,
+    "uid": 100,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11349,7 +11349,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11385,7 +11385,7 @@
     "isDead": false
   },
   {
-    "uid": 544,
+    "uid": 101,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11464,7 +11464,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11500,7 +11500,7 @@
     "isDead": false
   },
   {
-    "uid": 545,
+    "uid": 102,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11579,7 +11579,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11615,7 +11615,7 @@
     "isDead": false
   },
   {
-    "uid": 546,
+    "uid": 103,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11694,7 +11694,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11730,7 +11730,7 @@
     "isDead": false
   },
   {
-    "uid": 547,
+    "uid": 104,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11809,7 +11809,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11845,7 +11845,7 @@
     "isDead": false
   },
   {
-    "uid": 548,
+    "uid": 105,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -11924,7 +11924,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -11960,7 +11960,7 @@
     "isDead": false
   },
   {
-    "uid": 549,
+    "uid": 106,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12039,7 +12039,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12075,7 +12075,7 @@
     "isDead": false
   },
   {
-    "uid": 550,
+    "uid": 107,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12154,7 +12154,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12190,7 +12190,7 @@
     "isDead": false
   },
   {
-    "uid": 551,
+    "uid": 108,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12269,7 +12269,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12305,7 +12305,7 @@
     "isDead": false
   },
   {
-    "uid": 552,
+    "uid": 109,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12384,7 +12384,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12420,7 +12420,7 @@
     "isDead": false
   },
   {
-    "uid": 553,
+    "uid": 110,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12499,7 +12499,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12535,7 +12535,7 @@
     "isDead": false
   },
   {
-    "uid": 554,
+    "uid": 111,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12614,7 +12614,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12650,7 +12650,7 @@
     "isDead": false
   },
   {
-    "uid": 555,
+    "uid": 112,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12729,7 +12729,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12765,7 +12765,7 @@
     "isDead": false
   },
   {
-    "uid": 556,
+    "uid": 113,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12844,7 +12844,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12880,7 +12880,7 @@
     "isDead": false
   },
   {
-    "uid": 557,
+    "uid": 114,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -12959,7 +12959,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -12995,7 +12995,7 @@
     "isDead": false
   },
   {
-    "uid": 558,
+    "uid": 115,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13074,7 +13074,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13110,7 +13110,7 @@
     "isDead": false
   },
   {
-    "uid": 559,
+    "uid": 116,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13189,7 +13189,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13255,7 +13255,7 @@
     "isDead": false
   },
   {
-    "uid": 560,
+    "uid": 117,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13334,7 +13334,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13400,7 +13400,7 @@
     "isDead": false
   },
   {
-    "uid": 561,
+    "uid": 118,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13479,7 +13479,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13545,7 +13545,7 @@
     "isDead": false
   },
   {
-    "uid": 562,
+    "uid": 119,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13624,7 +13624,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13679,7 +13679,7 @@
     "isDead": false
   },
   {
-    "uid": 563,
+    "uid": 120,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13758,7 +13758,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13813,7 +13813,7 @@
     "isDead": false
   },
   {
-    "uid": 564,
+    "uid": 121,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -13892,7 +13892,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -13947,7 +13947,7 @@
     "isDead": false
   },
   {
-    "uid": 565,
+    "uid": 122,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14026,7 +14026,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14081,7 +14081,7 @@
     "isDead": false
   },
   {
-    "uid": 566,
+    "uid": 123,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14160,7 +14160,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14215,7 +14215,7 @@
     "isDead": false
   },
   {
-    "uid": 567,
+    "uid": 124,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14294,7 +14294,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14349,7 +14349,7 @@
     "isDead": false
   },
   {
-    "uid": 568,
+    "uid": 125,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14428,7 +14428,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14483,7 +14483,7 @@
     "isDead": false
   },
   {
-    "uid": 569,
+    "uid": 126,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14562,7 +14562,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14617,7 +14617,7 @@
     "isDead": false
   },
   {
-    "uid": 570,
+    "uid": 127,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14696,7 +14696,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14751,7 +14751,7 @@
     "isDead": false
   },
   {
-    "uid": 571,
+    "uid": 128,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14830,7 +14830,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -14885,7 +14885,7 @@
     "isDead": false
   },
   {
-    "uid": 572,
+    "uid": 129,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -14964,7 +14964,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15019,7 +15019,7 @@
     "isDead": false
   },
   {
-    "uid": 573,
+    "uid": 130,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15098,7 +15098,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15153,7 +15153,7 @@
     "isDead": false
   },
   {
-    "uid": 574,
+    "uid": 131,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15232,7 +15232,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15287,7 +15287,7 @@
     "isDead": false
   },
   {
-    "uid": 575,
+    "uid": 132,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15366,7 +15366,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15421,7 +15421,7 @@
     "isDead": false
   },
   {
-    "uid": 576,
+    "uid": 133,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15500,7 +15500,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15555,7 +15555,7 @@
     "isDead": false
   },
   {
-    "uid": 577,
+    "uid": 134,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15634,7 +15634,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15689,7 +15689,7 @@
     "isDead": false
   },
   {
-    "uid": 578,
+    "uid": 135,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15768,7 +15768,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15823,7 +15823,7 @@
     "isDead": false
   },
   {
-    "uid": 579,
+    "uid": 136,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -15902,7 +15902,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -15957,7 +15957,7 @@
     "isDead": false
   },
   {
-    "uid": 580,
+    "uid": 137,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16036,7 +16036,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16091,7 +16091,7 @@
     "isDead": false
   },
   {
-    "uid": 581,
+    "uid": 138,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16170,7 +16170,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16225,7 +16225,7 @@
     "isDead": false
   },
   {
-    "uid": 582,
+    "uid": 139,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16304,7 +16304,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16359,7 +16359,7 @@
     "isDead": false
   },
   {
-    "uid": 583,
+    "uid": 140,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16438,7 +16438,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16493,7 +16493,7 @@
     "isDead": false
   },
   {
-    "uid": 584,
+    "uid": 141,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16572,7 +16572,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16627,7 +16627,7 @@
     "isDead": false
   },
   {
-    "uid": 585,
+    "uid": 142,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16706,7 +16706,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16761,7 +16761,7 @@
     "isDead": false
   },
   {
-    "uid": 586,
+    "uid": 143,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16840,7 +16840,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -16895,7 +16895,7 @@
     "isDead": false
   },
   {
-    "uid": 587,
+    "uid": 144,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -16974,7 +16974,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17029,7 +17029,7 @@
     "isDead": false
   },
   {
-    "uid": 588,
+    "uid": 145,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17108,7 +17108,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17163,7 +17163,7 @@
     "isDead": false
   },
   {
-    "uid": 589,
+    "uid": 146,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17242,7 +17242,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17297,7 +17297,7 @@
     "isDead": false
   },
   {
-    "uid": 590,
+    "uid": 147,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17376,7 +17376,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17431,7 +17431,7 @@
     "isDead": false
   },
   {
-    "uid": 591,
+    "uid": 148,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17510,7 +17510,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17565,7 +17565,7 @@
     "isDead": false
   },
   {
-    "uid": 592,
+    "uid": 149,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17644,7 +17644,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17699,7 +17699,7 @@
     "isDead": false
   },
   {
-    "uid": 593,
+    "uid": 150,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17778,7 +17778,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17833,7 +17833,7 @@
     "isDead": false
   },
   {
-    "uid": 594,
+    "uid": 151,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -17912,7 +17912,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -17967,7 +17967,7 @@
     "isDead": false
   },
   {
-    "uid": 595,
+    "uid": 152,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18046,7 +18046,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18101,7 +18101,7 @@
     "isDead": false
   },
   {
-    "uid": 596,
+    "uid": 153,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18180,7 +18180,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18235,7 +18235,7 @@
     "isDead": false
   },
   {
-    "uid": 597,
+    "uid": 154,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18314,7 +18314,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18369,7 +18369,7 @@
     "isDead": false
   },
   {
-    "uid": 598,
+    "uid": 155,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18448,7 +18448,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18503,7 +18503,7 @@
     "isDead": false
   },
   {
-    "uid": 599,
+    "uid": 156,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18582,7 +18582,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18637,7 +18637,7 @@
     "isDead": false
   },
   {
-    "uid": 600,
+    "uid": 157,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18716,7 +18716,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18782,7 +18782,7 @@
     "isDead": false
   },
   {
-    "uid": 601,
+    "uid": 158,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -18861,7 +18861,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -18927,7 +18927,7 @@
     "isDead": false
   },
   {
-    "uid": 602,
+    "uid": 159,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19006,7 +19006,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19072,7 +19072,7 @@
     "isDead": false
   },
   {
-    "uid": 603,
+    "uid": 160,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19151,7 +19151,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19217,7 +19217,7 @@
     "isDead": false
   },
   {
-    "uid": 604,
+    "uid": 161,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19296,7 +19296,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19332,7 +19332,7 @@
         "properties": {
           "health": 20.0,
           "maxHealth": 20.0,
-          "allied": 1,
+          "allied": 0,
           "uid": 526
         }
       },
@@ -19340,7 +19340,7 @@
         "type": "components.Hitter",
         "properties": {
           "dmg": 1.0,
-          "allied": 1,
+          "allied": 0,
           "attackSpeed": 0.1,
           "nextSmak": 0.0,
           "uid": 527
@@ -19362,7 +19362,7 @@
     "isDead": false
   },
   {
-    "uid": 605,
+    "uid": 162,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19441,7 +19441,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19496,7 +19496,7 @@
     "isDead": false
   },
   {
-    "uid": 606,
+    "uid": 163,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19575,7 +19575,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19630,7 +19630,7 @@
     "isDead": false
   },
   {
-    "uid": 607,
+    "uid": 164,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19709,7 +19709,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19764,7 +19764,7 @@
     "isDead": false
   },
   {
-    "uid": 608,
+    "uid": 165,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19843,7 +19843,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -19898,7 +19898,7 @@
     "isDead": false
   },
   {
-    "uid": 609,
+    "uid": 166,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -19977,7 +19977,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20032,7 +20032,7 @@
     "isDead": false
   },
   {
-    "uid": 610,
+    "uid": 167,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20111,7 +20111,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20166,7 +20166,7 @@
     "isDead": false
   },
   {
-    "uid": 611,
+    "uid": 168,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20245,7 +20245,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20300,7 +20300,7 @@
     "isDead": false
   },
   {
-    "uid": 612,
+    "uid": 169,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20379,7 +20379,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20434,7 +20434,7 @@
     "isDead": false
   },
   {
-    "uid": 613,
+    "uid": 170,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20513,7 +20513,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20568,7 +20568,7 @@
     "isDead": false
   },
   {
-    "uid": 614,
+    "uid": 171,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20647,7 +20647,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20702,7 +20702,7 @@
     "isDead": false
   },
   {
-    "uid": 615,
+    "uid": 172,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20781,7 +20781,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20836,7 +20836,7 @@
     "isDead": false
   },
   {
-    "uid": 616,
+    "uid": 173,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -20915,7 +20915,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -20970,7 +20970,7 @@
     "isDead": false
   },
   {
-    "uid": 617,
+    "uid": 174,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -21049,7 +21049,7 @@
           "bodyType": "Static",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -21104,7 +21104,7 @@
     "isDead": false
   },
   {
-    "uid": 618,
+    "uid": 175,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -21183,7 +21183,7 @@
           "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,
@@ -21359,7 +21359,7 @@
     "isDead": false
   },
   {
-    "uid": 619,
+    "uid": 176,
     "name": "Sprite_Object_Gen",
     "components": [
       {
@@ -21438,7 +21438,7 @@
           "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
-          "gravityScale": 1.0,
+          "gravityScale": 0.0,
           "isSensor": false,
           "fixedRotation": false,
           "continuousCollision": true,

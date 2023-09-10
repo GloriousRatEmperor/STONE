@@ -5,15 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level12813455529126738975.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level15095582238090470146.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level17250527267696012785.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level13552749920706982205.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level2000177592425087324.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level5514459242013498266.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +124,7 @@
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;localhost&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.107" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
