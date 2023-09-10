@@ -4,32 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="added abilities  yippe">
-      <change afterPath="$PROJECT_DIR$/src/main/java/JavaUnrelated/Averager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Unrelated/Unrelated" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permagui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/permagui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/permalevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientBooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ServerBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ServerBooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Ability.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Heal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Heal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Speed.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorSceneInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorSceneInitializer.java" afterDir="false" />
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all">
+      <change afterPath="$PROJECT_DIR$/Leveltemps/level12813455529126738975.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Leveltemps/level15095582238090470146.tmp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Leveltemps/level17250527267696012785.tmp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,19 +77,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/IdeaProjects/STONE/src/main/java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "jdk.selected.JAVA_MODULE": "19",
+    "last_opened_file_path": "C:/Users/frant/IdeaProjects/STONE/src/main/java",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\frant\IdeaProjects\STONE\src\main\java" />
@@ -277,7 +255,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693771462066</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="all">
+      <created>1694362550467</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1694362550468</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -297,7 +282,8 @@
     <MESSAGE value="Synchronised af bro!" />
     <MESSAGE value="Most of ability casting support done, so basically improved UI for gameplay!" />
     <MESSAGE value="added abilities  yippe" />
-    <option name="LAST_COMMIT_MESSAGE" value="added abilities  yippe" />
+    <MESSAGE value="all" />
+    <option name="LAST_COMMIT_MESSAGE" value="all" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
