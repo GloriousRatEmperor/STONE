@@ -5,9 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all">
-      <change afterPath="$PROJECT_DIR$/Leveltemps/level12813455529126738975.tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Leveltemps/level15095582238090470146.tmp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Leveltemps/level17250527267696012785.tmp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level12813455529126738975.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level15095582238090470146.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level17250527267696012785.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +111,7 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Singleplayer">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Averager (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Averager" />
       <module name="STONE.Unrelaed" />

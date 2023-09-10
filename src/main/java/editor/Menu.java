@@ -22,7 +22,7 @@ import static java.lang.Math.sqrt;
 public class Menu {
     private List<GameObject> activeGameObjects;
     GameObject MasterObject;
-    private int allied;
+    public int allied;
     private List<Vector4f> activeGameObjectsOgColor;
     private GameObject primairyObject = null;
     private List<Integer> ids;

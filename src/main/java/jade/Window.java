@@ -331,6 +331,8 @@ public class Window implements Observer {
                 lastPhysics = 0f;
                 physicsTimes=0;
                 allied= inputs.getAlly();
+                getImguiLayer().getMenu().allied=allied;
+                System.out.println(allied);
 
 
                 currentScene.save(false);
