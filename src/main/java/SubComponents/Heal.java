@@ -11,8 +11,13 @@ import util.AssetPool;
 import java.util.ArrayList;
 
 public class Heal extends Ability{
-    public Heal(AbilityName a, int id) {
-        super(a, id);
+    @Override
+    public Heal Copy(){
+        Heal heal=new Heal(this.name,id);
+        return heal;
+    }
+    public Heal(String a, int id) {
+        super(a,id);
         mp=100;
         Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
         sprite = AbilitySprites.getSprite(2);

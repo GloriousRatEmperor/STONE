@@ -1,10 +1,13 @@
 package editor;
+import SubComponents.Move;
 import components.Component;
+import components.Mortal;
 import components.SpriteRenderer;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
 import jade.Transform;
+import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import physics2d.components.MoveContollable;
@@ -19,6 +22,7 @@ import static java.lang.Math.sqrt;
 public class Menu {
     private List<GameObject> activeGameObjects;
     GameObject MasterObject;
+    private int allied;
     private List<Vector4f> activeGameObjectsOgColor;
     private GameObject primairyObject = null;
     private List<Integer> ids;
@@ -37,6 +41,7 @@ public class Menu {
 //    }
 
     public Menu(PickingTexture pickingTexture) {
+        this.allied= Window.get().allied;
         this.MasterObject=new GameObject("MasterObject");
         this.ids=new ArrayList<>();
         this.activeGameObjects = new ArrayList<>();
@@ -106,6 +111,12 @@ public class Menu {
     }
 
     public void addActiveGameObject(GameObject go) {
+        Mortal m=go.getComponent(Mortal.class);
+        if(m!=null){
+            if(m.allied!=allied){
+                return;
+            }
+        }
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null ) {
             this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));

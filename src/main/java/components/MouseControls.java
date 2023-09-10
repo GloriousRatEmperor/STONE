@@ -94,6 +94,7 @@ public class MouseControls extends Component {
                     0.0f);
         } else if (boxSelectSet) {
             //actually mass selects shit I thinketh
+
             boxSelectSet = false;
             int screenStartX = (int)boxSelectStart.x;
             int screenStartY = (int)boxSelectStart.y;

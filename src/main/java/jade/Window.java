@@ -48,6 +48,7 @@ public class Window implements Observer {
     private String title;
     private long glfwWindow;
     private File leveltemp;
+    public int allied=0;
     private ImGuiLayer imguiLayer;
     private Framebuffer framebuffer;
     private PickingTexture pickingTexture;
@@ -320,6 +321,7 @@ public class Window implements Observer {
 
             this.imguiLayer.update(currentScene,runtimePlaying);
             if(start){
+
                 start=false;
                 ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
                 long StartTime=inputs.getStartTime();
@@ -328,6 +330,7 @@ public class Window implements Observer {
                 beginTime=0f;
                 lastPhysics = 0f;
                 physicsTimes=0;
+                allied= inputs.getAlly();
 
 
                 currentScene.save(false);

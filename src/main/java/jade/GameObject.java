@@ -122,22 +122,8 @@ public class GameObject {
                     if (ImGui.beginTable("null", columns, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
                         int id=1;
                         for(Ability a:caster.abilities) {
-                            ImGui.tableNextColumn();
-                            ImGui.pushID(id++);
-                            Sprite Asprite=a.getSprite();
-                            Asprite.setTexture(sprite.getTexture());
-                            Vector2f[] AtexCoords = Asprite.getTexCoords();
-
-
-                                // TODO Texture Id is mysteriously 6??? it should be five? one ugly fiox later and it works I guess??
-                            if (ImGui.imageButton(5, AbilitySize, AbilitySize, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y)) {
-                                for (GameObject go:activeGameObjects) {
-                                    CastAbilities cast= go.getComponent(CastAbilities.class);
-                                    if (!(cast ==null)){
-                                        cast.castAbility(a.name,MouseListener.getScreen());
-                                    }
-                                }
-                            }ImGui.popID();
+                            id++;
+                            a.Imgui(AbilitySize,activeGameObjects,id);
                         }
 
                         ImGui.endTable();
@@ -169,6 +155,7 @@ public class GameObject {
             Component masterComp=master.getComponent(c.getClass());
             if (masterComp==null){
                 Component clone=c.Clone();
+
                 Field[] fields = c.getClass().getDeclaredFields();
                 try{
                 for (Field field : fields) {

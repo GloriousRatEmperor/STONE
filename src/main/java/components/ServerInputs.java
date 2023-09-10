@@ -18,6 +18,7 @@ public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
+    private int ally;
     private long startTime=0;
     private Thread clientThread;
     public ServerInputs(Thread clientThread, BlockingQueue<ServerData> responses) {
@@ -72,6 +73,7 @@ public class ServerInputs extends Component {
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
                 startTime = serverData.getStart();
                 setTime(startTime);
+                this.ally=serverData.getIntValue();
             }
             case "Heal" -> {
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
@@ -85,6 +87,7 @@ public class ServerInputs extends Component {
                 }
             }
             case "Speed" -> {
+
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
                 for (GameObject go:
                         selectedObjects) {
@@ -94,10 +97,21 @@ public class ServerInputs extends Component {
                     }
 
                 }
-                ServerData endEffect=new ServerData();
-                endEffect.setName("slow");
-                endEffect.setTime(time+5000);
-                responseList.add(endEffect);
+                serverData.setName("slow");
+                serverData.setTime(time+5000);
+                responseList.add(serverData);
+            }
+            case "slow" -> {
+
+                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                for (GameObject go:
+                        selectedObjects) {
+                    CastAbilities cast=go.getComponent(CastAbilities.class);
+                    if(cast!=null){
+                        cast.castAbility("Speed",new Vector2f());
+                    }
+
+                }
             }
             case "Slow" -> {
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
@@ -111,6 +125,9 @@ public class ServerInputs extends Component {
                 }
             }
         }
+    }
+    public int getAlly(){
+        return ally;
     }
     public long getStartTime(){
         return startTime;

@@ -11,13 +11,12 @@ import java.util.concurrent.BlockingQueue;
 
 public class ClientBooter {
 
+
     public static void main(String[] args) throws Exception {
-//        Float e=0f;
-//        while(e<10000){
-//            e+=1/5f;
-//        }
-//        System.out.println(e);
-//        System.exit(0);
+
+
+
+
         BlockingQueue<ClientData> requests=new ArrayBlockingQueue<>(15);
         BlockingQueue<ServerData> responses=new ArrayBlockingQueue<>(150);
         Thread.UncaughtExceptionHandler h = (th, ex) -> System.out.println("Uncaught exception: " + ex);
@@ -37,5 +36,14 @@ public class ClientBooter {
 
 
 
+    }
+    public static double calcDeviation(int maxRolls,int dice){
+        double deviation=0;
+        for(int e=0;e<dice;e++){
+            deviation+=Math.pow( e+1-(maxRolls*2+1),2);
+        }
+        deviation=Math.sqrt( deviation/dice);
+
+        return deviation;
     }
 }

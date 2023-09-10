@@ -12,8 +12,21 @@ import util.AssetPool;
 import java.util.ArrayList;
 
 public class Speed extends Ability{
-    public Speed(AbilityName a, int id) {
-        super(a, id);
+
+    private float mult=2f;
+    public boolean isActive=false;
+    private float keepSpeedPercent=0;
+    @Override
+    public Speed Copy(){
+        Speed speed=new Speed(this.name,id);
+        speed.mult=mult;
+        speed.isActive=isActive;
+        speed.keepSpeedPercent=keepSpeedPercent;
+        return speed;
+    }
+
+    public Speed(String a, int id) {
+        super(a,id);
         mp=20;
         Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
         sprite = AbilitySprites.getSprite(1);
@@ -24,16 +37,30 @@ public class Speed extends Ability{
     }
     @Override
     public void cast(Vector2f position, GameObject self) {
-        System.out.println("AAAAAAAA yee");
-        System.out.println("AAAAAAAA yee");
+        this.isActive=true;
         MoveContollable movement = self.getComponent(MoveContollable.class);
         if (movement != null) {
-            movement.speed *= 2;
+            movement.speed *= mult;
         }
         Rigidbody2D currentMove = self.getComponent(Rigidbody2D.class);
         if (currentMove != null) {
-            currentMove.addVelocity(currentMove.getVelocity());
+            currentMove.setVelocity(new Vector2f(currentMove.getVelocity().x*mult,currentMove.getVelocity().y*mult));
 
         }
+
+    }
+    public void slowCast(Vector2f position, GameObject self) {
+        this.isActive=false;
+        float slowMult=1/mult +keepSpeedPercent/100*(1-1/mult);
+        MoveContollable movement = self.getComponent(MoveContollable.class);
+        if (movement != null) {
+            movement.speed *= slowMult;
+        }
+        Rigidbody2D currentMove = self.getComponent(Rigidbody2D.class);
+        if (currentMove != null) {
+            currentMove.setVelocity(new Vector2f(currentMove.getVelocity().x*slowMult,currentMove.getVelocity().y*slowMult));
+
+        }
+
     }
 }

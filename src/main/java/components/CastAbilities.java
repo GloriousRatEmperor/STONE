@@ -7,49 +7,105 @@ import imgui.type.ImInt;
 import jade.GameObject;
 import org.joml.Vector2f;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Objects;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
+import java.security.PublicKey;
+import java.util.*;
 
 public class CastAbilities extends Component {
     private float mp=100f;
     private float maxmp=100f;
     public Sprite image;
     public List<Ability> abilities = new ArrayList<>();
+    public HashSet<Integer> abilityIds = new HashSet<>();
+
     public CastAbilities Clone(){
-        return new CastAbilities();
+        CastAbilities ablits=new CastAbilities();
+        return ablits;
     }
     public CastAbilities(){
     }
     public void castAbility(String AbilityName,Vector2f position){
-
             for (Ability a : abilities) {
                 if (Objects.equals(a.name, AbilityName)) {
-                    if(mp>a.mp) {
+                    if(a.Castable(mp)) {
                         a.cast(position, super.gameObject);
+                        mp-=a.mp;
                     }
                 }
             }
 
     }
+    public void start(){
+        Ability PropelyDeserialized;
+        List<Ability> corrpuptables= new ArrayList<>(abilities);
+        for (Ability a :
+             corrpuptables) {
+            PropelyDeserialized=getAbility(a.name,a.id);
 
+            Field[] fields = a.getClass().getDeclaredFields();
+            try{
+                for (Field field : fields) {
+                    boolean isTransient = Modifier.isTransient(field.getModifiers());
+                    if (isTransient) {
+                        continue;
+                    }
 
-    public void addAbility(AbilityName a,int index){
+                    boolean isPrivate = Modifier.isPrivate(field.getModifiers());
+                    if (isPrivate) {
+                        field.setAccessible(true);
+                    }
+                    Object value = field.get(a);
+                    field.set(PropelyDeserialized, value);
+                    if (isPrivate) {
+                        field.setAccessible(false);
+                    }
+                }
+            } catch (IllegalAccessException ex) {
+                throw new RuntimeException(ex);
+            }
+
+            addAbility(PropelyDeserialized);
+            abilities.remove(a);
+        }
+
+    }
+    @Override
+    public void mengui(Component master){
+        for (Ability a:
+        abilities) {
+            if(!((CastAbilities) master).abilityIds.contains(a.id)){
+                ((CastAbilities) master).addAbility(a.Copy());
+            }
+
+        }
+
+    }
+
+    public Ability getAbility(String a,int index){
         Ability Ability=null;
         switch (a){
-            case Move -> 
+            case "Move" ->
                 Ability=new Move(a,index);
-            case Speed -> 
+            case "Speed" ->
                 Ability=new Speed(a,index);
-            case Heal -> 
+            case "Heal" ->
                 Ability=new Heal(a,index);
         }
         if(Ability==null){
             System.out.println("OOPS WE DON'T HAVE NO SUCH Ability TYPE HERE");
+
+        }
+        return Ability;
+    }
+
+    public void addAbility(Ability Ability){
+        if(Ability==null){
+            System.out.println("wtf you tyina add bruv?");
         }else {
             abilities.add(Ability);
             abilities.sort(Comparator.comparingInt(s -> s.id));
+            abilityIds.add( Ability.id);
         }
     }
     @Override
@@ -64,7 +120,7 @@ public class CastAbilities extends Component {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
-                        cast.addAbility(AbilityName.class.getEnumConstants()[index.get()], index.get());
+                        cast.addAbility(cast.getAbility(AbilityName.class.getEnumConstants()[index.get()].name(), index.get()));
                     }
 
                 }
@@ -72,5 +128,11 @@ public class CastAbilities extends Component {
         };
 
         return activegameObjects;
+    }
+    @Override
+
+    public void destroy(){
+        this.abilityIds.clear();
+        this.abilities.clear();
     }
 }

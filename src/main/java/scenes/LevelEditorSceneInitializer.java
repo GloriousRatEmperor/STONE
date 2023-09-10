@@ -124,7 +124,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         ImGui.setNextWindowSize(io.getDisplaySizeX(),io.getDisplaySizeY()/5);
         ImGui.setNextWindowPos(0,io.getDisplaySizeY()/5*4);
 
-        ImGui.begin("Test window");
+        ImGui.begin("Item window");
 
         if (ImGui.beginTabBar("WindowTabBar")) {
             if (ImGui.beginTabItem("Solid Blocks")) {

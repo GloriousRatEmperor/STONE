@@ -12,19 +12,21 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import static org.lwjgl.glfw.GLFW.glfwGetTime;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 
-public class TechnicalServer {
+public class TechnicalServer implements Runnable{
 
     private final int port;
+    private final int maxPlayers;
 
     // constructor
-    public TechnicalServer(int port){
+    public TechnicalServer(int port,int maxplayers){
         this.port=port;
+        maxPlayers=maxplayers;
     }
 
-    public void run() throws Exception {
+    public void run() {
         EventLoopGroup bossGroup = new NioEventLoopGroup();
         EventLoopGroup workerGroup = new NioEventLoopGroup();
-        Server server =new Server();
+        Server server =new Server(maxPlayers);
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup)
@@ -42,7 +44,9 @@ public class TechnicalServer {
 
             ChannelFuture f = b.bind(port).sync();
             f.channel().closeFuture().sync();
-        } finally {
+        }catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }finally {
             workerGroup.shutdownGracefully();
             bossGroup.shutdownGracefully();
         }
