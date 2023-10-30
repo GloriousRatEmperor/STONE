@@ -11,6 +11,7 @@ public class Server extends ChannelInboundHandlerAdapter {
     private float playerCount=0;
     public Time time=new Time();
     private ArrayList<ChannelHandlerContext> ctxlist=new ArrayList<>();
+    private ArrayList<ArrayList<ChannelHandlerContext>> ctxlistlist=new ArrayList<>();
     private float delay=0.5f;
     private int maxPlayerCountAdd=1;
     private int maxPlayerCount;
@@ -33,6 +34,9 @@ public class Server extends ChannelInboundHandlerAdapter {
 
         ClientData ClientData = (ClientData) msg;
         switch (ClientData.getName()) {
+            case "newChannel"->{
+
+            }
             case "start" -> {
                 if (playerCount < maxPlayerCount) {
                     playerCount += 1;

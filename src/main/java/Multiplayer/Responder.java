@@ -14,9 +14,9 @@ public class Responder
     ObjectMapper mapper = new ObjectMapper();
     @Override
     protected void encode(ChannelHandlerContext ctx, ServerData msg, ByteBuf out) throws Exception {
-
         String msgString=mapper.writeValueAsString(msg);
         out.writeInt(msgString.length());
         out.writeCharSequence(msgString, charset);
+
     }
 }

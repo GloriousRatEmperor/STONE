@@ -188,6 +188,7 @@ public class Window implements Observer {
         glfwShowWindow(glfwWindow);
 
         // Initialize the audio device
+
         String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
         audioDevice = alcOpenDevice(defaultDeviceName);
 
@@ -332,7 +333,6 @@ public class Window implements Observer {
                 physicsTimes=0;
                 allied= inputs.getAlly();
                 getImguiLayer().getMenu().allied=allied;
-                System.out.println(allied);
 
 
                 currentScene.save(false);

@@ -17,10 +17,14 @@ public class ServerDecoder extends ReplayingDecoder<ClientData> {
         @Override
         protected void decode(ChannelHandlerContext ctx,
                               ByteBuf in, List<Object> out) throws Exception {
-            ClientData data;
-            int size=in.readInt();
-            String thing=in.readCharSequence(size,charset).toString();
-            data=mapper.readValue(thing, ClientData.class);
-            out.add(data);
+                try {
+                ClientData data;
+                int size=in.readInt();
+                String thing=in.readCharSequence(size,charset).toString();
+                data=mapper.readValue(thing, ClientData.class);
+                out.add(data);
+        } finally {
+                in.release();
+        }
         }
     }

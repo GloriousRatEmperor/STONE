@@ -5,10 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all">
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level13552749920706982205.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level2000177592425087324.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level5514459242013498266.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ChannelPoolHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CopyIfPermalevelBroken.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level16738252517499259140.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level16756288764682959148.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level5076780123954157220.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level5687175943404303439.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level6376925414782737333.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Leveltemps/level8567339700496032656.tmp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +51,12 @@
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="STONE" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="STONE" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="application" type="c8890929:TasksNode$1" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
@@ -84,11 +104,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "C:/Users/frant/IdeaProjects/STONE/src/main/java",
-    "project.structure.last.edited": "SDKs",
+    "last_opened_file_path": "C:/Users/frant/OneDrive/Documents/lwjgl/lwjgl",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -106,38 +126,11 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
-    <configuration name="Averager (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Averager" />
-      <module name="STONE.Unrelaed" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Averager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Averager" />
-      <module name="STONE" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Gradle.STONE [run]">
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
       <option name="PROGRAM_PARAMETERS" value="192.168.1.107" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JavaUnrelated.Averager" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaUnrelated.Averager" />
-      <module name="STONE.main" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="JavaUnrelated.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -152,6 +145,9 @@
     <configuration name="Singleplayer" type="Application" factoryName="Application">
       <option name="ALTERNATIVE_JRE_PATH" value="19" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <envs>
+        <env name="Dorg.lwjgl.util.Debug" value="true" />
+      </envs>
       <option name="MAIN_CLASS_NAME" value="Singleplayer" />
       <module name="STONE.main" />
       <extension name="coverage">
@@ -163,6 +159,48 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="STONE [assemble]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="assemble" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="STONE [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="buildDependents" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
     </configuration>
     <configuration name="STONE [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -206,22 +244,43 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
+    <configuration name="STONE [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="run" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
       <item itemvalue="Application.Singleplayer" />
-      <item itemvalue="Application.Averager" />
-      <item itemvalue="Application.Averager (1)" />
-      <item itemvalue="Application.JavaUnrelated.Averager" />
+      <item itemvalue="Gradle.STONE [assemble]" />
+      <item itemvalue="Gradle.STONE [buildDependents]" />
+      <item itemvalue="Gradle.STONE [run]" />
       <item itemvalue="Gradle.STONE [build]" />
       <item itemvalue="Gradle.STONE [clean]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JavaUnrelated.Averager" />
+        <item itemvalue="Gradle.STONE [run]" />
+        <item itemvalue="Gradle.STONE [assemble]" />
+        <item itemvalue="Gradle.STONE [buildDependents]" />
         <item itemvalue="Gradle.STONE [build]" />
-        <item itemvalue="Application.Averager (1)" />
-        <item itemvalue="Application.Averager" />
         <item itemvalue="Gradle.STONE [clean]" />
       </list>
     </recent_temporary>
@@ -294,6 +353,9 @@
           <option name="timeStamp" value="1" />
         </breakpoint>
       </breakpoints>
+      <breakpoints-defaults>
+        <breakpoint suspend="THREAD" type="java-line" />
+      </breakpoints-defaults>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">

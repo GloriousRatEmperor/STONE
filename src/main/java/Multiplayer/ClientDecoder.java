@@ -17,12 +17,15 @@ public class ClientDecoder
     protected void decode(ChannelHandlerContext ctx,
                           ByteBuf in, List<Object> out) throws Exception {
 
-
-        ServerData data;
-        int size=in.readInt();
-        String thing=in.readCharSequence(size,charset).toString();
-        data=mapper.readValue(thing, ServerData.class);
-        out.add(data);
+        try {
+            ServerData data;
+            int size = in.readInt();
+            String thing = in.readCharSequence(size, charset).toString();
+            data = mapper.readValue(thing, ServerData.class);
+            out.add(data);
+        } finally {
+            in.release();
+        }
     }
 
 }
