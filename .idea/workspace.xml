@@ -4,24 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ChannelPoolHandler.java" afterDir="false" />
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="x">
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/State.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CopyIfPermalevelBroken.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level16738252517499259140.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level16756288764682959148.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level5076780123954157220.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level5687175943404303439.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level6376925414782737333.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level8567339700496032656.tmp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/permalevel.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ClientBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientBooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Singleplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,6 +80,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -98,19 +99,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "C:/Users/frant/OneDrive/Documents/lwjgl/lwjgl",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/.gradle/caches&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\frant\IdeaProjects\STONE\src\main\java" />
@@ -126,11 +127,19 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.STONE [run]">
+  <component name="RunManager" selected="Application.Client">
+    <configuration name="Client D" type="Application" factoryName="Application" singleton="false">
+      <option name="MAIN_CLASS_NAME" value="ClientBooter" />
+      <module name="STONE.main" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.107 true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Client" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
-      <option name="PROGRAM_PARAMETERS" value="192.168.1.107" />
+      <option name="PROGRAM_PARAMETERS" value="192.168.1.107 false" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -142,14 +151,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Singleplayer" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="19" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <envs>
-        <env name="Dorg.lwjgl.util.Debug" value="true" />
-      </envs>
+    <configuration name="Singleplayer D" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Singleplayer" />
       <module name="STONE.main" />
+      <option name="PROGRAM_PARAMETERS" value="true" />
+      <option name="VM_PARAMETERS" value="-Dorg.lwjgl.util.Debug=true" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Singleplayer" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="19" />
+      <option name="MAIN_CLASS_NAME" value="Singleplayer" />
+      <module name="STONE.main" />
+      <option name="PROGRAM_PARAMETERS" value="false" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="org.example.*" />
@@ -244,7 +259,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="STONE [run]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="STONE [jar]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -255,7 +270,7 @@
         </option>
         <option name="taskNames">
           <list>
-            <option value="run" />
+            <option value="jar" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -266,22 +281,24 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Server" />
+      <item itemvalue="Application.Client" />
       <item itemvalue="Application.Singleplayer" />
+      <item itemvalue="Application.Client D" />
+      <item itemvalue="Application.Singleplayer D" />
+      <item itemvalue="Gradle.STONE [jar]" />
       <item itemvalue="Gradle.STONE [assemble]" />
       <item itemvalue="Gradle.STONE [buildDependents]" />
-      <item itemvalue="Gradle.STONE [run]" />
       <item itemvalue="Gradle.STONE [build]" />
       <item itemvalue="Gradle.STONE [clean]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.STONE [run]" />
-        <item itemvalue="Gradle.STONE [assemble]" />
-        <item itemvalue="Gradle.STONE [buildDependents]" />
         <item itemvalue="Gradle.STONE [build]" />
         <item itemvalue="Gradle.STONE [clean]" />
+        <item itemvalue="Gradle.STONE [assemble]" />
+        <item itemvalue="Gradle.STONE [jar]" />
+        <item itemvalue="Gradle.STONE [buildDependents]" />
       </list>
     </recent_temporary>
   </component>
@@ -322,7 +339,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694362550468</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="x">
+      <created>1698686305488</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1698686305489</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -343,7 +367,8 @@
     <MESSAGE value="Most of ability casting support done, so basically improved UI for gameplay!" />
     <MESSAGE value="added abilities  yippe" />
     <MESSAGE value="all" />
-    <option name="LAST_COMMIT_MESSAGE" value="all" />
+    <MESSAGE value="x" />
+    <option name="LAST_COMMIT_MESSAGE" value="x" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -352,6 +377,16 @@
           <properties class="java.net.SocketException" package="java.net" />
           <option name="timeStamp" value="1" />
         </breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/scenes/Scene.java</url>
+          <line>63</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/scenes/Scene.java</url>
+          <line>57</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
@@ -359,6 +394,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/STONE$Client.ic" NAME="Client Coverage Results" MODIFIED="1693517105656" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/STONE$Client.ic" NAME="Client Coverage Results" MODIFIED="1699289776178" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

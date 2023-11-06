@@ -6,25 +6,28 @@ import jade.Time;
 
 import java.util.ArrayList;
 
+import static Multiplayer.State.*;
+
 @ChannelHandler.Sharable
 public class Server extends ChannelInboundHandlerAdapter {
     private float playerCount=0;
     public Time time=new Time();
-    private ArrayList<ChannelHandlerContext> ctxlist=new ArrayList<>();
-    private ArrayList<ArrayList<ChannelHandlerContext>> ctxlistlist=new ArrayList<>();
-    private float delay=0.5f;
-    private int maxPlayerCountAdd=1;
+    private ArrayList<Player> players=new ArrayList<>();
+    private float delay=1;
     private int maxPlayerCount;
+    private int playerCountAdd;
 
     public Server(int maxPlayers) {
         this.maxPlayerCount=maxPlayers;
+        this.playerCountAdd=maxPlayers;
     }
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("server connected to sumone");
-        ctxlist.add(ctx);
+        players.add(new Player (ctx));
     }
+
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
@@ -33,30 +36,55 @@ public class Server extends ChannelInboundHandlerAdapter {
 
 
         ClientData ClientData = (ClientData) msg;
+        Player player = getPlayer(ctx.channel().id());
         switch (ClientData.getName()) {
-            case "newChannel"->{
-
-            }
-            case "start" -> {
-                if (playerCount < maxPlayerCount) {
-                    playerCount += 1;
-                    if (playerCount == maxPlayerCount) {
-
-                        maxPlayerCount+=maxPlayerCountAdd;
-                        ServerData ServerData = new ServerData();
-                        long curTime=System.currentTimeMillis();
-                        ServerData.setStart(curTime);
-                        time.setBeginTime(curTime);
-                        ServerData.setTime(time.getTime());
-                        ServerData.setName(ClientData.getName());
-                        for (int p=0;p<playerCount;p++) {
-                            ServerData.setIntValue(p);
-                            toclient(ctxlist.get(p),ServerData);
-                        }
-
+            case "stop" -> {
+                if (player.state!=inactive){
+                    if(player.state==waiting){
+                        playerCount-=1;
+                    }else {
+                        maxPlayerCount-=1;
+                        playerCount-=1;
                     }
+                    player.state=inactive;
+
+                }else{
+                    System.out.println("but he wasn't playing nor ready wtf");
                 }
             }
+            case "start" -> {
+                if (player.state==inactive){
+                        player.state=waiting;
+                        playerCount += 1;
+                    System.out.println(playerCount);
+                    System.out.println(maxPlayerCount);
+                        if (playerCount == maxPlayerCount) {
+
+                            maxPlayerCount+=playerCountAdd;
+                            ServerData ServerData = new ServerData();
+                            long curTime=System.currentTimeMillis();
+                            ServerData.setStart(curTime);
+                            time.setBeginTime(curTime);
+                            ServerData.setTime(time.getTime());
+                            ServerData.setName(ClientData.getName());
+
+                            for (Player p:players) {
+                                int c=0;
+                                if(p.state==waiting) {
+                                    c+=1;
+                                    p.state = playing;
+                                    ServerData.setIntValue(c);
+                                    toclient(p, ServerData);
+                                }
+                            }
+
+
+                    }
+                }else{
+                    System.out.println("already playing wtf");
+                }
+            }
+
             case "Move" -> {
 
                 ServerData ServerData = new ServerData();
@@ -88,14 +116,23 @@ public class Server extends ChannelInboundHandlerAdapter {
                 toClients(ServerData);
             }
         }
-
     }
+    private Player getPlayer(ChannelId id){
+        for (Player p : players){
+            if (p.id==id){
+                return p;
+            }
+        }
+        System.out.println("ID not found for player you dumbfuck (jk you are amazing but I am making sure you know I made this warning and not the lib)");
+        return null;
+    }
+
     public void toClients(ServerData msg) throws JsonProcessingException {
-        for (ChannelHandlerContext ctx : ctxlist) {
-            ctx.writeAndFlush(msg);
+        for (Player player : players) {
+            player.getCtx().writeAndFlush(msg);
         }
     }
-    public void toclient(ChannelHandlerContext ctx,ServerData msg) throws JsonProcessingException {
-        ctx.writeAndFlush(msg);
+    public void toclient(Player player,ServerData msg) throws JsonProcessingException {
+        player.getCtx().writeAndFlush(msg);
     }
 }

@@ -105,10 +105,10 @@ public class Window implements Observer {
         return currentScene;
     }
 
-    public void run() throws NoSuchFieldException {
+    public void run(Boolean debugging) throws NoSuchFieldException {
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 
-        init();
+        init(debugging);
         loop();
 
         // Destroy the audio context
@@ -148,7 +148,7 @@ public class Window implements Observer {
         }
         return results;
     }
-    public void init() {
+    public void init(Boolean debugging) {
         // Setup an error callback
         GLFWErrorCallback.createPrint(System.err).set();
 
@@ -165,7 +165,11 @@ public class Window implements Observer {
         long monitor=glfwGetPrimaryMonitor();
         final GLFWVidMode mode = glfwGetVideoMode(monitor);
         // Create the window
-        glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
+        if(!debugging) {
+            glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
+        }else {
+            glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, NULL, NULL);
+        }
         if (glfwWindow == NULL) {
             throw new IllegalStateException("Failed to create the GLFW window.");
         }
@@ -178,7 +182,6 @@ public class Window implements Observer {
             Window.setWidth(newWidth);
             Window.setHeight(newHeight);
         });
-
         // Make the OpenGL context current
         glfwMakeContextCurrent(glfwWindow);
         // Enable v-sync
@@ -292,7 +295,7 @@ public class Window implements Observer {
                 Renderer.bindShader(defaultShader);
                 if (runtimePlaying) {
                     //currentScene.update(dt,true);
-                    while(physicsTimes>0) {
+                    while (physicsTimes > 0) {
                         physicsTimes--;
                         currentScene.update(physicsStep, physicsTimes == 0);
 
@@ -307,14 +310,11 @@ public class Window implements Observer {
                     MouseListener.endFrame();
                 }
 
+
+                currentScene.render();
+                DebugDraw.draw();
+
             }
-
-
-
-            currentScene.render();
-            DebugDraw.draw();
-
-
 
 
 
@@ -424,11 +424,12 @@ public class Window implements Observer {
 
             }
             case GameEngineStopPlay -> {
-                //if(ready) {
                     ready=false;
+                    ClientData request = new ClientData();
+                    request.setName("stop");
+                    requests.add(request);
                     this.runtimePlaying = false;
                     Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
-               // }
             }
             case LoadLevel -> Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
             case SaveLevel -> currentScene.save(true);

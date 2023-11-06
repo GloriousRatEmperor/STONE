@@ -34,7 +34,7 @@ dependencies {
 
 
     implementation group: 'org.joml', name: 'joml', version: '1.10.5'
-
+    
 
 
     //lwjgl
@@ -43,6 +43,7 @@ dependencies {
 
     implementation group: 'org.lwjgl', name: 'lwjgl-openal', version: '3.3.2'
 
+    implementation 'org.lwjgl:lwjgl-openal:3.3.2' //probably not doing anything, maybe try removing I dunno, not touching this until it broke
 
     implementation "org.lwjgl:lwjgl"
     implementation "org.lwjgl:lwjgl-assimp"
@@ -55,6 +56,7 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
 }
 

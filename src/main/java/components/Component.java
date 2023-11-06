@@ -180,7 +180,7 @@ public abstract class Component {
 
                         }
                         field.set(this, type.getEnumConstants()[index.get()]);
-                    };
+                    }
                 } else if (type == String.class) {
                     field.set(this,
                             JImGui.inputText(field.getName() + ": ",

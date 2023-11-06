@@ -62,7 +62,7 @@ public class MouseControls extends Component {
         debounce -= dt;
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
-        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
+        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)&& debounce < 0) {
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
             Window.sendMove(position,Window.getImguiLayer().getMenu().getIds());
         }
