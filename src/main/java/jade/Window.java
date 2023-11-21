@@ -2,6 +2,7 @@ package jade;
 
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
+import Multiplayer.TechnicalClient;
 import components.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
@@ -46,13 +47,14 @@ public class Window implements Observer {
     public BlockingQueue<ServerData> responses;
     private int width, height;
     private String title;
-    private long glfwWindow;
+
     private File leveltemp;
     public int allied=0;
-    private ImGuiLayer imguiLayer;
+    public ImGuiLayer imguiLayer;
     private Framebuffer framebuffer;
-    private PickingTexture pickingTexture;
-    private boolean runtimePlaying = false;
+    PickingTexture pickingTexture;
+    boolean shouldClose=false;
+    boolean runtimePlaying = false;
     private float beginTime;
     private float endTime;
     private float dt;
@@ -61,7 +63,7 @@ public class Window implements Observer {
     public Time time=new Time();
 
     private int physicsTimes;
-    private float fractionPassed;
+    float fractionPassed;
     private float physicsStep;
     private float lastPhysics;
 
@@ -70,7 +72,7 @@ public class Window implements Observer {
     private long audioContext;
     private long audioDevice;
 
-    private static Scene currentScene;
+    static Scene currentScene;
 
     private Window() {
         this.width = 1920;
@@ -104,20 +106,18 @@ public class Window implements Observer {
     public static Scene getScene() {
         return currentScene;
     }
+    public boolean debug;
 
     public void run(Boolean debugging) throws NoSuchFieldException {
+        this.debug = debugging;
         System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 
-        init(debugging);
+        init();
         loop();
 
         // Destroy the audio context
         alcDestroyContext(audioContext);
         alcCloseDevice(audioDevice);
-
-        // Free the memory
-        glfwFreeCallbacks(glfwWindow);
-        glfwDestroyWindow(glfwWindow);
 
         // Terminate GLFW and the free the error callback
         glfwTerminate();
@@ -148,47 +148,8 @@ public class Window implements Observer {
         }
         return results;
     }
-    public void init(Boolean debugging) {
-        // Setup an error callback
-        GLFWErrorCallback.createPrint(System.err).set();
+    public void init() {
 
-        // Initialize GLFW
-        if (!glfwInit()) {
-            throw new IllegalStateException("Unable to initialize GLFW.");
-        }
-
-        // Configure GLFW
-        glfwDefaultWindowHints();
-        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-        glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will be resizable
-        long monitor=glfwGetPrimaryMonitor();
-        final GLFWVidMode mode = glfwGetVideoMode(monitor);
-        // Create the window
-        if(!debugging) {
-            glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
-        }else {
-            glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, NULL, NULL);
-        }
-        if (glfwWindow == NULL) {
-            throw new IllegalStateException("Failed to create the GLFW window.");
-        }
-
-        glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
-        glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-        glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-        glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
-        glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
-            Window.setWidth(newWidth);
-            Window.setHeight(newHeight);
-        });
-        // Make the OpenGL context current
-        glfwMakeContextCurrent(glfwWindow);
-        // Enable v-sync
-        glfwSwapInterval(1);
-
-        // Make the window visible
-        glfwShowWindow(glfwWindow);
 
         // Initialize the audio device
 
@@ -204,15 +165,8 @@ public class Window implements Observer {
 
         assert alCapabilities.OpenAL10 : "Audio library not supported.";
 
-        // This line is critical for LWJGL's interoperation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
-        GL.createCapabilities();
 
-        glEnable(GL_BLEND);
-        glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
+
 
         this.framebuffer = new Framebuffer(3840, 2160);
         this.pickingTexture = new PickingTexture(3840, 2160);
@@ -223,30 +177,15 @@ public class Window implements Observer {
         int targetStringLength = 10;
         Random random = new Random();
         StringBuilder buffer = new StringBuilder(targetStringLength);
-        for (int i = 0; i < targetStringLength; i++) {
-            int randomLimitedInt = leftLimit + (int)
-                    (random.nextFloat() * (rightLimit - leftLimit + 1));
-            buffer.append((char) randomLimitedInt);
-        }
-        try {
 
-            File dir=new File("Leveltemps");
-            if(!dir.isDirectory()){
-                System.out.println("FUCK,this shit ain't a directory");
-            }
-            cleanTemps(dir);
-            leveltemp = File.createTempFile("level", ".tmp",dir);
-            //File tempFile = File.createTempFile("MyAppName-", ".tmp");
-            leveltemp.deleteOnExit();
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        this.imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,leveltemp);
-        this.imguiLayer.initImGui();
 
         Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+
+        Thread drawing= new Thread(new Drawer(this));
+        Thread.UncaughtExceptionHandler h = (th, ex) -> System.out.println("Uncaught exception on draw: " + ex);
+        drawing.setUncaughtExceptionHandler(h);
+        drawing.start();
+
     }
 
     public void loop() throws NoSuchFieldException {
@@ -257,42 +196,13 @@ public class Window implements Observer {
          physicsStep=1/60f;
          lastPhysics=time.getTime();
 
-        Shader defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
-        Shader pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
 
-
-        while (!glfwWindowShouldClose(glfwWindow)) {
-
-            // Poll events
-            glfwPollEvents();
-
-            // Render pass 1. Render to picking texture
-            glDisable(GL_BLEND);
-            pickingTexture.enableWriting();
-
-            glViewport(0, 0, 3840, 2160);
-            glClearColor(0, 0, 0, 0);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            Renderer.bindShader(pickingShader);
-            currentScene.render();
-
-            pickingTexture.disableWriting();
-            glEnable(GL_BLEND);
-
-            // Render pass 2. Render actual game
-            DebugDraw.beginFrame();
-
-            this.framebuffer.bind();
-            Vector4f clearColor = currentScene.camera().clearColor;
-            glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
-            glClear(GL_COLOR_BUFFER_BIT);
-
-
-
+        while (!shouldClose) {
+            synchronized (this) {
+                this.notifyAll();
+            }
             //actual physics n non render shite bein done here
             if (dt >= 0) {
-                Renderer.bindShader(defaultShader);
                 if (runtimePlaying) {
                     //currentScene.update(dt,true);
                     while (physicsTimes > 0) {
@@ -303,7 +213,7 @@ public class Window implements Observer {
                         MouseListener.endFrame();
 
                     }
-                    currentScene.visualUpdate(fractionPassed);
+
                 } else {
                     currentScene.editorUpdate(dt);
                     KeyListener.endFrame();
@@ -311,38 +221,18 @@ public class Window implements Observer {
                 }
 
 
-                currentScene.render();
-                DebugDraw.draw();
+
+
 
             }
 
 
 
-            this.framebuffer.unbind();
-
-            this.imguiLayer.update(currentScene,runtimePlaying);
             if(start){
-
-                start=false;
-                ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-                long StartTime=inputs.getStartTime();
-                time.setBeginTime(StartTime);
-                inputs.setTime(0f);
-                beginTime=0f;
-                lastPhysics = 0f;
-                physicsTimes=0;
-                allied= inputs.getAlly();
-                getImguiLayer().getMenu().allied=allied;
-
-
-                currentScene.save(false);
-
-                Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
-                ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-                newInputs.setTime(0f);
+                begin();
             }
 
-            glfwSwapBuffers(glfwWindow);
+
 
             endTime = time.getTime();
             dt = endTime - beginTime;
@@ -353,6 +243,25 @@ public class Window implements Observer {
             }
             fractionPassed=1-(lastPhysics-endTime)/physicsStep;
         }
+    }
+    public void begin(){
+        start=false;
+        ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+        long StartTime=inputs.getStartTime();
+        time.setBeginTime(StartTime);
+        inputs.setTime(0f);
+        beginTime=0f;
+        lastPhysics = 0f;
+        physicsTimes=0;
+        allied= inputs.getAlly();
+        getImguiLayer().getMenu().allied=allied;
+
+
+        currentScene.save(false);
+
+        Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
+        ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+        newInputs.setTime(0f);
     }
     public static void sendMove(Vector2f position,List<Integer> Ids){
 

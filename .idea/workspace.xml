@@ -4,24 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="x">
-      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Player.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/State.java" afterDir="false" />
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="It's like working and all but weirdly allied seems a bit missing partially">
+      <change afterPath="$PROJECT_DIR$/src/main/java/jade/Drawer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/permalevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ClientBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientBooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Responder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerDecoder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Singleplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,8 +67,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -105,7 +93,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/.gradle/caches&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/IdeaProjects/STONE&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
@@ -114,11 +102,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\frant\IdeaProjects\STONE" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\src\main\java" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\src\main" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\Unrelaed" />
       <recent name="C:\Users\frant\IdeaProjects\STONE\assets\images" />
-      <recent name="C:\Users\frant\IdeaProjects\STONE" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\frant\IdeaProjects\STONE\assets\images\spritesheets" />
@@ -127,7 +115,7 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Client D">
     <configuration name="Client D" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
@@ -155,7 +143,6 @@
       <option name="MAIN_CLASS_NAME" value="Singleplayer" />
       <module name="STONE.main" />
       <option name="PROGRAM_PARAMETERS" value="true" />
-      <option name="VM_PARAMETERS" value="-Dorg.lwjgl.util.Debug=true" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -346,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698686305489</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="It's like working and all but weirdly allied seems a bit missing partially">
+      <created>1699291586864</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1699291586864</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -368,7 +362,8 @@
     <MESSAGE value="added abilities  yippe" />
     <MESSAGE value="all" />
     <MESSAGE value="x" />
-    <option name="LAST_COMMIT_MESSAGE" value="x" />
+    <MESSAGE value="It's like working and all but weirdly allied seems a bit missing partially" />
+    <option name="LAST_COMMIT_MESSAGE" value="It's like working and all but weirdly allied seems a bit missing partially" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -377,16 +372,6 @@
           <properties class="java.net.SocketException" package="java.net" />
           <option name="timeStamp" value="1" />
         </breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/scenes/Scene.java</url>
-          <line>63</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/scenes/Scene.java</url>
-          <line>57</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
