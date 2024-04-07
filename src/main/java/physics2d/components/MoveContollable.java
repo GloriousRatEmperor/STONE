@@ -5,8 +5,10 @@ import org.joml.Vector2f;
 
 public class MoveContollable extends Component {
     public MoveContollable Clone(){
-        return new MoveContollable();
+        MoveContollable c=new MoveContollable();
+        c.speed=speed;
+        return c;
     }
-    public int speed=10;
+    public int speed=3;
 
 }

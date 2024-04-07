@@ -7,18 +7,23 @@ import imgui.ImGui;
 import imgui.ImVec2;
 import jade.*;
 import org.joml.Vector2f;
+import org.joml.Vector4i;
 import physics2d.components.Box2DCollider;
 import physics2d.components.Rigidbody2D;
 import physics2d.enums.BodyType;
 import util.AssetPool;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Collection;
+import java.util.HashMap;
+import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
 
     private Spritesheet sprites;
+
     private GameObject levelEditorStuff;
     private BlockingQueue<ClientData> requests;
     private BlockingQueue<ServerData> responses;
@@ -48,6 +53,41 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void loadResources(Scene scene) {
+
+        HashMap<String, Vector4i> map1=new HashMap<>();
+        try {
+            File myObj = new File("assets/images/key.txt");
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                String data = myReader.nextLine();
+                String[] lit=data.split(";");
+                map1.put(lit[4],new Vector4i(Integer.parseInt(lit[0]),Integer.parseInt(lit[1]),Integer.parseInt(lit[2]),Integer.parseInt(lit[3])));
+
+            }
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+
+
+        AssetPool.addMapSpritesheet("assets/images/spritesheets/joined.png",
+                new MapSpriteSheet(AssetPool.getTexture("assets/images/spritesheets/joined.png"),map1));
+
+
+        AssetPool.addSpritesheet("assets/images/spritesheets/back.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/back.png"),
+                        500, 500, 100, 0));
+
+        AssetPool.addSpritesheet("assets/images/spritesheets/background.png",
+                new Spritesheet(AssetPool.getTexture("assets/images/spritesheets/background.png"),
+                        500, 500, 1, 0));
+
+
+
+
+
+
         AssetPool.getShader("assets/shaders/default.glsl");
 
         AssetPool.addSpritesheet("assets/images/abilities.png",
@@ -154,7 +194,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                         rb.setBodyType(BodyType.Static);
                         object.addComponent(rb);
                         Box2DCollider b2d = new Box2DCollider();
-                        b2d.setHalfSize(new Vector2f(0.25f, 0.25f));
+                        b2d.setHalfSize(0.25f, 0.25f);
                         object.addComponent(b2d);
                         object.addComponent(new Ground());
                         if (i == 12) {

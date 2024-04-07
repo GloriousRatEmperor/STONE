@@ -9,6 +9,7 @@ import java.util.List;
 public class ClientData {
     public int intValue;
     public String name;
+    public String string;
     public int getIntValue(){
         return intValue;
     }
@@ -19,6 +20,12 @@ public class ClientData {
         intValue=newval;
     }
     public void setName(String newval){ name =newval;}
+    public void setString(String value){
+        string=value;
+    }
+    public String getString(){
+        return string;
+    }
     public List<Integer> GameObjects;
     public List<Float> position;
 

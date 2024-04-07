@@ -1,24 +1,28 @@
 package components;
 
-import Multiplayer.ClientData;
-import Multiplayer.Server;
 import Multiplayer.ServerData;
 import jade.GameObject;
-import jade.MouseListener;
 import jade.Window;
 import observers.EventSystem;
 import observers.events.Event;
 import observers.events.EventType;
-import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3i;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
+
+import static jade.Window.get;
 
 public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
     private int ally;
+    public int space;
+    public int count;
     private long startTime=0;
     private Thread clientThread;
     public ServerInputs(Thread clientThread, BlockingQueue<ServerData> responses) {
@@ -51,11 +55,11 @@ public class ServerInputs extends Component {
     }
 
     @Override
-    public void editorUpdate(float dt) {
-        time += dt;
+    public void editorUpdateDraw() {
 
         try {
             while (!responses.isEmpty()) {
+
                 apply(responses.take());
 
             }
@@ -74,26 +78,33 @@ public class ServerInputs extends Component {
                 startTime = serverData.getStart();
                 setTime(startTime);
                 this.ally=serverData.getIntValue();
+
+
+                get().floor=makeMap(serverData.getMap1(),serverData.getMap2(),serverData.getMap3());
+                space=serverData.getIntValue2();
+                count=serverData.getIntValue3();
             }
-            case "Heal" -> {
+            case "Cast" -> {
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
                 for (GameObject go:
                      selectedObjects) {
                     CastAbilities cast=go.getComponent(CastAbilities.class);
                     if(cast!=null){
-                        cast.castAbility("Heal",new Vector2f());
+                        cast.castAbility(serverData);
                     }
 
                 }
             }
             case "Speed" -> {
-
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                List<Integer> obj=serverData.getGameObjects();
+                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(obj);
                 for (GameObject go:
                         selectedObjects) {
                     CastAbilities cast=go.getComponent(CastAbilities.class);
                     if(cast!=null){
-                        cast.castAbility("Speed",new Vector2f());
+                        cast.castAbility(serverData);
+                    }else {
+                        obj.remove(go.getUid());
                     }
 
                 }
@@ -101,37 +112,25 @@ public class ServerInputs extends Component {
                 serverData.setTime(time+5000);
                 responseList.add(serverData);
             }
-            case "slow" -> {
 
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
-                for (GameObject go:
-                        selectedObjects) {
-                    CastAbilities cast=go.getComponent(CastAbilities.class);
-                    if(cast!=null){
-                        cast.castAbility("Speed",new Vector2f());
-                    }
-
-                }
-            }
-            case "Slow" -> {
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
-                for (GameObject go:
-                        selectedObjects) {
-                    CastAbilities cast=go.getComponent(CastAbilities.class);
-                    if(cast!=null){
-                        cast.castAbility("Slow",new Vector2f());
-                    }
-
-                }
-            }
         }
     }
     public int getAlly(){
         return ally;
     }
+    public HashMap<Vector2i,Vector3i> makeMap(List<Integer> map1,List<Integer> map2,List<Integer> map3){
+        HashMap<Vector2i, Vector3i> map= new HashMap<>();
+
+        for (int e=0; e<map1.size(); e++){
+
+            map.put(new Vector2i(map1.get(e),map2.get(e)),new Vector3i( map3.get(e*3),map3.get(e*3+1),map3.get(e*3+2)));
+        }
+        return map;
+    }
     public long getStartTime(){
         return startTime;
     }
+
     public void setTime(float tim){
 
         time=tim;

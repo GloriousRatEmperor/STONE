@@ -6,7 +6,7 @@ import org.joml.Vector2f;
 
 public class Hitter extends Component {
     public float dmg=1;
-    public int allied =1;
+    public int alliedH =0;
     public float attackSpeed=0.1f;
     public float nextSmak=0;
     public void smak(Mortal enemy){
@@ -22,7 +22,7 @@ public class Hitter extends Component {
         if(nextSmak<0) {
             Mortal enemy = obj.getComponent(Mortal.class);
             if (enemy != null) {
-                if (enemy.allied != this.allied) {
+                if (enemy.alliedM != this.alliedH) {
                     smak(enemy);
                     nextSmak = attackSpeed;
                 }
@@ -32,5 +32,9 @@ public class Hitter extends Component {
     @Override
     public void update(float dt) {
         nextSmak-=dt;
+    }
+    @Override
+    public void begin(){
+        this.alliedH = super.gameObject.allied;
     }
 }

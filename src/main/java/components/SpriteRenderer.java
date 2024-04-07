@@ -42,7 +42,7 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
-    public void editorUpdate(float dt) {
+    public void editorUpdateDraw() {
         if (!this.lastTransform.equals(this.gameObject.transform)) {
             this.gameObject.transform.copy(this.lastTransform);
             isDirty = true;
@@ -96,7 +96,15 @@ public class SpriteRenderer extends Component {
         this.isDirty = true;
     }
 
-    public void setColor(Vector4f color) {
+    public void setColor(float r, float g, float b, float a) {
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!probably isn't rgba I'm guessing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if (!this.color.equals(r,g,b,a)) {
+            this.isDirty = true;
+            this.color.set(r,g,b,a);
+        }
+    }
+    public void setColorVec(Vector4f color) {
+        //                                        only use if not new vector! apparently better performance maybe
         if (!this.color.equals(color)) {
             this.isDirty = true;
             this.color.set(color);

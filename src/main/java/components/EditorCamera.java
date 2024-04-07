@@ -3,6 +3,7 @@ package components;
 import jade.Camera;
 import jade.KeyListener;
 import jade.MouseListener;
+import jade.Time;
 import org.joml.Vector2f;
 
 import static org.lwjgl.glfw.GLFW.*;
@@ -19,6 +20,9 @@ public class EditorCamera extends Component {
     private float lerpTime = 0.0f;
     private float dragSensitivity = 30.0f;
     private float scrollSensitivity = 0.1f;
+    private Time timer=new Time();
+    private float last=0;
+    private float dt;
 
     public EditorCamera(Camera levelEditorCamera) {
         this.levelEditorCamera = levelEditorCamera;
@@ -26,7 +30,9 @@ public class EditorCamera extends Component {
     }
 
     @Override
-    public void editorUpdate(float dt) {
+    public void editorUpdateDraw() {
+        dt=timer.getTime()-last;
+        last=timer.getTime();
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE) && dragDebounce > 0) {
             this.clickOrigin = new Vector2f(MouseListener.getWorldX(), MouseListener.getWorldY());
             dragDebounce -= dt;
@@ -73,7 +79,7 @@ public class EditorCamera extends Component {
                     Math.abs(levelEditorCamera.position.y) <= 5.0f) {
                 this.lerpTime = 0.0f;
                 levelEditorCamera.position.set(0f, 0f);
-                this.levelEditorCamera.setZoom(1.0f);
+                this.levelEditorCamera.setZoom(2.0f);
                 reset = false;
             }
         }

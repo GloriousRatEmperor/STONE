@@ -1,7 +1,5 @@
 package components;
 
-import jade.Camera;
-import jade.FileUtil;
 import jade.GameObject;
 import jade.Window;
 import org.jbox2d.dynamics.contacts.Contact;
@@ -23,17 +21,10 @@ public class Fireball extends Component {
     private transient boolean onGround = false;
     private transient float lifetime = 4.0f;
 
-    private static int fireballCount = 0;
-
-    public static boolean canSpawn() {
-        return fireballCount < 4;
-    }
-
     @Override
     public void start() {
         this.rb = this.gameObject.getComponent(Rigidbody2D.class);
         this.acceleration.y = Window.getPhysics().getGravity().y * 0.7f;
-        fireballCount++;
     }
 
     @Override
@@ -85,7 +76,6 @@ public class Fireball extends Component {
     }
 
     public void disappear() {
-        fireballCount--;
         this.gameObject.destroy();
     }
 }

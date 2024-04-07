@@ -15,9 +15,9 @@ public class SceneHierarchyWindow {
     public void imgui() {
         ImGui.begin("Scene Hierarchy");
 
-        List<GameObject> gameObjects = Window.getScene().getGameObjects();
+        List<GameObject> drawObjects = Window.getScene().getDrawObjects();
         int index = 0;
-        for (GameObject obj : gameObjects) {
+        for (GameObject obj : drawObjects) {
             if (!obj.doSerialization()) {
                 continue;
             }

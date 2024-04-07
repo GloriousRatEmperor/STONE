@@ -11,10 +11,13 @@ import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector4f;
 import org.lwjgl.system.CallbackI;
+import physics2d.components.MoveContollable;
 import renderer.DebugDraw;
 import renderer.PickingTexture;
 import scenes.Scene;
 import util.Settings;
+
+import jade.Time;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,11 +25,15 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
+import static jade.Window.get;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class MouseControls extends Component {
     GameObject holdingObject = null;
     private float debounceTime = 0.2f;
+    private Time timer=new Time();
+    private float last=0;
+    private ArrayList<Vector2f> places= new ArrayList<>(10);
     private float debounce = debounceTime;
 
     private boolean boxSelectSet = false;
@@ -43,9 +50,9 @@ public class MouseControls extends Component {
             this.holdingObject.destroy();
         }
         this.holdingObject = go;
-        this.holdingObject.getComponent(SpriteRenderer.class).setColor(new Vector4f(0.8f, 0.8f, 0.8f, 0.5f));
+        //this.holdingObject.getComponent(SpriteRenderer.class).setColor(0.8f, 0.8f, 0.8f, 0.5f);
         this.holdingObject.addComponent(new NonPickable());
-        Window.getScene().addGameObjectToScene(go);
+        //Window.getScene().addGameObjectToScene(go);
     }
 
     public void place() {
@@ -53,18 +60,28 @@ public class MouseControls extends Component {
         if (newObj.getComponent(StateMachine.class) != null) {
             newObj.getComponent(StateMachine.class).refreshTextures();
         }
-        newObj.getComponent(SpriteRenderer.class).setColor(new Vector4f(1, 1, 1, 1));
+        newObj.getComponent(SpriteRenderer.class).setColor(1, 1, 1, 1);
         newObj.removeComponent(NonPickable.class);
         Window.getScene().addGameObjectToScene(newObj);
     }
     @Override
-    public void update(float dt){
-        debounce -= dt;
+    public void runningUpdateDraw(){
+        debounce -=timer.getTime()-last;
+        last=timer.getTime();
+
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
-            Window.sendMove(position,Window.getImguiLayer().getMenu().getIds());
+            List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
+            List<Integer> ids=new ArrayList<>();
+            for (GameObject go : obj) {
+                if(go.allied==get().allied & go.getComponent(MoveContollable.class)!=null){
+                    ids.add(go.getUid());
+                }
+
+            }
+            Window.sendMove(position,ids);
         }
         else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
             int x = (int)MouseListener.getScreenX();
@@ -132,8 +149,9 @@ public class MouseControls extends Component {
         }
     }
     @Override
-    public void editorUpdate(float dt) {
-        debounce -= dt;
+    public void editorUpdateDraw() {
+        debounce -=timer.getTime()-last;
+        last=timer.getTime();
         PickingTexture pickingTexture = Window.getImguiLayer().getPropertiesWindow().getPickingTexture();
         Scene currentScene = Window.getScene();
 
@@ -146,10 +164,18 @@ public class MouseControls extends Component {
             if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
                 float halfWidth = Settings.GRID_WIDTH / 2.0f;
                 float halfHeight = Settings.GRID_HEIGHT / 2.0f;
+
+
+
                 if (MouseListener.isDragging() &&
                     !blockInSquare(holdingObject.transform.position.x - halfWidth,
-                            holdingObject.transform.position.y - halfHeight)) {
+                            holdingObject.transform.position.y - halfHeight)  &&
+                        !(places.contains(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y)))) {
                     place();
+                    places.add(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y));
+                    if (places.size()==10) {
+                        places.remove(0);
+                    }
                 } else if (!MouseListener.isDragging() && debounce < 0) {
                     place();
                     debounce = debounceTime;
@@ -243,6 +269,8 @@ public class MouseControls extends Component {
                 }
             }
         }
+
+
 
         return false;
     }

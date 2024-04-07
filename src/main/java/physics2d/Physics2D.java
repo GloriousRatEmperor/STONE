@@ -18,7 +18,7 @@ import physics2d.components.Rigidbody2D;
 import renderer.DebugDraw;
 
 public class Physics2D {
-    private Vec2 gravity = new Vec2(0, -10.0f);
+    private Vec2 gravity = new Vec2(0, 0);
     private World world = new World(gravity);
 
     private int velocityIterations = 8;

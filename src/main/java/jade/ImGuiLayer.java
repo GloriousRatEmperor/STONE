@@ -196,8 +196,8 @@ public class ImGuiLayer {
         setupDockspace();
         currentScene.imgui();
         //ImGui.showDemoWindow();
-        gameViewWindow.imgui();
-        if(playing==false) {
+        gameViewWindow.imgui(playing);
+        if(!playing) {
             propertiesWindow.imgui();
         }else {
             menu.imgui();

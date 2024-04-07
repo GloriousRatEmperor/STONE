@@ -1,16 +1,41 @@
 package Multiplayer;
 
 import org.joml.Vector2f;
+import org.joml.Vector2i;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class ServerData {
     public int intValue;
+    public String strValue;
+    public int intValue2;
+    public int intValue3;
     public float time;
     public long start;
     public String name;
+    public List<Integer> map1;
+    public List<Integer> map2;
+    public List<Integer> map3;
+    public List<Integer> GameObjects;
+    public List<Float> position;
+
+
     public int getIntValue(){
         return intValue;
+    }
+    public String getstrValue(){
+        return strValue;
+    }
+    public void setstrValue(String str){
+        strValue=str;
+    }
+    public int getIntValue2(){
+        return intValue2;
+    }
+    public int getIntValue3(){
+        return intValue3;
     }
     public String getName(){
         return name;
@@ -18,13 +43,31 @@ public class ServerData {
     public void setIntValue(int newval){
         intValue=newval;
     }
+    public void setIntValue2(int newval){
+        intValue2=newval;
+    }
+    public void setIntValue3(int newval){
+        intValue3=newval;
+    }
     public void setStart(long newval){
         start=newval;
     }
     public void setName(String newval){ name =newval;}
-    public List<Integer> GameObjects;
-    public List<Float> position;
 
+    public void setMap(List<Integer> mapp1,List<Integer> mapp2,List<Integer> mapp3){
+        map1=mapp1;
+        map3=mapp3;
+        map2=mapp2;
+    }
+    public List<Integer> getMap1(){
+        return map1;
+    }
+    public List<Integer> getMap2(){
+        return map2;
+    }
+    public List<Integer> getMap3(){
+        return map3;
+    }
     public List<Integer> getGameObjects() {
         return GameObjects;
     }

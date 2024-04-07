@@ -8,6 +8,7 @@ import org.joml.Vector2f;
 import renderer.Texture;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Transform extends Component {
     public Transform Clone(){
@@ -20,10 +21,18 @@ public class Transform extends Component {
     public float rotation = 0.0f;
     public int zIndex;
     public void updatePastPos(){pastPos=new Vector2f(position);};
+    @Override
+    public void editorUpdateDraw(){
+        updatePastPos();
+    }
     public void updateDrawPos(float fraction){
 
-        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
-        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
+        drawPos.x=pastPos.x;
+        drawPos.y=pastPos.y;
+//        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
+//        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
+
+
 
 
     };
@@ -40,9 +49,9 @@ public class Transform extends Component {
     }
 
     public void init(Vector2f position, Vector2f scale) {
-        this.position = position;
-        this.drawPos = position;
-        this.pastPos = position;
+        this.position =new Vector2f(position);
+        this.drawPos = new Vector2f(position);
+        this.pastPos = new Vector2f(position);
         this.scale = scale;
         this.zIndex = 0;
     }
@@ -78,7 +87,8 @@ public class Transform extends Component {
 
         Vector2f siz=new Vector2f(this.scale.x,this.scale.y);
         JImGui.drawVec2Control("Scale", this.scale, 32.0f);
-        if(siz!=this.scale){
+        if(!siz.equals(this.scale)){
+            System.out.println(siz.x-scale.x);
             for (GameObject go : activegameObjects) {
                 Transform ccomp=go.getComponent(Transform.class);
                 if(ccomp!=null){

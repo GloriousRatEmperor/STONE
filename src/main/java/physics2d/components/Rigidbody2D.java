@@ -14,20 +14,20 @@ public class Rigidbody2D extends Component {
     public Rigidbody2D Clone(){
         return new Rigidbody2D();
     }
-    private Vector2f velocity = new Vector2f();
-    private float angularDamping = 0.8f;
-    private float linearDamping = 0.9f;
-    private float mass = 0;
-    private BodyType bodyType = BodyType.Dynamic;
-    private float friction = 0.1f;
+    public Vector2f velocity = new Vector2f();
+    public float angularDamping = 0.8f;
+    public float linearDamping = 0.9f;
+    public float mass = 0;
+    public BodyType bodyType = BodyType.Dynamic;
+    public float friction = 0.1f;
     public float angularVelocity = 0.0f;
     public float gravityScale = 1.0f;
-    private boolean isSensor = false;
+    public boolean isSensor = false;
 
-    private boolean fixedRotation = false;
-    private boolean continuousCollision = true;
+    public boolean fixedRotation = false;
+    public boolean continuousCollision = true;
 
-    private transient Body rawBody = null;
+    public transient Body rawBody = null;
 
     @Override
     public void update(float dt) {

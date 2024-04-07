@@ -19,6 +19,9 @@ public class GameCamera extends Component {
     private transient float undergroundYLevel = 0.0f;
     private transient float cameraBuffer = 1.5f;
     private transient float playerBuffer = 0.25f;
+    private Time timer=new Time();
+    private float last=0;
+    private float dt;
 
     private Vector4f skyColor = new Vector4f(92.0f / 255.0f, 148.0f / 255.0f, 252.0f / 255.0f, 1.0f);
     private Vector4f undergroundColor = new Vector4f(0, 0, 0, 1);
@@ -31,15 +34,17 @@ public class GameCamera extends Component {
     @Override
     public void start() {
         this.player = Window.getScene().getGameObjectWith(PlayerController.class);
-        this.gameCamera.clearColor.set(skyColor);
+        this.gameCamera.clearColor.set(skyColor);  // if this breaks the level save is probably broken
         this.undergroundYLevel = this.gameCamera.position.y -
                 this.gameCamera.getProjectionSize().y - this.cameraBuffer;
     }
 
     @Override
-    public void update(float dt) {
+    public void runningUpdateDraw() {
+        dt=timer.getTime()-last;
+        last=timer.getTime();
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE)) {
-            this.clickOrigin = new Vector2f(MouseListener.getWorldX(), MouseListener.getWorldY());
+            this.clickOrigin.set(MouseListener.getWorldX(), MouseListener.getWorldY());
             return;
         } else if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_MIDDLE)) {
             Vector2f mousePos = new Vector2f(MouseListener.getWorldX(), MouseListener.getWorldY());

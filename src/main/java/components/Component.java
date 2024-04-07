@@ -8,7 +8,6 @@ import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
-import physics2d.components.MoveContollable;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
@@ -17,6 +16,7 @@ import java.util.List;
 public abstract class Component {
     private static int ID_COUNTER = 0;
     private int uid = -1;
+    public boolean isactive=false;
 
     public transient GameObject gameObject = null;
 
@@ -38,6 +38,12 @@ public abstract class Component {
     }
 
     public void editorUpdate(float dt) {
+
+    }
+    public void editorUpdateDraw() {
+
+    }
+    public void runningUpdateDraw() {
 
     }
 
@@ -180,7 +186,7 @@ public abstract class Component {
 
                         }
                         field.set(this, type.getEnumConstants()[index.get()]);
-                    };
+                    }
                 } else if (type == String.class) {
                     field.set(this,
                             JImGui.inputText(field.getName() + ": ",
@@ -302,5 +308,8 @@ public abstract class Component {
 
     public static void init(int maxId) {
         ID_COUNTER = maxId;
+    }
+    public void begin(){
+        isactive=true;
     }
 }

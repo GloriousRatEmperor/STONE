@@ -2,14 +2,16 @@ package scenes;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.stream.JsonReader;
 import components.Component;
 import components.ComponentDeserializer;
 import components.NonPickable;
-import components.SpriteRenderer;
-import imgui.ImGui;
-import jade.*;
+import jade.Camera;
+import jade.GameObject;
+import jade.GameObjectDeserializer;
+import jade.Transform;
 import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3i;
 import physics2d.Physics2D;
 import renderer.Renderer;
 
@@ -19,29 +21,38 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.BlockingQueue;
 
 public class Scene {
 
     private Renderer renderer;
     private Camera camera;
+
     private boolean isRunning;
     private List<GameObject> gameObjects;
+    private List<GameObject> drawObjects;
     private List<GameObject> pendingObjects;
+    private BlockingQueue<GameObject> drawObjectsPending;
     private Physics2D physics2D;
     private File leveltemp;
+    private HashMap<Vector2i,Vector3i> floor;
 
     private SceneInitializer sceneInitializer;
 
-    public Scene(SceneInitializer sceneInitializer,File leveltemp) {
+    public Scene(SceneInitializer sceneInitializer, File leveltemp) {
         this.sceneInitializer = sceneInitializer;
         this.physics2D = new Physics2D();
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
+        this.drawObjects = new ArrayList<>();
+        this.drawObjectsPending = new ArrayBlockingQueue<>(50);
         this.pendingObjects = new ArrayList<>();
         this.isRunning = false;
-        this.leveltemp=leveltemp;
+        this.leveltemp = leveltemp;
     }
 
     public Physics2D getPhysics() {
@@ -55,18 +66,25 @@ public class Scene {
     }
 
     public void start() {
-        for (int i=0; i < gameObjects.size(); i++) {
+        for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
             go.start();
-            this.renderer.add(go);
             this.physics2D.add(go);
+            drawObjectsPending.add(go);
+//            drawObjects.add(go);
+//            this.renderer.add(go);
         }
         isRunning = true;
+    }
+    public void setFloor(HashMap<Vector2i, Vector3i> newmap, int spacing, int count){
+        floor=newmap;
+        renderer.setFloor(floor,spacing,count);
     }
 
     public void addGameObjectToScene(GameObject go) {
         if (!isRunning) {
             gameObjects.add(go);
+
         } else {
             pendingObjects.add(go);
         }
@@ -91,6 +109,9 @@ public class Scene {
     public List<GameObject> getGameObjects() {
         return this.gameObjects;
     }
+    public List<GameObject> getDrawObjects() {
+        return this.drawObjects;
+    }
 
     public GameObject getGameObject(int gameObjectId) {
         Optional<GameObject> result = this.gameObjects.stream()
@@ -98,8 +119,9 @@ public class Scene {
                 .findFirst();
         return result.orElse(null);
     }
+
     public ArrayList<GameObject> getGameObjects(List<Integer> gameObjectIds) {
-        ArrayList<GameObject> selected= new ArrayList<>();
+        ArrayList<GameObject> selected = new ArrayList<>();
         for (Integer gameObjectId : gameObjectIds) {
             GameObject pickedObj = getGameObject(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
@@ -111,9 +133,8 @@ public class Scene {
 
 
     public void editorUpdate(float dt) {
-        this.camera.adjustProjection();
-
-        for (int i=0; i < gameObjects.size(); i++) {
+        //never called lol
+        for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
             go.editorUpdate(dt);
 
@@ -133,11 +154,53 @@ public class Scene {
 
         for (GameObject go : pendingObjects) {
             gameObjects.add(go);
+            drawObjectsPending.add(go);
+            go.start();
+            this.physics2D.add(go);
+        }
+        pendingObjects.clear();
+    }
+
+    public void editorUpdateDraw() throws InterruptedException {
+        //misleading esp with editorUpdate bc this does everything, like this for possibility of splitting things into the thread but probably never going to do it
+
+        this.camera.adjustProjection();
+
+        for (GameObject go : pendingObjects) {
+            gameObjects.add(go);
+            drawObjects.add(go);
             go.start();
             this.renderer.add(go);
             this.physics2D.add(go);
         }
         pendingObjects.clear();
+        for(int i = 0; i<drawObjects.size();i++) {
+            GameObject go = drawObjects.get(i);
+            if (!go.isDead()) {
+                Transform tr = go.getComponent(Transform.class);
+                if (tr != null) {
+                    if (tr.position.x != 0f) {
+                            tr.drawPos = new Vector2f(tr.position);
+                        }
+                    }
+
+                go.editorUpdateDraw();
+
+                go.updateDraw();
+            } else {
+                this.renderer.destroyGameObject(go);
+                this.physics2D.destroyGameObject(go);
+                drawObjects.remove(go);
+                gameObjects.remove(go);
+            }
+        }
+        //not that there should be anything I think but like I dunno...
+        while (!drawObjectsPending.isEmpty()) {
+            GameObject go=drawObjectsPending.take();
+            drawObjects.add(go);
+            this.renderer.add(go);
+        }
+
     }
 
     public GameObject getGameObject(String gameObjectName) {
@@ -168,10 +231,11 @@ public class Scene {
         }
         for (GameObject go : pendingObjects) {
             gameObjects.add(go);
+            drawObjectsPending.add(go);
             go.start();
 
 
-            this.renderer.add(go);
+            //this.renderer.add(go);
             this.physics2D.add(go);
 
             Transform tr = go.getComponent(Transform.class);
@@ -207,27 +271,62 @@ public class Scene {
 
         for (GameObject go : pendingObjects) {
             gameObjects.add(go);
+            drawObjectsPending.add(go);
             go.start();
-            this.renderer.add(go);
+            //this.renderer.add(go);
             this.physics2D.add(go);
         }
         pendingObjects.clear();
     }
-    public void visualUpdate(float fractionPassed) { //fractionpassed=dt/physicsframetime
+    public void visualUpdate(float fractionPassed,boolean running) { //fractionpassed=dt/physicsframetime
         this.camera.adjustProjection();
-        for (GameObject go : gameObjects) {
-            Transform tr = go.getComponent(Transform.class);
-            if (tr != null) {
-                if(tr.position.x!=0f) {
-                    tr.updateDrawPos(fractionPassed);
-                }
+        if(!running) {
+            for (GameObject go : pendingObjects) {
+                gameObjects.add(go);
+                drawObjects.add(go);
+                go.start();
+                this.renderer.add(go);
+                this.physics2D.add(go);
             }
-            go.updateDraw();
+            pendingObjects.clear();
         }
+        for (int i=0; i < drawObjects.size(); i++) {
+            GameObject go = drawObjects.get(i);
+            if(!go.isDead()) {
+                Transform tr = go.getComponent(Transform.class);
+                if (tr != null) {
+                    if (tr.position.x != 0f) {
+                        if(running) {
+                            tr.updateDrawPos(fractionPassed);
+                        }else{
+                            tr.drawPos=new Vector2f(tr.position);
+                        }
+                    }
+                }
+                if (running) {
+                    go.runningUpdateDraw();
+
+                } else {
+                    go.editorUpdateDraw();
+
+                }
+                go.updateDraw();
+            }else{
+                drawObjects.remove(go);
+            }
+        }
+        for (GameObject go:drawObjectsPending) {
+            drawObjects.add(go);
+            this.renderer.add(go);
+        }
+        drawObjectsPending.clear();
     }
 
     public void render() {
         this.renderer.render();
+    }
+    public void renderFloor() {
+        this.renderer.renderFloor();
     }
 
     public Camera camera() {

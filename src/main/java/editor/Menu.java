@@ -1,12 +1,8 @@
 package editor;
-import SubComponents.Move;
-import components.Component;
-import components.Mortal;
 import components.SpriteRenderer;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
-import jade.Transform;
 import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
@@ -91,7 +87,8 @@ public class Menu {
             for (GameObject go : activeGameObjects) {
                 SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
                 if (spr != null) {
-                    spr.setColor(activeGameObjectsOgColor.get(i));
+
+                    spr.setColorVec(activeGameObjectsOgColor.get(i));
                 }
                 i++;
             }
@@ -111,16 +108,16 @@ public class Menu {
     }
 
     public void addActiveGameObject(GameObject go) {
-        Mortal m=go.getComponent(Mortal.class);
-        if(m!=null){
-            if(m.allied!=allied){
-                return;
-            }
-        }
+//        Mortal m=go.getComponent(Mortal.class);
+//        if(m!=null){
+//            if(m.allied!=allied){
+//                return;
+//            }
+//        }
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null ) {
             this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));
-            spr.setColor(new Vector4f(8f, 0.8f, 0.0f, 0.8f));
+            spr.setColor(8f, 0.8f, 0.0f, 0.8f);
         } else {
             this.activeGameObjectsOgColor.add(new Vector4f());
         }

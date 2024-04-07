@@ -28,9 +28,9 @@ public class PillboxCollider extends Component {
     }
 
     @Override
-    public void editorUpdate(float dt) {
-        bottomCircle.editorUpdate(dt);
-        box.editorUpdate(dt);
+    public void editorUpdateDraw() {
+        bottomCircle.editorUpdateDraw();
+        box.editorUpdateDraw();
         recalculateColliders();
 
         if (resetFixtureNextFrame) {
@@ -77,8 +77,9 @@ public class PillboxCollider extends Component {
         float boxHeight = height - circleRadius;
         bottomCircle.setRadius(circleRadius);
         bottomCircle.setOffset(new Vector2f(offset).sub(0, (height - circleRadius * 2.0f) / 2.0f));
-        box.setHalfSize(new Vector2f(width - 0.01f, boxHeight));
-        box.setOffset(new Vector2f(offset).add(0, (height - boxHeight) / 2.0f));
+        box.setHalfSize(width - 0.01f, boxHeight);
+        box.setOffset(offset.x, offset.y+ (height - boxHeight) / 2.0f);
+
     }
 
     public CircleCollider getBottomCircle() {

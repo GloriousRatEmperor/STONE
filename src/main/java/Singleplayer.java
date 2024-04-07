@@ -12,8 +12,10 @@ public class Singleplayer {
 
 
     public static void main(String[] args) throws Exception {
+        Boolean debugging= Boolean.valueOf(args[0]);
 
-        int port = args.length > 0 ? Integer.parseInt(args[0]) : 8080;
+
+        int port = 8080;
 
         Thread serverThread= new Thread(new TechnicalServer(port,1));
         serverThread.start();
@@ -32,7 +34,7 @@ public class Singleplayer {
         window.clientThread=clientThread;
         window.requests=requests;
         window.responses=responses;
-        window.run();
+        window.run(debugging);
 
 
 

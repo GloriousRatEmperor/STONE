@@ -2,7 +2,6 @@ package jade;
 
 import org.joml.Matrix4f;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 import org.joml.Vector4f;
 
 import java.util.Arrays;
@@ -135,6 +134,7 @@ public class MouseListener {
     }
 
     public static Vector2f getWorld() {
+                //actual mouse data
         float currentX = getX() - get().gameViewportPos.x;
         currentX = (2.0f * (currentX / get().gameViewportSize.x)) - 1.0f;
         float currentY = (getY() - get().gameViewportPos.y);

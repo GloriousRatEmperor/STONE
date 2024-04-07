@@ -6,7 +6,7 @@ public class Mortal extends Component {
     public float health=20;
     public float maxHealth=20;
 
-    public int allied =1;
+    public int alliedM =0;
     private transient Rigidbody2D rb;
     @Override
     public Mortal Clone(){
@@ -28,6 +28,10 @@ public class Mortal extends Component {
         gameObject.destroy();
 
 
+    }
+    @Override
+    public void begin(){
+        this.alliedM = super.gameObject.allied;
     }
 
 

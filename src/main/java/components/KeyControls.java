@@ -2,47 +2,64 @@ package components;
 
 import Multiplayer.ClientData;
 import editor.PropertiesWindow;
-import jade.GameObject;
-import jade.KeyListener;
-import jade.MouseListener;
-import jade.Window;
+import jade.*;
 import org.joml.Vector2f;
+import physics2d.components.MoveContollable;
 import util.Settings;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
+import static jade.Window.get;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class KeyControls extends Component {
     private float debounceTime = 0.2f;
     private float debounce = 0.0f;
+    private float dt;
     private BlockingQueue<ClientData> requests;
+    private Time timer=new Time();
+    private float last=0;
+
     private Thread clientThread;
     public KeyControls(Thread clientThread, BlockingQueue<ClientData> requests) {
         this.clientThread=clientThread;
         this.requests=requests;
     }
     @Override
-    public void update(float dt){
-        debounce -= dt;
+    public void runningUpdateDraw(){
 
-        PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
-        GameObject activeGameObject = propertiesWindow.getActiveGameObject();
-        List<GameObject> activeGameObjects = propertiesWindow.getActiveGameObjects();
-        float multiplier = KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT) ? 0.1f : 1.0f;
+        dt=timer.getTime()-last;
+        debounce -=dt;
+        last=timer.getTime();
+
+//        PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
+//        GameObject activeGameObject = propertiesWindow.getActiveGameObject();
+//        List<GameObject> activeGameObjects = propertiesWindow.getActiveGameObjects();
+//        float multiplier = KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT) ? 0.1f : 1.0f;
+
         if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) &&
                 KeyListener.keyBeginPress(GLFW_KEY_V)) {
 
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
+            List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
+            List<Integer> ids=new ArrayList<>();
+            for (GameObject go : obj) {
+                if(go.allied==get().allied & go.getComponent(MoveContollable.class)!=null){
+                    ids.add(go.getUid());
+                }
 
-            Window.sendMove(position,Window.getImguiLayer().getMenu().getIds());
+            }
+            Window.sendMove(position,ids);
         }
     }
+
     @Override
-    public void editorUpdate(float dt) {
-        debounce -= dt;
+    public void editorUpdateDraw() {
+        dt=timer.getTime()-last;
+        debounce -=dt;
+        last=timer.getTime();
 
         PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
         GameObject activeGameObject = propertiesWindow.getActiveGameObject();
@@ -96,7 +113,9 @@ public class KeyControls extends Component {
                 go.transform.position.y += Settings.GRID_HEIGHT * multiplier;
             }
         } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT) && debounce < 0) {
+
             debounce = debounceTime;
+
             for (GameObject go : activeGameObjects) {
                 go.transform.position.x -= Settings.GRID_HEIGHT * multiplier;
             }

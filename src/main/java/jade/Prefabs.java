@@ -233,7 +233,7 @@ public class Prefabs {
         rb.setBodyType(BodyType.Static);
         questionBlock.addComponent(rb);
         Box2DCollider b2d = new Box2DCollider();
-        b2d.setHalfSize(new Vector2f(0.25f, 0.25f));
+        b2d.setHalfSize(0.25f, 0.25f);
         questionBlock.addComponent(b2d);
         questionBlock.addComponent(new Ground());
 
@@ -387,8 +387,8 @@ public class Prefabs {
         return fireball;
     }
     public static GameObject generateUnit(Vector2f position,int allied) {
-        Spritesheet items = AssetPool.getSpritesheet("assets/images/items.png");
-        GameObject fireball = generateSpriteObject(items.getSprite(32), 0.18f, 0.18f);
+        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/back.png");
+        GameObject fireball = generateSpriteObject(items.getSprite(0), 0.18f, 0.18f);
         fireball.transform.position = position;
 
         Rigidbody2D rb = new Rigidbody2D();
@@ -401,10 +401,10 @@ public class Prefabs {
         circleCollider.setRadius(0.08f);
         fireball.addComponent(circleCollider);
         Hitter hit=new Hitter();
-        hit.allied=allied;
+        hit.alliedH =allied;
         fireball.addComponent(hit);
         Mortal mortal=new Mortal();
-        mortal.allied=allied;
+        mortal.alliedM =allied;
         fireball.addComponent(mortal);
         fireball.addComponent(new MoveContollable());
         return fireball;
@@ -421,8 +421,8 @@ public class Prefabs {
         flagtop.addComponent(rb);
 
         Box2DCollider boxCollider = new Box2DCollider();
-        boxCollider.setHalfSize(new Vector2f(0.1f, 0.25f));
-        boxCollider.setOffset(new Vector2f(-0.075f, 0.0f));
+        boxCollider.setHalfSize(0.1f, 0.25f);
+        boxCollider.setOffset(-0.075f, 0.0f);
         flagtop.addComponent(boxCollider);
         flagtop.addComponent(new Flagpole(true));
 
@@ -440,8 +440,8 @@ public class Prefabs {
         flagtop.addComponent(rb);
 
         Box2DCollider boxCollider = new Box2DCollider();
-        boxCollider.setHalfSize(new Vector2f(0.1f, 0.25f));
-        boxCollider.setOffset(new Vector2f(-0.075f, 0.0f));
+        boxCollider.setHalfSize(0.1f, 0.25f);
+        boxCollider.setOffset(-0.075f, 0.0f);
         flagtop.addComponent(boxCollider);
         flagtop.addComponent(new Flagpole(false));
 
@@ -500,7 +500,7 @@ public class Prefabs {
         pipe.addComponent(rb);
 
         Box2DCollider b2d = new Box2DCollider();
-        b2d.setHalfSize(new Vector2f(0.5f, 0.5f));
+        b2d.setHalfSize(0.5f, 0.5f);
         pipe.addComponent(b2d);
         pipe.addComponent(new Pipe(direction));
         pipe.addComponent(new Ground());

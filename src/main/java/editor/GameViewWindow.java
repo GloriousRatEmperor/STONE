@@ -16,7 +16,7 @@ public class GameViewWindow {
     private boolean isPlaying = false;
     private boolean windowIsHovered;
 
-    public void imgui() {
+    public void imgui(boolean playing) {
 
         imgui.ImGuiIO io = ImGui.getIO();
         ImGui.setNextWindowSize(io.getDisplaySizeX(),io.getDisplaySizeY());
@@ -38,11 +38,16 @@ public class GameViewWindow {
             isPlaying = false;
             EventSystem.notify(null, new Event(EventType.GameEngineStopPlay));
         }
-        if (ImGui.menuItem("Save", "Ctrl+S")) {
-            EventSystem.notify(null, new Event(EventType.SaveLevel));
+        if (ImGui.menuItem("ScanForDupes", "", isPlaying, !isPlaying)) {
+            EventSystem.notify(null, new Event(EventType.Scan));
         }
-        if (ImGui.menuItem("Load", "Ctrl+O")) {
-            EventSystem.notify(null, new Event(EventType.LoadLevel));
+        if(!playing) {
+            if (ImGui.menuItem("Save", "Ctrl+S")) {
+                EventSystem.notify(null, new Event(EventType.SaveLevel));
+            }
+            if (ImGui.menuItem("Load", "Ctrl+O")) {
+                EventSystem.notify(null, new Event(EventType.LoadLevel));
+            }
         }
         ImGui.endMenuBar();
 
@@ -56,7 +61,7 @@ public class GameViewWindow {
         ImGui.imageButton(textureId, windowSize.x, windowSize.y, 0, 1, 1, 0);
         windowIsHovered = ImGui.isItemHovered();
 
-        MouseListener.setGameViewportPos(new Vector2f(windowPos.x + 10, windowPos.y));
+        MouseListener.setGameViewportPos(new Vector2f(windowPos.x, windowPos.y));
         MouseListener.setGameViewportSize(new Vector2f(windowSize.x, windowSize.y));
 
         ImGui.end();

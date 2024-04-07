@@ -234,7 +234,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
                     sprite.gameObject.transform.drawPos.y + (yAdd * sprite.gameObject.transform.scale.y),
                     0, 1);
             if (isRotated) {
-                currentPos = new Vector4f(xAdd, yAdd, 0, 1).mul(transformMatrix);
+                currentPos.set(xAdd, yAdd, 0, 1).mul(transformMatrix);
             }
 
             // Load position

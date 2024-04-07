@@ -1,6 +1,6 @@
 package jade;
 
-import SubComponents.Ability;
+import Abilitiess.Ability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.*;
@@ -19,6 +19,7 @@ public class GameObject {
     private int uid = -1;
 
     public String name;
+    public int allied=0;
     private List<Component> components;
     public transient Transform transform;
     private boolean doSerialization = true;
@@ -63,6 +64,9 @@ public class GameObject {
         c.generateId();
         this.components.add(c);
         c.gameObject = this;
+        if (!c.isactive) {
+            c.begin();
+        }
     }
 
     public void update(float dt) {
@@ -76,6 +80,18 @@ public class GameObject {
         for (int i=0; i < components.size(); i++) {
 
             components.get(i).updateDraw();
+        }
+    }
+    public void runningUpdateDraw() {
+        for (int i=0; i < components.size(); i++) {
+
+            components.get(i).runningUpdateDraw();
+        }
+    }
+    public void editorUpdateDraw() {
+        for (int i=0; i < components.size(); i++) {
+
+            components.get(i).editorUpdateDraw();
         }
     }
     public void editorUpdate(float dt) {
@@ -159,6 +175,7 @@ public class GameObject {
                 Field[] fields = c.getClass().getDeclaredFields();
                 try{
                 for (Field field : fields) {
+
                     boolean isTransient = Modifier.isTransient(field.getModifiers());
                     if (isTransient) {
                         continue;
@@ -175,6 +192,8 @@ public class GameObject {
                     }
                 }
                 } catch (IllegalAccessException ex) {
+                    System.out.println(c.getClass());
+
                     throw new RuntimeException(ex);
                 }
                 master.addComponent(clone);

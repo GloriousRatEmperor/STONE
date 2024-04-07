@@ -64,8 +64,8 @@ public class Shader {
         // Compile and link shaders
         // ============================================================
         int vertexID, fragmentID;
-
         // First load and compile the vertex shader
+
         vertexID = glCreateShader(GL_VERTEX_SHADER);
         // Pass the shader source to the GPU
         glShaderSource(vertexID, vertexSource);

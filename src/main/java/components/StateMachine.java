@@ -118,18 +118,18 @@ public class StateMachine extends Component {
             }
         }
     }
-
-    @Override
-    public void editorUpdate(float dt) {
-        if (currentState != null) {
-            currentState.update(dt);
-            SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
-            if (sprite != null) {
-                sprite.setSprite(currentState.getCurrentSprite());
-                sprite.setTexture(currentState.getCurrentSprite().getTexture());
-            }
-        }
-    }
+//    I.... this useless right?
+//    @Override
+//    public void editorUpdate(float dt) {
+//        if (currentState != null) {
+//            currentState.update(dt);
+//            SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
+//            if (sprite != null) {
+//                sprite.setSprite(currentState.getCurrentSprite());
+//                sprite.setTexture(currentState.getCurrentSprite().getTexture());
+//            }
+//        }
+//    }
 
     @Override
     public void imgui() {

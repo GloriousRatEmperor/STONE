@@ -107,13 +107,13 @@ public class PlayerController extends Component {
             if (blinkTime <= 0) {
                 blinkTime = 0.2f;
                 if (spr.getColor().w == 1) {
-                    spr.setColor(new Vector4f(1, 1, 1, 0));
+                    spr.setColor(1, 1, 1, 0);
                 } else {
-                    spr.setColor(new Vector4f(1, 1, 1, 1));
+                    spr.setColor(1, 1, 1, 1);
                 }
             } else {
                 if (spr.getColor().w == 0) {
-                    spr.setColor(new Vector4f(1, 1, 1, 1));
+                    spr.setColor(1, 1, 1, 1);
                 }
             }
         }

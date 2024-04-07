@@ -1,5 +1,6 @@
 package util;
 
+import components.MapSpriteSheet;
 import components.Spritesheet;
 import jade.Sound;
 import renderer.Shader;
@@ -14,6 +15,7 @@ public class AssetPool {
     private static Map<String, Shader> shaders = new HashMap<>();
     private static Map<String, Texture> textures = new HashMap<>();
     private static Map<String, Spritesheet> spritesheets = new HashMap<>();
+    private static Map<String, MapSpriteSheet> mapsheets = new HashMap<>();
     private static Map<String, Sound> sounds = new HashMap<>();
 
     public static Shader getShader(String resourceName) {
@@ -46,6 +48,13 @@ public class AssetPool {
             AssetPool.spritesheets.put(file.getAbsolutePath(), spritesheet);
         }
     }
+    public static void addMapSpritesheet(String resourceName, MapSpriteSheet spritesheet) {
+        File file = new File(resourceName);
+        if (!AssetPool.mapsheets.containsKey(file.getAbsolutePath())) {
+            AssetPool.mapsheets.put(file.getAbsolutePath(), spritesheet);
+        }
+    }
+
 
     public static Spritesheet getSpritesheet(String resourceName) {
         File file = new File(resourceName);
@@ -53,6 +62,13 @@ public class AssetPool {
             assert false : "Error: Tried to access spritesheet '" + resourceName + "' and it has not been added to asset pool.";
         }
         return AssetPool.spritesheets.getOrDefault(file.getAbsolutePath(), null);
+    }
+    public static MapSpriteSheet getMapSheet(String resourceName) {
+        File file = new File(resourceName);
+        if (!AssetPool.mapsheets.containsKey(file.getAbsolutePath())) {
+            assert false : "Error: Tried to access mapsheet '" + resourceName + "' and it has not been added to asset pool.";
+        }
+        return AssetPool.mapsheets.getOrDefault(file.getAbsolutePath(), null);
     }
     
     public static Collection<Sound> getAllSounds() {

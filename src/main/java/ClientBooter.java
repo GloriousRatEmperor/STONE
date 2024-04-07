@@ -4,8 +4,12 @@ import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 
 import Multiplayer.TechnicalClient;
+import jade.Rng;
 import jade.Window;
+import org.joml.Vector2i;
 
+import java.util.HashMap;
+import java.util.Vector;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
@@ -15,8 +19,7 @@ public class ClientBooter {
     public static void main(String[] args) throws Exception {
 
 
-
-
+        Boolean debugging= Boolean.valueOf(args[1]);
         BlockingQueue<ClientData> requests=new ArrayBlockingQueue<>(15);
         BlockingQueue<ServerData> responses=new ArrayBlockingQueue<>(150);
         Thread.UncaughtExceptionHandler h = (th, ex) -> System.out.println("Uncaught exception: " + ex);
@@ -28,10 +31,10 @@ public class ClientBooter {
 
 
         Window window = Window.get();
-        window.clientThread=clientThread;
+        //window.clientThread=clientThread;
         window.requests=requests;
         window.responses=responses;
-        window.run();
+        window.run(debugging);
 
 
 
