@@ -26,7 +26,13 @@ public class GameCamera extends Component {
     private Vector4f skyColor = new Vector4f(92.0f / 255.0f, 148.0f / 255.0f, 252.0f / 255.0f, 1.0f);
     private Vector4f undergroundColor = new Vector4f(0, 0, 0, 1);
 
-    public GameCamera(Camera gameCamera) {
+    public
+
+
+
+
+
+    GameCamera(Camera gameCamera) {
         this.gameCamera = gameCamera;
         this.clickOrigin = new Vector2f();
     }

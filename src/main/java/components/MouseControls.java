@@ -71,7 +71,7 @@ public class MouseControls extends Component {
 
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
-        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)) {
+        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)&& debounce < 0) {
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
             List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
             List<Integer> ids=new ArrayList<>();
