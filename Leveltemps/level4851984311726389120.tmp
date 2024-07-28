@@ -1,0 +1,7410 @@
+[
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.625,
+            "y": 4.625
+          },
+          "drawPos": {
+            "x": 7.625,
+            "y": 4.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.625,
+            "y": 4.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 36,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 45,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 54,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 63,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 72,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.625,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 7.625,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.625,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 37,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 46,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 55,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 64,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 73,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.625,
+            "y": 4.125
+          },
+          "drawPos": {
+            "x": 7.625,
+            "y": 4.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.625,
+            "y": 4.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 38,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 47,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 56,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 65,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 74,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.875,
+            "y": 4.125
+          },
+          "drawPos": {
+            "x": 7.875,
+            "y": 4.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.875,
+            "y": 4.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 39,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 48,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 57,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 66,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 75,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.875,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 7.875,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.875,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 40,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 49,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 58,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 67,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 76,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 8.125,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 8.125,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 8.125,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 41,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 50,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 59,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 68,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 77,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 8.125,
+            "y": 4.625
+          },
+          "drawPos": {
+            "x": 8.125,
+            "y": 4.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 8.125,
+            "y": 4.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 42,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 51,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 60,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 69,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 78,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 7.875,
+            "y": 4.625
+          },
+          "drawPos": {
+            "x": 7.875,
+            "y": 4.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 7.875,
+            "y": 4.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 43,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 52,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 61,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 70,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 79,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 8.125,
+            "y": 4.125
+          },
+          "drawPos": {
+            "x": 8.125,
+            "y": 4.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 8.125,
+            "y": 4.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 21,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 22,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 23,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 24,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 44,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 53,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 62,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 71,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 80,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 5.375,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 5.375,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 5.375,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 26,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 27,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 28,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 29,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [
+            {
+              "name": "Move",
+              "id": 1,
+              "mp": 0.0,
+              "type": "Move",
+              "targetable": true,
+              "description": "issues a move command"
+            },
+            {
+              "power": 0.5,
+              "name": "Heal",
+              "id": 3,
+              "mp": 100.0,
+              "type": "Heal",
+              "targetable": false,
+              "description": "restores 50%% missing hp|4 costs100mp"
+            },
+            {
+              "cost": {
+                "x": 50.0,
+                "y": 0.0,
+                "z": 0.0
+              },
+              "UnitName": "Peasant",
+              "name": "BuildPeasant",
+              "id": 9,
+              "mp": 0.0,
+              "type": "BuildPeasant",
+              "targetable": false,
+              "description": "Builds a Peasant costs"
+            }
+          ],
+          "guiRemoveAbility": [
+            "Remove ability",
+            "Move",
+            "Heal",
+            "BuildPeasant"
+          ],
+          "uid": 81,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 10.425001,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 10.425001,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 10.425001,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.44999892,
+            "y": 0.45000005
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 31,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 32,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 33,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.45,
+            "y": 0.45
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 34,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.625,
+            "y": 4.375
+          },
+          "drawPos": {
+            "x": 0.625,
+            "y": 4.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.625,
+            "y": 4.375
+          },
+          "scale": {
+            "x": 0.85,
+            "y": 0.85
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 103,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 104,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 105,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Base",
+        "properties": {
+          "range": 30.0,
+          "mineralDistance": 2.1,
+          "genned": false,
+          "ownedClusters": [],
+          "uid": 114,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.5,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 298,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -1.375,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": -1.375,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -1.375,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 137,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 164,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 191,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 218,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 245,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 272,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -1.125,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": -1.125,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -1.125,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 138,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 165,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 192,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 219,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 246,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 273,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.875,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": -0.875,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.875,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 139,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 166,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 193,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 220,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 247,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 274,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.625,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": -0.625,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.625,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 140,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 167,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 194,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 221,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 248,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 275,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.625,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": -0.625,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.625,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 141,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 168,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 195,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 222,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 249,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 276,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.375,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": -0.375,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.375,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 115,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 142,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 169,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 196,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 223,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 250,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.125,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": -0.125,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.125,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 116,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 143,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 170,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 197,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 224,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 251,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.125,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 0.125,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.125,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 117,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 144,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 171,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 198,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 225,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 252,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.375,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 0.375,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.375,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 118,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 145,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 172,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 199,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 226,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 253,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.625,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 0.625,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.625,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 119,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 146,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 173,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 200,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 227,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 254,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.875,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 0.875,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.875,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 120,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 147,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 174,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 201,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 228,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 255,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.125,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 1.125,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.125,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 121,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 148,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 175,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 202,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 229,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 256,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.375,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 1.375,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.375,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 122,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 149,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 176,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 203,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 230,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 257,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.625,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 1.625,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.625,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 123,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 150,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 177,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 204,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 231,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 258,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.875,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 1.875,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.875,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 124,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 151,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 178,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 205,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 232,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 259,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 2.125,
+            "y": 5.375
+          },
+          "drawPos": {
+            "x": 2.125,
+            "y": 5.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 2.125,
+            "y": 5.375
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 125,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 152,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 179,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 206,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 233,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 260,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -1.875,
+            "y": 6.125
+          },
+          "drawPos": {
+            "x": -1.875,
+            "y": 6.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -1.875,
+            "y": 6.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 126,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 153,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 180,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 207,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 234,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 261,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -1.375,
+            "y": 5.875
+          },
+          "drawPos": {
+            "x": -1.375,
+            "y": 5.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -1.375,
+            "y": 5.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 127,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 154,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 181,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 208,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 235,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 262,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.875,
+            "y": 5.875
+          },
+          "drawPos": {
+            "x": -0.875,
+            "y": 5.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.875,
+            "y": 5.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 128,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 155,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 182,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 209,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 236,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 263,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -0.125,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": -0.125,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -0.125,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 129,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 156,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 183,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 210,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 237,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 264,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.875,
+            "y": 5.125
+          },
+          "drawPos": {
+            "x": 0.875,
+            "y": 5.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.875,
+            "y": 5.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 130,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 157,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 184,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 211,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 238,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 265,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.625,
+            "y": 5.125
+          },
+          "drawPos": {
+            "x": 1.625,
+            "y": 5.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.625,
+            "y": 5.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 131,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 158,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 185,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 212,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 239,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 266,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 1.875,
+            "y": 5.125
+          },
+          "drawPos": {
+            "x": 1.875,
+            "y": 5.125
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 1.875,
+            "y": 5.125
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 132,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 159,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 186,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 213,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 240,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 267,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 2.375,
+            "y": 4.875
+          },
+          "drawPos": {
+            "x": 2.375,
+            "y": 4.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 2.375,
+            "y": 4.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 133,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 160,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 187,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 214,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 241,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 268,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 2.625,
+            "y": 4.875
+          },
+          "drawPos": {
+            "x": 2.625,
+            "y": 4.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 2.625,
+            "y": 4.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 134,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 161,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 188,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 215,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 242,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 269,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 2.875,
+            "y": 4.875
+          },
+          "drawPos": {
+            "x": 2.875,
+            "y": 4.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 2.875,
+            "y": 4.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 135,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 162,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 189,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 216,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 243,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 270,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 3.125,
+            "y": 4.875
+          },
+          "drawPos": {
+            "x": 3.125,
+            "y": 4.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 3.125,
+            "y": 4.875
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 109,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 110,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 111,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 112,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Worker",
+        "properties": {
+          "harvestAmount": 5.0,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 136,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [],
+          "guiRemoveAbility": [
+            "Remove ability"
+          ],
+          "uid": 163,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 190,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 9,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 217,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 244,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 271,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "Sprite_Object_Gen",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 6.375,
+            "y": 5.625
+          },
+          "drawPos": {
+            "x": 6.375,
+            "y": 5.625
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 6.375,
+            "y": 5.625
+          },
+          "scale": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 329,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 16.0,
+            "height": 16.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
+              "width": 112,
+              "height": 192
+            },
+            "texCoords": [
+              {
+                "x": 0.14285715,
+                "y": 0.8333333
+              },
+              {
+                "x": 0.14285715,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.75
+              },
+              {
+                "x": 0.0,
+                "y": 0.8333333
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 330,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 1.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": false,
+          "continuousCollision": 0,
+          "uid": 331,
+          "isactive": true
+        }
+      },
+      {
+        "type": "physics2d.components.Box2DCollider",
+        "properties": {
+          "halfSize": {
+            "x": 0.25,
+            "y": 0.25
+          },
+          "origin": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 332,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.CastAbilities",
+        "properties": {
+          "mp": 100.0,
+          "maxmp": 100.0,
+          "abilities": [
+            {
+              "name": "Move",
+              "id": 1,
+              "mp": 0.0,
+              "type": "Move",
+              "targetable": true,
+              "description": "issues a move command"
+            },
+            {
+              "mult": 3.0,
+              "lastActive": -10.0,
+              "duration": 10.0,
+              "keepSpeedPercent": 0.0,
+              "name": "Speed",
+              "id": 2,
+              "mp": 0.0,
+              "type": "Speed",
+              "targetable": false,
+              "description": "Incrases speed by 1900%% for 10 ...timeunits, costs 0mp"
+            },
+            {
+              "power": 0.5,
+              "name": "Heal",
+              "id": 3,
+              "mp": 100.0,
+              "type": "Heal",
+              "targetable": false,
+              "description": "restores 50%% missing hp for 100.0mp"
+            },
+            {
+              "race": 2,
+              "cost": {
+                "x": 150.0,
+                "y": 150.0,
+                "z": 150.0
+              },
+              "BuildName": "Base4",
+              "name": "BuildBase",
+              "id": 6,
+              "mp": 0.0,
+              "type": "BuildBase",
+              "targetable": true,
+              "description": "Builds a balanced base costs"
+            },
+            {
+              "cost": {
+                "x": 0.0,
+                "y": 500.0,
+                "z": 0.0
+              },
+              "BuildName": "Barracks",
+              "name": "BuildBarracks",
+              "id": 8,
+              "mp": 0.0,
+              "type": "BuildBarracks",
+              "targetable": true,
+              "description": "Builds a Barracks"
+            }
+          ],
+          "guiRemoveAbility": [
+            "Remove ability",
+            "Move",
+            "Speed",
+            "Heal",
+            "BuildBase",
+            "BuildBarracks",
+            "BuildBarracks"
+          ],
+          "uid": 338,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 30.0,
+          "maxHealth": 30.0,
+          "alliedM": 1,
+          "uid": 339,
+          "isactive": false
+        }
+      },
+      {
+        "type": "physics2d.components.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 1,
+          "lastmove": 1.0E7,
+          "timeoutafter": 100,
+          "Bigtimer": 90000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 340,
+          "isactive": true
+        }
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 2.0,
+          "alliedH": 1,
+          "attackSpeed": 0.1,
+          "nextSmak": 0.0,
+          "uid": 341,
+          "isactive": false
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "effects": [],
+          "uid": 342,
+          "isactive": true
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  }
+]

@@ -1,0 +1,7 @@
+health : 190
+
+costblood:40
+costmineral:100
+costmagic:0
+buildtime:12
+

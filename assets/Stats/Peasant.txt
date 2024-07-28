@@ -1,0 +1,12 @@
+health :50 
+dmage:7
+attackspeed: 1
+speed:2
+peasant harvestamount needs buff? (just a comment for testing not real oppinionn)
+harvestamount:5
+size:0.3
+
+costblood:50
+costmineral:0
+costmagic:0
+buildtime:3

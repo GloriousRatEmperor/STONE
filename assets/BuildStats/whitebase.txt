@@ -1,0 +1,7 @@
+health : 820
+size:5
+
+costblood:175
+costmineral:175
+costmagic:175
+buildtime:40

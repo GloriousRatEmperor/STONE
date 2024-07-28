@@ -1,0 +1,12 @@
+health :250
+dmage:75
+attackspeed: 2.5
+speed:1
+size:1
+
+
+
+costblood:0
+costmineral:250
+costmagic:0
+buildtime:8

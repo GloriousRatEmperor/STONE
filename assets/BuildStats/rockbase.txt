@@ -1,0 +1,8 @@
+health : 1200
+size:5.1
+
+
+costblood:0
+costmineral:500
+costmagic:0
+buildtime:52
