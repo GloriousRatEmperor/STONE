@@ -1,7 +1,7 @@
 package components;
 
-import Multiplayer.ServerData;
 import Abilitiess.*;
+import Multiplayer.ServerData;
 import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
@@ -15,26 +15,28 @@ public class CastAbilities extends Component {
     private float mp=100f;
     private float maxmp=100f;
     public List<Ability> abilities = new ArrayList<>();
-    public HashSet<Integer> abilityIds = new HashSet<>();
+    public transient HashSet<Integer> abilityIds = new HashSet<>();
     public String[] guiRemoveAbility =new String[]{};
     public CastAbilities Clone(){
         CastAbilities ablits=new CastAbilities();
+        mengui(ablits);
         return ablits;
     }
     public CastAbilities(){
         updateName();
     }
-    public Boolean isCastable(String name){
+    public Boolean isCastable(AbilityName type){
         for (Ability a : abilities) {
-            if (Objects.equals(a.name, name)) {
+            if (Objects.equals(a.getType(), type)) {
                 return a.Castable(mp);
             }
         }
         return false;
     }
     public void castAbility(ServerData data){
+        System.out.println( data.getstrValue());
             for (Ability a : abilities) {
-                if (Objects.equals(a.name, data.name)) {
+                if (Objects.equals(a.name, data.getstrValue())) {
                     if(a.Castable(mp)) {
                         a.cast(data, super.gameObject);
                         mp-=a.mp;
@@ -48,8 +50,7 @@ public class CastAbilities extends Component {
         List<Ability> corrpuptables= new ArrayList<>(abilities);
         for (Ability a :
              corrpuptables) {
-            PropelyDeserialized=getAbility(a.name);
-
+            PropelyDeserialized=getAbility(a.getType());
             Field[] fields = a.getClass().getDeclaredFields();
             try{
                 for (Field field : fields) {
@@ -82,34 +83,62 @@ public class CastAbilities extends Component {
         for (Ability a:
         abilities) {
             if(!((CastAbilities) master).abilityIds.contains(a.id)){
-                ((CastAbilities) master).addAbility(a.Copy());
+                Ability copy=a.Copy();
+                copy.description=a.description;
+                ((CastAbilities) master).addAbility(copy);
             }
 
         }
+
         ((CastAbilities) master).updateName();
     }
 
-    public Ability getAbility(String a){
-        Ability Ability=null;
-        switch (a){
-            case "Move" ->
-                Ability=new Move(a,1);
-            case "Speed" ->
-                Ability=new Speed(a,2);
-            case "Heal" ->
-                Ability=new Heal(a,3);
-            case "BuildUnit" ->
-                Ability=new BuildUnit(a,4);
+    public Ability getAbility(AbilityName a){
+        Ability ability=switch (a){
+            case Move ->
+                new Move(1);
+            case Speed ->
+                new Speed(2);
+            case Heal ->
+                new Heal(3);
+            case BuildRock ->
+                    new BuildRock(5);
+            case BuildBase ->
+                    new BuildBase(6);
+            case BuildTank ->
+                    new BuildTank(7);
+            case BuildBarracks ->
+                    new BuildBarracks(8);
+            case BuildPeasant ->
+                    new BuildPeasant(9);
+            case BuildWhilter ->
+                    new BuildWhitler(10);
+            case BuildWhisp ->
+                    new BuildWhisp(11);
+            default -> null;
 
-        }
-        if(Ability==null){
+        };
+        if(ability==null){
             System.out.println("OOPS WE DON'T HAVE NO SUCH ABILITY TYPE "+a+" HERE");
-
+            return null;
         }
-        return Ability;
+        ability.setName(a.toString());
+        ability.setType(a);
+        return ability;
     }
 
     public void addAbility(Ability Ability){
+        if(Ability==null){
+            System.out.println("wtf you tyina add bruv?");
+        }else {
+            abilities.add(Ability);
+            abilities.sort(Comparator.comparingInt(s -> s.id));
+            abilityIds.add( Ability.id);
+            updateName();
+        }
+    }
+    public void addAbility(AbilityName a){
+        Ability Ability=getAbility(a);
         if(Ability==null){
             System.out.println("wtf you tyina add bruv?");
         }else {
@@ -131,7 +160,7 @@ public class CastAbilities extends Component {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
-                        cast.addAbility(cast.getAbility(AbilityName.class.getEnumConstants()[index.get()].name()));
+                        cast.addAbility(cast.getAbility(AbilityName.class.getEnumConstants()[index.get()]));
 
                     }
 
@@ -141,11 +170,12 @@ public class CastAbilities extends Component {
         ImInt inde=new ImInt(0);
 
         if (ImGui.combo("Remove Ability",inde, guiRemoveAbility, guiRemoveAbility.length)) {
+            String name = guiRemoveAbility[inde.get()];
             if(inde.get()!=0) {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
-                        cast.removeAbility(guiRemoveAbility[inde.get()]);
+                        cast.removeAbility(name);
                     }
 
                 }

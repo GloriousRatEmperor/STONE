@@ -5,7 +5,7 @@ import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 
 public class Hitter extends Component {
-    public float dmg=1;
+    public float dmg=2;
     public int alliedH =0;
     public float attackSpeed=0.1f;
     public float nextSmak=0;
@@ -28,6 +28,13 @@ public class Hitter extends Component {
                 }
             }
         }
+    }
+    public Hitter(){
+
+    }
+    public Hitter(float attack, float attackSpeed){
+        dmg=attack;
+        this.attackSpeed=attackSpeed;
     }
     @Override
     public void update(float dt) {

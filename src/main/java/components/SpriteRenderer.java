@@ -1,7 +1,6 @@
 package components;
 
 import editor.JImGui;
-import imgui.ImGui;
 import jade.GameObject;
 import jade.Transform;
 import org.joml.Vector2f;
@@ -18,7 +17,7 @@ public class SpriteRenderer extends Component {
 
     private Vector4f color = new Vector4f(1, 1, 1, 1);
     private Sprite sprite = new Sprite();
-
+    public int shaderIndex=0;
     private transient Transform lastTransform;
     private transient boolean isDirty = true;
 
@@ -87,6 +86,9 @@ public class SpriteRenderer extends Component {
     public Vector2f[] getTexCoords() {
         return sprite.getTexCoords();
     }
+    public void setTexCoords(Vector2f[] newtex) {
+        sprite.setTexCoords(newtex);
+    }
     public Sprite getSprite() {
         return this.sprite;
     }
@@ -97,7 +99,7 @@ public class SpriteRenderer extends Component {
     }
 
     public void setColor(float r, float g, float b, float a) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!probably isn't rgba I'm guessing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!possibly isn't rgba I'm guessing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!this.color.equals(r,g,b,a)) {
             this.isDirty = true;
             this.color.set(r,g,b,a);

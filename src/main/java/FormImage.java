@@ -7,9 +7,10 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Objects;
 public class FormImage {
 
     public static void main(String[] args) throws IOException {
@@ -29,20 +30,42 @@ public class FormImage {
         File directoryPath = new File("assets/images/ImagesSplit");
 
         File[] fileList = directoryPath.listFiles();
-
+        ArrayList<File> imageFiles= new ArrayList<>();
         BufferedImage join=new BufferedImage(1,1,BufferedImage.TYPE_INT_ARGB);
         java.util.List<BufferedImage> imageList = new ArrayList<BufferedImage>();
         for (int i = 0; i < fileList.length; i++) {
             //fileList[i].renameTo(new File("assets/images/ImagesSplit/block"+ Integer.toString( i)+".png"));
             try {
-                BufferedImage img1 = ImageIO.read(fileList[i]);
-                imageList.add(img1);
+                File file=fileList[i];
+                String[] fileName = file.getName().split("\\.");
+
+                String fileType=fileName[fileName.length-1];
+                if(Objects.equals(fileType.charAt(fileType.length()-1),'~')){
+                    fileType = fileType.substring(0, fileType.length() - 1);
+                }
+
+                switch (fileType) {
+                    case ("png") :
+                            BufferedImage img1 = ImageIO.read(file);
+                            imageList.add(img1);
+                            imageFiles.add(file);
+                            break;
+                    case ("kra") :
+
+                        if(!file.renameTo(new File("assets/images/kras/"+file.getName()))){
+                         System.out.println("could not move file"+file.getName());
+                        }
+                        break;
+                    default:
+                        continue;
+
+                }
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
         }
-        join = joinBufferedImages(imageList, fileList);
+        join = joinBufferedImagesNew(imageList, imageFiles);
         try {
             boolean success = ImageIO.write(join, "png", new File("assets/images/spritesheets/" + "joined.png"));
             System.out.println("saved success? " + success);
@@ -83,20 +106,17 @@ public class FormImage {
             return newImage;
         }
 
-    public static BufferedImage joinBufferedImages(List<BufferedImage> image, File[] fileList) throws IOException {
-
-
-        //aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaah fuck I fucked it, but don't wanna kill all the time on just this so im leaving it
+    public static BufferedImage joinBufferedImagesNew(List<BufferedImage> image, ArrayList<File> fileList) throws IOException {
 
 
 
         image.sort((a1, a2) -> {
             return a2.getHeight() - a1.getHeight(); // biggest to smallest
         });
+
         java.util.List<Vector4i> space=new ArrayList<>();
         java.util.List<Vector4i> imgpos=new ArrayList<>();
-        int wid=0;
-        int height= 128;
+        int height= image.get(0).getHeight();
 
         int currentX=0;
         int currentY=0;
@@ -104,59 +124,89 @@ public class FormImage {
         boolean done;
 
 
-            for (BufferedImage img : image) {
-                done = false;
-                for (Vector4i cav : cave) {
-                    if (cav.x > img.getWidth()) {
-                        if (cav.y > img.getHeight()) {
-                            cav.x -= img.getWidth();
-                            imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), cav.z, cav.w));
-                            cav.z += img.getWidth();
-                        }
+        for (BufferedImage img : image) {
+            done = false;
+            for (Vector4i cav : cave) {
+                if (cav.x > img.getWidth()) {
+                    if (cav.y > img.getHeight()) {
+                        cav.x -= img.getWidth();
+                        imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), cav.z, cav.w));
+                        cav.z += img.getWidth();
+                        done=true;
+                        break;
                     }
                 }
+            }
+            if(!done) {
                 for (int c = 0; c < space.size(); c++) {
                     Vector4i v = space.get(c);
                     if (v.y() + img.getHeight() <= height) {
                         if (v.x() >= img.getWidth()) {
-                            space.add(new Vector4i(img.getWidth(), img.getHeight() + v.y, v.z, v.w));
+                            space.add(c, new Vector4i(img.getWidth(), img.getHeight() + v.y, v.z, v.w));
                             imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), v.z, v.w + v.y));
                             if (v.x() - img.getWidth() > 0) {
-                                space.add(new Vector4i(v.x() - img.getWidth(), v.y, v.z + img.getWidth(), v.w));
+                                space.add(c + 1, new Vector4i(v.x() - img.getWidth(), v.y, v.z + img.getWidth(), v.w));
                             }
                             space.remove(v);
+                            done = true;
+                            break;
 
                         } else {
-                            for (int u = c + 1; u < space.size(); u++) {
-                                Vector4i o = space.get(u);
-                                int ppo = Math.min(o.x, img.getHeight() - v.x);
-                                v.x += ppo;
-                                o.x -= ppo;
-                                if (o.x == 0) {
-                                    space.remove(o);
+                            int checkForPillars = v.x();
+                            boolean pillar = false;
+                            int ch = c + 1;
+                            while (ch < space.size()) {
+                                Vector4i b = space.get(ch);
+                                if (b.y() + img.getHeight() < height) {
+                                    checkForPillars += b.x;
                                 } else {
+                                    pillar = true;
                                     break;
                                 }
-
+                                ch++;
                             }
 
-                            if (v.x < img.getWidth()) {
-                                //make cave
-                                cave.add(new Vector4i(img.getWidth() - v.x, v.y, v.z + v.x, v.w));
+                            Boolean works = checkForPillars >= img.getWidth();
+                            if (works || !pillar) {
+                                for (int u = c + 1; u < space.size(); u++) {
+                                    Vector4i o = space.get(u);
+                                    int ppo = Math.min(o.x, img.getWidth() - v.x);
+                                    v.x += ppo;
+                                    o.x -= ppo;
+                                    if (o.x == 0) {
+                                        space.remove(o);
+                                        u--;
+                                    } else {
+                                        o.z += ppo;
+                                        break;
+                                    }
 
-                                space.add(new Vector4i(img.getWidth() - v.x, img.getHeight() + v.y, v.z + v.x, currentY));
-                                currentX += img.getWidth() - v.x;
+                                }
+//
+                                if (v.x < img.getWidth()) {
+                                    if (pillar) {
+                                        System.out.println("weird there be pillar but we making a cave wth");
+                                    }
+                                    //make cave
+                                    cave.add(new Vector4i(img.getWidth() - v.x, v.y, v.z + v.x, v.w));
 
-                                imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), v.z, currentY + v.y));
+                                    //space.add(new Vector4i(img.getWidth() - v.x, img.getHeight() + v.y, v.z + v.x, currentY));
+                                    currentX += img.getWidth() - v.x;
+                                    v.x = img.getWidth();
 
+
+                                    imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), v.z, currentY + v.y));
+
+                                } else {
+                                    imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), v.z, v.w + v.y));
+                                }
+                                v.y += img.getHeight();
+                                done = true;
+                                break;
                             } else {
-                                imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), v.z, v.w + v.y));
+                                c = ch - 1;
                             }
-                            v.y += img.getHeight();
-
                         }
-                        done = true;
-                        break;
                     }
 
                 }
@@ -165,10 +215,11 @@ public class FormImage {
                     imgpos.add(new Vector4i(img.getWidth(), img.getHeight(), currentX, currentY));
                     currentX += img.getWidth();
                 }
-
             }
 
-        wid=0;
+        }
+
+        int wid=0;
         for (Vector4i p:space){
 
             wid+=p.x;
@@ -203,7 +254,7 @@ public class FormImage {
 
                 if(iii.x==img.getWidth() && iii.y==img.getHeight()) {
                     //draw image
-                    map.put(iii.x +";"+ iii.y +";"+ iii.z +";"+ iii.w,fil.getName());
+                    map.put(iii.x +";"+ iii.y +";"+ iii.z +";"+ iii.w,fil.getName().toLowerCase());
                     g2.drawImage(img, null, iii.z, iii.w);
                     imgpos.remove(iii);
                     gud=true;
@@ -234,8 +285,6 @@ public class FormImage {
         bf.close();
         return newImage;
     }
-
-
 
         //full copy dunno how works, not needed now but later
     public static BufferedImage layerBufferedImage(BufferedImage img1,

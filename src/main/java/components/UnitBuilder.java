@@ -2,18 +2,20 @@ package components;
 
 import jade.GameObject;
 import jade.Transform;
-import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.Unit;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+
+import static jade.Window.getScene;
 
 public class UnitBuilder extends Component{
     public ArrayList<UNMADE> queue= new ArrayList<>();
     public int alliedB =1;
     public transient Transform tr;
-    private int time=0;
     @Override
     public UnitBuilder Clone(){
         return new UnitBuilder();
@@ -35,11 +37,13 @@ public class UnitBuilder extends Component{
     }
     @Override
     public void update(float dt){
-        time+=dt;
+
         if(!queue.isEmpty()){
             UNMADE unm=queue.get(0);
-            if(unm.time<time){
+            unm.time-=dt;
+            if(unm.time<0){
                 makeUnit(unm);
+                queue.remove(unm);
             }
         }
 
@@ -49,15 +53,52 @@ public class UnitBuilder extends Component{
     public void makeUnit(UNMADE unm) {
         Vector2f position = new Vector2f(tr.position);
         GameObject unit = Unit.make(unm.name,position, alliedB);
-        Window.getScene().addGameObjectToScene(unit);
+        getScene().addGameObjectToScene(unit);
     }
     public void addqueue(String UnitName, Vector3f cost){
-        UNMADE unm=new UNMADE(UnitName);
-        unm.time+=time;
-        queue.add(unm);
-        Window.addmoney(-cost.x, -cost.y, -cost.z);
-        queue.sort((s1, s2) -> (int) (s1.time-s2.time) );
+        if(getScene().addmoney(-cost.x, -cost.y, -cost.z)) {
+            UNMADE unm = new UNMADE(UnitName);
+            queue.add(unm);
+            queue.sort((s1, s2) -> (int) (s1.time - s2.time));
+        }
     }
+    @Override
+    public void mengui(Component master) {
+        for (UNMADE c :
+                queue) {
+            UNMADE clone = c.Clone();
+
+            Field[] fields = c.getClass().getDeclaredFields();
+            try {
+                for (Field field : fields) {
+
+                    boolean isTransient = Modifier.isTransient(field.getModifiers());
+                    boolean isFinal = Modifier.isFinal(field.getModifiers());
+                    if (isTransient || isFinal) {
+                        continue;
+                    }
+
+                    boolean isPrivate = Modifier.isPrivate(field.getModifiers());
+                    if (isPrivate) {
+                        field.setAccessible(true);
+                    }
+                    Object value = field.get(c);
+                    field.set(clone, value);
+                    if (isPrivate) {
+                        field.setAccessible(false);
+                    }
+                }
+            } catch (IllegalAccessException ex) {
+                System.out.println(c.getClass());
+
+                throw new RuntimeException(ex);
+            }
+
+            ((UnitBuilder) master).queue.add(clone);
+        }
+
+    }
+
 
 
 

@@ -28,6 +28,7 @@ public class PropertiesWindow {
     }
 
     public void imgui() {
+
         if (activeGameObjects.size() > 0 && activeGameObjects.get(0) != null) {
 
             ImGui.begin("Properties" , ImGuiWindowFlags.NoDocking);
@@ -40,8 +41,8 @@ public class PropertiesWindow {
                         }
                     }
                     for (GameObject go : activeGameObjects) {
-                        if (go.getComponent(MoveContollable.class) == null) {
-                            go.addComponent(new MoveContollable());
+                        if (go.getComponent(Mortal.class) == null) {
+                            go.addComponent(new Mortal());
                         }
                     }
                     for (GameObject go : activeGameObjects) {
@@ -56,10 +57,10 @@ public class PropertiesWindow {
                     }
                     for (GameObject go : activeGameObjects) {
                         if (go.getComponent(CircleCollider.class) == null) {
-                            if (go.getComponent(Box2DCollider.class) != null) {
-                                go.removeComponent(Box2DCollider.class);
+                            if (go.getComponent(Box2DCollider.class) == null) {
+                                go.addComponent(new CircleCollider());
                             }
-                            go.addComponent(new CircleCollider());
+
                         }
                     }
                     for(GameObject go : activeGameObjects) {
@@ -77,6 +78,13 @@ public class PropertiesWindow {
                         }
                     }
                 }
+                if (ImGui.menuItem("Add Worker")) {
+                    for (GameObject go : activeGameObjects) {
+                        if (go.getComponent(Worker.class) == null) {
+                            go.addComponent(new Worker());
+                        }
+                    }
+                }
                 if (ImGui.menuItem("Add Abilities")) {
                     for (GameObject go : activeGameObjects) {
                         if (go.getComponent(CastAbilities.class) == null) {
@@ -86,8 +94,8 @@ public class PropertiesWindow {
                 }
                     if (ImGui.menuItem("Add Mortal")) {
                         for (GameObject go : activeGameObjects) {
-                            if (go.getComponent(MoveContollable.class) == null) {
-                                go.addComponent(new MoveContollable());
+                            if (go.getComponent(Mortal.class) == null) {
+                                go.addComponent(new Mortal());
                             }
                         }
                     }
@@ -143,6 +151,13 @@ public class PropertiesWindow {
                         }
                     }
                 }
+                if (ImGui.menuItem("Add Base")) {
+                    for (GameObject go : activeGameObjects) {
+                        if (go.getComponent(Base.class) == null) {
+                            go.addComponent(new Base());
+                        }
+                    }
+                }
                 ImGui.endPopup();
             }
             ImInt inde=new ImInt(0);
@@ -160,7 +175,7 @@ public class PropertiesWindow {
                     MasterObject.removeComponent(cla);
                     updateComponentName();
                 }
-            };
+        };
 
             activeGameObjects=MasterObject.editMasterGui(activeGameObjects);
 
@@ -187,13 +202,10 @@ public class PropertiesWindow {
     }
 
     public void setActiveGameObject(GameObject go) {
+        clearSelected();
 
         if (go != null) {
-            clearSelected();
-            this.activeGameObjects.add(go);
-            MasterObject=go.mengui(MasterObject);
-            ids.add(go.getUid());
-            updateComponentName();
+            addActiveGameObject(go);
         }
     }
     private void updateComponentName(){
@@ -207,8 +219,13 @@ public class PropertiesWindow {
         componentNames = names.toArray(componentNames);
     }
     public void addActiveGameObject(GameObject go) {
-        this.activeGameObjects.add(go);
+        if(ids.isEmpty()){
+            go.menguiObject(MasterObject);
+        }
         MasterObject=go.mengui(MasterObject);
+
+        this.activeGameObjects.add(go);
+
         ids.add(go.getUid());
         updateComponentName();
     }

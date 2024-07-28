@@ -2,22 +2,14 @@ package components;
 
 import Multiplayer.ClientData;
 import editor.PropertiesWindow;
-import editor.Menu;
-import jade.GameObject;
-import jade.KeyListener;
-import jade.MouseListener;
-import jade.Window;
+import jade.*;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
-import org.joml.Vector4f;
-import org.lwjgl.system.CallbackI;
 import physics2d.components.MoveContollable;
 import renderer.DebugDraw;
 import renderer.PickingTexture;
 import scenes.Scene;
 import util.Settings;
-
-import jade.Time;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -25,12 +17,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
-import static jade.Window.get;
+import static jade.Window.*;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class MouseControls extends Component {
     GameObject holdingObject = null;
-    private float debounceTime = 0.2f;
+    private float debounceTime = 0.05f;
     private Time timer=new Time();
     private float last=0;
     private ArrayList<Vector2f> places= new ArrayList<>(10);
@@ -72,6 +64,7 @@ public class MouseControls extends Component {
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
         if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)&& debounce < 0) {
+            debounce=debounceTime;
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
             List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
             List<Integer> ids=new ArrayList<>();
@@ -81,20 +74,34 @@ public class MouseControls extends Component {
                 }
 
             }
-            Window.sendMove(position,ids);
-        }
-        else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
-            int x = (int)MouseListener.getScreenX();
-            int y = (int)MouseListener.getScreenY();
+            int x = (int) MouseListener.getScreenX();
+            int y = (int) MouseListener.getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
             GameObject pickedObj = currentScene.getGameObject(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
-                Window.getImguiLayer().getMenu().setActiveGameObject(pickedObj);
-            } else if (pickedObj == null && !MouseListener.isDragging()) {
-                Window.getImguiLayer().getMenu().clearSelected();
+                Window.sendMove(position,ids,gameObjectId);
+            }else {
+
+                Window.sendMove(position, ids);
             }
-            this.debounce = 0.2f;
-        } else if (MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
+        }
+        else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
+            if(casting){
+                activateCast();
+                this.debounce = debounceTime*3;
+            }else {
+                int x = (int) MouseListener.getScreenX();
+                int y = (int) MouseListener.getScreenY();
+                int gameObjectId = pickingTexture.readPixel(x, y);
+                GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+                if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
+                    Window.getImguiLayer().getMenu().setActiveGameObject(pickedObj);
+                } else if (pickedObj == null && !MouseListener.isDragging()) {
+                    Window.getImguiLayer().getMenu().clearSelected();
+                }
+                this.debounce = debounceTime / 2;
+            }
+        } else if (MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)&& debounce < 0) {
             if (!boxSelectSet) {
                 Window.getImguiLayer().getMenu().clearSelected();
                 boxSelectStart = MouseListener.getScreen();
@@ -196,7 +203,7 @@ public class MouseControls extends Component {
             } else if (pickedObj == null && !MouseListener.isDragging()) {
                 Window.getImguiLayer().getPropertiesWindow().clearSelected();
             }
-            this.debounce = 0.2f;
+            this.debounce =debounceTime/2;
         } else if (MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)) {
             if (!boxSelectSet) {
                 Window.getImguiLayer().getPropertiesWindow().clearSelected();

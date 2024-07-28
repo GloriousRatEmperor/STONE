@@ -67,13 +67,6 @@ public class Fireball extends Component {
         }
     }
 
-    @Override
-    public void preSolve(GameObject obj, Contact contact, Vector2f contactNormal) {
-        if (obj.getComponent(PlayerController.class) != null ||
-            obj.getComponent(Fireball.class) != null) {
-            contact.setEnabled(false);
-        }
-    }
 
     public void disappear() {
         this.gameObject.destroy();

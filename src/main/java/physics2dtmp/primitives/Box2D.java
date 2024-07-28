@@ -33,7 +33,16 @@ public class Box2D {
     public Vector2f[] getVertices() {
         Vector2f min = getLocalMin();
         Vector2f max = getLocalMax();
-
+        if (rigidbody.isflippedX()){
+            float mi=min.x;
+            min.x = max.x;
+            max.x = mi;
+        }
+        if (rigidbody.isflippedY()){
+            float mi=min.y;
+            min.y = max.y;
+            max.y = mi;
+        }
         Vector2f[] vertices = {
                 new Vector2f(min.x, min.y), new Vector2f(min.x, max.y),
                 new Vector2f(max.x, min.y), new Vector2f(max.x, max.y)

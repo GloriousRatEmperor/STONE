@@ -10,24 +10,28 @@ import Effects.SpeedUp;
 
 public class Speed extends Ability{
 
-    private float mult=2f;
-    public float lastActive=-1;
-    public float duration=100;
+    private float mult=3f;
+    public float lastActive;
+    public float duration=10;
     private float keepSpeedPercent=0;
     @Override
     public Speed Copy(){
-        Speed speed=new Speed(this.name,id);
+        Speed speed=new Speed(id);
         speed.mult=mult;
         speed.lastActive=lastActive;
         speed.keepSpeedPercent=keepSpeedPercent;
         return speed;
     }
 
-    public Speed(String a, int id) {
-        super(a,id);
-        mp=20;
+    public Speed( int id) {
+        super(id);
+        mp=0;
         Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
         sprite = AbilitySprites.getSprite(1);
+        setDesc("Incrases speed by "+ (Math.round(mult*100)-100)+"%% " +
+                "for " +(int)duration+" ...timeunits (about 0.89 seconds unless it's friday)");
+        lastActive=-duration;
+
     }
     @Override
     public void cast(ServerData data, GameObject self) {
@@ -41,6 +45,9 @@ public class Speed extends Ability{
 
     @Override
     public boolean Castable(float mp) {
-        return (mp>=super.mp& lastActive+duration>UniTime.getFrame());
+        System.out.println(lastActive);
+        System.out.println(UniTime.getFrame());
+        System.out.println("-------------");
+        return (mp>=super.mp& lastActive+duration<UniTime.getFrame());
     }
 }

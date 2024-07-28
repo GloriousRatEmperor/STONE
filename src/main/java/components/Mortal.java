@@ -3,8 +3,8 @@ package components;
 import physics2d.components.Rigidbody2D;
 
 public class Mortal extends Component {
-    public float health=20;
-    public float maxHealth=20;
+    public float health=30;
+    public float maxHealth=30;
 
     public int alliedM =0;
     private transient Rigidbody2D rb;
@@ -34,6 +34,12 @@ public class Mortal extends Component {
         this.alliedM = super.gameObject.allied;
     }
 
+    public Mortal(float health){
+        this.health = health;
+        maxHealth = health;
+    }
+    public Mortal(){
 
+    }
 
 }

@@ -86,16 +86,9 @@ public class Server extends ChannelInboundHandlerAdapter {
                 if (player.state==inactive){
                         player.state=waiting;
                         playerCount += 1;
-                    System.out.println(playerCount);
-                    System.out.println(maxPlayerCount);
                         if (playerCount == maxPlayerCount) {
                             maxPlayerCount+=playerCountAdd;
-                            ServerData ServerData = new ServerData();
-                            long curTime=System.currentTimeMillis();
-                            ServerData.setStart(curTime);
-                            time.setBeginTime(curTime);
-                            ServerData.setTime(time.getTime());
-                            ServerData.setName(ClientData.getName());
+
                             HashMap<Vector2i, Vector3i> map= new HashMap<>();
 
 
@@ -189,6 +182,12 @@ public class Server extends ChannelInboundHandlerAdapter {
                                 randchange/=dechaos;
                                 squarePositions.clear();
                             }
+                            ServerData ServerData = new ServerData();
+                            long curTime=System.currentTimeMillis();
+                            ServerData.setStart(curTime);
+                            time.setBeginTime(curTime);
+                            ServerData.setTime(time.getTime());
+                            ServerData.setName(ClientData.getName());
                             for (Player p:players) {
                                 int c=0;
                                 if(p.state==waiting) {
@@ -218,7 +217,17 @@ public class Server extends ChannelInboundHandlerAdapter {
                     System.out.println("already playing wtf");
                 }
             }
+            case "Move" -> {
 
+                ServerData ServerData = new ServerData();
+
+                ServerData.setTime(time.getTime() + delay);
+                ServerData.setIntValue(ClientData.getIntValue());
+                ServerData.setGameObjects(ClientData.getGameObjects());
+                ServerData.setName(ClientData.getName());
+                ServerData.setPos(ClientData.getPos());
+                toClients(ServerData);
+            }
             case "Cast" -> {
 
                 ServerData ServerData = new ServerData();

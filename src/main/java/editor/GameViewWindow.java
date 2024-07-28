@@ -4,6 +4,7 @@ import imgui.ImGui;
 import imgui.ImGuiStyle;
 import imgui.ImVec2;
 import imgui.flag.ImGuiWindowFlags;
+import imgui.type.ImInt;
 import jade.MouseListener;
 import jade.Window;
 import observers.EventSystem;
@@ -11,10 +12,47 @@ import observers.events.Event;
 import observers.events.EventType;
 import org.joml.Vector2f;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class GameViewWindow {
 
     private boolean isPlaying = false;
     private boolean windowIsHovered;
+    private String[] guiLevelsaves;
+    private String[] guiLevelLoads;
+    private String lastLevel="permalevel.txt";
+    public GameViewWindow(){
+        updateLevels();
+
+    }
+    private void updateLevels(){
+        ArrayList<String> guiLevels= new ArrayList();
+        File directoryPath = new File("ZlevelSaves");
+        String[] names= directoryPath.list();
+        guiLevels.add("Load");
+        guiLevels.addAll(Arrays.asList(names));
+
+
+        guiLevelLoads=new String[guiLevels.size()];
+        guiLevelLoads=guiLevels.toArray(guiLevelLoads);
+
+        guiLevels.set(0,"Save");
+
+        String levelname="level1.txt";
+        int levelnumber=1;
+        while (Arrays.stream(names).anyMatch(levelname::equals)){
+            levelnumber+=1;
+            levelname="level"+levelnumber+".txt";
+        }
+        guiLevels.add(levelname);
+
+        guiLevelsaves=new String[guiLevels.size()];
+        guiLevelsaves=guiLevels.toArray(guiLevelsaves);
+
+
+    }
 
     public void imgui(boolean playing) {
 
@@ -41,13 +79,44 @@ public class GameViewWindow {
         if (ImGui.menuItem("ScanForDupes", "", isPlaying, !isPlaying)) {
             EventSystem.notify(null, new Event(EventType.Scan));
         }
+        if (ImGui.menuItem("Load", "Ctrl+O")) {
+            Event event = new Event(EventType.LoadLevel);
+            event.strargs = lastLevel;
+            EventSystem.notify(null,event);
+        }
+
         if(!playing) {
             if (ImGui.menuItem("Save", "Ctrl+S")) {
-                EventSystem.notify(null, new Event(EventType.SaveLevel));
+
+                Event event = new Event(EventType.SaveLevel);
+                event.strargs = lastLevel;
+                EventSystem.notify(null, event);
             }
-            if (ImGui.menuItem("Load", "Ctrl+O")) {
-                EventSystem.notify(null, new Event(EventType.LoadLevel));
+        }
+        ImInt inde=new ImInt(0);
+        ImGui.setNextItemWidth(120);
+        if (ImGui.combo("",inde, guiLevelLoads, guiLevelLoads.length)) {
+            if(inde.get()!=0) {
+                Event event = new Event(EventType.ChangeLevel);
+                event.strargs = guiLevelLoads[inde.get()];
+                lastLevel=guiLevelLoads[inde.get()];
+                EventSystem.notify(null, event);
+                updateLevels();
             }
+        }
+        if(!playing) {
+            inde=new ImInt(0);
+            ImGui.setNextItemWidth(120);
+            if (ImGui.combo(".",inde, guiLevelsaves, guiLevelsaves.length)) {
+                if(inde.get()!=0) {
+                    Event event = new Event(EventType.SaveLevel);
+                    event.strargs = guiLevelsaves[inde.get()];
+                    lastLevel=guiLevelsaves[inde.get()];
+                    EventSystem.notify(null, event);
+                    updateLevels();
+                }
+            }
+
         }
         ImGui.endMenuBar();
 

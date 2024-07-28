@@ -4,23 +4,21 @@ import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 import components.*;
 import imgui.ImGui;
-import imgui.ImVec2;
-import jade.*;
-import org.joml.Vector2f;
-import physics2d.components.Box2DCollider;
-import physics2d.components.Rigidbody2D;
-import physics2d.enums.BodyType;
+import imgui.flag.ImGuiWindowFlags;
+import jade.GameObject;
 import util.AssetPool;
 
-import java.io.File;
-import java.util.Collection;
 import java.util.concurrent.BlockingQueue;
+
+import static jade.Window.getScene;
 
 public class LevelSceneInitializer extends SceneInitializer {
     private GameObject gamestuff;
+
     private Thread clientThread;
     private BlockingQueue<ClientData> requests;
     private BlockingQueue<ServerData> responses;
+
     public LevelSceneInitializer(Thread clientThread,BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
         this.clientThread=clientThread;
         this.requests=requests;
@@ -115,6 +113,25 @@ public class LevelSceneInitializer extends SceneInitializer {
 
     @Override
     public void imgui() {
+        imgui.ImGuiIO io = ImGui.getIO();
+        ImGui.setNextWindowSize(io.getDisplaySizeX()/8,io.getDisplaySizeY()/7);
+        ImGui.setNextWindowPos(0,100);
+        ImGui.begin("moneyshower9000" , ImGuiWindowFlags.MenuBar| ImGuiWindowFlags.NoResize
+                | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration);
+
+        if(ImGui.beginChild("Show",600,700,false, ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
+
+
+            ImGui.textWrapped("Blood "+ ((int) getScene().blood));
+            ImGui.textWrapped("Rocks "+((int)getScene().rock));
+            ImGui.textWrapped("Magic "+ ((int)getScene().magic));
+
+
+        }ImGui.endChild();
+        ImGui.end();
+
+
+
 
     }
 }

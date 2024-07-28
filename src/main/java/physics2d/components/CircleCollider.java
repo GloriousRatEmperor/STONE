@@ -3,7 +3,6 @@ package physics2d.components;
 import components.Component;
 import jade.Window;
 import org.joml.Vector2f;
-import physics2d.Physics2D;
 import renderer.DebugDraw;
 
 public class CircleCollider extends Component {
@@ -31,9 +30,9 @@ public class CircleCollider extends Component {
 
     @Override
     public void editorUpdateDraw() {
-        Vector2f center = new Vector2f(this.gameObject.transform.position).add(this.offset);
-        DebugDraw.addCircle(center, this.radius);
 
+            Vector2f center = new Vector2f(this.gameObject.transform.position).add(this.offset);
+            DebugDraw.addCircle(center, this.radius);
         if (resetFixtureNextFrame) {
             resetFixture();
         }

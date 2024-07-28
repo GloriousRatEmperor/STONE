@@ -7,6 +7,7 @@ public enum EventType {
     Scan,
 
     SaveLevel,
+    ChangeLevel,
     LoadLevel,
     UserEvent
 }

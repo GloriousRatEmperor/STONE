@@ -10,9 +10,11 @@ public class GameObjectDeserializer implements JsonDeserializer<GameObject> {
     public GameObject deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context) throws JsonParseException {
         JsonObject jsonObject = json.getAsJsonObject();
         String name = jsonObject.get("name").getAsString();
+        int allied = jsonObject.get("allied").getAsInt();
         JsonArray components = jsonObject.getAsJsonArray("components");
 
         GameObject go = new GameObject(name);
+        go.allied=allied;
         for (JsonElement e : components) {
             Component c = context.deserialize(e, Component.class);
             go.addComponent(c);

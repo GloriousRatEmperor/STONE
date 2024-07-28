@@ -21,10 +21,11 @@ public class MapSpriteSheet {
         Vector4i coord;
         for (String key: mappa.keySet()) {
             coord=mappa.get(key);
-            float topY = (coord.w + coord.y) / (float)texture.getHeight();
+            //invedrted y because it works????
+            float bottomY = ((float)texture.getHeight()-(coord.w + coord.y)) / (float)texture.getHeight();
             float rightX = (coord.z + coord.x) / (float)texture.getWidth();
             float leftX = coord.z / (float)texture.getWidth();
-            float bottomY = coord.w / (float)texture.getHeight();
+            float topY = ((float)texture.getHeight()-coord.w )/ (float)texture.getHeight();
 
             Vector2f[] texCoords = {
                     new Vector2f(rightX, topY),
@@ -37,13 +38,18 @@ public class MapSpriteSheet {
             sprite.setTexCoords(texCoords);
             sprite.setWidth(coord.x);
             sprite.setHeight(coord.y);
-            this.sprites.put(key,sprite);
+            if(!sprites.containsKey(key)) {
+                this.sprites.put(key, sprite);
+            }else{
+                System.out.println(key+" ALREADY EXISTS WHY U PUT HERE? PROBABLY HAVE 2 FILE WITH DIFFERENT CASE BUT THIS IS NOT KEY SENSITIVE BRUV");
+            }
             }
         }
 
 
     public Sprite getSprite(String name) {
-        return sprites.get(name);
+        return sprites.get(name.toLowerCase());
+
     }
 
 

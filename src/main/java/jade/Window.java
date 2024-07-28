@@ -6,10 +6,7 @@ import components.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-import org.joml.Vector3i;
-import org.joml.Vector4f;
+import org.joml.*;
 import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
@@ -30,6 +27,7 @@ import util.Unit;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -53,15 +51,16 @@ public class Window implements Observer {
     public ImGuiLayer imguiLayer;
 
     public Framebuffer framebuffer;
-    public HashMap<Vector2i, Vector3i> floor;
+    public static HashMap<Vector2i, Vector3i> floor;
 
 
     private boolean runtimePlaying = false;
     private float beginTime;
     private float endTime;
-    static int magic = 0;
-    static int blood=0;
-    static int rock=0;
+
+    public static ArrayList<Shader> Shaders = new ArrayList<Shader>();
+    public static boolean newFloor=false;
+
     private float dt;
     private final int nano=1000000000;
     boolean start=false;
@@ -69,7 +68,7 @@ public class Window implements Observer {
 
     private int physicsTimes;
     private float fractionPassed;
-    private float physicsStep;
+    public static float physicsStep;
     private float lastPhysics;
     private float starttime;
     private static Window window = null;
@@ -80,12 +79,15 @@ public class Window implements Observer {
 
     private static Scene currentScene;
     public Boolean debugging;
-
+    public static boolean casting;
+    private static List<Integer> targetIds;
+    private static String targetAbility;
     private Window() {
 
         this.width = 1920;
         this.height = 1080;
         EventSystem.addObserver(this);
+
     }
 
     public static void changeScene(SceneInitializer sceneInitializer) {
@@ -101,7 +103,10 @@ public class Window implements Observer {
         scened=true;
 
     }
+    public static void ChangeLevel(String lvlname){
+        FileUtil.copyFile("ZlevelSaves/"+lvlname,get().leveltemp.getPath(),true);
 
+    }
     public static Window get() {
         if (Window.window == null) {
             Window.window = new Window();
@@ -170,13 +175,13 @@ public class Window implements Observer {
         getImguiLayer().getMenu().allied=allied;
 
 
-        currentScene.save(false);
+        currentScene.save(null);
 
         Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
 
 
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-        Window.getScene().setFloor(floor,inputs.space,inputs.count);
+        Window.getScene().setFloor(floor);
 
         newInputs.setTime(0f);
 
@@ -197,12 +202,13 @@ public class Window implements Observer {
 
         Thread screen = new Thread(new Runnable() {
 
-
-            String title = "Jade";
+            String title = "Stone Throne";
             private long glfwWindow;
             private Shader defaultShader;
             private Shader groundShader;
             private Shader pickingShader;
+            private Shader invertedShader;
+            private Shader BlackShader;
             private PickingTexture pickingTexture;
 
             public void renderGame() throws NoSuchFieldException, InterruptedException {
@@ -219,7 +225,8 @@ public class Window implements Observer {
 
                 Renderer.bindShader(pickingShader);
 
-                currentScene.render();
+                currentScene.render(true);
+                imguiLayer.update(currentScene, runtimePlaying);
 
                 pickingTexture.disableWriting();
                 glEnable(GL_BLEND);
@@ -250,7 +257,7 @@ public class Window implements Observer {
                 }
                 // *end of dt condition
 
-                currentScene.render();
+                currentScene.render(false);
                 DebugDraw.draw();
 
                 framebuffer.unbind();
@@ -262,7 +269,7 @@ public class Window implements Observer {
 //                            GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
 
-                imguiLayer.update(currentScene, runtimePlaying);
+
 
 
                 glfwSwapBuffers(glfwWindow);
@@ -282,7 +289,7 @@ public class Window implements Observer {
                 glfwDefaultWindowHints();
                 glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
                 glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will be resizable
+                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will not be resizable
                 long monitor=glfwGetPrimaryMonitor();
                 final GLFWVidMode mode = glfwGetVideoMode(monitor);
                 // Create the window
@@ -370,11 +377,22 @@ public class Window implements Observer {
 
                 imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,leveltemp);
                 imguiLayer.initImGui();
-
-                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
                 groundShader= AssetPool.getShader("assets/shaders/GroundShader.glsl");
                 defaultShader= AssetPool.getShader("assets/shaders/default.glsl");
                 pickingShader= AssetPool.getShader("assets/shaders/pickingShader.glsl");
+                invertedShader=AssetPool.getShader("assets/shaders/Inverted.glsl");
+                BlackShader=AssetPool.getShader("assets/shaders/Blackcolor.glsl");
+
+
+
+                Shaders.add(defaultShader);
+                Shaders.add(BlackShader);
+                Shaders.add(invertedShader);
+                Shaders.add(pickingShader);
+                Shaders.add(groundShader);
+                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+
+
                 Unit.init();
                 while (!glfwWindowShouldClose(glfwWindow)) {
 
@@ -455,8 +473,10 @@ public class Window implements Observer {
             //actual physics n shite bein done here
 
             if (runtimePlaying) {
+
                 while (physicsTimes > 0) {
                     physicsTimes--;
+
                     currentScene.update(physicsStep, physicsTimes == 0);
 
                 }
@@ -477,6 +497,7 @@ public class Window implements Observer {
                     UniTime.setFrame(lastPhysics);
                     physicsTimes += 1;
                     beginTime = UniTime.getExact();
+
                 }
             }
             if(end){
@@ -497,6 +518,18 @@ public class Window implements Observer {
         clientData.setPos(pos);
         get().requests.add(clientData);
     }
+    public static void sendMove(Vector2f position,List<Integer> Ids,int targetId){
+
+        ClientData clientData = new ClientData();
+        clientData.setIntValue(targetId);
+        clientData.setName("Move");
+        clientData.setGameObjects(Ids);
+        List<Float> pos = new ArrayList<>();
+        pos.add(position.get(0));
+        pos.add(position.get(1));
+        clientData.setPos(pos);
+        get().requests.add(clientData);
+    }
 //    public static void sendBuild(String name,List<Integer> Ids){
 //
 //        ClientData clientData = new ClientData();
@@ -507,6 +540,7 @@ public class Window implements Observer {
 //        get().requests.add(clientData);
 //    }
     public static void sendCast(List<Integer> Ids,String AbilityName){
+        casting=false;
         ClientData clientData = new ClientData();
         clientData.setGameObjects(Ids);
         clientData.setName("Cast");
@@ -517,6 +551,17 @@ public class Window implements Observer {
         clientData.setPos(pos);
         get().requests.add(clientData);
     }
+    public static void targetCast(List<Integer> Ids,String AbilityName){
+        targetIds=Ids;
+        targetAbility=AbilityName;
+        casting=true;
+    }
+    public static void activateCast(){
+        sendCast(targetIds,targetAbility);
+    }
+    public static void cancelCast(){
+        casting=false;
+    }
 //    public static void sendSelfcast(List<Integer> Ids,String AbilityName){
 //
 //        ClientData clientData = new ClientData();
@@ -524,6 +569,20 @@ public class Window implements Observer {
 //        clientData.setGameObjects(Ids);
 //        get().requests.add(clientData);
 //    }
+    public static HashMap<Vector2i, Vector3i> getFloor(){
+        return floor;
+    }
+    public static Boolean checkIfNewFloor(){
+        if(newFloor){
+          newFloor=false;
+          return true;
+        }
+        return false;
+    }
+    public static void UpdateFloor(HashMap<Vector2i, Vector3i> flor){
+        floor=flor;
+        newFloor=true;
+    }
     public static int getWidth() {
         return 3840;//get().width;
     }
@@ -542,11 +601,6 @@ public class Window implements Observer {
 
     public static Framebuffer getFramebuffer() {
         return get().framebuffer;
-    }
-    public static void addmoney(float addblood, float addrock, float addmagic){
-        blood+=addblood;
-        rock+=addrock;
-        magic+=addmagic;
     }
 
     public static float getTargetAspectRatio() {
@@ -619,7 +673,12 @@ public class Window implements Observer {
 
             }
             case LoadLevel -> Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
-            case SaveLevel -> currentScene.save(true);
+            case SaveLevel -> currentScene.save(event.strargs);
+            case ChangeLevel -> {
+                ChangeLevel(event.strargs);
+                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+            }
+
         }
     }
 }

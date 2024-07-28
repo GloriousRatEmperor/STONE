@@ -1,14 +1,10 @@
 package jade;
 
 import components.Component;
-import components.SpriteRenderer;
-import components.StateMachine;
 import editor.JImGui;
 import org.joml.Vector2f;
-import renderer.Texture;
 
 import java.util.List;
-import java.util.Objects;
 
 public class Transform extends Component {
     public Transform Clone(){
@@ -16,19 +12,22 @@ public class Transform extends Component {
     }
     public Vector2f position;
     public Vector2f drawPos;
+    private boolean flippedX = false;
+    private boolean flippedY = false;
     public Vector2f pastPos;
     public Vector2f scale;
     public float rotation = 0.0f;
     public int zIndex;
-    public void updatePastPos(){pastPos=new Vector2f(position);};
+    public void updatePastPos(){pastPos.set(position);};
     @Override
     public void editorUpdateDraw(){
+
         updatePastPos();
     }
     public void updateDrawPos(float fraction){
 
-        drawPos.x=pastPos.x;
-        drawPos.y=pastPos.y;
+        drawPos.set(pastPos);
+
 //        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
 //        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
 
@@ -49,6 +48,7 @@ public class Transform extends Component {
     }
 
     public void init(Vector2f position, Vector2f scale) {
+
         this.position =new Vector2f(position);
         this.drawPos = new Vector2f(position);
         this.pastPos = new Vector2f(position);
@@ -88,7 +88,6 @@ public class Transform extends Component {
         Vector2f siz=new Vector2f(this.scale.x,this.scale.y);
         JImGui.drawVec2Control("Scale", this.scale, 32.0f);
         if(!siz.equals(this.scale)){
-            System.out.println(siz.x-scale.x);
             for (GameObject go : activegameObjects) {
                 Transform ccomp=go.getComponent(Transform.class);
                 if(ccomp!=null){
@@ -147,5 +146,47 @@ public class Transform extends Component {
         Transform t = (Transform)o;
         return t.position.equals(this.position) && t.scale.equals(this.scale) &&
                 t.rotation == this.rotation && t.zIndex == this.zIndex;
+    }
+    public boolean isflippedY() {
+
+        return flippedY;
+    }
+    public void setFlippedY(boolean direction) {
+        if(flippedY!=direction){
+           flipY();
+        }
+
+    }
+    public void flipX() {
+//        Vector2f[] texCoords= gameObject.getComponent(SpriteRenderer.class).getTexCoords();
+//        float mi=texCoords[0].x;
+//        texCoords[0].x = texCoords[2].x;
+//        texCoords[1].x = texCoords[3].x;
+//        texCoords[2].x = mi;
+//        texCoords[3].x = mi;
+//        gameObject.getComponent(SpriteRenderer.class).setTexCoords(texCoords);
+        flippedX=!flippedX;
+    }
+    public boolean isflippedX() {
+        return flippedX;
+    }
+    public void setFlippedX(boolean direction) {
+
+        if(flippedX!=direction){
+            flipX();
+        }
+    }
+    public void flipY() {
+//        Vector2f[] texCoords= gameObject.getComponent(SpriteRenderer.class).getTexCoords();
+//
+//        float mi=texCoords[0].y;
+//        texCoords[0].y = texCoords[1].y;
+//        texCoords[3].y = texCoords[1].y;
+//        texCoords[1].y = mi;
+//        texCoords[2].y = mi;
+//
+//        gameObject.getComponent(SpriteRenderer.class).setTexCoords(texCoords);
+
+        flippedY=!flippedY;
     }
 }

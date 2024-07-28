@@ -1,4 +1,5 @@
 package editor;
+
 import components.SpriteRenderer;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
@@ -9,12 +10,12 @@ import org.joml.Vector4f;
 import physics2d.components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 import renderer.PickingTexture;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
-
 public class Menu {
     private List<GameObject> activeGameObjects;
     GameObject MasterObject;
@@ -46,6 +47,7 @@ public class Menu {
     }
 
     public void imgui() throws NoSuchFieldException {
+
         if (activeGameObjects.size() > 0 && activeGameObjects.get(0) != null) {
             primairyObject = activeGameObjects.get(0);
             imgui.ImGuiIO io = ImGui.getIO();
@@ -98,6 +100,7 @@ public class Menu {
     }
 
     public void setActiveGameObject(GameObject go) {
+
         if (go != null) {
             clearSelected();
             this.activeGameObjects.add(go);
@@ -136,7 +139,6 @@ public class Menu {
 
 
     public void move(float x,float y,ArrayList<GameObject> gameObjects){
-
 
 
         for (GameObject go : gameObjects) {

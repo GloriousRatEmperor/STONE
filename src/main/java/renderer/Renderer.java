@@ -17,6 +17,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+import static jade.Window.checkIfNewFloor;
+import static jade.Window.getFloor;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
 import static org.lwjgl.opengl.GL13.glActiveTexture;
@@ -35,7 +37,6 @@ public class Renderer {
     private final int MAX_BATCH_SIZE = 1000;
     private List<RenderBatch> batches;
     private static Shader currentShader;
-    private HashMap<Vector2i, Integer> floor;
     private int FVbo;
     private int Vao;
     private int eboID;
@@ -47,7 +48,6 @@ public class Renderer {
 
         this.batches = new ArrayList<>();
     }
-
     public void add(GameObject go) {
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null) {
@@ -58,7 +58,7 @@ public class Renderer {
     private void add(SpriteRenderer sprite) {
         boolean added = false;
         for (RenderBatch batch : batches) {
-            if (batch.hasRoom() && batch.zIndex() == sprite.gameObject.transform.zIndex) {
+            if (batch.hasRoom() && batch.zIndex() == sprite.gameObject.transform.zIndex && batch.shaderId == sprite.shaderIndex) {
                 Texture tex = sprite.getTexture();
                 if (tex == null || (batch.hasTexture(tex) || batch.hasTextureRoom())) {
                     batch.addSprite(sprite);
@@ -70,7 +70,7 @@ public class Renderer {
 
         if (!added) {
             RenderBatch newBatch = new RenderBatch(MAX_BATCH_SIZE,
-                    sprite.gameObject.transform.zIndex, this);
+                    sprite.gameObject.transform.zIndex, this,sprite.shaderIndex);
             newBatch.start();
             batches.add(newBatch);
             newBatch.addSprite(sprite);
@@ -95,15 +95,20 @@ public class Renderer {
         return currentShader;
     }
 
-    public void render() {
+    public void render(Boolean picking) {
         currentShader.use();
         for (int i = 0; i < batches.size(); i++) {
             RenderBatch batch = batches.get(i);
-            batch.render();
+            batch.render(picking);
         }
     }
 
     public void renderFloor() {
+        if(checkIfNewFloor()){
+            HashMap<Vector2i,Vector3i> map=getFloor();
+            setFloor(map);
+        }
+
         currentShader.use();
 
         currentShader.uploadTexture("sampler",0);
@@ -132,9 +137,14 @@ public class Renderer {
         }
     }
 
-    public void setFloor(HashMap<Vector2i, Vector3i> map, int spacing, int count) {
+    public void setFloor(HashMap<Vector2i, Vector3i> map) {
+        int count=map.get(new Vector2i(0,1)).x;
+        int spacing=map.get(new Vector2i(0,1)).y;
         vertices= new float[count * count * 8];
         indices =generateIndices2(count);
+        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/background.png");
+        Sprite sprite =items.getSprite(0);
+        this.tex=sprite.getTexture();
         loadMap(map,spacing,count);
 
 
@@ -198,9 +208,7 @@ public class Renderer {
     }
 
     private void loadMap(HashMap<Vector2i, Vector3i> map,int spacing,int count) {
-        Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/background.png");
-        Sprite sprite =items.getSprite(0);
-        this.tex=sprite.getTexture();
+
         int offset = 0;
         int size=count*spacing;
         int c=1;

@@ -6,6 +6,7 @@ import org.joml.Vector2f;
 import physics2dtmp.primitives.Collider2D;
 
 public class Rigidbody2D extends Component {
+    // ???????????? there ARE TWO RIGIDBODIES WTH, I thinks this one be fake
     private Transform rawTransform;
     private Collider2D collider;
 
@@ -13,6 +14,8 @@ public class Rigidbody2D extends Component {
     private Vector2f pastPos = new Vector2f();
     private Vector2f drawPos = new Vector2f();
     private float rotation = 0.0f;
+    private boolean flippedX = false;
+    private boolean flippedY = false;
     private float mass = 0.0f;
     private float inverseMass = 0.0f;
 
@@ -79,9 +82,26 @@ public class Rigidbody2D extends Component {
     }
 
     public float getRotation() {
-        return rotation;
+        return rotation+100;
     }
-
+    public boolean isflippedY() {
+        return flippedY;
+    }
+    public void setFlippedY(boolean direction) {
+         flippedY=direction;
+    }
+    public void flipY() {
+        flippedY=!flippedY;
+    }
+    public boolean isflippedX() {
+        return flippedX;
+    }
+    public void setFlippedX(boolean direction) {
+        flippedX=direction;
+    }
+    public void flipX() {
+        flippedX=!flippedX;
+    }
     public float getMass() {
         return mass;
     }

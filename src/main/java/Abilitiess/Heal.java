@@ -7,22 +7,25 @@ import jade.GameObject;
 import util.AssetPool;
 
 public class Heal extends Ability{
+    private float power=0.5f;
     @Override
     public Heal Copy(){
-        Heal heal=new Heal(this.name,id);
+        Heal heal=new Heal(id);
         return heal;
     }
-    public Heal(String a, int id) {
-        super(a,id);
+    public Heal( int id) {
+        super(id);
         mp=100;
         Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
         sprite = AbilitySprites.getSprite(2);
+        setDesc("restores "+ Math.round(power*100)+"%% missing hp");
+
     }
     @Override
     public void cast(ServerData data, GameObject self) {
         Mortal mortal=self.getComponent(Mortal.class);
         if(mortal!=null){
-            mortal.health+= 0.5*(mortal.maxHealth-mortal.health);
+            mortal.health+= power*(mortal.maxHealth-mortal.health);
         }
 }
 }

@@ -7,22 +7,41 @@ import org.joml.Vector3f;
 import util.Img;
 
 public class BuildUnit extends Ability{
-    public Vector3f cost;
+    public Vector3f cost=new Vector3f(0,0,0);
     public String UnitName;
+    @Override
     public BuildUnit Copy(){
-        BuildUnit buildUnit=new BuildUnit(this.name,id);
+        BuildUnit buildUnit=new BuildUnit(id);
         return buildUnit;
     }
-    public BuildUnit(String a, int id) {
-        super(a, id);
+    public BuildUnit( int id) {
+        super(id);
         mp=0;
-        sprite= Img.get("build");
+        super.sprite= Img.get("build");
+        setDescription("Builds a ??UNIT??");
 
     }
     @Override
     public void cast(ServerData data, GameObject self){
-        System.out.println(data);
-        self.getComponent(UnitBuilder.class).addqueue(UnitName,cost);
+        UnitBuilder build= self.getComponent(UnitBuilder.class);
+        if (build!=null){
+            build.addqueue(UnitName,cost);
+        }
+    }
+    public void setDescription(String description) {
+        String bldcost="",rockcost="",magecost="";
+        if(cost.x!=0){
+            bldcost=cost.x+ " Blood";
+        }
+        if(cost.y!=0){
+            rockcost=cost.y+ " Rock";
+        }
+        if(cost.z!=0){
+            magecost=cost.z+ " Magic";
+        }
+        if(!bldcost.equals("") || !magecost.equals("")|| !rockcost.equals("")){
+            this.description= description+" costs";
+        }
     }
 
 

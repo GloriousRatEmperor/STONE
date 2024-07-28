@@ -5,5 +5,11 @@ public enum AbilityName {
     Move,
     Heal,
     Speed,
-    BuildUnit
+    BuildBase,
+    BuildBarracks,
+    BuildTank,
+    BuildWhisp,
+    BuildPeasant,
+    BuildWhilter,
+    BuildRock
 }

@@ -8,21 +8,19 @@ import observers.events.Event;
 import observers.events.EventType;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
+import physics2d.components.MoveContollable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
-import static jade.Window.get;
-
 public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
     private int ally;
-    public int space;
-    public int count;
+
     private long startTime=0;
     private Thread clientThread;
     public ServerInputs(Thread clientThread, BlockingQueue<ServerData> responses) {
@@ -70,7 +68,20 @@ public class ServerInputs extends Component {
     private void apply(ServerData serverData){
         switch (serverData.getName()) {
             case "Move" -> {
+
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                List<Float> pos= serverData.getPos();
+                GameObject target= Window.getScene().getGameObject(serverData.intValue);
+                if(target!=null){
+                    for (GameObject selectedObject : selectedObjects){
+                        selectedObject.getComponent(MoveContollable.class).moveCommand(target.transform);
+                    }
+                }
+                else {
+                    for (GameObject selectedObject : selectedObjects) {
+                        selectedObject.getComponent(MoveContollable.class).moveCommand(pos, selectedObject);
+                    }
+                }
                 Window.getImguiLayer().getMenu().move(serverData.getPos().get(0), serverData.getPos().get(1), selectedObjects);
             }
             case "start" -> {
@@ -79,10 +90,13 @@ public class ServerInputs extends Component {
                 setTime(startTime);
                 this.ally=serverData.getIntValue();
 
+                HashMap<Vector2i, Vector3i> newfloor= makeMap(serverData.getMap1(),serverData.getMap2(),serverData.getMap3());
 
-                get().floor=makeMap(serverData.getMap1(),serverData.getMap2(),serverData.getMap3());
-                space=serverData.getIntValue2();
-                count=serverData.getIntValue3();
+                int space=serverData.getIntValue2();
+                int count=serverData.getIntValue3();
+                newfloor.put(new Vector2i(0,1),new Vector3i(count,space,0));
+                Window.floor=newfloor;
+
             }
             case "Cast" -> {
                 ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
@@ -95,24 +109,6 @@ public class ServerInputs extends Component {
 
                 }
             }
-            case "Speed" -> {
-                List<Integer> obj=serverData.getGameObjects();
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(obj);
-                for (GameObject go:
-                        selectedObjects) {
-                    CastAbilities cast=go.getComponent(CastAbilities.class);
-                    if(cast!=null){
-                        cast.castAbility(serverData);
-                    }else {
-                        obj.remove(go.getUid());
-                    }
-
-                }
-                serverData.setName("slow");
-                serverData.setTime(time+5000);
-                responseList.add(serverData);
-            }
-
         }
     }
     public int getAlly(){

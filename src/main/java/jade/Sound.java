@@ -68,17 +68,17 @@ public class Sound {
         alDeleteBuffers(bufferId);
     }
 
-    public void play() {
-        int state = alGetSourcei(sourceId, AL_SOURCE_STATE);
-        if (state == AL_STOPPED) {
-            isPlaying = false;
-            alSourcei(sourceId, AL_POSITION, 0);
-        }
-
-        if (!isPlaying) {
-            alSourcePlay(sourceId);
-            isPlaying = true;
-        }
+    public void play() {     //sound is disabled for now me no want now me so it turned off
+//        int state = alGetSourcei(sourceId, AL_SOURCE_STATE);
+//        if (state == AL_STOPPED) {
+//            isPlaying = false;
+//            alSourcei(sourceId, AL_POSITION, 0);
+//        }
+//
+//        if (!isPlaying) {
+//            alSourcePlay(sourceId);
+//            isPlaying = true;
+//        }
     }
 
     public void stop() {

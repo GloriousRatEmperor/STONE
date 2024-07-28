@@ -1,7 +1,5 @@
 package physics2d;
 
-import components.Ground;
-import components.PlayerController;
 import jade.GameObject;
 import jade.Transform;
 import jade.Window;
@@ -10,12 +8,10 @@ import org.jbox2d.collision.shapes.PolygonShape;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
-import org.joml.Vector3f;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
 import physics2d.components.PillboxCollider;
 import physics2d.components.Rigidbody2D;
-import renderer.DebugDraw;
 
 public class Physics2D {
     private Vec2 gravity = new Vec2(0, 0);
@@ -229,7 +225,8 @@ public class Physics2D {
         Vector2f raycast2End = new Vector2f(raycastEnd).add(innerPlayerWidth, 0.0f);
         RaycastInfo info2 = Window.getPhysics().raycast(gameObject, raycast2Begin, raycast2End);
 
-        return (info.hit && info.hitObject != null && info.hitObject.getComponent(Ground.class) != null) ||
-                (info2.hit && info2.hitObject != null && info2.hitObject.getComponent(Ground.class) != null);
+//        return (info.hit && info.hitObject != null && info.hitObject.getComponent(Ground.class) != null) ||
+//                (info2.hit && info2.hitObject != null && info2.hitObject.getComponent(Ground.class) != null);
+        return false;
     }
 }

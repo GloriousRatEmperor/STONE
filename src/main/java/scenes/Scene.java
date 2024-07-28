@@ -11,6 +11,7 @@ import jade.GameObjectDeserializer;
 import jade.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
+import org.joml.Vector3d;
 import org.joml.Vector3i;
 import physics2d.Physics2D;
 import renderer.Renderer;
@@ -31,6 +32,7 @@ public class Scene {
 
     private Renderer renderer;
     private Camera camera;
+    private List<GameObject> bases=new ArrayList();
 
     private boolean isRunning;
     private List<GameObject> gameObjects;
@@ -42,6 +44,52 @@ public class Scene {
     private HashMap<Vector2i,Vector3i> floor;
 
     private SceneInitializer sceneInitializer;
+    public double magic = 0;
+    public double blood=0;
+    public double rock=0;
+    public Boolean addmoney(float addblood, float addrock, float addmagic){
+        if(-addblood<=blood&-addrock<=rock&-addmagic<=magic) {
+            blood += addblood;
+            rock += addrock;
+            magic += addmagic;
+            return true;
+        }
+        return false;
+    }
+    public void setMoney(float  setblood, float setrock, float setmagic){
+            blood = setblood;
+            rock = setrock;
+            magic = setmagic;
+    }
+    public boolean addmoney(Vector3d mineral){
+        if(-mineral.x<=blood&-mineral.y<=rock&-mineral.z<=magic) {
+            blood += mineral.x;
+            rock += mineral.y;
+            magic += mineral.z;
+            return true;
+        }
+        return false;
+    }
+
+    public void addBase(GameObject gameobject){
+        bases.add(gameobject);
+    }
+    public void removeBase(GameObject gameobject){
+        bases.remove(gameobject);
+    }
+    public GameObject getClosestBase(Vector2f position){
+        GameObject base=null;
+        double lastDistance=99999999;
+        for (GameObject go:bases){
+            double  distance = Math.sqrt( Math.pow( go.transform.position.x-position.x,2)+Math.pow( go.transform.position.y-position.y,2));
+            if (distance<lastDistance){
+                lastDistance=distance;
+                base=go;
+            }
+        }
+        return base;
+
+    }
 
     public Scene(SceneInitializer sceneInitializer, File leveltemp) {
         this.sceneInitializer = sceneInitializer;
@@ -49,7 +97,7 @@ public class Scene {
         this.renderer = new Renderer();
         this.gameObjects = new ArrayList<>();
         this.drawObjects = new ArrayList<>();
-        this.drawObjectsPending = new ArrayBlockingQueue<>(50);
+        this.drawObjectsPending = new ArrayBlockingQueue<>(5000);
         this.pendingObjects = new ArrayList<>();
         this.isRunning = false;
         this.leveltemp = leveltemp;
@@ -70,15 +118,15 @@ public class Scene {
             GameObject go = gameObjects.get(i);
             go.start();
             this.physics2D.add(go);
-            drawObjectsPending.add(go);
-//            drawObjects.add(go);
-//            this.renderer.add(go);
+            //drawObjectsPending.add(go);
+            drawObjects.add(go);
+            this.renderer.add(go);
         }
         isRunning = true;
     }
-    public void setFloor(HashMap<Vector2i, Vector3i> newmap, int spacing, int count){
+    public void setFloor(HashMap<Vector2i, Vector3i> newmap){
         floor=newmap;
-        renderer.setFloor(floor,spacing,count);
+        renderer.setFloor(floor);
     }
 
     public void addGameObjectToScene(GameObject go) {
@@ -180,7 +228,7 @@ public class Scene {
                 Transform tr = go.getComponent(Transform.class);
                 if (tr != null) {
                     if (tr.position.x != 0f) {
-                            tr.drawPos = new Vector2f(tr.position);
+                            tr.drawPos.set(tr.position);
                         }
                     }
 
@@ -278,7 +326,8 @@ public class Scene {
         }
         pendingObjects.clear();
     }
-    public void visualUpdate(float fractionPassed,boolean running) { //fractionpassed=dt/physicsframetime
+    public void visualUpdate(float fractionPassed,boolean running) throws InterruptedException { //fractionpassed=dt/physicsframetime
+
         this.camera.adjustProjection();
         if(!running) {
             for (GameObject go : pendingObjects) {
@@ -295,13 +344,13 @@ public class Scene {
             if(!go.isDead()) {
                 Transform tr = go.getComponent(Transform.class);
                 if (tr != null) {
-                    if (tr.position.x != 0f) {
+//                    if (tr.position.x != 0f) {
                         if(running) {
                             tr.updateDrawPos(fractionPassed);
                         }else{
-                            tr.drawPos=new Vector2f(tr.position);
+                            tr.drawPos.set(tr.position);
                         }
-                    }
+//                    }
                 }
                 if (running) {
                     go.runningUpdateDraw();
@@ -315,15 +364,15 @@ public class Scene {
                 drawObjects.remove(go);
             }
         }
-        for (GameObject go:drawObjectsPending) {
+        while (!drawObjectsPending.isEmpty()) {
+             GameObject go=drawObjectsPending.take();
             drawObjects.add(go);
             this.renderer.add(go);
         }
-        drawObjectsPending.clear();
     }
 
-    public void render() {
-        this.renderer.render();
+    public void render(Boolean picking) {
+        this.renderer.render(picking);
     }
     public void renderFloor() {
         this.renderer.renderFloor();
@@ -336,7 +385,12 @@ public class Scene {
     public void imgui() {
         this.sceneInitializer.imgui();
     }
-
+    public GameObject createGameObject(String name,Vector2f position) {
+        GameObject go = new GameObject(name);
+        go.addComponent(new Transform(position));
+        go.transform = go.getComponent(Transform.class);
+        return go;
+    }
     public GameObject createGameObject(String name) {
         GameObject go = new GameObject(name);
         go.addComponent(new Transform());
@@ -344,7 +398,7 @@ public class Scene {
         return go;
     }
 
-    public void save(boolean permanent) {
+    public void save(String file) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
@@ -354,8 +408,8 @@ public class Scene {
 
         try {
             FileWriter writer;
-            if (permanent){
-                writer = new FileWriter("permalevel.txt");
+            if (file!=null) {
+                writer = new FileWriter("ZlevelSaves/"+file);
             }else{
                 writer = new FileWriter(leveltemp);
             }
@@ -371,12 +425,12 @@ public class Scene {
         } catch(IOException e) {
             e.printStackTrace();
         }
-        if(permanent){
-            save(false);
+        if(file!=null) {
+            save(null);
         }
     }
 
-    public void load() {
+    public void load(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())

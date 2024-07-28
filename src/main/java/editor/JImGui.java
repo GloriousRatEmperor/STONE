@@ -166,7 +166,6 @@ public class JImGui {
 
         return valArr[0];
     }
-
     public static int dragInt(String label, int value) {
         ImGui.pushID(label);
 

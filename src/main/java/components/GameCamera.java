@@ -8,7 +8,6 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 
 public class GameCamera extends Component {
-    private transient GameObject player;
     private transient Camera gameCamera;
     private Vector2f clickOrigin;
     private float dragSensitivity = 30.0f;
@@ -39,7 +38,6 @@ public class GameCamera extends Component {
 
     @Override
     public void start() {
-        this.player = Window.getScene().getGameObjectWith(PlayerController.class);
         this.gameCamera.clearColor.set(skyColor);  // if this breaks the level save is probably broken
         this.undergroundYLevel = this.gameCamera.position.y -
                 this.gameCamera.getProjectionSize().y - this.cameraBuffer;

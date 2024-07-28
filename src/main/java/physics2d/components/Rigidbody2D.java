@@ -1,9 +1,6 @@
 package physics2d.components;
 
-import components.AnimationState;
 import components.Component;
-import imgui.ImGui;
-import imgui.type.ImString;
 import jade.Window;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.Body;
@@ -15,9 +12,12 @@ public class Rigidbody2D extends Component {
         return new Rigidbody2D();
     }
     public Vector2f velocity = new Vector2f();
-    public float angularDamping = 0.8f;
-    public float linearDamping = 0.9f;
+    public float angularDamping = 0.9f;
+    public float linearDamping = 1.0f;
+    public float moveDamping = 1.0f;
+    public float stopDamping = 80000000.0f;
     public float mass = 0;
+
     public BodyType bodyType = BodyType.Dynamic;
     public float friction = 0.1f;
     public float angularVelocity = 0.0f;
@@ -25,7 +25,7 @@ public class Rigidbody2D extends Component {
     public boolean isSensor = false;
 
     public boolean fixedRotation = false;
-    public boolean continuousCollision = true;
+    public int continuousCollision=0;
 
     public transient Body rawBody = null;
 
@@ -127,6 +127,9 @@ public class Rigidbody2D extends Component {
 
     public void setLinearDamping(float linearDamping) {
         this.linearDamping = linearDamping;
+        if (rawBody != null) {
+            this.rawBody.setLinearDamping(linearDamping);
+        }
     }
 
     public float getMass() {
@@ -154,10 +157,23 @@ public class Rigidbody2D extends Component {
     }
 
     public boolean isContinuousCollision() {
-        return continuousCollision;
+        switch (continuousCollision){
+            case(0):
+                return getSpeed()>=5;
+            case(1):
+                return true;
+            case(2):
+                return false;
+        }
+        System.out.println("WTF THIS HAS SUM WEIRD ASS CONINUOUS COLLISION OF "+continuousCollision);
+        return false;
+    }
+    public double getSpeed()  {
+        return Math.sqrt( Math.pow(velocity.x,2)+Math.pow(velocity.y,2));
+
     }
 
-    public void setContinuousCollision(boolean continuousCollision) {
+    public void setContinuousCollision(int continuousCollision) {
         this.continuousCollision = continuousCollision;
     }
 

@@ -29,6 +29,9 @@ public abstract class Component {
     public void mengui(Component mastercComponent){
 
     }
+    public void Interact(GameObject target) {
+
+    }
     public void start() {
 
     }
@@ -135,6 +138,32 @@ public abstract class Component {
                         field.set(this, newval);
 
                     }
+                } else if (type == double.class) {
+
+                    double valll = (double)value;
+                    float val = (float) valll;
+
+                    float newval = JImGui.dragFloat(name, val);
+                    if (val != newval) {
+                        for (GameObject go : activeGameObjects) {
+                            Component change = go.getComponent(this.getClass());
+                            if(change!=null) {
+                                Field fld = change.getClass().getDeclaredField(name);
+                                boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                if (cprivate) {
+                                    fld.setAccessible(true);
+                                }
+
+                                fld.set(change, (double) fld.get(this) + newval-val);
+                                if (cprivate) {
+                                    fld.setAccessible(false);
+                                }
+
+                            }
+                        }
+                        field.set(this, (double)newval);
+
+                    }
                 } else if (type == boolean.class) {
                     boolean val = (boolean) value;
                     if (ImGui.checkbox(name + ": ", val)) {
@@ -231,6 +260,10 @@ public abstract class Component {
 
                     float val = (float)value;
                     field.set(this, JImGui.dragFloat(name, val));
+                }else if (type == double.class) {
+
+                    float val = (float)value;
+                    field.set(this,(double) JImGui.dragFloat(name, val));
                 } else if (type == boolean.class) {
                     boolean val = (boolean)value;
                     if (ImGui.checkbox(name + ": ", val)) {
