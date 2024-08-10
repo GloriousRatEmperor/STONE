@@ -1,0 +1,11 @@
+health : 30
+dmage:15
+attackspeed: 1
+speed:2
+harvestamount:5
+size:0.2
+
+costblood:0
+costrock:0
+costmagic:50
+buildtime:3
