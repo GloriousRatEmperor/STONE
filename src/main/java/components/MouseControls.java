@@ -5,7 +5,7 @@ import editor.PropertiesWindow;
 import jade.*;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
-import physics2d.components.MoveContollable;
+import components.MoveContollable;
 import renderer.DebugDraw;
 import renderer.PickingTexture;
 import scenes.Scene;
@@ -180,11 +180,18 @@ public class MouseControls extends Component {
                         !(places.contains(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y)))) {
                     place();
                     places.add(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y));
-                    if (places.size()==10) {
+                    if (places.size()==3) {
                         places.remove(0);
                     }
-                } else if (!MouseListener.isDragging() && debounce < 0) {
+                } else if (!MouseListener.isDragging() && debounce < 0 &&
+                !blockInSquare(holdingObject.transform.position.x - halfWidth,
+                        holdingObject.transform.position.y - halfHeight)  &&
+                        !(places.contains(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y)))) {
                     place();
+                    places.add(new Vector2f(holdingObject.transform.position.x,holdingObject.transform.position.y));
+                    if (places.size()==3) {
+                        places.remove(0);
+                    }
                     debounce = debounceTime;
                 }
             }

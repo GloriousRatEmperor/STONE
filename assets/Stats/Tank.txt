@@ -7,6 +7,6 @@ size:1
 
 
 costblood:0
-costmineral:250
+costrock:250
 costmagic:0
 buildtime:8

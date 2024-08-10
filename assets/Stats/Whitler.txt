@@ -3,11 +3,11 @@ dmage:10
 attackspeed: 1.5
 speed:2
 peasant harvestamount needs buff? (just a comment for testing not real oppinionn)
-harvestamount:5
+harvestamount:500000
 size:0.3
 
 
 costblood:20
-costmineral:20
+costrock:20
 costmagic:20
 buildtime:1.8

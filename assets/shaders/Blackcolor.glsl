@@ -35,12 +35,6 @@ vec4 ones=vec4(1,1,1,1);
 void main()
 {
     if (fTexId > 0) {
-        // NOTE: If you're on AMD GPUs try commenting this line out and replacing it with
-        // the next few lines. The issue here is dynamic indexing is undefined behavior
-        // in GLSL, so this is not guaranteed to work on all hardware
-        //
-        // int id = int(fTexId);
-        // color = fColor * texture(uTextures[id], fTexCoords);
 
         int id = int(fTexId);
         switch (id) {
@@ -72,9 +66,9 @@ void main()
     } else {
         color = fColor;
     }
-
-    color[0]=(fColor *color[3]* (1-color))[0];
-    color[1]=(fColor *color[3]* (1-color))[1];
-    color[2]=(fColor *color[3]* (1-color))[2];
+    vec4 colorg=fColor *color[3]* (1-color);
+    color[0]=colorg[0];
+    color[1]=colorg[1];
+    color[2]=colorg[2];
 
 }

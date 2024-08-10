@@ -19,7 +19,7 @@ public class Ability {
     public String  name;
     public int id;
     public float mp=0;
-    public transient Sprite sprite;
+    public Sprite sprite;
     private AbilityName type;
     public Boolean targetable=false;
     public String description="??UNKNOWN ABILITY??";

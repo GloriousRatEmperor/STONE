@@ -6,9 +6,8 @@ import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
+import util.AssetPool;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.*;
 
 public class CastAbilities extends Component {
@@ -34,7 +33,6 @@ public class CastAbilities extends Component {
         return false;
     }
     public void castAbility(ServerData data){
-        System.out.println( data.getstrValue());
             for (Ability a : abilities) {
                 if (Objects.equals(a.name, data.getstrValue())) {
                     if(a.Castable(mp)) {
@@ -46,35 +44,10 @@ public class CastAbilities extends Component {
 
     }
     public void start(){
-        Ability PropelyDeserialized;
-        List<Ability> corrpuptables= new ArrayList<>(abilities);
-        for (Ability a :
-             corrpuptables) {
-            PropelyDeserialized=getAbility(a.getType());
-            Field[] fields = a.getClass().getDeclaredFields();
-            try{
-                for (Field field : fields) {
-                    boolean isTransient = Modifier.isTransient(field.getModifiers());
-                    if (isTransient) {
-                        continue;
-                    }
-
-                    boolean isPrivate = Modifier.isPrivate(field.getModifiers());
-                    if (isPrivate) {
-                        field.setAccessible(true);
-                    }
-                    Object value = field.get(a);
-                    field.set(PropelyDeserialized, value);
-                    if (isPrivate) {
-                        field.setAccessible(false);
-                    }
-                }
-            } catch (IllegalAccessException ex) {
-                throw new RuntimeException(ex);
+        for (Ability a : abilities) {
+            if (a.sprite.getTexture() != null) {
+                a.sprite.setTexture(AssetPool.getTexture(a.sprite.getTexture().getFilepath()));
             }
-
-            addAbility(PropelyDeserialized);
-            abilities.remove(a);
         }
 
     }
@@ -111,10 +84,10 @@ public class CastAbilities extends Component {
                     new BuildBarracks(8);
             case BuildPeasant ->
                     new BuildPeasant(9);
-            case BuildWhilter ->
+            case BuildWhitler ->
                     new BuildWhitler(10);
-            case BuildWhisp ->
-                    new BuildWhisp(11);
+            case BuildWisp ->
+                    new BuildWisp(11);
             default -> null;
 
         };
@@ -180,6 +153,7 @@ public class CastAbilities extends Component {
 
                 }
             }
+            this.removeAbility(name);
         };
         return activegameObjects;
     }

@@ -2,9 +2,8 @@ package Abilitiess;
 
 import Multiplayer.ServerData;
 import components.Mortal;
-import components.Spritesheet;
 import jade.GameObject;
-import util.AssetPool;
+import util.Img;
 
 public class Heal extends Ability{
     private float power=0.5f;
@@ -16,8 +15,7 @@ public class Heal extends Ability{
     public Heal( int id) {
         super(id);
         mp=100;
-        Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
-        sprite = AbilitySprites.getSprite(2);
+        sprite = Img.get("heal");
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");
 
     }

@@ -99,7 +99,6 @@ public class SpriteRenderer extends Component {
     }
 
     public void setColor(float r, float g, float b, float a) {
-        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!possibly isn't rgba I'm guessing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         if (!this.color.equals(r,g,b,a)) {
             this.isDirty = true;
             this.color.set(r,g,b,a);

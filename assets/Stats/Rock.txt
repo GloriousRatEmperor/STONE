@@ -3,10 +3,10 @@ dmage:16
 attackspeed: 3
 speed:2
 harvestamount:5
-size:0.45
+size:0.3
 
 
 costblood:0
-costmineral:50
+costrock:50
 costmagic:0
-buildtime:3
+buildtime:2.5

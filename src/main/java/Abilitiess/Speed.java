@@ -1,12 +1,11 @@
 package Abilitiess;
 
+import Effects.SpeedUp;
 import Multiplayer.ServerData;
 import components.Effects;
-import components.Spritesheet;
 import jade.GameObject;
-import util.AssetPool;
+import util.Img;
 import util.UniTime;
-import Effects.SpeedUp;
 
 public class Speed extends Ability{
 
@@ -26,8 +25,7 @@ public class Speed extends Ability{
     public Speed( int id) {
         super(id);
         mp=0;
-        Spritesheet AbilitySprites = AssetPool.getSpritesheet("assets/images/abilities.png");
-        sprite = AbilitySprites.getSprite(1);
+        sprite = Img.get("speed");
         setDesc("Incrases speed by "+ (Math.round(mult*100)-100)+"%% " +
                 "for " +(int)duration+" ...timeunits (about 0.89 seconds unless it's friday)");
         lastActive=-duration;
@@ -45,9 +43,6 @@ public class Speed extends Ability{
 
     @Override
     public boolean Castable(float mp) {
-        System.out.println(lastActive);
-        System.out.println(UniTime.getFrame());
-        System.out.println("-------------");
         return (mp>=super.mp& lastActive+duration<UniTime.getFrame());
     }
 }

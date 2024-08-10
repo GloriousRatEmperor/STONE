@@ -14,7 +14,7 @@ public class Rigidbody2D extends Component {
     public Vector2f velocity = new Vector2f();
     public float angularDamping = 0.9f;
     public float linearDamping = 1.0f;
-    public float moveDamping = 1.0f;
+    public float moveDamping = 0.0f;
     public float stopDamping = 80000000.0f;
     public float mass = 0;
 
@@ -70,7 +70,12 @@ public class Rigidbody2D extends Component {
             this.rawBody.setLinearVelocity(new Vec2(velocity.x, velocity.y));
         }
     }
-
+    public void setVelocity(float velocityX, float velocityY) {
+        this.velocity.set(velocityX,velocityY);
+        if (rawBody != null) {
+            this.rawBody.setLinearVelocity(new Vec2(velocity.x, velocity.y));
+        }
+    }
     public void setPosition(Vector2f newPos) {
         if (rawBody != null) {
             rawBody.setTransform(new Vec2(newPos.x, newPos.y), gameObject.transform.rotation);
@@ -125,7 +130,7 @@ public class Rigidbody2D extends Component {
         return linearDamping;
     }
 
-    public void setLinearDamping(float linearDamping) {
+        public void setLinearDamping(float linearDamping) {
         this.linearDamping = linearDamping;
         if (rawBody != null) {
             this.rawBody.setLinearDamping(linearDamping);

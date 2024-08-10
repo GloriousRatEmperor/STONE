@@ -2,7 +2,7 @@ package Abilitiess;
 
 import Multiplayer.ServerData;
 import jade.GameObject;
-import physics2d.components.MoveContollable;
+import components.MoveContollable;
 import util.Img;
 
 public class Move extends Ability{
@@ -14,7 +14,7 @@ public class Move extends Ability{
     public Move( int id) {
         super(id);
         mp=0;
-        sprite = Img.get("ability0");
+        sprite = Img.get("move");
         targetable=true;
         setDesc( "issues a move command");
     }

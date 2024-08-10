@@ -1,7 +1,5 @@
 package Abilitiess;
 
-import org.joml.Vector3f;
-
 public class BuildTank extends BuildUnit{
     @Override
     public BuildTank Copy(){
@@ -10,9 +8,7 @@ public class BuildTank extends BuildUnit{
         return buildUnit;
     }
     public BuildTank( int id) {
-        super(id);
-        super.UnitName="Tank";
-        super.cost=new Vector3f(0,75,0);
+        super(id,"Tank");
         setDescription("Builds a tanky rock");
     }
 }

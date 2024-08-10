@@ -1,7 +1,5 @@
 package Abilitiess;
 
-import org.joml.Vector3f;
-
 public class BuildRock extends BuildUnit{
     @Override
     public BuildRock Copy(){
@@ -10,9 +8,7 @@ public class BuildRock extends BuildUnit{
         return buildUnit;
     }
     public BuildRock(int id) {
-        super(id);
-        super.UnitName="Rock";
-        super.cost=new Vector3f(0,50,0);
+        super(id,"Rock");
         setDescription("Builds a Rock");
     }
 }

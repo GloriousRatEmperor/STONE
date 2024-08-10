@@ -26,7 +26,7 @@ public class Server extends ChannelInboundHandlerAdapter {
     private int playerCountAdd;
 
 
-    private int space=4096;
+    private int space=2048;
     private int count=1;
     private int colorMax=245;
     //allows for more precision due to there being intiger constraints

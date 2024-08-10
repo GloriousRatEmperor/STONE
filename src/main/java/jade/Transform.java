@@ -8,7 +8,7 @@ import java.util.List;
 
 public class Transform extends Component {
     public Transform Clone(){
-        return new Transform();
+        return new Transform(new Vector2f(this.position), new Vector2f(this.scale));
     }
     public Vector2f position;
     public Vector2f drawPos;
@@ -74,7 +74,8 @@ public class Transform extends Component {
         }
         Vector2f pos=new Vector2f(position.x,position.y);
         JImGui.drawVec2Control("Position", this.position);
-        if(pos!=this.position){
+
+        if(!pos.equals(position)){
             for (GameObject go : activegameObjects) {
                 Transform ccomp=go.getComponent(Transform.class);
                 if(ccomp!=null){

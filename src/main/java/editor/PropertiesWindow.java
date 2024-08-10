@@ -7,7 +7,7 @@ import imgui.type.ImInt;
 import jade.GameObject;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
-import physics2d.components.MoveContollable;
+import components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 import renderer.PickingTexture;
 

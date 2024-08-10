@@ -84,7 +84,18 @@ public class GameObject {
             components.get(i).Interact(target);
         }
     }
+    public void startMove(Transform target) {
+        for (int i=0; i < components.size(); i++) {
 
+            components.get(i).startMove(target);
+        }
+    }
+    public void stopMove() {
+        for (int i=0; i < components.size(); i++) {
+
+            components.get(i).stopMove();
+        }
+    }
     public void update(float dt) {
         for (int i=0; i < components.size(); i++) {
 
@@ -368,7 +379,7 @@ public class GameObject {
                                     fld.setAccessible(true);
                                 }
 
-                                fld.set(go, (int) fld.get(this) + newval-val);
+                                fld.set(go, (int) fld.get(go) + newval-val);
                                 if (cisPrivate) {
                                     fld.setAccessible(false);
                                 }
@@ -395,7 +406,7 @@ public class GameObject {
                                     fld.setAccessible(true);
                                 }
 
-                                fld.set(go, (float) fld.get(this) + newval-val);
+                                fld.set(go, (float) fld.get(go) + newval-val);
                                 if (cprivate) {
                                     fld.setAccessible(false);
                                 }
@@ -420,7 +431,7 @@ public class GameObject {
                                 fld.setAccessible(true);
                             }
 
-                            fld.set(go, (double) fld.get(this) + newval-val);
+                            fld.set(go, (double) fld.get(go) + newval-val);
                             if (cprivate) {
                                 fld.setAccessible(false);
                             }
@@ -447,7 +458,23 @@ public class GameObject {
                     }
                 } else if (type == Vector2f.class) {
                     Vector2f val = (Vector2f) value;
+                    Vector2f past=new Vector2f(val);
                     JImGui.drawVec2Control(name, val);
+                    if(!past.equals(val)){
+                        for (GameObject go : activeGameObjects) {
+                            Field fld = go.getClass().getDeclaredField(name);
+                            boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                            if (cprivate) {
+                                fld.setAccessible(true);
+                            }
+                            Vector2f aval=(Vector2f) fld.get(go);
+                            aval.set(aval.x-past.x+val.x,aval.y-past.y+val.y);
+                            if (cprivate) {
+                                fld.setAccessible(false);
+                            }
+
+                        }
+                    }
                 } else if (type == Vector3f.class) {
                     Vector3f val = (Vector3f) value;
                     float[] imVec = {val.x, val.y, val.z};
@@ -500,6 +527,9 @@ public class GameObject {
                         field.setAccessible(true);
                     }
                     Object value = field.get(c);
+                    if(field.getType()==Vector2f.class){
+                        value=new Vector2f(((Vector2f) value));
+                    }
                     field.set(clone, value);
                     if (isPrivate) {
                         field.setAccessible(false);
@@ -559,6 +589,7 @@ public class GameObject {
     public GameObject copy() {
         // TODO: come up with cleaner solution
         Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Ability.class, new AbilityDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()

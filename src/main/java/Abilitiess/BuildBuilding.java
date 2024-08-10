@@ -29,6 +29,14 @@ public class BuildBuilding extends Ability{
         }
     }
 
+    public BuildBuilding( int id,String name) {
+        super( id);
+        cost=Unit.getBuildCost(name);
+        setDesc( "Builds a ??"+name+"?");
+        targetable=true;
+        mp=0;
+        super.sprite= Img.get(name);
+    }
     public BuildBuilding( int id) {
         super( id);
         setDesc( "Builds a ??UNKNOWN??");
@@ -49,7 +57,9 @@ public class BuildBuilding extends Ability{
              magecost=cost.z+ " Magic";
         }
         if(!bldcost.equals("") || !magecost.equals("")|| !rockcost.equals("")){
-            this.description= description+" costs";
+            this.description= description+"|4 costs"+bldcost+rockcost+magecost;
+        }else{
+            this.description= description;
         }
     }
 }

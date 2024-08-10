@@ -1,6 +1,7 @@
 package components;
 
 import jade.MineralCluster;
+import org.joml.Vector2i;
 import org.joml.Vector3i;
 
 public class Mineral extends Component{
@@ -10,6 +11,7 @@ public class Mineral extends Component{
     }
     public Vector3i minerals;
     private MineralCluster cluster;
+    private Vector2i origin;
     public Base getTiedBase(){
         return cluster.owner;
     }
@@ -18,7 +20,7 @@ public class Mineral extends Component{
         deplete();
     }
     public void deplete(){
-        cluster.minerals.remove(super.gameObject);
+        cluster.removeMineral(super.gameObject);
     }
     public Mineral(){
     }
@@ -30,5 +32,8 @@ public class Mineral extends Component{
     }
     public Mineral(MineralCluster cluster){
         this.cluster = cluster;
+    }
+    public void setOrigin(Vector2i origin){
+        this.origin=origin;
     }
 }

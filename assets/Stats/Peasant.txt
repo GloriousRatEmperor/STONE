@@ -7,6 +7,6 @@ harvestamount:5
 size:0.3
 
 costblood:50
-costmineral:0
+costrock:0
 costmagic:0
 buildtime:3

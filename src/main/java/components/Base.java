@@ -11,12 +11,11 @@ import util.Unit;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static jade.Window.*;
 
 public class Base extends Component{
-    private float range=30f;
+    private float range=15f;
 
     private float mineralDistance=2.1f;
     private boolean genned=false;
@@ -24,7 +23,15 @@ public class Base extends Component{
 
 
 
-
+    public MineralCluster assignMineral(){
+        if(ownedClusters.isEmpty()){
+            return null;
+        }
+        return ownedClusters.get(0);
+    }
+    public void removeCluster(MineralCluster mineralCluster){
+        ownedClusters.remove(mineralCluster);
+    }
     public Base Clone(){
         Base base=new Base();
         return base;
@@ -37,6 +44,8 @@ public class Base extends Component{
             Base nearbase=nearest.getComponent(Base.class);
             ownedClusters.forEach(e -> e.owner = nearbase);
             nearbase.ownedClusters.addAll(ownedClusters);
+        }else{
+            ownedClusters.forEach(e -> e.owner = null);
         }
         ownedClusters.clear();
 
@@ -67,37 +76,43 @@ public class Base extends Component{
                 if(distance<range){
                     int posx=point.x+i*spacing;
                     int posy=point.y+b*spacing;
-                    Vector3i color=floor.get(new Vector2i(posx ,posy));
-                    if(color!=null& !Objects.equals(color, new Vector3i(0, 0, 0))){}{
-                        float minX=(float)((posx-position.x)/distance*mineralDistance+position.x);
-                        float minY=(float)((posy-position.y)/distance*mineralDistance+position.y);
-                        int biggest;
+                    Vector2i pos=new Vector2i(posx ,posy);
+                    Vector3i color=floor.get(pos);
+                    if(color!=null){
+                        if (color.x + color.y + color.z != 0) {
+                            float minX = (float) ((posx - position.x) / distance * mineralDistance + position.x);
+                            float minY = (float) ((posy - position.y) / distance * mineralDistance + position.y);
+                            int biggest;
 
-                        if(color.get(0)>color.get(1)){
-                            if(color.get(0)>color.get(2)){
-                                biggest=0;
+                            if (color.get(0) > color.get(1)) {
+                                if (color.get(0) > color.get(2)) {
+                                    biggest = 0;
 
-                            }else{
-                                biggest=2;
+                                } else {
+                                    biggest = 2;
+                                }
+                            } else if (color.get(1) > color.get(2)) {
+                                biggest = 1;
+
+                            } else {
+                                biggest = 2;
                             }
-                        } else if (color.get(1)>color.get(2)) {
-                            biggest=1;
 
-                        }else{
-                            biggest=2;
+
+                            GameObject mineral = Unit.make("Mineral" + biggest, new Vector2f(minX, minY), 1);
+                            mineral.name = "M";
+
+                            Mineral miner = mineral.getComponent(Mineral.class);
+                            mineral.getComponent(SpriteRenderer.class).setColor(color.x/255f, color.y/255f, color.z/255f, 1);
+                            miner.minerals = color.mul(10);
+                            miner.setOrigin(pos);
+                            miner.setCluster(cluster);
+                            mineral.getComponent(SpriteRenderer.class).shaderIndex = 1;
+                            Window.getScene().addGameObjectToScene(mineral);
+
+                            cluster.addMineral(mineral);
+                            floor.replace(pos, new Vector3i(0, 0, 0));
                         }
-
-
-                        GameObject mineral=Unit.make("Mineral"+biggest, new Vector2f(minX, minY),1);
-                        mineral.name="M";
-                        Mineral miner=mineral.getComponent(Mineral.class);
-                        miner.minerals=color;
-                        miner.setCluster(cluster);
-                        mineral.getComponent(SpriteRenderer.class).shaderIndex=1;
-                        Window.getScene().addGameObjectToScene(mineral);
-                        mineral.getComponent(SpriteRenderer.class).setColor(color.x/255f, color.y/255f, color.z/255f,1);
-                        cluster.addMineral(mineral);
-                        floor.replace(new Vector2i(posx ,posy), new Vector3i(0, 0, 0));
                     }
                 }
             }

@@ -223,8 +223,8 @@ public class Renderer {
                 Vector3i color = map.get(pos);
 
                 // Load position
-                vertices[offset] =pos.x/2f;
-                vertices[offset + 1] = pos.y/2f;
+                vertices[offset] =pos.x;
+                vertices[offset + 1] = pos.y;
 
                 // Load color
                 vertices[offset + 2] = color.x/255f;

@@ -5,20 +5,23 @@ import components.UnitBuilder;
 import jade.GameObject;
 import org.joml.Vector3f;
 import util.Img;
+import util.Unit;
 
 public class BuildUnit extends Ability{
-    public Vector3f cost=new Vector3f(0,0,0);
+    public Vector3f cost;
     public String UnitName;
     @Override
     public BuildUnit Copy(){
-        BuildUnit buildUnit=new BuildUnit(id);
+        BuildUnit buildUnit=new BuildUnit(id,this.UnitName);
         return buildUnit;
     }
-    public BuildUnit( int id) {
+    public BuildUnit( int id,String unitName) {
         super(id);
+        cost= Unit.getCost(unitName);
+        UnitName=unitName;
         mp=0;
-        super.sprite= Img.get("build");
-        setDescription("Builds a ??UNIT??");
+        super.sprite= Img.get(UnitName);
+        setDescription("Builds a ??"+UnitName+"??");
 
     }
     @Override
@@ -31,16 +34,18 @@ public class BuildUnit extends Ability{
     public void setDescription(String description) {
         String bldcost="",rockcost="",magecost="";
         if(cost.x!=0){
-            bldcost=cost.x+ " Blood";
+            bldcost=cost.x+ " Blood ";
         }
         if(cost.y!=0){
-            rockcost=cost.y+ " Rock";
+            rockcost=cost.y+ " Rock ";
         }
         if(cost.z!=0){
-            magecost=cost.z+ " Magic";
+            magecost=cost.z+ " Magic ";
         }
-        if(!bldcost.equals("") || !magecost.equals("")|| !rockcost.equals("")){
-            this.description= description+" costs";
+        if(!bldcost.equals("")||!magecost.equals("")||!rockcost.equals("")) {
+            this.description = description + "|2 costs: " +bldcost+rockcost+magecost;
+        }else{
+            this.description = description;
         }
     }
 

@@ -4,6 +4,7 @@ import editor.JImGui;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
+import jade.Transform;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -35,6 +36,13 @@ public abstract class Component {
     public void start() {
 
     }
+    public void startMove(Transform target) {
+
+    }
+    public void stopMove() {
+
+    }
+
 
     public void update(float dt) {
 
@@ -101,7 +109,7 @@ public abstract class Component {
                                     fld.setAccessible(true);
                                 }
 
-                                fld.set(change, (int) fld.get(this) + newval-val);
+                                fld.set(change, (int) fld.get(change) + newval-val);
 
                                 if (cisPrivate) {
                                     fld.setAccessible(false);
@@ -128,7 +136,7 @@ public abstract class Component {
                                     fld.setAccessible(true);
                                 }
 
-                                fld.set(change, (float) fld.get(this) + newval-val);
+                                fld.set(change, (float) fld.get(change) + newval-val);
                                 if (cprivate) {
                                     fld.setAccessible(false);
                                 }
@@ -144,6 +152,7 @@ public abstract class Component {
                     float val = (float) valll;
 
                     float newval = JImGui.dragFloat(name, val);
+
                     if (val != newval) {
                         for (GameObject go : activeGameObjects) {
                             Component change = go.getComponent(this.getClass());
@@ -154,7 +163,7 @@ public abstract class Component {
                                     fld.setAccessible(true);
                                 }
 
-                                fld.set(change, (double) fld.get(this) + newval-val);
+                                fld.set(change, (double) fld.get(change) + newval-val);
                                 if (cprivate) {
                                     fld.setAccessible(false);
                                 }
@@ -181,7 +190,26 @@ public abstract class Component {
                     }
                 } else if (type == Vector2f.class) {
                     Vector2f val = (Vector2f) value;
+                    Vector2f past=new Vector2f(val);
                     JImGui.drawVec2Control(name, val);
+                    if(!past.equals(val)){
+                        for (GameObject go : activeGameObjects) {
+                            Component change = go.getComponent(this.getClass());
+                            if(change!=null) {
+                                Field fld = change.getClass().getDeclaredField(name);
+                                boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                if (cprivate) {
+                                    fld.setAccessible(true);
+                                }
+                                Vector2f aval = (Vector2f) fld.get(change);
+                                aval.set(aval.x - past.x + val.x, aval.y - past.y + val.y);
+                                if (cprivate) {
+                                    fld.setAccessible(false);
+                                }
+                            }
+
+                        }
+                    }
                 } else if (type == Vector3f.class) {
                     Vector3f val = (Vector3f) value;
                     float[] imVec = {val.x, val.y, val.z};

@@ -24,8 +24,22 @@ public class MineralCluster {
         minerals.add(mineral);
         mineralCount++;
     }
-    public void removeMineral(GameObject mineral){
-        minerals.remove(mineral);
+    public Boolean removeMineral(GameObject mineral){//returns isEmpty
+        if(minerals.contains(mineral)) {
+            minerals.remove(mineral);
+            mineralCount--;
+
+            if (isEmpty()) {
+                if(owner!=null){
+                    owner.removeCluster(this);
+                }
+                return true;
+            } else {
+
+                return false;
+            }
+        }return isEmpty();
+
     }
     public Boolean isEmpty(){
         return minerals.isEmpty();

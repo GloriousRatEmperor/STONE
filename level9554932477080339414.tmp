@@ -156,7 +156,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 233,
@@ -353,7 +353,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 234,
@@ -536,7 +536,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 235,
@@ -709,7 +709,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 236,
@@ -882,7 +882,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 237,
@@ -1055,7 +1055,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 238,
@@ -1228,7 +1228,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 239,
@@ -1401,7 +1401,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 240,
@@ -1574,7 +1574,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 241,
@@ -1747,7 +1747,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 242,
@@ -1920,7 +1920,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 243,
@@ -2093,7 +2093,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 244,
@@ -2266,7 +2266,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 245,
@@ -2439,7 +2439,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 246,
@@ -2612,7 +2612,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 247,
@@ -2785,7 +2785,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 248,
@@ -2958,7 +2958,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 249,
@@ -3131,7 +3131,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 250,
@@ -3304,7 +3304,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 251,
@@ -3491,7 +3491,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 252,
@@ -3674,7 +3674,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 253,
@@ -3847,7 +3847,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 254,
@@ -4020,7 +4020,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 255,
@@ -4193,7 +4193,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 256,
@@ -4366,7 +4366,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 257,
@@ -4539,7 +4539,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 258,
@@ -4712,7 +4712,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 259,
@@ -4885,7 +4885,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 260,
@@ -5058,7 +5058,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 261,
@@ -5231,7 +5231,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 262,
@@ -5404,7 +5404,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 263,
@@ -5577,7 +5577,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 264,
@@ -5750,7 +5750,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 265,
@@ -5923,7 +5923,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 266,
@@ -6096,7 +6096,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 267,
@@ -6269,7 +6269,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 268,
@@ -6442,7 +6442,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 269,
@@ -6615,7 +6615,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 270,
@@ -6788,7 +6788,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 271,
@@ -6975,7 +6975,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 272,
@@ -7158,7 +7158,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 422,
@@ -7331,7 +7331,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 274,
@@ -7504,7 +7504,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 275,
@@ -7677,7 +7677,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 276,
@@ -7850,7 +7850,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 277,
@@ -8023,7 +8023,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 278,
@@ -8196,7 +8196,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 279,
@@ -8369,7 +8369,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 280,
@@ -8542,7 +8542,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 281,
@@ -8715,7 +8715,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 282,
@@ -8888,7 +8888,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 283,
@@ -9061,7 +9061,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 284,
@@ -9234,7 +9234,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 427,
@@ -9407,7 +9407,7 @@
         }
       },
       {
-        "type": "physics2d.components.MoveContollable",
+        "type": "components.MoveContollable",
         "properties": {
           "speed": 3,
           "uid": 286,

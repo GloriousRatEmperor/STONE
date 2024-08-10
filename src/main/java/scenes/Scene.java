@@ -1,7 +1,9 @@
 package scenes;
 
+import Abilitiess.Ability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import components.AbilityDeserializer;
 import components.Component;
 import components.ComponentDeserializer;
 import components.NonPickable;
@@ -227,9 +229,8 @@ public class Scene {
             if (!go.isDead()) {
                 Transform tr = go.getComponent(Transform.class);
                 if (tr != null) {
-                    if (tr.position.x != 0f) {
                             tr.drawPos.set(tr.position);
-                        }
+
                     }
 
                 go.editorUpdateDraw();
@@ -401,6 +402,7 @@ public class Scene {
     public void save(String file) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
+                .registerTypeAdapter(Ability.class, new AbilityDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()
@@ -433,6 +435,7 @@ public class Scene {
     public void load(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
+                .registerTypeAdapter(Ability.class, new AbilityDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()

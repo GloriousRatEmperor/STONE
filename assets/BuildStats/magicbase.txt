@@ -3,6 +3,6 @@ size:4.7
 
 
 costblood:0
-costmineral:0
+costrock:0
 costmagic:500
 buildtime:37

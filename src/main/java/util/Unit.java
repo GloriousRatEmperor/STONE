@@ -5,8 +5,9 @@ import components.*;
 import jade.GameObject;
 import jade.Transform;
 import org.joml.Vector2f;
+import org.joml.Vector3f;
 import physics2d.components.CircleCollider;
-import physics2d.components.MoveContollable;
+import components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 import physics2d.enums.BodyType;
 
@@ -25,6 +26,7 @@ public class Unit {
     static HashMap<String,Float> stats = new HashMap<String, Float>();
     static HashMap<String,Float> Bstats = new HashMap<String, Float>();
     public static void init() {
+
         File directoryPath = new File("assets/Stats");
         File[] fileList = directoryPath.listFiles();
         for (int i = 0; i < fileList.length; i++) {
@@ -97,7 +99,7 @@ public class Unit {
             case "Whitler":
                 unit= BuildWorker(name,position,allied,4);
                 break;
-            case "Whisp":
+            case "Wisp":
                 unit= BuildWorker(name,position,allied,3);
                 break;
             default:
@@ -111,7 +113,7 @@ public class Unit {
         switch (name) {
             case "Base1" -> {
                 name = "magicblood";
-                c.addAbility(BuildWhisp);
+                c.addAbility(BuildWisp);
             }
             case "Base2" -> {
                 name = "rockbase";
@@ -123,7 +125,7 @@ public class Unit {
             }
             case "Base4" -> {
                 name = "whitebase";
-                c.addAbility(BuildWhilter);
+                c.addAbility(BuildWhitler);
             }
         }
 
@@ -134,6 +136,7 @@ public class Unit {
         unit.getComponent(CircleCollider.class).radius*=3;
         unit.addComponent(new Base());
         unit.addComponent(c);
+        unit.addComponent(new UnitBuilder());
         return unit;
     }
     public static GameObject buildBarracks(String name, Vector2f position,int allied){
@@ -160,27 +163,9 @@ public class Unit {
         return unit;
     }
 
-    private static GameObject BuildRock(String name, Vector2f position,int allied){
-        GameObject unit=genBase(name,position,allied);
-        Hitter hit=new Hitter(8,0.3f);
-        Mortal mort=new Mortal(30);
-        unit.addComponent(mort);
-        unit.addComponent(hit);
-        unit.addComponent(new Worker());
-        CastAbilities c=new CastAbilities();
-        Abilitiess.BuildBase a=(BuildBase) c.getAbility(BuildBase);
-        a.setRace(2);
-        c.addAbility(a);
 
 
 
-
-
-        unit.getComponent(CircleCollider.class).setRadius(0.09f);
-
-        return unit;
-
-    }
     private static GameObject BuildGeneral(String name, Vector2f position,int allied){
         GameObject unit=genBase(name,position,allied);
         if(stats.containsKey(name+"attack")){
@@ -194,15 +179,18 @@ public class Unit {
         if(stats.containsKey(name+ "harvestamount")) {
             unit.addComponent(new Worker(stats.get(name + "harvestamount")));
         }
-        unit.getComponent(CircleCollider.class).setRadius(stats.getOrDefault(name + "size", 0.9f));
+        float size=stats.getOrDefault(name + "size", 0.9f);
+        unit.getComponent(CircleCollider.class).setRadius(size/2);
+        unit.transform.scale.set(new Vector2f(size,size));
         return unit;
     }
     public static GameObject BuildWorker(String name, Vector2f position,int allied,int race){
         GameObject worker= BuildGeneral(name,position,allied);
         CastAbilities c=new CastAbilities();
-        Abilitiess.BuildBase a=(BuildBase) c.getAbility(BuildBase);
+        BuildBase a=(BuildBase) c.getAbility(BuildBase);
         a.setRace(race);
         c.addAbility(a);
+        worker.addComponent(c);
         return worker;
     }
 
@@ -224,7 +212,7 @@ public class Unit {
         return unit;
 
     }
-    private static GameObject BuildWhisp(String name, Vector2f position,int allied){
+    private static GameObject BuildWisp(String name, Vector2f position,int allied){
         GameObject unit=genBase(name,position,allied);
         Hitter hit=new Hitter(10,0.4f);
         Mortal mort=new Mortal(23);
@@ -307,10 +295,18 @@ public class Unit {
 
 
     public static float getBuildTime(String name){
-
+        if(!stats.containsKey(name+"buildtime")){
+            System.out.println("BOZO this nay exist  "+name);
+        }
         return stats.get(name+"buildtime");
     }
+    public static Vector3f getCost(String name){
 
+        return new Vector3f( stats.getOrDefault(name+"costblood",0f),stats.getOrDefault(name+"costrock",0f),stats.getOrDefault(name+"costmagic",0f));
+    }
+    public static Vector3f getBuildCost(String name){
+        return new Vector3f( Bstats.getOrDefault(name+"costblood",0f),Bstats.getOrDefault(name+"costrock",0f),Bstats.getOrDefault(name+"costmagic",0f));
+    }
     public static Sprite getSprite(String name){
         return items.getSprite(name);
     }

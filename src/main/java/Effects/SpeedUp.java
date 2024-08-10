@@ -2,7 +2,7 @@ package Effects;
 
 import jade.GameObject;
 import org.joml.Vector2f;
-import physics2d.components.MoveContollable;
+import components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 
 public class SpeedUp extends Effect{

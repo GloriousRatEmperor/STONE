@@ -5,17 +5,11 @@ import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
 import jade.Window;
-import org.joml.Vector2f;
 import org.joml.Vector4f;
-import physics2d.components.MoveContollable;
-import physics2d.components.Rigidbody2D;
 import renderer.PickingTexture;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
 public class Menu {
     private List<GameObject> activeGameObjects;
     GameObject MasterObject;
@@ -138,34 +132,4 @@ public class Menu {
 
 
 
-    public void move(float x,float y,ArrayList<GameObject> gameObjects){
-
-
-        for (GameObject go : gameObjects) {
-            Rigidbody2D body=go.getComponent(Rigidbody2D.class);
-            MoveContollable control=go.getComponent(MoveContollable.class);
-            if(body!=null&control!=null){
-                double xS = (x) - (go.transform.position.x);
-                double yS = (y) - (go.transform.position.y);
-
-                double spdx;
-                double spdy;
-
-                if (xS == 0) {
-                    spdx = control.speed;
-                    spdy = 0;
-                }else {
-                    spdx = control.speed / sqrt(pow(yS , 2) / pow(xS,2) + 1);
-
-                if (xS < 0) {
-                    spdx *= -1;
-                };
-                    spdy = spdx * yS / xS;
-                };
-
-                body.setVelocity(new Vector2f((float) spdx, (float) spdy));
-            }
-
-        }
-    }
 }

@@ -8,7 +8,6 @@ import observers.events.Event;
 import observers.events.EventType;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
-import physics2d.components.MoveContollable;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -82,7 +81,6 @@ public class ServerInputs extends Component {
                         selectedObject.getComponent(MoveContollable.class).moveCommand(pos, selectedObject);
                     }
                 }
-                Window.getImguiLayer().getMenu().move(serverData.getPos().get(0), serverData.getPos().get(1), selectedObjects);
             }
             case "start" -> {
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));

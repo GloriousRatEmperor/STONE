@@ -17,8 +17,14 @@ public class ClientBooter {
 //        t.position.set(2,5);
 //        System.out.println("it is "+b.x);
 //        System.exit(0);
-
-        //System.exit(0);
+//
+//        CastAbilities c=new CastAbilities();
+//        BuildBase a=(BuildBase) c.getAbility(AbilityName.BuildBase);
+//        a.setRace(4);
+//        c.addAbility(a);
+//        GameObject o=new GameObject("s");
+//        o.addComponent(c);
+//        System.exit(0);
 
 
 

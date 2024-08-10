@@ -4,7 +4,6 @@ import Multiplayer.ClientData;
 import editor.PropertiesWindow;
 import jade.*;
 import org.joml.Vector2f;
-import physics2d.components.MoveContollable;
 import util.Settings;
 
 import java.util.ArrayList;
@@ -21,6 +20,7 @@ public class KeyControls extends Component {
     private BlockingQueue<ClientData> requests;
     private Time timer=new Time();
     private float last=0;
+    private ArrayList<GameObject> copiedObjects=new ArrayList<>();
 
     private Thread clientThread;
     public KeyControls(Thread clientThread, BlockingQueue<ClientData> requests) {
@@ -66,32 +66,26 @@ public class KeyControls extends Component {
         List<GameObject> activeGameObjects = propertiesWindow.getActiveGameObjects();
         float multiplier = KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT) ? 0.1f : 1.0f;
 
-        if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) &&
-                KeyListener.keyBeginPress(GLFW_KEY_V) && activeGameObject != null) {
+        if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL)) {
+            if (KeyListener.keyBeginPress(GLFW_KEY_C) && activeGameObject != null) {
+                copy(activeGameObjects);
 
-            for(int e=0;e<activeGameObjects.size();e++) {
-                GameObject go=activeGameObjects.get(0);
-                propertiesWindow.removeActiveGameObject(go);
-                GameObject newObj = go.copy();
-                Window.getScene().addGameObjectToScene(newObj);
-                newObj.transform.position.add(Settings.GRID_WIDTH, 0.0f);
-                propertiesWindow.addActiveGameObject(newObj);
-                if (newObj.getComponent(StateMachine.class) != null) {
-                    newObj.getComponent(StateMachine.class).refreshTextures();
+            } else if (KeyListener.keyBeginPress(GLFW_KEY_V) && copiedObjects != null) {
+                paste(MouseListener.getWorld(),copiedObjects);
+
+            }else if (KeyListener.keyBeginPress(GLFW_KEY_M) && activeGameObjects.size() > 1) {
+                    List<GameObject> gameObjects = new ArrayList<>(activeGameObjects);
+                    propertiesWindow.clearSelected();
+                    for (GameObject go : gameObjects) {
+                        GameObject copy = go.copy();
+                        copy.transform.position.x+=Settings.GRID_WIDTH;
+                        Window.getScene().addGameObjectToScene(copy);
+                        propertiesWindow.addActiveGameObject(copy);
+                        if (copy.getComponent(StateMachine.class) != null) {
+                            copy.getComponent(StateMachine.class).refreshTextures();
+                        }
+                    }
                 }
-            }
-        } else if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL) &&
-                KeyListener.keyBeginPress(GLFW_KEY_D) && activeGameObjects.size() > 1) {
-            List<GameObject> gameObjects = new ArrayList<>(activeGameObjects);
-            propertiesWindow.clearSelected();
-            for (GameObject go : gameObjects) {
-                GameObject copy = go.copy();
-                Window.getScene().addGameObjectToScene(copy);
-                propertiesWindow.addActiveGameObject(copy);
-                if (copy.getComponent(StateMachine.class) != null) {
-                    copy.getComponent(StateMachine.class).refreshTextures();
-                }
-            }
         } else if (KeyListener.keyBeginPress(GLFW_KEY_DELETE)||KeyListener.keyBeginPress(GLFW_KEY_BACKSPACE)) {
             for (GameObject go : activeGameObjects) {
                 go.destroy();
@@ -131,5 +125,51 @@ public class KeyControls extends Component {
             }
         }
     }
+    private void copy(List<GameObject> gameObjects){
+        copiedObjects.clear();
+        gameObjects.forEach(go->copiedObjects.add(go.copy()));
+    }
+    private void paste(Vector2f position,ArrayList<GameObject> pasteObjects) {
+        if (!pasteObjects.isEmpty()) {
+            PropertiesWindow propertiesWindow = Window.getImguiLayer().getPropertiesWindow();
+            propertiesWindow.clearSelected();
+            List<GameObject> paste = new ArrayList<>();
+            pasteObjects.forEach(go -> paste.add(go.copy()));
+            float maxX = paste.get(0).transform.position.x, minX = paste.get(0).transform.position.x, maxY = paste.get(0).transform.position.y, minY = paste.get(0).transform.position.y;
+            for (int e = 1; e < paste.size(); e++) {//starts at second bc we already initiated with first
+                Vector2f pos = paste.get(e).transform.position;
+                if (maxX < pos.x) {
+                    maxX = pos.x;
+                } else if (minX > pos.x) {
+                    minX = pos.x;
 
+                }
+                if (maxY < pos.y) {
+                    maxY = pos.y;
+                } else if (minY > pos.y) {
+                    minY = pos.y;
+
+                }
+
+            }
+            Vector2f center = new Vector2f((float)Math.floor(((minX + maxX) / 2) / Settings.GRID_WIDTH) * Settings.GRID_WIDTH
+                    ,(float) Math.floor((minY + maxY) / 2) / Settings.GRID_HEIGHT * Settings.GRID_HEIGHT);
+            position.set(((float)Math.floor(position.x) / Settings.GRID_WIDTH) * Settings.GRID_WIDTH
+                    ,(float) Math.floor(position.y) / Settings.GRID_HEIGHT * Settings.GRID_HEIGHT);
+            for (int e = 0; e < paste.size(); e++) {
+                GameObject go = paste.get(e);
+                Vector2f pos = go.transform.position;
+                pos.set(pos.x - center.x + position.x,
+                        pos.y - center.y + position.y);
+                go.transform.updatePastPos();
+
+                Window.getScene().addGameObjectToScene(go);
+                propertiesWindow.addActiveGameObject(go);
+                if (go.getComponent(StateMachine.class) != null) {
+                    go.getComponent(StateMachine.class).refreshTextures();
+                }
+            }
+
+        }
+    }
 }
