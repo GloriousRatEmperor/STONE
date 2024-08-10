@@ -3,7 +3,7 @@ dmage:10
 attackspeed: 1.5
 speed:2
 peasant harvestamount needs buff? (just a comment for testing not real oppinionn)
-harvestamount:500000
+harvestamount:5
 size:0.3
 
 

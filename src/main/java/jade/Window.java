@@ -173,7 +173,9 @@ public class Window implements Observer {
         lastPhysics = 0f;
         UniTime.setFrame(lastPhysics);
         physicsTimes=0;
+
         allied= inputs.getAlly();
+        System.out.println(allied);
         getImguiLayer().getMenu().allied=allied;
 
 

@@ -6,6 +6,7 @@ import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
+import jade.Window;
 import util.AssetPool;
 
 import java.util.*;
@@ -27,7 +28,7 @@ public class CastAbilities extends Component {
     public Boolean isCastable(AbilityName type){
         for (Ability a : abilities) {
             if (Objects.equals(a.getType(), type)) {
-                return a.Castable(mp);
+                return a.Castable(mp)&&gameObject.allied== Window.get().allied;
             }
         }
         return false;
@@ -35,7 +36,7 @@ public class CastAbilities extends Component {
     public void castAbility(ServerData data){
             for (Ability a : abilities) {
                 if (Objects.equals(a.name, data.getstrValue())) {
-                    if(a.Castable(mp)) {
+                    if(a.Castable(mp)&&gameObject.allied== Window.get().allied) {
                         a.cast(data, super.gameObject);
                         mp-=a.mp;
                     }

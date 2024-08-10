@@ -14021,8 +14021,8 @@
             "y": 12.375
           },
           "scale": {
-            "x": 2.0,
-            "y": 2.0
+            "x": 1.0,
+            "y": 1.0
           },
           "rotation": 0.0,
           "zIndex": 0,
@@ -14098,8 +14098,8 @@
         "type": "physics2d.components.Box2DCollider",
         "properties": {
           "halfSize": {
-            "x": 2.0,
-            "y": 2.0
+            "x": 1.0,
+            "y": 1.0
           },
           "origin": {
             "x": 0.0,
@@ -14118,9 +14118,281 @@
         "properties": {
           "mp": 100.0,
           "maxmp": 100.0,
-          "abilities": [],
+          "abilities": [
+            {
+              "type": "Abilitiess.BuildRock",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 50.0,
+                  "z": 0.0
+                },
+                "UnitName": "Rock",
+                "name": "BuildRock",
+                "id": 5,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 324.0,
+                  "height": 357.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 1.0,
+                      "y": 0.73483145
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.6202247
+                    },
+                    {
+                      "x": 0.9639037,
+                      "y": 0.6202247
+                    },
+                    {
+                      "x": 0.9639037,
+                      "y": 0.73483145
+                    }
+                  ]
+                },
+                "type": "BuildRock",
+                "targetable": false,
+                "description": "Builds a Rock|2 costs: 50.0 Rock "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildBase",
+              "properties": {
+                "race": 4,
+                "cost": {
+                  "x": 175.0,
+                  "y": 175.0,
+                  "z": 175.0
+                },
+                "BuildName": "Base4",
+                "name": "BuildBase",
+                "id": 6,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 362.0,
+                  "height": 310.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.7351827,
+                      "y": 0.103370786
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.0038523274
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.0038523274
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.103370786
+                    }
+                  ]
+                },
+                "type": "BuildBase",
+                "targetable": true,
+                "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic"
+              }
+            },
+            {
+              "type": "Abilitiess.BuildTank",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 250.0,
+                  "z": 0.0
+                },
+                "UnitName": "Tank",
+                "name": "BuildTank",
+                "id": 7,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 620.0,
+                  "height": 392.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.8753342,
+                      "y": 0.12841092
+                    },
+                    {
+                      "x": 0.8753342,
+                      "y": 0.0025682184
+                    },
+                    {
+                      "x": 0.8062611,
+                      "y": 0.0025682184
+                    },
+                    {
+                      "x": 0.8062611,
+                      "y": 0.12841092
+                    }
+                  ]
+                },
+                "type": "BuildTank",
+                "targetable": false,
+                "description": "Builds a tanky rock|2 costs: 250.0 Rock "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildPeasant",
+              "properties": {
+                "cost": {
+                  "x": 50.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "UnitName": "Peasant",
+                "name": "BuildPeasant",
+                "id": 9,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 538.0,
+                  "height": 570.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.69485295,
+                      "y": 0.25553772
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.07255217
+                    },
+                    {
+                      "x": 0.63491535,
+                      "y": 0.07255217
+                    },
+                    {
+                      "x": 0.63491535,
+                      "y": 0.25553772
+                    }
+                  ]
+                },
+                "type": "BuildPeasant",
+                "targetable": false,
+                "description": "Builds a Peasant, fleshy lil worker|2 costs: 50.0 Blood "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildWhitler",
+              "properties": {
+                "cost": {
+                  "x": 20.0,
+                  "y": 20.0,
+                  "z": 20.0
+                },
+                "UnitName": "Whitler",
+                "name": "BuildWhitler",
+                "id": 10,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 233.0,
+                  "height": 299.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.7611408,
+                      "y": 0.103370786
+                    },
+                    {
+                      "x": 0.7611408,
+                      "y": 0.007383628
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.007383628
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.103370786
+                    }
+                  ]
+                },
+                "type": "BuildWhitler",
+                "targetable": false,
+                "description": "Builds a Whitler, these are unbiased workers that can harness minerals of any kind|2 costs: 20.0 Blood 20.0 Rock 20.0 Magic "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildWisp",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 50.0
+                },
+                "UnitName": "Wisp",
+                "name": "BuildWisp",
+                "id": 11,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 279.0,
+                  "height": 269.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.42457664,
+                      "y": 0.08764045
+                    },
+                    {
+                      "x": 0.42457664,
+                      "y": 0.0012841092
+                    },
+                    {
+                      "x": 0.39349377,
+                      "y": 0.0012841092
+                    },
+                    {
+                      "x": 0.39349377,
+                      "y": 0.08764045
+                    }
+                  ]
+                },
+                "type": "BuildWisp",
+                "targetable": false,
+                "description": "Builds a Wisp, a fragile magic worker with a decent attack|2 costs: 50.0 Magic "
+              }
+            }
+          ],
           "guiRemoveAbility": [
-            "Remove ability"
+            "Remove ability",
+            "BuildRock",
+            "BuildBase",
+            "BuildTank",
+            "BuildPeasant",
+            "BuildWhitler",
+            "BuildWisp"
           ],
           "uid": 2330,
           "isactive": true
@@ -14213,8 +14485,8 @@
             "y": 11.625
           },
           "scale": {
-            "x": 2.0,
-            "y": 2.0
+            "x": 1.0,
+            "y": 1.0
           },
           "rotation": 0.0,
           "zIndex": 0,
@@ -14290,8 +14562,8 @@
         "type": "physics2d.components.Box2DCollider",
         "properties": {
           "halfSize": {
-            "x": 2.0,
-            "y": 2.0
+            "x": 1.0,
+            "y": 1.0
           },
           "origin": {
             "x": 0.0,
@@ -14310,9 +14582,281 @@
         "properties": {
           "mp": 100.0,
           "maxmp": 100.0,
-          "abilities": [],
+          "abilities": [
+            {
+              "type": "Abilitiess.BuildRock",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 50.0,
+                  "z": 0.0
+                },
+                "UnitName": "Rock",
+                "name": "BuildRock",
+                "id": 5,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 324.0,
+                  "height": 357.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 1.0,
+                      "y": 0.73483145
+                    },
+                    {
+                      "x": 1.0,
+                      "y": 0.6202247
+                    },
+                    {
+                      "x": 0.9639037,
+                      "y": 0.6202247
+                    },
+                    {
+                      "x": 0.9639037,
+                      "y": 0.73483145
+                    }
+                  ]
+                },
+                "type": "BuildRock",
+                "targetable": false,
+                "description": "Builds a Rock|2 costs: 50.0 Rock "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildBase",
+              "properties": {
+                "race": 4,
+                "cost": {
+                  "x": 175.0,
+                  "y": 175.0,
+                  "z": 175.0
+                },
+                "BuildName": "Base4",
+                "name": "BuildBase",
+                "id": 6,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 362.0,
+                  "height": 310.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.7351827,
+                      "y": 0.103370786
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.0038523274
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.0038523274
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.103370786
+                    }
+                  ]
+                },
+                "type": "BuildBase",
+                "targetable": true,
+                "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic"
+              }
+            },
+            {
+              "type": "Abilitiess.BuildTank",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 250.0,
+                  "z": 0.0
+                },
+                "UnitName": "Tank",
+                "name": "BuildTank",
+                "id": 7,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 620.0,
+                  "height": 392.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.8753342,
+                      "y": 0.12841092
+                    },
+                    {
+                      "x": 0.8753342,
+                      "y": 0.0025682184
+                    },
+                    {
+                      "x": 0.8062611,
+                      "y": 0.0025682184
+                    },
+                    {
+                      "x": 0.8062611,
+                      "y": 0.12841092
+                    }
+                  ]
+                },
+                "type": "BuildTank",
+                "targetable": false,
+                "description": "Builds a tanky rock|2 costs: 250.0 Rock "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildPeasant",
+              "properties": {
+                "cost": {
+                  "x": 50.0,
+                  "y": 0.0,
+                  "z": 0.0
+                },
+                "UnitName": "Peasant",
+                "name": "BuildPeasant",
+                "id": 9,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 538.0,
+                  "height": 570.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.69485295,
+                      "y": 0.25553772
+                    },
+                    {
+                      "x": 0.69485295,
+                      "y": 0.07255217
+                    },
+                    {
+                      "x": 0.63491535,
+                      "y": 0.07255217
+                    },
+                    {
+                      "x": 0.63491535,
+                      "y": 0.25553772
+                    }
+                  ]
+                },
+                "type": "BuildPeasant",
+                "targetable": false,
+                "description": "Builds a Peasant, fleshy lil worker|2 costs: 50.0 Blood "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildWhitler",
+              "properties": {
+                "cost": {
+                  "x": 20.0,
+                  "y": 20.0,
+                  "z": 20.0
+                },
+                "UnitName": "Whitler",
+                "name": "BuildWhitler",
+                "id": 10,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 233.0,
+                  "height": 299.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.7611408,
+                      "y": 0.103370786
+                    },
+                    {
+                      "x": 0.7611408,
+                      "y": 0.007383628
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.007383628
+                    },
+                    {
+                      "x": 0.7351827,
+                      "y": 0.103370786
+                    }
+                  ]
+                },
+                "type": "BuildWhitler",
+                "targetable": false,
+                "description": "Builds a Whitler, these are unbiased workers that can harness minerals of any kind|2 costs: 20.0 Blood 20.0 Rock 20.0 Magic "
+              }
+            },
+            {
+              "type": "Abilitiess.BuildWisp",
+              "properties": {
+                "cost": {
+                  "x": 0.0,
+                  "y": 0.0,
+                  "z": 50.0
+                },
+                "UnitName": "Wisp",
+                "name": "BuildWisp",
+                "id": 11,
+                "mp": 0.0,
+                "sprite": {
+                  "width": 279.0,
+                  "height": 269.0,
+                  "texture": {
+                    "filepath": "assets/images/spritesheets/joined.png",
+                    "width": 8976,
+                    "height": 3115
+                  },
+                  "texCoords": [
+                    {
+                      "x": 0.42457664,
+                      "y": 0.08764045
+                    },
+                    {
+                      "x": 0.42457664,
+                      "y": 0.0012841092
+                    },
+                    {
+                      "x": 0.39349377,
+                      "y": 0.0012841092
+                    },
+                    {
+                      "x": 0.39349377,
+                      "y": 0.08764045
+                    }
+                  ]
+                },
+                "type": "BuildWisp",
+                "targetable": false,
+                "description": "Builds a Wisp, a fragile magic worker with a decent attack|2 costs: 50.0 Magic "
+              }
+            }
+          ],
           "guiRemoveAbility": [
-            "Remove ability"
+            "Remove ability",
+            "BuildRock",
+            "BuildBase",
+            "BuildTank",
+            "BuildPeasant",
+            "BuildWhitler",
+            "BuildWisp"
           ],
           "uid": 2331,
           "isactive": true

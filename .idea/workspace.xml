@@ -6,14 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="stuff all stuff">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ServerBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ServerBooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +124,7 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client D" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
@@ -359,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1723301571414</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="stuff all stuff">
+      <created>1723302706586</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1723302706586</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
