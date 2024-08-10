@@ -38,6 +38,7 @@ public class Server extends ChannelInboundHandlerAdapter {
     private int maxrand=200;
 
     private int colorLotto=100;
+    public int allied=0;
     private int pow=3;
     private int division=20;
     private int size=count*space;
@@ -55,7 +56,13 @@ public class Server extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         System.out.println("server connected to sumone");
-        players.add(new Player (ctx));
+        Player p=new Player (ctx);
+        players.add(p);
+        allied+=1;
+        p.allied=allied;
+        if(allied==maxPlayerCount){
+            allied=0;
+        }
     }
 
 
@@ -182,20 +189,18 @@ public class Server extends ChannelInboundHandlerAdapter {
                                 randchange/=dechaos;
                                 squarePositions.clear();
                             }
-                            ServerData ServerData = new ServerData();
-                            long curTime=System.currentTimeMillis();
-                            ServerData.setStart(curTime);
-                            time.setBeginTime(curTime);
-                            ServerData.setTime(time.getTime());
-                            ServerData.setName(ClientData.getName());
-                            int c=0;
-                            for (Player p:players) {
 
+                            long curTime=System.currentTimeMillis();
+                            time.setBeginTime(curTime);
+
+                            for (Player p:players) {
                                 if(p.state==waiting) {
-                                    c+=1;
-                                    System.out.println(c+"allied");
+                                    ServerData ServerData = new ServerData();
+                                    ServerData.setStart(curTime);
+                                    ServerData.setTime(time.getTime());
+                                    ServerData.setName(ClientData.getName());
                                     p.state = playing;
-                                    ServerData.setIntValue(c);
+                                    ServerData.setIntValue(p.allied);
                                     ServerData.setIntValue2(boxsize*2);
                                     ServerData.setIntValue3(size/(boxsize*2));
                                     List<Integer> map1=new ArrayList<>();
@@ -210,6 +215,7 @@ public class Server extends ChannelInboundHandlerAdapter {
                                     }
                                     ServerData.setMap(map1, map2, map3);
                                     toclient(p, ServerData);
+
                                 }
                             }
 

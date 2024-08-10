@@ -68,7 +68,6 @@ public class MouseControls extends Component {
             List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
             List<Integer> ids=new ArrayList<>();
             for (GameObject go : obj) {
-                System.out.println(get().allied);
                 if(go.allied==get().allied & go.getComponent(MoveContollable.class)!=null){
 
                     ids.add(go.getUid());

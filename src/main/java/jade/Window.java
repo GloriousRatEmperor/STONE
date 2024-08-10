@@ -175,7 +175,6 @@ public class Window implements Observer {
         physicsTimes=0;
 
         allied= inputs.getAlly();
-        System.out.println(allied);
         getImguiLayer().getMenu().allied=allied;
 
 

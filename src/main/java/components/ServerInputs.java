@@ -83,6 +83,7 @@ public class ServerInputs extends Component {
                 }
             }
             case "start" -> {
+                System.out.println(serverData.getIntValue());
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
                 startTime = serverData.getStart();
                 setTime(startTime);

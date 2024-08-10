@@ -13,6 +13,7 @@ public class Player {
         this.ctx = ctx;
         this.id = ctx.channel().id();
     }
+    public int allied;
     public ChannelHandlerContext getCtx(){
         return ctx;
     }
