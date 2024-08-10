@@ -5,7 +5,6 @@ import editor.PropertiesWindow;
 import jade.*;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
-import components.MoveContollable;
 import renderer.DebugDraw;
 import renderer.PickingTexture;
 import scenes.Scene;
@@ -69,7 +68,9 @@ public class MouseControls extends Component {
             List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
             List<Integer> ids=new ArrayList<>();
             for (GameObject go : obj) {
+                System.out.println();
                 if(go.allied==get().allied & go.getComponent(MoveContollable.class)!=null){
+
                     ids.add(go.getUid());
                 }
 

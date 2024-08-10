@@ -188,10 +188,12 @@ public class Server extends ChannelInboundHandlerAdapter {
                             time.setBeginTime(curTime);
                             ServerData.setTime(time.getTime());
                             ServerData.setName(ClientData.getName());
+                            int c=0;
                             for (Player p:players) {
-                                int c=0;
+
                                 if(p.state==waiting) {
                                     c+=1;
+                                    System.out.println(c+"allied");
                                     p.state = playing;
                                     ServerData.setIntValue(c);
                                     ServerData.setIntValue2(boxsize*2);

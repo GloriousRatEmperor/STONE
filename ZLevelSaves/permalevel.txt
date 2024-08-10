@@ -90871,7 +90871,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91052,7 +91052,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91233,7 +91233,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91414,7 +91414,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91595,7 +91595,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91776,7 +91776,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -91957,7 +91957,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -92138,7 +92138,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -92319,7 +92319,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -92500,7 +92500,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -92681,7 +92681,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -92862,7 +92862,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93043,7 +93043,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93224,7 +93224,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93405,7 +93405,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93586,7 +93586,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93767,7 +93767,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -93948,7 +93948,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -94129,7 +94129,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -94310,7 +94310,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -94491,7 +94491,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -94672,7 +94672,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -94853,7 +94853,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95034,7 +95034,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95215,7 +95215,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95396,7 +95396,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95577,7 +95577,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95758,7 +95758,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -95939,7 +95939,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -96120,7 +96120,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -96301,7 +96301,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -96482,7 +96482,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -96663,7 +96663,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -96844,7 +96844,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97025,7 +97025,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97206,7 +97206,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97387,7 +97387,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97568,7 +97568,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97749,7 +97749,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -97930,7 +97930,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -98111,7 +98111,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -98292,7 +98292,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -98473,7 +98473,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -98654,7 +98654,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -98835,7 +98835,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99016,7 +99016,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99197,7 +99197,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99378,7 +99378,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99559,7 +99559,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99740,7 +99740,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -99921,7 +99921,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -100102,7 +100102,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -100283,7 +100283,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -100464,7 +100464,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -100645,7 +100645,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -100826,7 +100826,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101007,7 +101007,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101188,7 +101188,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101369,7 +101369,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101550,7 +101550,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101731,7 +101731,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -101912,7 +101912,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -102093,7 +102093,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -102274,7 +102274,7 @@
   },
   {
     "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",

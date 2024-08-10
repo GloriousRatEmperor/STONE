@@ -5,6 +5,6 @@ public class ServerBooter {
 
         int port = args.length > 0 ? Integer.parseInt(args[0]) : 8080;
 
-        new TechnicalServer(port,1).run();
+        new TechnicalServer(port,2).run();
     }
 }
