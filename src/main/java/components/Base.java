@@ -17,7 +17,7 @@ import static jade.Window.*;
 public class Base extends Component{
     private float range=15f;
 
-    private float mineralDistance=2.1f;
+    private float mineralDistance=4f;
     private boolean genned=false;
     private List<MineralCluster> ownedClusters=new ArrayList<MineralCluster>();
 
@@ -32,6 +32,7 @@ public class Base extends Component{
     public void removeCluster(MineralCluster mineralCluster){
         ownedClusters.remove(mineralCluster);
     }
+    @Override
     public Base Clone(){
         Base base=new Base();
         return base;
@@ -99,7 +100,7 @@ public class Base extends Component{
                             }
 
 
-                            GameObject mineral = Unit.make("Mineral" + biggest, new Vector2f(minX, minY), 1);
+                            GameObject mineral = Unit.makeBuilding("Mineral" + biggest, new Vector2f(minX, minY), 1);
                             mineral.name = "M";
 
                             Mineral miner = mineral.getComponent(Mineral.class);

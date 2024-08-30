@@ -196,6 +196,7 @@ public class Server extends ChannelInboundHandlerAdapter {
                             for (Player p:players) {
                                 if(p.state==waiting) {
                                     ServerData ServerData = new ServerData();
+                                    ServerData.setPlayerAmount(playerCountAdd);
                                     ServerData.setStart(curTime);
                                     ServerData.setTime(time.getTime());
                                     ServerData.setName(ClientData.getName());
@@ -239,7 +240,7 @@ public class Server extends ChannelInboundHandlerAdapter {
             case "Cast" -> {
 
                 ServerData ServerData = new ServerData();
-                ServerData.setstrValue(ClientData.getString());
+                ServerData.setIntValue(ClientData.getIntValue());
                 ServerData.setTime(time.getTime() + delay);
                 ServerData.setGameObjects(ClientData.getGameObjects());
                 ServerData.setName("Cast");

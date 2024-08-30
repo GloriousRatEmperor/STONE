@@ -19,16 +19,6 @@ import java.util.List;
 
 import static jade.Window.checkIfNewFloor;
 import static jade.Window.getFloor;
-import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.opengl.GL13.GL_TEXTURE0;
-import static org.lwjgl.opengl.GL13.glActiveTexture;
-import static org.lwjgl.opengl.GL15.GL_FLOAT;
-import static org.lwjgl.opengl.GL15.GL_NEAREST;
-import static org.lwjgl.opengl.GL15.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL15.GL_TEXTURE_MAG_FILTER;
-import static org.lwjgl.opengl.GL15.glGetError;
-import static org.lwjgl.opengl.GL15.glTexParameteri;
-import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;

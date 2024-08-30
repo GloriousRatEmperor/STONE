@@ -8,6 +8,7 @@ import org.joml.Vector2f;
 import physics2d.enums.BodyType;
 
 public class Rigidbody2D extends Component {
+    @Override
     public Rigidbody2D Clone(){
         return new Rigidbody2D();
     }
@@ -53,6 +54,9 @@ public class Rigidbody2D extends Component {
             rawBody.applyForceToCenter(new Vec2(forceToAdd.x, forceToAdd.y));
         }
     }
+    public void setSleepAllowed(Boolean isit){
+        rawBody.setSleepingAllowed(isit);
+    }
 
     public void addImpulse(Vector2f impulse) {
         if (rawBody != null) {
@@ -62,6 +66,16 @@ public class Rigidbody2D extends Component {
 
     public Vector2f getVelocity() {
         return velocity;
+    }
+    public void setDisabled(Box2DCollider boxCollider){
+        if (rawBody != null) {
+            Window.getPhysics().setDisabled(this,boxCollider);
+        }
+    }
+    public void setDisabled(CircleCollider circleCollider){
+        if (rawBody != null) {
+            Window.getPhysics().setDisabled(this,circleCollider);
+        }
     }
 
     public void setVelocity(Vector2f velocity) {

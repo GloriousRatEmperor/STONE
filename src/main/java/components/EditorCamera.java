@@ -7,7 +7,6 @@ import jade.Time;
 import org.joml.Vector2f;
 
 import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_D;
 
 public class EditorCamera extends Component {
 

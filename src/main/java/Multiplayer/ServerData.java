@@ -1,10 +1,5 @@
 package Multiplayer;
 
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class ServerData {
@@ -14,6 +9,7 @@ public class ServerData {
     public int intValue3;
     public float time;
     public long start;
+    public int playerAmount;
     public String name;
     public List<Integer> map1;
     public List<Integer> map2;
@@ -21,7 +17,12 @@ public class ServerData {
     public List<Integer> GameObjects;
     public List<Float> position;
 
-
+    public void setPlayerAmount(int amount){
+        playerAmount=amount;
+    }
+    public int getPlayerAmount(){
+        return playerAmount;
+    }
     public int getIntValue(){
         return intValue;
     }

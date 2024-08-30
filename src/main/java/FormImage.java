@@ -51,9 +51,9 @@ public class FormImage {
                             imageFiles.add(file);
                             break;
                     case ("kra") :
-
-                        if(!file.renameTo(new File("assets/images/kras/"+file.getName()))){
-                         System.out.println("could not move file"+file.getName());
+                        String realname= file.getName().replaceAll(".png","");
+                        if(!file.renameTo(new File("assets/images/kras/"+realname))){
+                         System.out.println("could not move file "+file.getName());
                         }
                         break;
                     default:
@@ -166,7 +166,7 @@ public class FormImage {
                                 ch++;
                             }
 
-                            Boolean works = checkForPillars >= img.getWidth();
+                            boolean works = checkForPillars >= img.getWidth();
                             if (works || !pillar) {
                                 for (int u = c + 1; u < space.size(); u++) {
                                     Vector4i o = space.get(u);
@@ -190,7 +190,6 @@ public class FormImage {
                                     //make cave
                                     cave.add(new Vector4i(img.getWidth() - v.x, v.y, v.z + v.x, v.w));
 
-                                    //space.add(new Vector4i(img.getWidth() - v.x, img.getHeight() + v.y, v.z + v.x, currentY));
                                     currentX += img.getWidth() - v.x;
                                     v.x = img.getWidth();
 
@@ -224,14 +223,11 @@ public class FormImage {
 
             wid+=p.x;
         }
-        int offset = 0;
-//        int wid = img1.getWidth() + img2.getWidth() + offset;
-//        int height = Math.max(img1.getHeight(), img2.getHeight()) + offset;
         BufferedImage newImage = new BufferedImage(wid, height, BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = newImage.createGraphics();
         Color oldColor = g2.getColor();
         g2.setColor(oldColor);
-        Boolean gud;
+        boolean gud;
         //debug
 //        BufferedImage debug = new BufferedImage(wid, height+1, BufferedImage.TYPE_INT_ARGB);
 //        Graphics2D gd = debug.createGraphics();

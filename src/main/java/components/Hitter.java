@@ -11,7 +11,7 @@ public class Hitter extends Component {
     public float attackSpeed=0.1f;
     public float nextSmak=0;
     public float chargeBonus=0; //charge bonus 1 means +100% damage for max speed,
-                                // the damage is linear with the speed until 1.5 times max speed (achievable thu like units pushing and stuff probably) where it's maxed at 150%.
+                                // the damage is sqrt with the speed until 1.5 times max speed (achievable thu like units pushing and stuff probably) where it's maxed at 150%.
 
     public void smak(Mortal enemy){
         MoveContollable move=gameObject.getComponent(MoveContollable.class);
@@ -54,6 +54,8 @@ public class Hitter extends Component {
     }
     @Override
     public void begin(){
-        this.alliedH = super.gameObject.allied;
+        if(this.alliedH==0){
+            this.alliedH=super.gameObject.allied;
+        }
     }
 }

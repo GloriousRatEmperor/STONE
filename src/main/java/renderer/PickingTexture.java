@@ -2,10 +2,7 @@ package renderer;
 
 import org.joml.Vector2i;
 
-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
-import static org.lwjgl.opengl.GL14.GL_DEPTH_COMPONENT32;
 import static org.lwjgl.opengl.GL30.*;
-import static org.lwjgl.opengl.GL30.GL_FRAMEBUFFER;
 
 public class PickingTexture {
     private int pickingTextureId;
@@ -71,7 +68,7 @@ public class PickingTexture {
         glBindFramebuffer(GL_READ_FRAMEBUFFER, fbo);
         glReadBuffer(GL_COLOR_ATTACHMENT0);
 
-        float pixels[] = new float[3];
+        float[] pixels = new float[3];
         glReadPixels(x, y, 1, 1, GL_RGB, GL_FLOAT, pixels);
 
         return (int)(pixels[0]) - 1;
@@ -83,7 +80,7 @@ public class PickingTexture {
 
         Vector2i size = new Vector2i(end).sub(start).absolute();
         int numPixels = size.x * size.y;
-        float pixels[] = new float[3 * numPixels];
+        float[] pixels = new float[3 * numPixels];
         glReadPixels(start.x, start.y, size.x, size.y, GL_RGB, GL_FLOAT, pixels);
         for (int i = 0; i < pixels.length; i++) {
             pixels[i] -= 1;

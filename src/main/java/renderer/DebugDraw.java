@@ -10,13 +10,12 @@ import util.JMath;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.lwjgl.opengl.GL15.*;
 import static org.lwjgl.opengl.GL20.*;
 import static org.lwjgl.opengl.GL30.glBindVertexArray;
 import static org.lwjgl.opengl.GL30.glGenVertexArrays;
 
 public class DebugDraw {
-    private static int MAX_LINES = 25000;
+    private static int MAX_LINES = 100000;
 
     private static List<Line2D> lines = new ArrayList<>();
     // 6 floats per vertex, 2 vertices per line
@@ -25,6 +24,7 @@ public class DebugDraw {
 
     private static int vaoID;
     private static int vboID;
+    private static Vector3f green=new Vector3f(0,1,0);
 
     private static boolean started = false;
 
@@ -36,7 +36,7 @@ public class DebugDraw {
         // Create the vbo and buffer some memory
         vboID = glGenBuffers();
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferData(GL_ARRAY_BUFFER, vertexArray.length * Float.BYTES, GL_DYNAMIC_DRAW);
+        glBufferData(GL_ARRAY_BUFFER, (long) vertexArray.length * Float.BYTES, GL_DYNAMIC_DRAW);
 
         // Enable the vertex array attributes
         glVertexAttribPointer(0, 3, GL_FLOAT, false, 6 * Float.BYTES, 0);
@@ -65,7 +65,7 @@ public class DebugDraw {
 
 
     public static void draw() {
-        if (lines.size() <= 0) return;
+        if (lines.size() == 0) return;
 
         int index = 0;
         for (Line2D line : lines) {
@@ -115,8 +115,8 @@ public class DebugDraw {
     // Add line2D methods
     // ==================================================
     public static void addLine2D(Vector2f from, Vector2f to) {
-        // TODO: ADD CONSTANTS FOR COMMON COLORS
-        addLine2D(from, to, new Vector3f(0, 1, 0), 1);
+
+        addLine2D(from, to, green, 1);
     }
 
     public static void addLine2D(Vector2f from, Vector2f to, Vector3f color) {
@@ -142,8 +142,8 @@ public class DebugDraw {
     // Add Box2D methods
     // ==================================================
     public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation) {
-        // TODO: ADD CONSTANTS FOR COMMON COLORS
-        addBox2D(center, dimensions, rotation, new Vector3f(0, 1, 0), 1);
+
+        addBox2D(center, dimensions, rotation, green, 1);
     }
 
     public static void addBox2D(Vector2f center, Vector2f dimensions, float rotation, Vector3f color) {
@@ -176,8 +176,8 @@ public class DebugDraw {
     // Add Circle methods
     // ==================================================
     public static void addCircle(Vector2f center, float radius) {
-        // TODO: ADD CONSTANTS FOR COMMON COLORS
-        addCircle(center, radius, new Vector3f(0, 1, 0), 1);
+
+        addCircle(center, radius, green, 1);
     }
 
     public static void addCircle(Vector2f center, float radius, Vector3f color) {

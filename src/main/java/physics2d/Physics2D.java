@@ -21,6 +21,7 @@ public class Physics2D {
     private int positionIterations = 3;
 
     public Physics2D() {
+
         world.setContactListener(new JadeContactListener());
     }
 
@@ -42,8 +43,7 @@ public class Physics2D {
             bodyDef.bullet = rb.isContinuousCollision();
             bodyDef.gravityScale = rb.gravityScale;
             bodyDef.angularVelocity = rb.angularVelocity;
-            bodyDef.userData = rb.gameObject;
-
+            bodyDef.userData = rb;
             switch (rb.getBodyType()) {
                 case Kinematic: bodyDef.type = BodyType.KINEMATIC; break;
                 case Static: bodyDef.type = BodyType.STATIC; break;
@@ -95,7 +95,31 @@ public class Physics2D {
             fixture = fixture.m_next;
         }
     }
+    public void setDisabled(Rigidbody2D rb,CircleCollider circle){
+        Body body = rb.getRawBody();
+        if (body == null) return;
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            if(fixture.getUserData()==circle){
 
+                body.destroyFixture( fixture);
+                break;
+            }
+            fixture = fixture.m_next;
+        }
+    }
+    public void setDisabled(Rigidbody2D rb,Box2DCollider box){
+        Body body = rb.getRawBody();
+        if (body == null) return;
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            if(fixture.getUserData()==box){
+                body.destroyFixture( fixture);
+                break;
+            }
+            fixture = fixture.m_next;
+        }
+    }
     public void setNotSensor(Rigidbody2D rb) {
         Body body = rb.getRawBody();
         if (body == null) return;
@@ -111,9 +135,16 @@ public class Physics2D {
         Body body = rb.getRawBody();
         if (body == null) return;
 
-        int size = fixtureListSize(body);
-        for (int i = 0; i < size; i++) {
-            body.destroyFixture(body.getFixtureList());
+        //int size = fixtureListSize(body);
+//        for (int i = 0; i < size; i++) {
+//            body.destroyFixture(body.getFixtureList());
+//        }
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            if(fixture.getUserData()==circleCollider){
+                body.destroyFixture(fixture);
+            }
+            fixture=fixture.m_next;
         }
 
         addCircleCollider(rb, circleCollider);
@@ -124,9 +155,16 @@ public class Physics2D {
         Body body = rb.getRawBody();
         if (body == null) return;
 
-        int size = fixtureListSize(body);
-        for (int i = 0; i < size; i++) {
-            body.destroyFixture(body.getFixtureList());
+        //int size = fixtureListSize(body);
+//        for (int i = 0; i < size; i++) {
+//            body.destroyFixture(body.getFixtureList());
+//        }
+        Fixture fixture = body.getFixtureList();
+        while (fixture != null) {
+            if(fixture.getUserData()==boxCollider){
+                body.destroyFixture(fixture);
+            }
+            fixture=fixture.m_next;
         }
 
         addBox2DCollider(rb, boxCollider);
@@ -166,10 +204,18 @@ public class Physics2D {
 
         FixtureDef fixtureDef = new FixtureDef();
         fixtureDef.shape = shape;
+        fixtureDef.filter.groupIndex=boxCollider.getCollisionGroup();
+        if(boxCollider.getAllied()==0) {
+            fixtureDef.filter.categoryBits = 0;
+            fixtureDef.filter.maskBits= 0;
+        }else{
+            fixtureDef.filter.categoryBits = (int) Math.pow(2, boxCollider.getAllied());
+            fixtureDef.filter.maskBits= 511-(int)Math.pow( 2,boxCollider.getAllied());
+        }
         fixtureDef.density = 1.0f;
         fixtureDef.friction = rb.getFriction();
-        fixtureDef.userData = boxCollider.gameObject;
-        fixtureDef.isSensor = rb.isSensor();
+        fixtureDef.userData = boxCollider;
+        fixtureDef.isSensor = boxCollider.isSensor;
         body.createFixture(fixtureDef);
     }
 
@@ -182,11 +228,22 @@ public class Physics2D {
         shape.m_p.set(circleCollider.getOffset().x, circleCollider.getOffset().y);
 
         FixtureDef fixtureDef = new FixtureDef();
+        fixtureDef.filter.groupIndex=circleCollider.getCollisionGroup();//if two objects have the same and >0 they collide (units) if they have the same but <0 they don't collide(range sensor)
+        if(circleCollider.getAllied()==0) {
+            fixtureDef.filter.categoryBits=0;
+            fixtureDef.filter.maskBits =0;
+        }else{
+            fixtureDef.filter.categoryBits = (int) Math.pow(2, circleCollider.getAllied());//looks like 000000100
+            fixtureDef.filter.maskBits = 511 - (int) Math.pow(2, circleCollider.getAllied());//looks like 111111011
+            /*when at least one of the ones match the objects collide, though it can be overruled by the collisionGroup,
+            (currently objects collide with anything except their own allied (ranged unit sensor style)
+             but for regulat unit to unit the collision group is the same so they collide regardless due to overrule)*/
+        }
         fixtureDef.shape = shape;
         fixtureDef.density = 1.0f;
+        fixtureDef.isSensor=circleCollider.isSensor;
         fixtureDef.friction = rb.getFriction();
-        fixtureDef.userData = circleCollider.gameObject;
-        fixtureDef.isSensor = rb.isSensor();
+        fixtureDef.userData = circleCollider;
         body.createFixture(fixtureDef);
     }
 

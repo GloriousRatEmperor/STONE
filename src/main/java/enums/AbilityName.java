@@ -8,6 +8,7 @@ public enum AbilityName {
     BuildBase,
     BuildBarracks,
     BuildTank,
+    BuildBoarCavalary,
     BuildWisp,
     BuildPeasant,
     BuildWhitler,

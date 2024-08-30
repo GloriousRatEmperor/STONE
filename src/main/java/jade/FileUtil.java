@@ -84,14 +84,14 @@ public final class FileUtil {
                     try {
                         fis.close();
                     } catch (IOException e) {
-                        System.out.println(e);
+                        System.err.println(e);
                     }
                 }
                 if (to != null) {
                     try {
                         fos.close();
                     } catch (IOException e) {
-                        System.out.println(e);
+                        System.err.println(e);
                     }
                 }
             }

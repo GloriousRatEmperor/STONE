@@ -1,5 +1,6 @@
 package physics2d;
 
+import components.Component;
 import jade.GameObject;
 import org.jbox2d.callbacks.RayCastCallback;
 import org.jbox2d.common.Vec2;
@@ -27,7 +28,8 @@ public class RaycastInfo implements RayCastCallback {
 
     @Override
     public float reportFixture(Fixture fixture, Vec2 point, Vec2 normal, float fraction) {
-        if (fixture.m_userData == requestingObject) {
+        Component user=(Component) fixture.m_userData;
+        if (user.gameObject == requestingObject) {
             return 1;
         }
         this.fixture = fixture;
@@ -35,7 +37,7 @@ public class RaycastInfo implements RayCastCallback {
         this.normal = new Vector2f(normal.x, normal.y);
         this.fraction = fraction;
         this.hit = fraction != 0;
-        this.hitObject = (GameObject)fixture.m_userData;
+        this.hitObject = user.gameObject;
 
         return fraction;
     }

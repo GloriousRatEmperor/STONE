@@ -6,11 +6,16 @@ import org.joml.Vector2f;
 import renderer.DebugDraw;
 
 public class CircleCollider extends Component {
+    @Override
     public CircleCollider Clone(){
         return new CircleCollider();
     }
     public float radius = 1f;
-    private transient boolean resetFixtureNextFrame = false;
+    public int collisionGroup=1;
+    public int allyOverride=0;
+    public boolean isSensor=false;
+    public Boolean enabled=true;
+    protected transient boolean resetFixtureNextFrame = false;
     public Vector2f offset = new Vector2f();
 
     public float getRadius() {
@@ -27,6 +32,12 @@ public class CircleCollider extends Component {
         resetFixtureNextFrame = true;
         this.radius = radius;
     }
+    public int getAllied(){
+        if(allyOverride!=0){
+            return allyOverride;
+        }
+        return gameObject.allied;
+    }
 
     @Override
     public void editorUpdateDraw() {
@@ -37,12 +48,28 @@ public class CircleCollider extends Component {
             resetFixture();
         }
     }
+    public void setDisabled() {
+        if (enabled) {
+            this.enabled = false;
 
+            gameObject.getComponent(Rigidbody2D.class).setDisabled(this);
+        }
+    }
+    public void setEnabled(){
+        if(!enabled) {
+            this.enabled = true;
+            resetFixture();//maybe try resetFixtureNextFrame=true if there problems?
+
+        }
+    }
     @Override
     public void update(float dt) {
         if (resetFixtureNextFrame) {
             resetFixture();
         }
+    }
+    public int getCollisionGroup(){
+        return collisionGroup;
     }
 
     public void resetFixture() {
@@ -59,4 +86,5 @@ public class CircleCollider extends Component {
             }
         }
     }
+
 }

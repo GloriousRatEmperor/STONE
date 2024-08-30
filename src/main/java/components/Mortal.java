@@ -31,7 +31,9 @@ public class Mortal extends Component {
     }
     @Override
     public void begin(){
-        this.alliedM = super.gameObject.allied;
+        if(this.alliedM==0){
+            this.alliedM=super.gameObject.allied;
+        }
     }
 
     public Mortal(float health){

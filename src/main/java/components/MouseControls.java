@@ -20,7 +20,7 @@ import static jade.Window.*;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class MouseControls extends Component {
-    GameObject holdingObject = null;
+    static GameObject holdingObject = null;
     private float debounceTime = 0.05f;
     private Time timer=new Time();
     private float last=0;
@@ -36,6 +36,9 @@ public class MouseControls extends Component {
     this.clientThread=clientThread;
     this.requests=requests;
     }
+    public static GameObject getHoldingObject(){
+        return holdingObject;
+    }
     public void pickupObject(GameObject go) {
         if (this.holdingObject != null) {
             this.holdingObject.destroy();
@@ -46,7 +49,7 @@ public class MouseControls extends Component {
         //Window.getScene().addGameObjectToScene(go);
     }
 
-    public void place() {
+    public static void place() {
         GameObject newObj = holdingObject.copy();
         if (newObj.getComponent(StateMachine.class) != null) {
             newObj.getComponent(StateMachine.class).refreshTextures();
@@ -88,7 +91,7 @@ public class MouseControls extends Component {
         else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
             if(casting){
                 activateCast();
-                this.debounce = debounceTime*3;
+                debounce=debounceTime*4;
             }else {
                 int x = (int) MouseListener.getScreenX();
                 int y = (int) MouseListener.getScreenY();
@@ -102,20 +105,25 @@ public class MouseControls extends Component {
                 this.debounce = debounceTime / 2;
             }
         } else if (MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)&& debounce < 0) {
-            if (!boxSelectSet) {
-                Window.getImguiLayer().getMenu().clearSelected();
-                boxSelectStart = MouseListener.getScreen();
-                boxSelectSet = true;
+            if(casting){
+                activateCast();
+                debounce=debounceTime*4;
+            }else {
+                if (!boxSelectSet) {
+                    Window.getImguiLayer().getMenu().clearSelected();
+                    boxSelectStart = MouseListener.getScreen();
+                    boxSelectSet = true;
+                }
+                boxSelectEnd = MouseListener.getScreen();
+                Vector2f boxSelectStartWorld = MouseListener.screenToWorld(boxSelectStart);
+                Vector2f boxSelectEndWorld = MouseListener.screenToWorld(boxSelectEnd);
+                Vector2f halfSize =
+                        (new Vector2f(boxSelectEndWorld).sub(boxSelectStartWorld)).mul(0.5f);
+                DebugDraw.addBox2D(
+                        (new Vector2f(boxSelectStartWorld)).add(halfSize),
+                        new Vector2f(halfSize).mul(2.0f),
+                        0.0f);
             }
-            boxSelectEnd = MouseListener.getScreen();
-            Vector2f boxSelectStartWorld = MouseListener.screenToWorld(boxSelectStart);
-            Vector2f boxSelectEndWorld = MouseListener.screenToWorld(boxSelectEnd);
-            Vector2f halfSize =
-                    (new Vector2f(boxSelectEndWorld).sub(boxSelectStartWorld)).mul(0.5f);
-            DebugDraw.addBox2D(
-                    (new Vector2f(boxSelectStartWorld)).add(halfSize),
-                    new Vector2f(halfSize).mul(2.0f),
-                    0.0f);
         } else if (boxSelectSet) {
             //actually mass selects shit I thinketh
 

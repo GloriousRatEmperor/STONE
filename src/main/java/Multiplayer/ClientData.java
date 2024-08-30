@@ -1,9 +1,5 @@
 package Multiplayer;
 
-import jade.GameObject;
-import org.joml.Vector2f;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class ClientData {

@@ -2,7 +2,6 @@ package util;
 
 import components.MapSpriteSheet;
 import components.Sprite;
-import components.Spritesheet;
 
 public class Img {
     public static Sprite get(String name){

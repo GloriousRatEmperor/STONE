@@ -14,6 +14,7 @@ public class UNMADE {
         this.time=Unit.getBuildTime(name);
         this.sprite=Unit.getSprite(name);
     }
+
     public UNMADE Clone(){
         return new UNMADE(this.name);
     }

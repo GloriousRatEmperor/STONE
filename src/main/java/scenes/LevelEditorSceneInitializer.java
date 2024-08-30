@@ -14,17 +14,25 @@ import physics2d.components.Box2DCollider;
 import physics2d.components.Rigidbody2D;
 import physics2d.enums.BodyType;
 import util.AssetPool;
+import util.Img;
+import util.Unit;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
+
+import static util.Unit.buildNames;
+import static util.Unit.unitNames;
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
 
     private Spritesheet sprites;
+    private List<Sprite> extraSprites;
+
 
     private GameObject levelEditorStuff;
     private BlockingQueue<ClientData> requests;
@@ -41,7 +49,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void init(Scene scene) {
+
         sprites = AssetPool.getSpritesheet("assets/images/spritesheets/decorationsAndBlocks.png");
+        extraSprites=AssetPool.getMapSheet("assets/images/spritesheets/joined.png").getSprites();
         Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
 
         levelEditorStuff = scene.createGameObject("LevelEditor");
@@ -171,7 +181,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         ImGui.begin("Item window");
 
         if (ImGui.beginTabBar("WindowTabBar")) {
-            if (ImGui.beginTabItem("Solid Blocks")) {
+            if (ImGui.beginTabItem("Dead Blocks")) {
 
                 ImVec2 windowPos = new ImVec2();
                 ImGui.getWindowPos(windowPos);
@@ -181,13 +191,16 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                 ImGui.getStyle().getItemSpacing(itemSpacing);
 
                 float windowX2 = windowPos.x + windowSize.x;
-                for (int i = 0; i < sprites.size(); i++) {
-                    if (i == 34) continue;
-                    if (i >= 38 && i < 61) continue;
+                for (int i = 0; i < sprites.size()+extraSprites.size(); i++) {
+                    Sprite sprite;
 
-                    Sprite sprite = sprites.getSprite(i);
-                    float spriteWidth = sprite.getWidth() * 4;
-                    float spriteHeight = sprite.getHeight() * 4;
+                    if(i>=sprites.size()){
+                        sprite=extraSprites.get(i- sprites.size());
+                    }else{
+                        sprite = sprites.getSprite(i);
+                    }
+                    float spriteWidth = 16 * 4;
+                    float spriteHeight = 16 * 4;
                     int id = sprite.getTexId();
                     Vector2f[] texCoords = sprite.getTexCoords();
 
@@ -200,6 +213,84 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
                         Box2DCollider b2d = new Box2DCollider();
                         b2d.setHalfSize(0.25f, 0.25f);
                         object.addComponent(b2d);
+                        levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                    }
+                    ImGui.popID();
+
+                    ImVec2 lastButtonPos = new ImVec2();
+                    ImGui.getItemRectMax(lastButtonPos);
+                    float lastButtonX2 = lastButtonPos.x;
+                    float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+                    if ( nextButtonX2 < windowX2) {
+                        ImGui.sameLine();
+                    }
+                }
+
+                ImGui.endTabItem();
+            }
+            if (ImGui.beginTabItem("Units")) {
+
+                ImVec2 windowPos = new ImVec2();
+                ImGui.getWindowPos(windowPos);
+                ImVec2 windowSize = new ImVec2();
+                ImGui.getWindowSize(windowSize);
+                ImVec2 itemSpacing = new ImVec2();
+                ImGui.getStyle().getItemSpacing(itemSpacing);
+
+                float windowX2 = windowPos.x + windowSize.x;
+                for (int i = 0; i < unitNames.size(); i++) {
+                    String name= unitNames.get(i);
+                    Sprite sprite = Img.get(name);
+
+                    float spriteWidth = 64;
+                    float spriteHeight = 64;
+                    int id = sprite.getTexId();
+                    Vector2f[] texCoords = sprite.getTexCoords();
+
+                    ImGui.pushID(i);
+                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                        GameObject object = Unit.make(name,new Vector2f(),1);
+                        levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
+                    }
+                    ImGui.popID();
+
+                    ImVec2 lastButtonPos = new ImVec2();
+                    ImGui.getItemRectMax(lastButtonPos);
+                    float lastButtonX2 = lastButtonPos.x;
+                    float nextButtonX2 = lastButtonX2 + itemSpacing.x + spriteWidth;
+                    if (i + 1 < sprites.size() && nextButtonX2 < windowX2) {
+                        ImGui.sameLine();
+                    }
+                }
+
+                ImGui.endTabItem();
+            }
+            if (ImGui.beginTabItem("Buildings")) {
+
+                ImVec2 windowPos = new ImVec2();
+                ImGui.getWindowPos(windowPos);
+                ImVec2 windowSize = new ImVec2();
+                ImGui.getWindowSize(windowSize);
+                ImVec2 itemSpacing = new ImVec2();
+                ImGui.getStyle().getItemSpacing(itemSpacing);
+
+                float windowX2 = windowPos.x + windowSize.x;
+                for (int i = 0; i < buildNames.size(); i++) {
+                    String name= buildNames.get(i);
+
+                    Sprite sprite = Img.get(name);
+                    if(sprite==null){
+                        continue;
+                    }
+
+                    float spriteWidth = 64;
+                    float spriteHeight = 64;
+                    int id = sprite.getTexId();
+                    Vector2f[] texCoords = sprite.getTexCoords();
+
+                    ImGui.pushID(i);
+                    if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
+                        GameObject object = Unit.make(name,new Vector2f(),1);
                         levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();

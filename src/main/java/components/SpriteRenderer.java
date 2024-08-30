@@ -11,6 +11,7 @@ import util.AssetPool;
 import java.util.List;
 
 public class SpriteRenderer extends Component {
+    @Override
     public SpriteRenderer Clone(){
         return new SpriteRenderer();
     }

@@ -29,7 +29,9 @@ public class UnitBuilder extends Component{
 //        CastAbilities ability=this.gameObject.getComponent(CastAbilities.class);
 //        builder=ability.getAbility("Build unit");
 //        ability.addAbility(builder);
-        alliedB=super.gameObject.allied;
+        if(this.alliedB==0){
+            this.alliedB=super.gameObject.allied;
+        }
 
     }
     public void start() {
@@ -51,19 +53,19 @@ public class UnitBuilder extends Component{
     }
 
     public void makeUnit(UNMADE unm) {
-        Vector2f position = new Vector2f(tr.position);
+        Vector2f position = new Vector2f(tr.position.x,tr.position.y-0.001f);
         GameObject unit = Unit.make(unm.name,position, alliedB);
         getScene().addGameObjectToScene(unit);
     }
     public void addqueue(String UnitName, Vector3f cost){
-        if(getScene().addmoney(-cost.x, -cost.y, -cost.z)) {
+        if(getScene().addmoney(-cost.x, -cost.y, -cost.z,alliedB)) {
             UNMADE unm = new UNMADE(UnitName);
             queue.add(unm);
             queue.sort((s1, s2) -> (int) (s1.time - s2.time));
         }
     }
     @Override
-    public void mengui(Component master) {
+    public void copyProperties(Component master) {
         for (UNMADE c :
                 queue) {
             UNMADE clone = c.Clone();

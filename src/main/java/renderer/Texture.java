@@ -8,10 +8,13 @@ import java.nio.IntBuffer;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.stb.STBImage.*;
 
-public class Texture {
-    private String filepath;
+public class Texture implements Cloneable{
+    public String filepath;
     private transient int texID;
     private int width, height;
+    public Texture clone() throws CloneNotSupportedException {
+        return (Texture) super.clone();
+    }
 
     public Texture() {
         texID = -1;

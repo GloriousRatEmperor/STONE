@@ -3,8 +3,10 @@ package components;
 import jade.GameObject;
 import jade.MineralCluster;
 import jade.Transform;
+import org.jbox2d.dynamics.contacts.Contact;
+import org.joml.Vector2f;
 import org.joml.Vector3d;
-import components.MoveContollable;
+import physics2d.components.Rigidbody2D;
 
 import static jade.Window.getScene;
 
@@ -83,7 +85,7 @@ public class Worker extends Component{
     }
 
     public void depositMineral(Base base){
-        getScene().addmoney(cargo);
+        getScene().addmoney(cargo,gameObject.allied);
         cargo.zero();
         if(harvestCluster==null) {
             this.harvestCluster=base.assignMineral();
@@ -96,6 +98,12 @@ public class Worker extends Component{
 
 
 
+    }
+    @Override
+    public void preSolve(GameObject obj, Contact contact, Vector2f contactNormal) {
+
+        Rigidbody2D body=super.gameObject.getComponent(Rigidbody2D.class);
+        body.addVelocity(new Vector2f(contactNormal).perpendicular().mul(0.5f));
     }
     public void moveToMineral(){
 
@@ -122,6 +130,10 @@ public class Worker extends Component{
 
         }
         conserveMineral=false;
+    }
+    @Override
+    public void start(){
+        this.gameObject.getComponent(Rigidbody2D.class).friction=0;
     }
 
 

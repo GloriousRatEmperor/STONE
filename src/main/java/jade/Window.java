@@ -3,6 +3,7 @@ package jade;
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 import components.ServerInputs;
+import util.Variables;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
@@ -60,6 +61,7 @@ public class Window implements Observer {
     private float beginTime;
     private float endTime;
 
+
     public static ArrayList<Shader> Shaders = new ArrayList<Shader>();
     public static boolean newFloor=false;
 
@@ -83,7 +85,7 @@ public class Window implements Observer {
     public Boolean debugging;
     public static boolean casting;
     private static List<Integer> targetIds;
-    private static String targetAbility;
+    private static int targetAbility;
     private Window() {
 
         this.width = 1920;
@@ -150,9 +152,7 @@ public class Window implements Observer {
 
         List<File> results = new ArrayList<>();
 
-        for(File temp : Objects.requireNonNull(directoryFile.listFiles())) {
-                results.add(temp);
-        }
+        results.addAll(Arrays.asList(Objects.requireNonNull(directoryFile.listFiles())));
         return results;
     }
     public void init(Boolean debugging) {
@@ -184,10 +184,12 @@ public class Window implements Observer {
 
 
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-        Window.getScene().setFloor(floor);
-
+        Scene scene=Window.getScene();
+        scene.setFloor(floor);
+        scene.initiatePlayers(inputs.playeramount);
+        scene.setAllied(allied);
         newInputs.setTime(0f);
-
+        Variables.start();
         this.runtimePlaying = true;
         starttime=UniTime.getExact();
     }
@@ -240,7 +242,6 @@ public class Window implements Observer {
                 framebuffer.bind();
 
 
-                //if dt>0 was here
                 if(runtimePlaying) {
                     Renderer.bindShader(groundShader);
                     currentScene.renderFloor();
@@ -258,7 +259,6 @@ public class Window implements Observer {
                     //misleading esp with editor update bc it does everything, like this for possibility of splitting things into the thread but probably never going to do it
                     currentScene.editorUpdateDraw();
                 }
-                // *end of dt condition
 
                 currentScene.render(false);
                 DebugDraw.draw();
@@ -542,24 +542,27 @@ public class Window implements Observer {
 //        clientData.setPos(pos);
 //        get().requests.add(clientData);
 //    }
-    public static void sendCast(List<Integer> Ids,String AbilityName){
-        casting=false;
+    public static void sendCast(List<Integer> Ids,int AbilityID){
+        if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
+            casting = false;
+        }
         ClientData clientData = new ClientData();
         clientData.setGameObjects(Ids);
         clientData.setName("Cast");
-        clientData.setString( AbilityName);
+        clientData.setIntValue(AbilityID);
         List<Float> pos= new ArrayList<Float>();
         pos.add(MouseListener.getWorld().x);
         pos.add(MouseListener.getWorld().y);
         clientData.setPos(pos);
         get().requests.add(clientData);
     }
-    public static void targetCast(List<Integer> Ids,String AbilityName){
+    public static void targetCast(List<Integer> Ids,int AbilityID){
         targetIds=Ids;
-        targetAbility=AbilityName;
+        targetAbility=AbilityID;
         casting=true;
     }
     public static void activateCast(){
+
         sendCast(targetIds,targetAbility);
     }
     public static void cancelCast(){

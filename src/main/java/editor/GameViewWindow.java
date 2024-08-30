@@ -85,14 +85,14 @@ public class GameViewWindow {
             EventSystem.notify(null,event);
         }
 
-        if(!playing) {
+        //if(!playing) {
             if (ImGui.menuItem("Save", "Ctrl+S")) {
 
                 Event event = new Event(EventType.SaveLevel);
                 event.strargs = lastLevel;
                 EventSystem.notify(null, event);
             }
-        }
+        //}
         ImInt inde=new ImInt(0);
         ImGui.setNextItemWidth(120);
         if (ImGui.combo("",inde, guiLevelLoads, guiLevelLoads.length)) {

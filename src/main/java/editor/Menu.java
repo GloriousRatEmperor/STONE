@@ -59,11 +59,7 @@ public class Menu {
 //                    activeGameObject.addComponent(new CircleCollider());
 //                }
 //            }
-            for (GameObject go : activeGameObjects) {
-                if(go.isDead()){
-                    activeGameObjects.remove(activeGameObjects);
-                }
-            }
+            activeGameObjects.removeIf(GameObject::isDead);
             MasterObject.masterGui(activeGameObjects);
 
             ImGui.end();
@@ -98,7 +94,7 @@ public class Menu {
         if (go != null) {
             clearSelected();
             this.activeGameObjects.add(go);
-            MasterObject=go.mengui(MasterObject);
+            MasterObject=go.copyMissingComponents(MasterObject);
             ids.add(go.getUid());
         }
 
@@ -119,7 +115,7 @@ public class Menu {
             this.activeGameObjectsOgColor.add(new Vector4f());
         }
         this.activeGameObjects.add(go);
-        MasterObject=go.mengui(MasterObject);
+        MasterObject=go.copyMissingComponents(MasterObject);
         ids.add(go.getUid());
 
     }

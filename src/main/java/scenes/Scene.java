@@ -1,41 +1,36 @@
 package scenes;
 
-import Abilitiess.Ability;
+import SubComponents.Abilities.Ability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import components.AbilityDeserializer;
-import components.Component;
-import components.ComponentDeserializer;
-import components.NonPickable;
+import components.*;
 import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;
 import jade.Transform;
-import org.joml.Vector2f;
-import org.joml.Vector2i;
-import org.joml.Vector3d;
-import org.joml.Vector3i;
+import org.joml.*;
 import physics2d.Physics2D;
 import renderer.Renderer;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.Math;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class Scene {
 
     private Renderer renderer;
+
     private Camera camera;
     private List<GameObject> bases=new ArrayList();
-
+    ConcurrentLinkedQueue<Integer> requestIds =new ConcurrentLinkedQueue<>();
+    ConcurrentLinkedQueue<GameObject> reuestObjects=new ConcurrentLinkedQueue<>();
     private boolean isRunning;
     private List<GameObject> gameObjects;
     private List<GameObject> drawObjects;
@@ -43,31 +38,58 @@ public class Scene {
     private BlockingQueue<GameObject> drawObjectsPending;
     private Physics2D physics2D;
     private File leveltemp;
+    private int allied;
     private HashMap<Vector2i,Vector3i> floor;
 
     private SceneInitializer sceneInitializer;
-    public double magic = 0;
-    public double blood=0;
-    public double rock=0;
-    public Boolean addmoney(float addblood, float addrock, float addmagic){
-        if(-addblood<=blood&-addrock<=rock&-addmagic<=magic) {
-            blood += addblood;
-            rock += addrock;
-            magic += addmagic;
+    private ArrayList<Vector3d> money=new ArrayList<>();
+    public Boolean addmoney(float addblood, float addrock, float addmagic,int player){
+        Vector3d moneys=money.get(player-1);
+        if(-addblood<=moneys.x&-addrock<=moneys.y&-addmagic<=moneys.z) {
+            moneys.add(addblood,addrock,addmagic);
             return true;
         }
         return false;
     }
-    public void setMoney(float  setblood, float setrock, float setmagic){
-            blood = setblood;
-            rock = setrock;
-            magic = setmagic;
+    public void setAllied(int allied){
+        this.allied=allied;
     }
-    public boolean addmoney(Vector3d mineral){
-        if(-mineral.x<=blood&-mineral.y<=rock&-mineral.z<=magic) {
-            blood += mineral.x;
-            rock += mineral.y;
-            magic += mineral.z;
+    public int getAllied(){
+        return allied;
+    }
+    public double getRock(){
+        return money.get(allied-1).y;
+    }
+    public double getBlood(){
+        return money.get(allied-1).x;
+    }
+    public double getMagic(){
+        return money.get(allied-1).z;
+    }
+    public double getEnemyRock(){
+        return money.get(money.size()-allied).y;
+    }
+    public double getEnemyBlood(){
+        return money.get(money.size()-allied).x;
+    }
+    public double getEnemyMagic(){
+        return money.get(money.size()-allied).z;
+    }
+    public void setMoney(float  setblood, float setrock, float setmagic,int player){
+        Vector3d moneys=money.get(player-1);
+        moneys.set(setblood,setrock,setmagic);
+    }
+    public void setAllMoney(float  setblood, float setrock, float setmagic){
+        for (Vector3d moneys :money) {
+            moneys.set(setblood, setrock, setmagic);
+        }
+    }
+    public boolean addmoney(Vector3d mineral,int player){
+        Vector3d moneys=money.get(player-1);
+        if(-mineral.x<=moneys.x&-mineral.y<=moneys.y&-mineral.z<=moneys.z) {
+            moneys.x += mineral.x;
+            moneys.y+= mineral.y;
+            moneys.z += mineral.z;
             return true;
         }
         return false;
@@ -130,6 +152,11 @@ public class Scene {
         floor=newmap;
         renderer.setFloor(floor);
     }
+    public void initiatePlayers(int playeramount){
+        for (int i=0;i<playeramount;i++){
+            money.add(new Vector3d());
+        }
+    }
 
     public void addGameObjectToScene(GameObject go) {
         if (!isRunning) {
@@ -141,16 +168,19 @@ public class Scene {
     }
 
     public void destroy() {
-        for (GameObject go : gameObjects) {
-            go.destroy();
+        synchronized(gameObjects) {
+            for (GameObject go : gameObjects) {
+                go.destroy();
+            }
         }
     }
 
     public <T extends Component> GameObject getGameObjectWith(Class<T> clazz) {
-        for (GameObject go : gameObjects) {
-            if (go.getComponent(clazz) != null) {
-                return go;
-            }
+            for (GameObject go : gameObjects) {
+                if (go.getComponent(clazz) != null) {
+                    return go;
+                }
+
         }
 
         return null;
@@ -164,10 +194,12 @@ public class Scene {
     }
 
     public GameObject getGameObject(int gameObjectId) {
-        Optional<GameObject> result = this.gameObjects.stream()
-                .filter(gameObject -> gameObject.getUid() == gameObjectId)
-                .findFirst();
-        return result.orElse(null);
+
+        Optional<GameObject> result = this.drawObjects.stream()
+                    .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                    .findFirst();
+            return result.orElse(null);
+
     }
 
     public ArrayList<GameObject> getGameObjects(List<Integer> gameObjectIds) {
@@ -180,7 +212,25 @@ public class Scene {
         }
         return selected;
     }
+    public GameObject runningGetGameObject(int gameObjectId) {
 
+        Optional<GameObject> result = this.gameObjects.stream()
+                .filter(gameObject -> gameObject.getUid() == gameObjectId)
+                .findFirst();
+        return result.orElse(null);
+
+    }
+
+    public ArrayList<GameObject> runningGetGameObjects(List<Integer> gameObjectIds) {
+        ArrayList<GameObject> selected = new ArrayList<>();
+        for (Integer gameObjectId : gameObjectIds) {
+            GameObject pickedObj = runningGetGameObject(gameObjectId);
+            if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
+                selected.add(pickedObj);
+            }
+        }
+        return selected;
+    }
 
     public void editorUpdate(float dt) {
         //never called lol
@@ -312,7 +362,7 @@ public class Scene {
 
             if (go.isDead()) {
                 gameObjects.remove(i);
-                this.renderer.destroyGameObject(go);
+
                 this.physics2D.destroyGameObject(go);
                 i--;
             }
@@ -362,6 +412,7 @@ public class Scene {
                 }
                 go.updateDraw();
             }else{
+                this.renderer.destroyGameObject(go);
                 drawObjects.remove(go);
             }
         }
@@ -418,8 +469,10 @@ public class Scene {
 
             List<GameObject> objsToSerialize = new ArrayList<>();
             for (GameObject obj : this.gameObjects) {
-                if (obj.doSerialization()) {
-                    objsToSerialize.add(obj);
+                if(obj.getComponent(GameCamera.class)==null) {
+                    if (obj.doSerialization()) {
+                        objsToSerialize.add(obj);
+                    }
                 }
             }
             writer.write(gson.toJson(objsToSerialize));

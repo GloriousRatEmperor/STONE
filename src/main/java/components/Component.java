@@ -1,5 +1,6 @@
 package components;
 
+import SubComponents.SubComponent;
 import editor.JImGui;
 import imgui.ImGui;
 import imgui.type.ImInt;
@@ -20,6 +21,10 @@ public abstract class Component {
     public boolean isactive=false;
 
     public transient GameObject gameObject = null;
+    private List<SubComponent> subComponents;
+    public List<SubComponent> GetAllsubComponents(){
+        return this.subComponents;
+    }
 
     public Component Clone(){
         throw new RuntimeException("you fucktart cloning dumbly dumass"+this.getClass()+" is the class you clonin and it has no clown function STUPID");
@@ -27,7 +32,7 @@ public abstract class Component {
     public void updateDraw(){
 
     }
-    public void mengui(Component mastercComponent){
+    public void copyProperties(Component mastercComponent){
 
     }
     public void Interact(GameObject target) {

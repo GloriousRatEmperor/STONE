@@ -1,7 +1,10 @@
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 import Multiplayer.TechnicalClient;
+import components.Sprite;
 import jade.Window;
+import org.joml.Vector2f;
+import renderer.Texture;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -11,6 +14,19 @@ public class ClientBooter {
 
     public static void main(String[] args) throws Exception {
 
+
+
+        Sprite s=new Sprite();
+        Texture t=new Texture();
+        t.filepath="sss";
+        s.setTexture(t);
+
+        s.setTexCoords(new Vector2f[]{new Vector2f(500,1000)});
+        Sprite c=s.clone();
+        c.getTexCoords()[0].x+=10;
+        System.out.println(c.getTexCoords()[0].x);
+        System.out.println(s.getTexCoords()[0].x);
+        System.exit(0);
 //        Transform t =new Transform();
 //        Vector2f b=new Vector2f();
 //        b=t.position;

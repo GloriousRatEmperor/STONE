@@ -1,6 +1,6 @@
 package components;
 
-import Abilitiess.Ability;
+import SubComponents.Abilities.Ability;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

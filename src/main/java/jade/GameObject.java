@@ -1,6 +1,6 @@
 package jade;
 
-import Abilitiess.Ability;
+import SubComponents.Abilities.Ability;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.*;
@@ -504,7 +504,7 @@ public class GameObject {
         }
         return activeGameObjects;
     }
-    public GameObject mengui(GameObject master) {
+    public GameObject copyMissingComponents(GameObject master) {
 
         for (Component c : components) {
             Component masterComp=master.getComponent(c.getClass());
@@ -527,9 +527,32 @@ public class GameObject {
                         field.setAccessible(true);
                     }
                     Object value = field.get(c);
-                    if(field.getType()==Vector2f.class){
-                        value=new Vector2f(((Vector2f) value));
+
+
+                    switch (field.getType().getSimpleName()){
+
+                        case("Vector2f")->
+                            value=new Vector2f(((Vector2f) value));
+                        case("Vector3f")->
+                            value=new Vector3f(((Vector3f) value));
+                        case("Vector4f")->
+                            value=new Vector4f(((Vector4f) value));
+                        case ("Sprite")->
+                            value =((Sprite)value).clone();
+                        case "float","int","boolean","Boolean","BodyType" -> {
+                        }
+
+
+                        default -> {
+                            System.out.println(field.getType().getSimpleName()+" is a new type for copy, plz add it to the known types so that it gets cloned or ignored or whatever");
+                        }
+
+
+
+
                     }
+
+
                     field.set(clone, value);
                     if (isPrivate) {
                         field.setAccessible(false);
@@ -539,15 +562,17 @@ public class GameObject {
                     System.out.println(c.getClass());
 
                     throw new RuntimeException(ex);
+                } catch (CloneNotSupportedException e) {
+                    throw new RuntimeException(e);
                 }
                 master.addComponent(clone);
             }else{
-                c.mengui(masterComp);
+                c.copyProperties(masterComp);
             }
         }
         return master;
     }
-    public GameObject menguiObject(GameObject master){
+    public GameObject CopyProperties(GameObject master){
 
         try {
             Field[] fields = this.getClass().getDeclaredFields();

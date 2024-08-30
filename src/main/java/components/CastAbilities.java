@@ -1,7 +1,11 @@
 package components;
 
-import Abilitiess.*;
+import SubComponents.Abilities.*;
 import Multiplayer.ServerData;
+import SubComponents.Abilities.Ability;
+import SubComponents.Abilities.BuildBarracks;
+import SubComponents.Abilities.BuildPeasant;
+import SubComponents.Abilities.BuildWhitler;
 import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
@@ -17,17 +21,18 @@ public class CastAbilities extends Component {
     public List<Ability> abilities = new ArrayList<>();
     public transient HashSet<Integer> abilityIds = new HashSet<>();
     public String[] guiRemoveAbility =new String[]{};
+    @Override
     public CastAbilities Clone(){
         CastAbilities ablits=new CastAbilities();
-        mengui(ablits);
+        copyProperties(ablits);
         return ablits;
     }
     public CastAbilities(){
         updateName();
     }
-    public Boolean isCastable(AbilityName type){
+    public Boolean isCastable(int id){
         for (Ability a : abilities) {
-            if (Objects.equals(a.getType(), type)) {
+            if (Objects.equals(a.id, id)) {
                 return a.Castable(mp)&&gameObject.allied== Window.get().allied;
             }
         }
@@ -35,8 +40,8 @@ public class CastAbilities extends Component {
     }
     public void castAbility(ServerData data){
             for (Ability a : abilities) {
-                if (Objects.equals(a.name, data.getstrValue())) {
-                    if(a.Castable(mp)&&gameObject.allied== Window.get().allied) {
+                if (a.id==data.getIntValue()) {
+                    if(a.Castable(mp)) {
                         a.cast(data, super.gameObject);
                         mp-=a.mp;
                     }
@@ -53,7 +58,7 @@ public class CastAbilities extends Component {
 
     }
     @Override
-    public void mengui(Component master){
+    public void copyProperties(Component master){
         for (Ability a:
         abilities) {
             if(!((CastAbilities) master).abilityIds.contains(a.id)){
@@ -78,17 +83,19 @@ public class CastAbilities extends Component {
             case BuildRock ->
                     new BuildRock(5);
             case BuildBase ->
-                    new BuildBase(6);
+
+                    new BuildBase(6); //is actually 6+0 for blooodbase, 6+1 for greenbase ... 6+3 for whitebase so nuffin else can have id 6-9
             case BuildTank ->
-                    new BuildTank(7);
+                    new BuildTank(10);
             case BuildBarracks ->
-                    new BuildBarracks(8);
+                    new BuildBarracks(11);
             case BuildPeasant ->
-                    new BuildPeasant(9);
+                    new BuildPeasant(12);
             case BuildWhitler ->
-                    new BuildWhitler(10);
+                    new BuildWhitler(13);
             case BuildWisp ->
-                    new BuildWisp(11);
+                    new BuildWisp(14);
+            case BuildBoarCavalary -> new BuildBoarCavalary(14);
             default -> null;
 
         };
@@ -97,7 +104,6 @@ public class CastAbilities extends Component {
             return null;
         }
         ability.setName(a.toString());
-        ability.setType(a);
         return ability;
     }
 
@@ -140,7 +146,7 @@ public class CastAbilities extends Component {
 
                 }
             }
-        };
+        }
         ImInt inde=new ImInt(0);
 
         if (ImGui.combo("Remove Ability",inde, guiRemoveAbility, guiRemoveAbility.length)) {
@@ -155,7 +161,7 @@ public class CastAbilities extends Component {
                 }
             }
             this.removeAbility(name);
-        };
+        }
         return activegameObjects;
     }
     public void removeAbility(String name){

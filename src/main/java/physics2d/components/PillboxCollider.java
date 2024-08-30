@@ -1,14 +1,11 @@
 package physics2d.components;
 
 import components.Component;
-import components.StateMachine;
 import jade.Window;
-import org.jbox2d.dynamics.contacts.ContactVelocityConstraint;
 import org.joml.Vector2f;
-import physics2d.components.Box2DCollider;
-import physics2d.components.CircleCollider;
 
 public class PillboxCollider extends Component {
+    @Override
     public PillboxCollider Clone(){
         return new PillboxCollider();
     }

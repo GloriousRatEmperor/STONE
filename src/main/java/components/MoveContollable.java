@@ -13,7 +13,7 @@ import java.util.List;
 import static java.lang.Math.*;
 
 public class MoveContollable extends Component {
-
+@Override
     public MoveContollable Clone(){
         MoveContollable c=new MoveContollable();
         c.speed=speed;
@@ -24,7 +24,7 @@ public class MoveContollable extends Component {
         return target!=null;
     }
     private Transform target=null;
-    public int speed=5;
+    public float speed=5;
     public double turn=0; //what percentage of speed can be moved in the correct direction every frame with 1 being 100%, only works on non-1 acceleration
     public double acceleration=1;//what percentage of max speed can it can get in a frame with 1 being 100% (technically 1 is not just 100% but rather instant total acceleration ignoring previous speed)
     private double lastmove=10000000;
@@ -66,7 +66,6 @@ public class MoveContollable extends Component {
         Rigidbody2D body=self.getComponent(Rigidbody2D.class);
 
 
-        if(body!=null){
 
             double xS = (movePos.get(0)) - (self.transform.position.x);
             double yS = (movePos.get(1)) - (self.transform.position.y);
@@ -82,9 +81,9 @@ public class MoveContollable extends Component {
 
                 if (xS < 0) {
                     spdx *= -1;
-                };
+                }
                 spdy = spdx * yS / xS;
-            };
+            }
             if(first){
 
                 self.transform.setFlippedX(spdx<0);
@@ -130,8 +129,7 @@ public class MoveContollable extends Component {
             double distance=Math.sqrt( Math.pow(xS,2)+Math.pow(yS,2));
 
             return distance;
-        }
-        return 0f;
+
     }
 
     public void moveCommand(List<Float> pos, GameObject self){
@@ -195,6 +193,10 @@ public class MoveContollable extends Component {
         }
         super.gameObject.stopMove();
 
+    }
+    @Override
+    public void destroy(){
+        this.target=null;
     }
 
 }

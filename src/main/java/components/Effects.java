@@ -1,12 +1,14 @@
 package components;
 
-import Effects.Effect;
+import SubComponents.Effects.Effect;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Effects extends Component {
+    public static final int ImguiGroup=2;
     private List<Effect> effects = new ArrayList<>();
+    @Override
     public Effects Clone(){
         return new Effects();
     }

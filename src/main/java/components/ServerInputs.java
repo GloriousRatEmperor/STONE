@@ -18,6 +18,7 @@ public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
+    public int playeramount;
     private int ally;
 
     private long startTime=0;
@@ -68,12 +69,12 @@ public class ServerInputs extends Component {
         switch (serverData.getName()) {
             case "Move" -> {
 
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
                 List<Float> pos= serverData.getPos();
-                GameObject target= Window.getScene().getGameObject(serverData.intValue);
+                GameObject target= Window.getScene().runningGetGameObject(serverData.getIntValue());
                 if(target!=null){
                     for (GameObject selectedObject : selectedObjects){
-                        selectedObject.getComponent(MoveContollable.class).moveCommand(target.transform);
+                            selectedObject.getComponent(MoveContollable.class).moveCommand(target.transform);
                     }
                 }
                 else {
@@ -83,7 +84,6 @@ public class ServerInputs extends Component {
                 }
             }
             case "start" -> {
-                System.out.println(serverData.getIntValue());
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
                 startTime = serverData.getStart();
                 setTime(startTime);
@@ -95,10 +95,10 @@ public class ServerInputs extends Component {
                 int count=serverData.getIntValue3();
                 newfloor.put(new Vector2i(0,1),new Vector3i(count,space,0));
                 Window.floor=newfloor;
-
+                playeramount=serverData.getPlayerAmount();
             }
             case "Cast" -> {
-                ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjects(serverData.getGameObjects());
+                ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
                 for (GameObject go:
                      selectedObjects) {
                     CastAbilities cast=go.getComponent(CastAbilities.class);

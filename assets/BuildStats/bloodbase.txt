@@ -1,5 +1,5 @@
 health :800
-size:5
+size:1.9
 
 costblood:500
 costrock:0

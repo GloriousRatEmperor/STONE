@@ -1,5 +1,5 @@
 health : 30
-dmage:15
+attack:15
 attackspeed: 1
 speed:2
 harvestamount:5

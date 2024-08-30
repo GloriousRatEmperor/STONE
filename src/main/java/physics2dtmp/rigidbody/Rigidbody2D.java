@@ -43,7 +43,8 @@ public class Rigidbody2D extends Component {
     public void updateDrawPos(float fraction){
         drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
         drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
-    };
+    }
+
     public void physicsUpdate(float dt) {
         if (this.mass == 0.0f) return;
 

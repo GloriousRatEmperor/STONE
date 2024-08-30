@@ -3,8 +3,13 @@ package components;
 import org.joml.Vector2f;
 import renderer.Texture;
 
-public class Sprite {
-
+public class Sprite implements Cloneable{
+    public Sprite clone() throws CloneNotSupportedException {
+        Sprite clone=((Sprite) super.clone());
+        clone.setTexture(texture.clone());
+        clone.setTexCoords(texCoords.clone());
+        return clone;
+    }
     private float width, height;
 
     private Texture texture = null;

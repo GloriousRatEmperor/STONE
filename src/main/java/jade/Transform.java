@@ -7,6 +7,7 @@ import org.joml.Vector2f;
 import java.util.List;
 
 public class Transform extends Component {
+    @Override
     public Transform Clone(){
         return new Transform(new Vector2f(this.position), new Vector2f(this.scale));
     }
@@ -18,7 +19,8 @@ public class Transform extends Component {
     public Vector2f scale;
     public float rotation = 0.0f;
     public int zIndex;
-    public void updatePastPos(){pastPos.set(position);};
+    public void updatePastPos(){pastPos.set(position);}
+
     @Override
     public void editorUpdateDraw(){
 
@@ -34,7 +36,8 @@ public class Transform extends Component {
 
 
 
-    };
+    }
+
     public Transform() {
         init(new Vector2f(), new Vector2f());
     }
@@ -63,7 +66,7 @@ public class Transform extends Component {
     @Override
     public List<GameObject> masterGui(List<GameObject> activegameObjects) {
         String name=JImGui.inputText("Name: ", gameObject.name);
-        if(gameObject.name != name){
+        if(gameObject.name.equals( name)){
             gameObject.name = name;
             for (GameObject go : activegameObjects) {
                 Transform ccomp=go.getComponent(Transform.class);
@@ -178,16 +181,6 @@ public class Transform extends Component {
         }
     }
     public void flipY() {
-//        Vector2f[] texCoords= gameObject.getComponent(SpriteRenderer.class).getTexCoords();
-//
-//        float mi=texCoords[0].y;
-//        texCoords[0].y = texCoords[1].y;
-//        texCoords[3].y = texCoords[1].y;
-//        texCoords[1].y = mi;
-//        texCoords[2].y = mi;
-//
-//        gameObject.getComponent(SpriteRenderer.class).setTexCoords(texCoords);
-
         flippedY=!flippedY;
     }
 }

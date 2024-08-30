@@ -7,6 +7,7 @@ import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
 import util.AssetPool;
+import util.Img;
 
 import java.util.concurrent.BlockingQueue;
 
@@ -18,6 +19,9 @@ public class LevelSceneInitializer extends SceneInitializer {
     private Thread clientThread;
     private BlockingQueue<ClientData> requests;
     private BlockingQueue<ServerData> responses;
+    private Sprite bloodIcon;
+    private Sprite magicIcon;
+    private Sprite rockIcon;
 
     public LevelSceneInitializer(Thread clientThread,BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
         this.clientThread=clientThread;
@@ -34,7 +38,6 @@ public class LevelSceneInitializer extends SceneInitializer {
         gamestuff.setNoSerialize();
         gamestuff.addComponent(new MouseControls(clientThread,requests));//working
         gamestuff.addComponent(new KeyControls(clientThread,requests));
-        //gamestuff.addComponent(new GridLines()); (normally adds grid... kina obvious tbh)
         gamestuff.addComponent(new GizmoSystem(gizmos)); //(whatever the f a gizmo is...) #NEW WARNING
         gamestuff.addComponent(new ServerInputs(clientThread,responses));
         scene.addGameObjectToScene(gamestuff);
@@ -44,6 +47,9 @@ public class LevelSceneInitializer extends SceneInitializer {
         cameraObject.addComponent(new GameCamera(scene.camera()));
         cameraObject.start();
         scene.addGameObjectToScene(cameraObject);
+        bloodIcon= Img.get("blood");
+        magicIcon=Img.get("magic");
+        rockIcon=Img.get("rockicon");
     }
 
     @Override
@@ -114,17 +120,39 @@ public class LevelSceneInitializer extends SceneInitializer {
     @Override
     public void imgui() {
         imgui.ImGuiIO io = ImGui.getIO();
-        ImGui.setNextWindowSize(io.getDisplaySizeX()/8,io.getDisplaySizeY()/7);
-        ImGui.setNextWindowPos(0,100);
+        float moneySizeX=io.getDisplaySizeX()/8.5f;
+        float moneySizeY=io.getDisplaySizeY()/6;
+        ImGui.setNextWindowSize(moneySizeX,moneySizeY);
+        ImGui.setNextWindowPos(0,40);
         ImGui.begin("moneyshower9000" , ImGuiWindowFlags.MenuBar| ImGuiWindowFlags.NoResize
                 | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration);
 
-        if(ImGui.beginChild("Show",600,700,false, ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
+        if(ImGui.beginChild("Show",moneySizeX,moneySizeY,false, ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
+            int iconSize=40;
+            ImGui.image(bloodIcon.getTexture().getId(), iconSize, iconSize, bloodIcon.getTexCoords()[2].x, bloodIcon.getTexCoords()[0].y, bloodIcon.getTexCoords()[0].x, bloodIcon.getTexCoords()[2].y);
+            ImGui.sameLine();
+            ImGui.textWrapped("Blood "+ ((int) getScene().getBlood()));
+
+            ImGui.image(rockIcon.getTexture().getId(), iconSize, iconSize, rockIcon.getTexCoords()[2].x, rockIcon.getTexCoords()[0].y, rockIcon.getTexCoords()[0].x, rockIcon.getTexCoords()[2].y);
+            ImGui.sameLine();
+            ImGui.textWrapped("Rocks "+((int)getScene().getRock()));
+
+            ImGui.image(magicIcon.getTexture().getId(), iconSize, iconSize, magicIcon.getTexCoords()[2].x, magicIcon.getTexCoords()[0].y, magicIcon.getTexCoords()[0].x, magicIcon.getTexCoords()[2].y);
+            ImGui.sameLine();
+            ImGui.textWrapped("Magic "+ ((int)getScene().getMagic()));
+
+        }ImGui.endChild();
+        ImGui.end();
+        ImGui.setNextWindowSize(moneySizeX,moneySizeY);
+        ImGui.setNextWindowPos(io.getDisplaySizeX()-moneySizeX,40);
+        ImGui.begin("moneyshowerover9000" , ImGuiWindowFlags.MenuBar| ImGuiWindowFlags.NoResize
+                | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration);
+        if(ImGui.beginChild("Showenemy",moneySizeX,moneySizeY,false, ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
 
 
-            ImGui.textWrapped("Blood "+ ((int) getScene().blood));
-            ImGui.textWrapped("Rocks "+((int)getScene().rock));
-            ImGui.textWrapped("Magic "+ ((int)getScene().magic));
+            ImGui.textWrapped("Blood "+ ((int) getScene().getEnemyBlood()));
+            ImGui.textWrapped("Rocks "+((int)getScene().getEnemyRock()));
+            ImGui.textWrapped("Magic "+ ((int)getScene().getEnemyMagic()));
 
 
         }ImGui.endChild();

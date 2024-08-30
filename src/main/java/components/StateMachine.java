@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class StateMachine extends Component {
-
+    @Override
     public StateMachine Clone(){
         return new StateMachine();
     }

@@ -5,9 +5,9 @@ import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import imgui.type.ImInt;
 import jade.GameObject;
+import jade.MasterObject;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
-import components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 import renderer.PickingTexture;
 
@@ -17,7 +17,7 @@ import java.util.List;
 public class PropertiesWindow {
     private List<GameObject> activeGameObjects;
     private GameObject activeGameObject = null;
-    private GameObject MasterObject=new GameObject("MasterObject");
+    private MasterObject MasterObject=new MasterObject();
     private List<Integer> ids=new ArrayList<>();
     private PickingTexture pickingTexture;
     private String[] componentNames=new String[]{};
@@ -105,6 +105,12 @@ public class PropertiesWindow {
                             go.addComponent(new UnitBuilder());
                         }
                     }
+                }if (ImGui.menuItem("Add Shooter")) {
+                    for (GameObject go : activeGameObjects) {
+                        if (go.getComponent(Shooter.class) == null) {
+                            go.addComponent(new Shooter());
+                        }
+                    }
                 }
                 if (ImGui.menuItem("Add Hitter")) {
                     for (GameObject go : activeGameObjects) {
@@ -175,9 +181,9 @@ public class PropertiesWindow {
                     MasterObject.removeComponent(cla);
                     updateComponentName();
                 }
-        };
+        }
 
-            activeGameObjects=MasterObject.editMasterGui(activeGameObjects);
+            MasterObject.EditorImgui(activeGameObjects);
 
 
 
@@ -196,7 +202,7 @@ public class PropertiesWindow {
     }
 
     public void clearSelected() {
-        this.MasterObject=new GameObject("MasterObject");
+        this.MasterObject.clear();
         this.ids=new ArrayList<>();
         this.activeGameObjects.clear();
     }
@@ -219,10 +225,7 @@ public class PropertiesWindow {
         componentNames = names.toArray(componentNames);
     }
     public void addActiveGameObject(GameObject go) {
-        if(ids.isEmpty()){
-            go.menguiObject(MasterObject);
-        }
-        MasterObject=go.mengui(MasterObject);
+        MasterObject.addGameObject(go);
 
         this.activeGameObjects.add(go);
 

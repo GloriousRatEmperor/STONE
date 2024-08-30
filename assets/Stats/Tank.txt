@@ -1,7 +1,7 @@
-health :250
-dmage:75
+health :450
+attack:75
 attackspeed: 2.5
-speed:1
+speed:1.75
 size:1
 
 

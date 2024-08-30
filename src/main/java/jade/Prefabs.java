@@ -210,46 +210,27 @@ public class Prefabs {
         mario.transform.zIndex = 10;
         return mario;
     }
-
-
-    public static GameObject generateFireball(Vector2f position) {
-        Spritesheet items = AssetPool.getSpritesheet("assets/images/items.png");
-        GameObject fireball = generateSpriteObject(items.getSprite(32), 0.18f, 0.18f);
-        fireball.transform.position = position;
-
-        Rigidbody2D rb = new Rigidbody2D();
-        rb.setBodyType(BodyType.Dynamic);
-        rb.setFixedRotation(true);
-        fireball.addComponent(rb);
-
-        CircleCollider circleCollider = new CircleCollider();
-        circleCollider.setRadius(0.08f);
-        fireball.addComponent(circleCollider);
-        fireball.addComponent(new Fireball());
-
-        return fireball;
-    }
     public static GameObject generateUnit(Vector2f position,int allied) {
         Spritesheet items = AssetPool.getSpritesheet("assets/images/spritesheets/back.png");
-        GameObject fireball = generateSpriteObject(items.getSprite(0), 0.18f, 0.18f);
-        fireball.transform.position = position;
+        GameObject newobject = generateSpriteObject(items.getSprite(0), 0.18f, 0.18f);
+        newobject.transform.position = position;
 
         Rigidbody2D rb = new Rigidbody2D();
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(true);
-        fireball.addComponent(rb);
+        newobject.addComponent(rb);
 
         CircleCollider circleCollider = new CircleCollider();
         circleCollider.setRadius(0.08f);
-        fireball.addComponent(circleCollider);
+        newobject.addComponent(circleCollider);
         Hitter hit=new Hitter();
         hit.alliedH =allied;
-        fireball.addComponent(hit);
+        newobject.addComponent(hit);
         Mortal mortal=new Mortal();
         mortal.alliedM =allied;
-        fireball.addComponent(mortal);
-        fireball.addComponent(new MoveContollable());
-        return fireball;
+        newobject.addComponent(mortal);
+        newobject.addComponent(new MoveContollable());
+        return newobject;
     }
 
 
