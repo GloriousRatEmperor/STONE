@@ -4,7 +4,7 @@ import util.Img;
 import util.Unit;
 
 public class BuildBase extends SubComponents.Abilities.BuildBuilding {
-    public int race=1;//1->blood 2->rock 3->magic
+    private int race=4;//1->blood 2->rock 3->magic 4->white
     private int startID;
     @Override
     public BuildBase Copy(){
@@ -15,10 +15,13 @@ public class BuildBase extends SubComponents.Abilities.BuildBuilding {
     public BuildBase( int id) {
         super(id);
         startID=id;
-        this.setRace(4);
 
     }
-    public void setRace(int race){
+    @Override
+    public void start(){
+        startRace(race);
+    }
+    public void startRace(int race){
         this.race=race;
         this.id=startID-1+race;
         switch (race){
@@ -48,6 +51,11 @@ public class BuildBase extends SubComponents.Abilities.BuildBuilding {
             }
         }
     }
-
+    public void setRace(int race){
+        race=race;
+    }
+    public int getRace(){
+        return race;
+    }
 
 }

@@ -17,7 +17,7 @@ import java.util.List;
 public class PropertiesWindow {
     private List<GameObject> activeGameObjects;
     private GameObject activeGameObject = null;
-    private MasterObject MasterObject=new MasterObject();
+    private MasterObject MasterObject=new MasterObject(false);
     private List<Integer> ids=new ArrayList<>();
     private PickingTexture pickingTexture;
     private String[] componentNames=new String[]{};
@@ -70,6 +70,13 @@ public class PropertiesWindow {
                     }
 
 
+                }
+                if (ImGui.menuItem("Add StateMachine")) {
+                    for (GameObject go : activeGameObjects) {
+                        if(go.getComponent(StateMachine.class)==null){
+                            go.addComponent(new StateMachine());
+                        }
+                    }
                 }
                 if (ImGui.menuItem("Add MoveControllable")) {
                     for (GameObject go : activeGameObjects) {
@@ -183,7 +190,7 @@ public class PropertiesWindow {
                 }
         }
 
-            MasterObject.EditorImgui(activeGameObjects);
+            MasterObject.EditorGui(activeGameObjects);
 
 
 

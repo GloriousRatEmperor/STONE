@@ -8,141 +8,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="like a decent amount of progress towards improved internal selecting and nothing else but it will not work now though it might run">
-      <change afterPath="$PROJECT_DIR$/ZLevelSaves/level8.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Ability.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBarracks.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBoarCavalary.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBuilding.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildPeasant.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildRock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildTank.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildUnit.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildWhitler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildWisp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Heal.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Move.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Speed.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/Effect.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/SpeedUp.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/SubComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/ShootCollider.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/Shooter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/util/Variables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildGreenBarracks.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildHeadless.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildHeadlessHorseman.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildMorticum.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildSnek.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildWraith.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/ExplodeOnDeath.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/ExplodingProjectiles.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/ImbuneEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/enums/EffectName.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level11678541046284080122.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level3149157958692098478.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level3488567335670148201.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Leveltemps/level8418336700392812041.tmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level2.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level2.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level3.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level3.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level4.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level4.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level5.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level5.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level6.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level6.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/level7.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/level7.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/BuildStats/barracs.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/BuildStats/bloodbase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/BuildStats/bloodbase.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/BuildStats/magicbase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/BuildStats/magicbase.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/BuildStats/rockbase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/BuildStats/rockbase.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/BuildStats/whitebase.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/BuildStats/whitebase.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Peasant.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Peasant.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Rock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Rock.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Tank.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Tank.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Whitler.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Whitler.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Wisp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Wisp.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/BoarCavalary.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/rekrootment.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZLevelSaves/permarer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permarer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/headlesshorse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/snek.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/ImagesSplit/snek.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/images/key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/key.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kras/krasBase3.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kras/krasBase4.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kras/kraswisp.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kras/snek.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/kras/whilter.png.kra" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/spritesheets/background - Copy.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/images/spritesheets/background.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/spritesheets/background.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/images/spritesheets/joined.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/spritesheets/joined.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/Ability.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildBarracks.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildBase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildBuilding.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildPeasant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildRock.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildTank.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildUnit.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildWhitler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/BuildWisp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/Heal.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/Move.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Abilitiess/Speed.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ClientBooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ClientBooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Effects/Effect.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Effects/SpeedUp.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/FormImage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/FormImage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/JavaUnrelated/Averager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/JavaUnrelated/Averager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ClientData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/ServerData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/TechnicalServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/AbilityDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/AbilityDeserializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Base.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Ability.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBase.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildBase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Heal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Heal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Speed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/Effect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/Effect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/SpeedUp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Effects/SpeedUp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/SubComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/SubComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/AbilityDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponentDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/AnimationState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/AnimationState.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/EditorCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/EditorCamera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/ComponentDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ComponentDeserializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Effects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Effects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Fireball.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/GameCamera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Hitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Hitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/ImInt.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/KeyControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/KeyControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Frame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Mortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Mortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MouseControls.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/MoveContollable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/MoveContollable.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Sprite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Sprite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Shooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SpriteRenderer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/StateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/StateMachine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/UNMADE.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/UNMADE.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/UnitBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/UnitBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Variables.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/GameViewWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/editor/JImGui.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/JImGui.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/SceneHierarchyWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/SceneHierarchyWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Camera.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/FileUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/FileUtil.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/KeyListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/KeyListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Prefabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Prefabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/GameObjectDeserializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/GameObjectDeserializer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Transform.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/JadeContactListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/JadeContactListener.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/RaycastInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/RaycastInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/Box2DCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Box2DCollider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/PillboxCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/PillboxCollider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/DebugDraw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/DebugDraw.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/PickingTexture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/PickingTexture.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Renderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Renderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Shader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Shader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/Texture.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorSceneInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelEditorSceneInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/LevelSceneInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/LevelSceneInitializer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Img.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Img.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Maf.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Maf.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Unit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -204,9 +122,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="GLSL Shader" />
+        <option value="Interface" />
         <option value="Enum" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -218,7 +136,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2U19947DOEYbnf8K4vTTSndsWnW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -226,20 +144,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "jdk.selected.JAVA_MODULE": "19",
-    "last_opened_file_path": "C:/Users/frant/Documents/Gloriousness",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "editor.preferences.import"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;19&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/frant/Documents/Gloriousness&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.import&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\frant\IdeaProjects\STONE\src\main\java" />

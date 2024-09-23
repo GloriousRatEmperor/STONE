@@ -40,16 +40,16 @@ public class Projectile extends Component {
             enemy.takeDamage(damage);
 
             health -= 1;
-            if (health < 0) {
-                die();
+            if (health <= 0) {
+                death();
             } else {
                 nextSmak = attackSpeed;
             }
         }
     }
-    public void die(){
+    public void death(){
         if(!gameObject.isDead()) {
-            gameObject.destroy();
+            gameObject.die();
         }
     }
     @Override
@@ -79,15 +79,15 @@ public class Projectile extends Component {
                     if (mort != null) {
                         smak(mort);
                     } else {
-                        die();
+                        death();
                     }
                 } else {
-                    die();
+                    death();
                 }
 
             }
         }else {
-            die();
+            death();
         }
     }
 

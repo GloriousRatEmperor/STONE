@@ -1,10 +1,15 @@
 package physics2d;
 
+import components.Component;
 import jade.GameObject;
 import jade.Transform;
 import jade.Window;
+import org.jbox2d.callbacks.QueryCallback;
+import org.jbox2d.collision.AABB;
 import org.jbox2d.collision.shapes.CircleShape;
 import org.jbox2d.collision.shapes.PolygonShape;
+import org.jbox2d.collision.shapes.Shape;
+import org.jbox2d.collision.shapes.ShapeType;
 import org.jbox2d.common.Vec2;
 import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
@@ -12,6 +17,10 @@ import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
 import physics2d.components.PillboxCollider;
 import physics2d.components.Rigidbody2D;
+import util.Maf;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Physics2D {
     private Vec2 gravity = new Vec2(0, 0);
@@ -19,7 +28,6 @@ public class Physics2D {
 
     private int velocityIterations = 8;
     private int positionIterations = 3;
-
     public Physics2D() {
 
         world.setContactListener(new JadeContactListener());
@@ -107,6 +115,49 @@ public class Physics2D {
             }
             fixture = fixture.m_next;
         }
+    }
+    private List<Fixture> getFixturesTouchingCircle(Vector2f position , Float radius){
+        Vec2 lowerBound = new Vec2( position.x- radius,position.y-radius);
+        Vec2 upperBound = new Vec2( position.x+ radius,position.y+radius);
+
+        List<Fixture> bodies=new ArrayList<>();
+
+        QueryCallback callback= new QueryCallback() {
+            @Override
+            public boolean reportFixture(Fixture fixture) {
+                if (!fixture.isSensor()) {
+                    Shape shape = fixture.getShape();
+
+                    if (shape.getType() == ShapeType.CIRCLE) {
+                        boolean isColliding = Maf.distance(fixture.getBody().getPosition(), position) < (radius + shape.m_radius);
+                        if (isColliding) {
+                            bodies.add(fixture);
+                        }
+                        return isColliding;
+                    }
+                    bodies.add(fixture);
+                }
+                return true;
+            }
+        };
+
+        world.queryAABB(callback, new AABB( lowerBound,upperBound));
+
+
+
+        return bodies;
+    }
+    public ArrayList<GameObject> getGameObjectsTouchingCircle(Vector2f position , Float radius){
+        ArrayList<GameObject> returnObjects=new ArrayList<>();
+
+        for (Fixture fix: getFixturesTouchingCircle(position,radius)){
+
+            GameObject go=((Component)fix.getBody().getUserData()).gameObject;
+            if(!returnObjects.contains(go)){
+                returnObjects.add(go);
+            }
+        }
+        return returnObjects;
     }
     public void setDisabled(Rigidbody2D rb,Box2DCollider box){
         Body body = rb.getRawBody();

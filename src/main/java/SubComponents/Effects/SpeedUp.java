@@ -1,8 +1,8 @@
 package SubComponents.Effects;
 
+import components.MoveContollable;
 import jade.GameObject;
 import org.joml.Vector2f;
-import components.MoveContollable;
 import physics2d.components.Rigidbody2D;
 
 public class SpeedUp extends Effect{
@@ -10,6 +10,10 @@ public class SpeedUp extends Effect{
 
     public SpeedUp(float duration, float power) {
         super(duration, power);
+        //this.sprite= Img.get("rock");
+
+        type="Buff";
+        updateDesc();
     }
     @Override
     public void apply(GameObject self){
@@ -22,6 +26,10 @@ public class SpeedUp extends Effect{
             currentMove.setVelocity(new Vector2f(currentMove.getVelocity().x*power,currentMove.getVelocity().y*power));
 
         }
+    }
+    @Override
+    public void updateDesc(){
+        setDesc("sped up by"+(power-1)*100+" %%");
     }
     @Override
     public void expire(GameObject self){

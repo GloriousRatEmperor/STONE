@@ -1,14 +1,17 @@
 package components;
 
+import imgui.ImGui;
 import jade.GameObject;
 import jade.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
+import util.AssetPool;
 import util.Unit;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList;
+import java.util.List;
 
 import static jade.Window.getScene;
 
@@ -16,9 +19,16 @@ public class UnitBuilder extends Component{
     public ArrayList<UNMADE> queue= new ArrayList<>();
     public int alliedB =1;
     public transient Transform tr;
+    public Sprite icon;
     @Override
     public UnitBuilder Clone(){
-        return new UnitBuilder();
+        UnitBuilder unitBuilder=new UnitBuilder();
+        try {
+            unitBuilder.icon = icon.clone();
+        }catch (java.lang.CloneNotSupportedException e){
+            e.printStackTrace();
+        }
+        return unitBuilder;
     }
     @Override
     public void begin(){
@@ -36,6 +46,12 @@ public class UnitBuilder extends Component{
     }
     public void start() {
         this.tr = gameObject.getComponent(Transform.class);
+        if (icon == null) {
+            this.icon = gameObject.getComponent(SpriteRenderer.class).getSprite();
+        }
+        if (this.icon.getTexture() != null) {
+            this.icon.setTexture(AssetPool.getTexture(this.icon.getTexture().getFilepath()));
+        }
     }
     @Override
     public void update(float dt){
@@ -91,13 +107,27 @@ public class UnitBuilder extends Component{
                     }
                 }
             } catch (IllegalAccessException ex) {
-                System.out.println(c.getClass());
+                System.out.println(c.getClass()+"is in illegal state.... whatever that means, good luck fixing me I guess");
 
                 throw new RuntimeException(ex);
             }
 
             ((UnitBuilder) master).queue.add(clone);
         }
+
+    }
+
+    @Override
+    public String RunningGui(int size, List<GameObject> activeGameObjects, int ID) {
+        ImGui.tableNextColumn();
+        ImGui.pushID(ID);
+        Sprite Asprite = icon;
+        Vector2f[] AtexCoords = Asprite.getTexCoords();
+        ImGui.image(Asprite.getTexId(),  size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
+
+
+        ImGui.popID();
+        return null;
 
     }
 

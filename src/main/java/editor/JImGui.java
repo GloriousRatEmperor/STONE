@@ -183,8 +183,8 @@ public class JImGui {
         return valArr[0];
     }
 
-    public static boolean colorPicker4(String label, Vector4f color) {
-        boolean res = false;
+    public static float[] colorPicker4(String label, Vector4f color) {
+        float[] change=null;
         ImGui.pushID(label);
 
         ImGui.columns(2);
@@ -194,14 +194,17 @@ public class JImGui {
 
         float[] imColor = {color.x, color.y, color.z, color.w};
         if (ImGui.colorEdit4("##colorPicker", imColor)) {
+            change=new float[]{
+              imColor[0] - color.x,imColor[1] - color.y,imColor[2] - color.z,imColor[3] - color.w
+            };
             color.set(imColor[0], imColor[1], imColor[2], imColor[3]);
-            res = true;
+
         }
 
         ImGui.columns(1);
         ImGui.popID();
 
-        return res;
+        return change;
     }
 
     public static String inputText(String label, String text) {

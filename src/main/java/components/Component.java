@@ -13,17 +13,41 @@ import org.joml.Vector4f;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class Component {
     private static int ID_COUNTER = 0;
     private int uid = -1;
-    public boolean isactive=false;
+    public transient boolean isactive=false;
 
     public transient GameObject gameObject = null;
-    private List<SubComponent> subComponents;
-    public List<SubComponent> GetAllsubComponents(){
+    protected transient List<? extends SubComponent> subComponents;
+    public List<? extends SubComponent> GetAllsubComponents(){
         return this.subComponents;
+    }
+    public void addSubComponent(SubComponent c){
+        System.out.println("ERROR, this class doesn't support subcomponents");
+    }
+    public List<? extends SubComponent>  getSubComponents(){
+        return subComponents;
+    }
+    public <T extends SubComponent> T getSubComponent(Class<T> subComponentClass) {
+        if(subComponents!=null) {
+            for (SubComponent c : subComponents) {
+                if (subComponentClass.isAssignableFrom(c.getClass())) {
+                    try {
+                        return subComponentClass.cast(c);
+                    } catch (ClassCastException e) {
+                        e.printStackTrace();
+                        assert false : "Error: Casting component.";
+                    }
+                }
+            }
+        }
+
+        return null;
     }
 
     public Component Clone(){
@@ -38,8 +62,20 @@ public abstract class Component {
     public void Interact(GameObject target) {
 
     }
-    public void start() {
+    public void die() {
+        if(subComponents!=null) {
+            for (int i = 0; i < subComponents.size(); i++) {
 
+                subComponents.get(i).die();
+            }
+        }
+    }
+    public void start() {
+        if(this.subComponents!=null) {
+            for (int i = 0; i < subComponents.size(); i++) {
+                subComponents.get(i).start();
+            }
+        }
     }
     public void startMove(Transform target) {
 
@@ -62,6 +98,9 @@ public abstract class Component {
     public void runningUpdateDraw() {
 
     }
+    public void updateData(HashMap<String, String> data, boolean running){
+
+    }
 
     public void beginCollision(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
 
@@ -78,186 +117,269 @@ public abstract class Component {
     public void postSolve(GameObject collidingObject, Contact contact, Vector2f hitNormal) {
 
     }
+    public String RunningGui(int Size, List<GameObject> activeGameObjects, int ID){
 
+        return null;
+    }
 
-    public List<GameObject>  masterGui(List<GameObject> activeGameObjects) {
+    public List<GameObject> EditorGui(List<GameObject> activeGameObjects,HashMap<String,String> guiData) {
         try {
-            Field[] fields = this.getClass().getDeclaredFields();
-            for (Field field : fields) {
+            List<Field[]> farm = new ArrayList<>();
+            for(Class cls = this.getClass();
+                cls!=null;
+                cls = cls.getSuperclass()) {
+                farm.add(cls.getDeclaredFields());
+            }
+            int extend=-1;
+            for (Field[] fields:farm){
+                extend++;
+                for (Field field : fields) {
 
-                boolean isTransient = Modifier.isTransient(field.getModifiers());
-                if (isTransient) {
-                    continue;
-                }
-
-                boolean isPrivate = Modifier.isPrivate(field.getModifiers());
-                if (isPrivate) {
-                    field.setAccessible(true);
-                }
-
-                Class type = field.getType();
-                Object value = field.get(this);
-                String name = field.getName();
-
-                if (type == int.class) {
-
-                    int val = (int) value;
-
-                    int newval = JImGui.dragInt(name, val);
-                    if (val != newval) {
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if(change!=null) {
-                                Field fld = change.getClass().getDeclaredField(name);
-                                boolean cisPrivate = Modifier.isPrivate(fld.getModifiers());
-                                if (cisPrivate) {
-                                    fld.setAccessible(true);
-                                }
-
-                                fld.set(change, (int) fld.get(change) + newval-val);
-
-                                if (cisPrivate) {
-                                    fld.setAccessible(false);
-                                }
-
-                            }
-                        }
-                        field.set(this, newval);
-
+                    boolean isPermissible = Modifier.isTransient(field.getModifiers()) || Modifier.isFinal(field.getModifiers());
+                    if (isPermissible) {
+                        continue;
                     }
 
-                } else if (type == float.class) {
-
-                    float val = (float) value;
-
-                    float newval = JImGui.dragFloat(name, val);
-                    if (val != newval) {
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if(change!=null) {
-                                Field fld = change.getClass().getDeclaredField(name);
-                                boolean cprivate = Modifier.isPrivate(fld.getModifiers());
-                                if (cprivate) {
-                                    fld.setAccessible(true);
-                                }
-
-                                fld.set(change, (float) fld.get(change) + newval-val);
-                                if (cprivate) {
-                                    fld.setAccessible(false);
-                                }
-
-                            }
-                        }
-                        field.set(this, newval);
-
+                    boolean isPrivate = Modifier.isPrivate(field.getModifiers());
+                    if (isPrivate) {
+                        field.setAccessible(true);
                     }
-                } else if (type == double.class) {
 
-                    double valll = (double)value;
-                    float val = (float) valll;
+                    Class type = field.getType();
+                    Object value = field.get(this);
+                    String name = field.getName();
 
-                    float newval = JImGui.dragFloat(name, val);
+                    if (type == int.class) {
 
-                    if (val != newval) {
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if(change!=null) {
-                                Field fld = change.getClass().getDeclaredField(name);
-                                boolean cprivate = Modifier.isPrivate(fld.getModifiers());
-                                if (cprivate) {
-                                    fld.setAccessible(true);
-                                }
+                        int val = (int) value;
 
-                                fld.set(change, (double) fld.get(change) + newval-val);
-                                if (cprivate) {
-                                    fld.setAccessible(false);
-                                }
+                        int newval = JImGui.dragInt(name, val);
+                        if (val != newval) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change,extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    boolean cisPrivate = Modifier.isPrivate(fld.getModifiers());
+                                    if (cisPrivate) {
+                                        fld.setAccessible(true);
+                                    }
 
-                            }
-                        }
-                        field.set(this, (double)newval);
+                                    fld.set(change, (int) fld.get(change) + newval - val);
 
-                    }
-                } else if (type == boolean.class) {
-                    boolean val = (boolean) value;
-                    if (ImGui.checkbox(name + ": ", val)) {
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if(change!=null) {
-                                Field fld = change.getClass().getDeclaredField(name);
+                                    if (cisPrivate) {
+                                        fld.setAccessible(false);
+                                    }
 
-                                fld.set(change, !val);
-                            }
-
-                        }
-                        field.set(this, !val);
-
-                    }
-                } else if (type == Vector2f.class) {
-                    Vector2f val = (Vector2f) value;
-                    Vector2f past=new Vector2f(val);
-                    JImGui.drawVec2Control(name, val);
-                    if(!past.equals(val)){
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if(change!=null) {
-                                Field fld = change.getClass().getDeclaredField(name);
-                                boolean cprivate = Modifier.isPrivate(fld.getModifiers());
-                                if (cprivate) {
-                                    fld.setAccessible(true);
-                                }
-                                Vector2f aval = (Vector2f) fld.get(change);
-                                aval.set(aval.x - past.x + val.x, aval.y - past.y + val.y);
-                                if (cprivate) {
-                                    fld.setAccessible(false);
                                 }
                             }
 
                         }
-                    }
-                } else if (type == Vector3f.class) {
-                    Vector3f val = (Vector3f) value;
-                    float[] imVec = {val.x, val.y, val.z};
-                    if (ImGui.dragFloat3(name + ": ", imVec)) {
-                        val.set(imVec[0], imVec[1], imVec[2]);
-                    }
-                } else if (type == Vector4f.class) {
-                    Vector4f val = (Vector4f) value;
-                    JImGui.colorPicker4(name, val);
-                } else if (type.isEnum()) {
-                    String[] enumValues = getEnumValues(type);
-                    String enumType = ((Enum) value).name();
-                    ImInt index = new ImInt(indexOf(enumType, enumValues));
-                    if (ImGui.combo(field.getName(), index, enumValues, enumValues.length)) {
 
-                        for (GameObject go : activeGameObjects) {
-                            Component change = go.getComponent(this.getClass());
-                            if (change != null) {
-                                Field fld = change.getClass().getDeclaredField(name);
-                                if (isPrivate) {
-                                    fld.setAccessible(true);
+                    } else if (type == float.class) {
+
+                        float val = (float) value;
+
+                        float newval = JImGui.dragFloat(name, val);
+                        if (val != newval) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change,extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                    if (cprivate) {
+                                        fld.setAccessible(true);
+                                    }
+
+                                    fld.set(change, (float) fld.get(change) + newval - val);
+                                    if (cprivate) {
+                                        fld.setAccessible(false);
+                                    }
+
                                 }
-                                fld.set(change,type.getEnumConstants()[index.get()]);
-                                if (isPrivate) {
-                                    fld.setAccessible(false);
-                                }
-
-
-
                             }
 
                         }
-                        field.set(this, type.getEnumConstants()[index.get()]);
+                    } else if (type == double.class) {
+
+                        double valll = (double) value;
+                        float val = (float) valll;
+
+                        float newval = JImGui.dragFloat(name, val);
+
+                        if (val != newval) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change,extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                    if (cprivate) {
+                                        fld.setAccessible(true);
+                                    }
+
+                                    fld.set(change, (double) fld.get(change) + newval - val);
+                                    if (cprivate) {
+                                        fld.setAccessible(false);
+                                    }
+
+
+                                }
+                            }
+
+                        }
+                    } else if (type == boolean.class) {
+                        boolean val = (boolean) value;
+                        if (ImGui.checkbox(name + ": ", val)) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change=go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change,extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                    if (cprivate) {
+                                        fld.setAccessible(true);
+                                    }
+                                    fld.set(change, !val);
+                                    if (cprivate) {
+                                        fld.setAccessible(false);
+                                    }
+
+                                }
+                            }
+
+                        }
+                    } else if (type == Vector2f.class) {
+                        Vector2f val = (Vector2f) value;
+                        Vector2f past = new Vector2f(val);
+                        JImGui.drawVec2Control(name, val);
+                        if (!past.equals(val)) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    if (!change.equals(this)) {
+                                        Class owner = getFieldOwner(change,extend);
+                                        Field fld = owner.getDeclaredField(name);
+
+                                        boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                        if (cprivate) {
+                                            fld.setAccessible(true);
+                                        }
+                                        Vector2f aval = (Vector2f) fld.get(change);
+                                        aval.set(aval.x - past.x + val.x, aval.y - past.y + val.y);
+                                        if (cprivate) {
+                                            fld.setAccessible(false);
+                                        }
+                                    }
+                                }
+
+                            }
+                        }
+                    } else if (type == Vector3f.class) {
+
+                        Vector3f val = (Vector3f) value;
+                        float[] imVec = {val.x, val.y, val.z};
+                        if (ImGui.dragFloat3(name + ": ", imVec)) {
+                            for (GameObject go :
+                                    activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    if (!change.equals(this)) {
+                                        Class owner = getFieldOwner(change,extend);
+                                        Field fld = owner.getDeclaredField(name);
+                                        boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                        if (cprivate) {
+                                            fld.setAccessible(true);
+                                        }
+                                        Vector3f aval = (Vector3f) fld.get(change);
+                                        aval.set(aval.x + imVec[0] - val.x, aval.y + imVec[1] - val.y, aval.z - val.z + imVec[2]);
+                                        if (cprivate) {
+                                            fld.setAccessible(false);
+                                        }
+                                    }
+                                }
+                            }
+                            val.set(imVec[0], imVec[1], imVec[2]);
+                        }
+                    } else if (type == Vector4f.class) {
+                        Vector4f val = (Vector4f) value;
+                        float[] difference = JImGui.colorPicker4(name, val);
+                        if (difference != null) {
+                            for (GameObject go :
+                                    activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    if (!change.equals(this)) {
+                                        Class owner = getFieldOwner(change,extend);
+                                        Field fld = owner.getDeclaredField(name);
+                                        boolean cprivate = Modifier.isPrivate(fld.getModifiers());
+                                        if (cprivate) {
+                                            fld.setAccessible(true);
+                                        }
+                                        Vector4f aval = (Vector4f) fld.get(change);
+                                        aval.add(difference[0], difference[1], difference[2], difference[3]);
+                                        if (cprivate) {
+                                            fld.setAccessible(false);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    } else if (type.isEnum()) {
+                        String[] enumValues = getEnumValues(type);
+                        String enumType = ((Enum) value).name();
+                        ImInt index = new ImInt(indexOf(enumType, enumValues));
+                        if (ImGui.combo(field.getName(), index, enumValues, enumValues.length)) {
+
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change,extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    if (isPrivate) {
+                                        fld.setAccessible(true);
+                                    }
+                                    fld.set(change, type.getEnumConstants()[index.get()]);
+                                    if (isPrivate) {
+                                        fld.setAccessible(false);
+                                    }
+
+
+                                }
+
+                            }
+                            field.set(this, type.getEnumConstants()[index.get()]);
+                        }
+                    } else if (type == String.class) {
+                        String val=(String) value;
+                        String newVal=JImGui.inputText(field.getName() + ": ",
+                                (String) value);
+                        if(val!=value) {
+                            for (GameObject go : activeGameObjects) {
+                                Component change = go.getComponent(this.getClass());
+                                if (change != null) {
+                                    Class owner = getFieldOwner(change, extend);
+                                    Field fld = owner.getDeclaredField(name);
+                                    if (isPrivate) {
+                                        fld.setAccessible(true);
+                                    }
+                                    fld.set(change, newVal);
+                                    if (isPrivate) {
+                                        fld.setAccessible(false);
+                                    }
+
+
+                                }
+
+                            }
+                        }
                     }
-                } else if (type == String.class) {
-                    field.set(this,
-                            JImGui.inputText(field.getName() + ": ",
-                                    (String) value));
-                }
 
 
-                if (isPrivate) {
-                    field.setAccessible(false);
+                    if (isPrivate) {
+                        field.setAccessible(false);
+                    }
                 }
             }
         } catch (IllegalAccessException | NoSuchFieldException ex) {
@@ -265,7 +387,21 @@ public abstract class Component {
         }
         return activeGameObjects;
     }
-    public void  imgui() {
+
+    public Class getFieldOwner(Component c, int extended){// gets the class that actually owns the field,
+        // (which can also be a parent class so that you can change fields of Component.class of a CastAbilities),
+        // but primairly added for something like Heal>Ability.
+        if(c!=null) {
+            Class cla = c.getClass();
+            while (extended > 0) {
+                cla = cla.getSuperclass();
+                extended--;
+            }
+            return cla;
+        }
+        return null;
+    }
+    public void LevelEditorStuffImgui() {
         try {
             Field[] fields = this.getClass().getDeclaredFields();
 

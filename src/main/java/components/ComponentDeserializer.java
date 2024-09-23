@@ -1,9 +1,11 @@
 package components;
 
+import SubComponents.SubComponent;
 import com.google.gson.*;
-import components.Component;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ComponentDeserializer implements JsonSerializer<Component>,
         JsonDeserializer<Component> {
@@ -15,7 +17,15 @@ public class ComponentDeserializer implements JsonSerializer<Component>,
         JsonElement element = jsonObject.get("properties");
 
         try {
-            return context.deserialize(element, Class.forName(type));
+            Component comp=context.deserialize(element, Class.forName(type));
+            JsonArray subComponents = jsonObject.getAsJsonArray("SUBS");
+            if(subComponents!=null) {
+                for (JsonElement e : subComponents) {
+                    SubComponent c = context.deserialize(e, SubComponent.class);
+                    comp.addSubComponent(c);
+                }
+            }
+            return comp;
         } catch (ClassNotFoundException e) {
             throw new JsonParseException("Unknown element type: " + type, e);
         }
@@ -26,6 +36,17 @@ public class ComponentDeserializer implements JsonSerializer<Component>,
         JsonObject result = new JsonObject();
         result.add("type", new JsonPrimitive(src.getClass().getCanonicalName()));
         result.add("properties", context.serialize(src, src.getClass()));
+        List<? extends SubComponent> subComps;
+        subComps=src.getSubComponents();
+        List<JsonElement> serialcomps=null;
+        if(subComps!=null) {
+            serialcomps = new ArrayList();
+            for (SubComponent cmp : subComps) {
+                serialcomps.add(context.serialize(cmp, SubComponent.class));
+            }
+
+        }
+        result.add("SUBS", context.serialize(serialcomps));
         return result;
     }
 }

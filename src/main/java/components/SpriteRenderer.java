@@ -8,6 +8,7 @@ import org.joml.Vector4f;
 import renderer.Texture;
 import util.AssetPool;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class SpriteRenderer extends Component {
@@ -50,20 +51,24 @@ public class SpriteRenderer extends Component {
     }
 
     @Override
-    public void imgui() {
-        if (JImGui.colorPicker4("Color Pickier", this.color)) {
+    public void LevelEditorStuffImgui() {
+        if (JImGui.colorPicker4("Color Pickier", this.color)!=null) {
             this.isDirty = true;
         }
     }
     @Override
-    public List<GameObject> masterGui(List<GameObject> activegameObjects) {
-        if (JImGui.colorPicker4("Color Pickier", this.color)) {
+    public List<GameObject> EditorGui(List<GameObject> activegameObjects, HashMap<String,String> data) {
+        float[] diff=JImGui.colorPicker4("Color Pickier", this.color);
+        if (diff!=null) {
             this.isDirty = true;
             for (GameObject go : activegameObjects) {
+
                 SpriteRenderer ccomp=go.getComponent(SpriteRenderer.class);
-                if(ccomp!=null){
-                    ccomp.color=this.color;
-                    ccomp.isDirty=true;
+                if(ccomp!=null) {
+                    if (!ccomp.equals(this)) {
+                        ccomp.color.add(diff[0], diff[1], diff[2], diff[3]);
+                        ccomp.isDirty = true;
+                    }
                 }
 
             }

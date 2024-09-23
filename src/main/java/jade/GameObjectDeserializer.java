@@ -22,4 +22,5 @@ public class GameObjectDeserializer implements JsonDeserializer<GameObject> {
         go.transform = go.getComponent(Transform.class);
         return go;
     }
+
 }

@@ -3,6 +3,7 @@ package SubComponents.Abilities;
 import Multiplayer.ServerData;
 import SubComponents.Effects.SpeedUp;
 import components.Effects;
+import enums.EffectName;
 import jade.GameObject;
 import util.Img;
 import util.UniTime;
@@ -35,9 +36,10 @@ public class Speed extends Ability{
     public void cast(ServerData data, GameObject self) {
 
         this.lastActive= UniTime.getFrame();
-        SpeedUp speed=new SpeedUp(duration,mult);
+        Effects effects=self.getComponent(Effects.class);
+        SpeedUp speed=(SpeedUp) effects.getEffect(EffectName.speedUp,duration,mult);
         speed.keepSpeedPercent=keepSpeedPercent;
-        self.getComponent(Effects.class).addEffect(speed);
+        effects.addEffect(speed);
 
     }
 

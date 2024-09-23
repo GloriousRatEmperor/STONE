@@ -86,6 +86,7 @@ public class Window implements Observer {
     public static boolean casting;
     private static List<Integer> targetIds;
     private static int targetAbility;
+
     private Window() {
 
         this.width = 1920;
@@ -93,7 +94,6 @@ public class Window implements Observer {
         EventSystem.addObserver(this);
 
     }
-
     public static void changeScene(SceneInitializer sceneInitializer) {
         if (currentScene != null) {
             currentScene.destroy();
@@ -111,6 +111,7 @@ public class Window implements Observer {
         FileUtil.copyFile("ZlevelSaves/"+lvlname,get().leveltemp.getPath(),true);
 
     }
+
     public static Window get() {
         if (Window.window == null) {
             Window.window = new Window();
@@ -288,22 +289,35 @@ public class Window implements Observer {
                     throw new IllegalStateException("Unable to initialize GLFW.");
                 }
 
+
+
+
+
                 // Configure GLFW
                 glfwDefaultWindowHints();
                 glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
                 glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will not be resizable
                 long monitor=glfwGetPrimaryMonitor();
                 final GLFWVidMode mode = glfwGetVideoMode(monitor);
+
+                glfwWindowHint(GLFW_RED_BITS, mode.redBits());
+                glfwWindowHint(GLFW_GREEN_BITS, mode.greenBits());
+                glfwWindowHint(GLFW_BLUE_BITS, mode.blueBits());
+                glfwWindowHint(GLFW_REFRESH_RATE, mode.refreshRate());
+                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will not be resizable
+
                 // Create the window
                 if(!debugging) {
                     glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
                 }else {
-                    glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, NULL, NULL);
+                    glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title,monitor, NULL);
                 }
                 if (glfwWindow == NULL) {
                     throw new IllegalStateException("Failed to create the GLFW window.");
                 }
+
+
+
 
                 glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
                 glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);

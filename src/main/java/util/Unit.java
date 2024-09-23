@@ -1,6 +1,7 @@
 package util;
 
 import SubComponents.Abilities.BuildBase;
+import SubComponents.Effects.ExplodingProjectiles;
 import components.*;
 import jade.GameObject;
 import jade.Transform;
@@ -19,7 +20,9 @@ import java.util.HashMap;
 import java.util.List;
 
 import static enums.AbilityName.*;
+import static enums.EffectName.explodingProjectiles;
 import static jade.Prefabs.generateSpriteObject;
+import static jade.Window.getScene;
 
 public class Unit {
     static MapSpriteSheet items = AssetPool.getMapSheet("assets/images/spritesheets/joined.png");
@@ -38,7 +41,7 @@ public class Unit {
             try {
 
                 File file = fileList[i];
-                String fileName=file.getName().split("\\.")[0];
+                String fileName=file.getName().toLowerCase().split("\\.")[0];
                 unitNames.add(fileName);
                 List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
                 for (String s:inFile){
@@ -62,7 +65,7 @@ public class Unit {
             try {
 
                 File file = fileList[i];
-                String fileName=file.getName().split("\\.")[0];
+                String fileName=file.getName().toLowerCase().split("\\.")[0];
                 buildNames.add(fileName);
                 List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
                 for (String s:inFile){
@@ -86,7 +89,7 @@ public class Unit {
             try {
 
                 File file = fileList[i];
-                String fileName=file.getName().split("\\.")[0];
+                String fileName=file.getName().toLowerCase().split("\\.")[0];
                 projectileNames.add(fileName);
                 List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
                 for (String s:inFile){
@@ -107,55 +110,88 @@ public class Unit {
 
     }
     public static GameObject make(String name, Vector2f position,int allied){
-        GameObject unit;
-        switch(name.toLowerCase()){
-            case "rock":
-                unit=BuildWorker(name,position,allied,2);
-                break;
-            case "peasant":
-                unit= BuildWorker(name,position,allied,1);
-                break;
-            case "whitler":
-                unit= BuildWorker(name,position,allied,4);
-                break;
-            case "wisp":
-                unit= BuildWorker(name,position,allied,3);
-                break;
-            default:
-                unit=BuildGeneral(name,position,allied);
-        }
+        name=name.toLowerCase();
+        GameObject unit =switch(name){
+            case "rock"->
+                BuildWorker(name,position,allied,2);
+
+            case "peasant"->
+                BuildWorker(name,position,allied,1);
+
+            case "whitler"->
+                BuildWorker(name,position,allied,4);
+
+            case "wisp"->
+                BuildWorker(name,position,allied,3);
+
+            case "snek"->
+                BuildSnake(name,position,allied);
+            case "wraith"->
+                    BuildWraith(name,position,allied);
+            default->
+                BuildGeneral(name,position,allied);
+        };
         return unit;
 
     }
     public static GameObject makeBuilding(String name, Vector2f position,int allied){
-        GameObject unit;
-        switch(name.toLowerCase()){
-            case "mineral0","mineral1","mineral2":
-                unit= BuildMineral(name,position,allied);
-                break;
-            case "bloodbase","rockbase","magicbase","whitebase":
-                unit= buildBase(name,position,allied);
-                break;
-            case "barracks":
-                unit= buildBarracks(name,position,allied);
-                break;
-            default:
-                unit=BuildGeneral(name,position,allied);
-        }
+        name=name.toLowerCase();
+        GameObject unit =switch(name){
+            case "mineral0","mineral1","mineral2"->
+                 BuildMineral(name,position,allied);
+
+            case "bloodbase","rockbase","magicbase","whitebase"->
+                 buildBase(name,position,allied);
+
+            case "barracks"->
+                 buildBarracks(name,position,allied);
+
+            case "greenbarracks"->
+                buildGreenBarracks(name,position,allied);
+            case "morticum"->
+                    buildMorticum(name,position,allied);
+
+            default->
+                BuildGeneral(name,position,allied);
+        };
         return unit;
 
     }
     public static GameObject makeProjectile(String name, Vector2f position,Transform target,int allied){
-        GameObject unit;
-        switch(name.toLowerCase()){
-            case "arrowwwwwr":
-                unit=BuildProjectile(name+"don't use me",position,target,allied+222222);
-                break;
-            default:
-                unit=BuildProjectile(name,position,target,allied);
-        }
+        name=name.toLowerCase();
+        GameObject unit =switch(name){
+            case "magicball"->
+                BuildMagicball(name,position,target,allied);
+            case "fireball"->
+                BuildFireball(name,position,target,allied);
+
+            default->
+                BuildProjectile(name,position,target,allied);
+        };
         return unit;
 
+    }
+    private static GameObject BuildFireball(String name, Vector2f position,Transform target,int allied){
+        return BuildProjectile(name,position,target,allied);
+
+    }
+    private static GameObject BuildMagicball(String name, Vector2f position,Transform target,int allied) {
+        GameObject wraith=BuildProjectile(name,position,target,allied);
+        AnimationState animation = new AnimationState();
+        Sprite magicball = Img.get("magicball");
+        animation.addFrame(magicball, 0.3f, 1.5f, 0);
+        animation.addFrame(magicball, 0.3f, 1/1.5f,0);
+        animation.setLoop(true);
+        animation.setDeathOnCompletion(false);
+        animation.title = "wraithball";
+
+        StateMachine stateMachine = new StateMachine();
+        stateMachine.addState(animation);
+        stateMachine.addState(animation.title, animation.title, animation.title);
+        stateMachine.setDefaultState(animation.title);
+        stateMachine.trigger(animation.title);
+        wraith.addComponent(stateMachine);
+        return wraith;
     }
     private static GameObject BuildProjectile(String name, Vector2f position,Transform target,int allied){
 
@@ -167,8 +203,8 @@ public class Unit {
             sizeX=sizeY= pd(name + "size", 1f);
         }
         GameObject proj = generateSpriteObject(items.getSprite(name),  sizeX, sizeY,name,position);
-        CircleCollider circleCollider = new CircleCollider();
-        circleCollider.setRadius((sizeX+sizeY)/4);
+        proj.allied=allied;
+        proj.addComponent(new Effects());
         Rigidbody2D rb = new Rigidbody2D();
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(false);
@@ -178,33 +214,39 @@ public class Unit {
         p.speed=pd(name+"speed",5);
         p.attackSpeed=pd(name+"attackspeed",1);
         p.guided=p(name+"guided")==1f;
+        if(!p.guided){
+            CircleCollider circleCollider = new CircleCollider();
+            circleCollider.setRadius((sizeX+sizeY)/4);
+            proj.addComponent(circleCollider);
+        }
         proj.addComponent(p);
         p.moveCommand(target);
         return proj;
     }
     private static GameObject buildBase(String name, Vector2f position,int allied){
         CastAbilities c=new CastAbilities();
+        name=name.toLowerCase();
         switch (name) {
             case "bloodbase" -> {
                 name = "bloodbase";
-                c.addAbility(BuildPeasant);
+                c.addAbility(buildPeasant);
             }
             case "rockbase" -> {
                 name = "rockbase";
-                c.addAbility(BuildRock);
+                c.addAbility(buildRock);
             }
             case "magicbase" -> {
                 name = "magicbase";
-                c.addAbility(BuildWisp);
+                c.addAbility(buildWisp);
             }
             case "whitebase" -> {
                 name = "whitebase";
-                c.addAbility(BuildWhitler);c.addAbility(BuildPeasant);
-                c.addAbility(BuildWisp);c.addAbility(BuildRock);
+                c.addAbility(buildWhitler);c.addAbility(buildPeasant);
+                c.addAbility(buildWisp);c.addAbility(buildRock);
 
             }
         }
-        c.addAbility(BuildBarracks);
+        c.addAbility(buildBarracks);
         GameObject unit=genBuilding(name,position,allied);
         Mortal mort=new Mortal(b(name+"health"));
         unit.addComponent(mort);
@@ -217,8 +259,36 @@ public class Unit {
         GameObject unit=genBuilding(name,position,allied);
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
-        c.addAbility(c.getAbility(BuildTank));
-        c.addAbility(c.getAbility(BuildBoarCavalary));
+        c.addAbility(c.getAbility(buildTank));
+        Mortal mort=new Mortal(b(name+"health"));
+        unit.addComponent(mort);
+        unit.addComponent(c);
+
+
+
+        return unit;
+    }
+    public static GameObject buildGreenBarracks(String name, Vector2f position,int allied){
+        GameObject unit=genBuilding(name,position,allied);
+        unit.addComponent(new UnitBuilder());
+        CastAbilities c =new CastAbilities();
+        c.addAbility(c.getAbility(buildSnek));
+        c.addAbility(c.getAbility(buildBoarCavalary));
+        Mortal mort=new Mortal(b(name+"health"));
+        unit.addComponent(mort);
+        unit.addComponent(c);
+
+
+
+        return unit;
+    }
+    public static GameObject buildMorticum(String name, Vector2f position,int allied){
+        GameObject unit=genBuilding(name,position,allied);
+        unit.addComponent(new UnitBuilder());
+        CastAbilities c =new CastAbilities();
+        c.addAbility(c.getAbility(buildwraith));
+        c.addAbility(c.getAbility(buildHeadless));
+        c.addAbility(c.getAbility(getBuildHeadlessHorseman));
         Mortal mort=new Mortal(b(name+"health"));
         unit.addComponent(mort);
         unit.addComponent(c);
@@ -239,7 +309,27 @@ public class Unit {
     }
 
 
+    private static GameObject BuildSnake(String name, Vector2f position,int allied){
+        GameObject snek= BuildGeneral(name,position,allied);
+        Shooter fballer=new Shooter(3.5f,6,"fireball");
+        snek.addComponent(fballer);
+        Effects effects=snek.getComponent(Effects.class);
+        ExplodingProjectiles e=(ExplodingProjectiles) effects.getEffect(explodingProjectiles);
+        e.durationNow= Float.MAX_VALUE;
+        e.durationTotal= Float.MAX_VALUE;
+        e.radius=1.5f;
+        e.damage=40;
+        effects.addEffect(e);
+        return snek;
 
+    }
+    private static GameObject BuildWraith(String name,Vector2f position,int allied){
+        u("wraithhealth");
+        GameObject wraith= BuildGeneral(name,position,allied);
+        Shooter fballer=new Shooter(2,2,"magicball");
+        wraith.addComponent(fballer);
+        return wraith;
+    }
 
     private static GameObject BuildGeneral(String name, Vector2f position,int allied){
         GameObject unit=genBase(name,position,allied);
@@ -274,18 +364,18 @@ public class Unit {
         float size=ud(name + "size", 0.9f);
         unit.getComponent(CircleCollider.class).setRadius(size/2);
         unit.transform.scale.set(new Vector2f(size,size));
-
+        unit.addComponent(new Effects());
         return unit;
     }
     public static GameObject BuildWorker(String name, Vector2f position,int allied,int race){
         GameObject worker= BuildGeneral(name,position,allied);
         CastAbilities c=new CastAbilities();
-        BuildBase a=(BuildBase) c.getAbility(BuildBase);
+        BuildBase a=(BuildBase) c.getAbility(buildBase);
         a.setRace(race);
         c.addAbility(a);
         if(race==4){
             for (int i=1;i<4;i++){
-                SubComponents.Abilities.BuildBase b=(BuildBase) c.getAbility(BuildBase);
+                SubComponents.Abilities.BuildBase b=(BuildBase) c.getAbility(buildBase);
                 b.setRace(i);
                 c.addAbility(b);
             }
@@ -310,6 +400,7 @@ public class Unit {
         CircleCollider circleCollider = new CircleCollider();
         circleCollider.setRadius(0.08f);
         newObject.addComponent(circleCollider);
+        newObject.addComponent(new Effects());
         return newObject;
     }
     private static GameObject genBuilding(String name, Vector2f position, int allied){
@@ -336,13 +427,14 @@ public class Unit {
 
 
     public static float getBuildTime(String name){
+        name=name.toLowerCase();
         if(!stats.containsKey(name+"buildtime")){
             System.out.println("BOZO this nay exist  "+name);
         }
         return u(name+"buildtime");
     }
     public static Vector3f getCost(String name){
-
+        name=name.toLowerCase();
         return new Vector3f( ud(name+"costblood",0f),ud(name+"costrock",0f),ud(name+"costmagic",0f));
     }
     public static Vector3f getBuildCost(String name){
@@ -374,6 +466,21 @@ public class Unit {
     private static float p(String stat){
         return Pstats.get(stat);
     }
-
+    public static void generateAnimation(Vector2f position, float sizeX, float sizeY, AnimationState animation) {
+        GameObject anime = generateSpriteObject(animation.getFirstSprite(), sizeX, sizeY, "disposableTemp", position);
+        StateMachine stateMachine = new StateMachine();
+        animation.title = "Animation";
+        animation.setLoop(false);
+        animation.setDeathOnCompletion(true);
+        anime.addComponent(stateMachine);
+        stateMachine.addState(animation);
+        stateMachine.addState(animation.title, animation.title, animation.title);
+        stateMachine.setDefaultState(animation.title);
+        stateMachine.trigger(animation.title);
+        anime.setNoSerialize();
+        anime.addComponent(new NonPickable());
+        anime.start();
+        getScene().addDrawObjecttoScene(anime);
+    }
 
 }

@@ -4,8 +4,6 @@ import components.Component;
 import editor.JImGui;
 import org.joml.Vector2f;
 
-import java.util.List;
-
 public class Transform extends Component {
     @Override
     public Transform Clone(){
@@ -20,7 +18,6 @@ public class Transform extends Component {
     public float rotation = 0.0f;
     public int zIndex;
     public void updatePastPos(){pastPos.set(position);}
-
     @Override
     public void editorUpdateDraw(){
 
@@ -63,74 +60,74 @@ public class Transform extends Component {
         return new Transform(new Vector2f(this.position), new Vector2f(this.scale));
     }
 
+//    @Override
+//    public List<GameObject> masterGui(List<GameObject> activegameObjects) {
+//        String name=JImGui.inputText("Name: ", gameObject.name);
+//        if(gameObject.name.equals( name)){
+//            gameObject.name = name;
+//            for (GameObject go : activegameObjects) {
+//                Transform ccomp=go.getComponent(Transform.class);
+//                if(ccomp!=null){
+//                    ccomp.gameObject.name=name;
+//                }
+//            }
+//        }
+//        Vector2f pos=new Vector2f(position.x,position.y);
+//        JImGui.drawVec2Control("Position", this.position);
+//
+//        if(!pos.equals(position)){
+//            for (GameObject go : activegameObjects) {
+//                Transform ccomp=go.getComponent(Transform.class);
+//                if(ccomp!=null){
+//
+//                    ccomp.position.x-=pos.x-this.position.x;
+//                    ccomp.position.y-=pos.y-this.position.y;
+//                }
+//            }
+//        }
+//
+//        Vector2f siz=new Vector2f(this.scale.x,this.scale.y);
+//        JImGui.drawVec2Control("Scale", this.scale, 32.0f);
+//        if(!siz.equals(this.scale)){
+//            for (GameObject go : activegameObjects) {
+//                Transform ccomp=go.getComponent(Transform.class);
+//                if(ccomp!=null){
+//
+//                    ccomp.scale.x-=siz.x-this.scale.x;
+//                    ccomp.scale.y-=siz.y-this.scale.y;
+//                }
+//            }
+//        }
+
+
+//        float rot = JImGui.dragFloat("Rotation", this.rotation);
+//        if(this.rotation!=rot) {
+//            for (GameObject go : activegameObjects) {
+//                Transform ccomp=go.getComponent(Transform.class);
+//                if(ccomp!=null){
+//                    ccomp.rotation+=rot-this.rotation;
+//                }
+//            }
+//            this.rotation = rot;
+//        }
+//        int index=JImGui.dragInt("Z-Index", this.zIndex);
+//        if(this.zIndex !=index ) {
+//
+//            for (GameObject go : activegameObjects) {
+//                Transform ccomp=go.getComponent(Transform.class);
+//                if(ccomp!=null){
+//                    ccomp.zIndex+=index-this.zIndex;
+//                }
+//            }
+//            this.zIndex = index;
+//        }
+//
+//
+//        return activegameObjects;
+//    }
+
     @Override
-    public List<GameObject> masterGui(List<GameObject> activegameObjects) {
-        String name=JImGui.inputText("Name: ", gameObject.name);
-        if(gameObject.name.equals( name)){
-            gameObject.name = name;
-            for (GameObject go : activegameObjects) {
-                Transform ccomp=go.getComponent(Transform.class);
-                if(ccomp!=null){
-                    ccomp.gameObject.name=name;
-                }
-            }
-        }
-        Vector2f pos=new Vector2f(position.x,position.y);
-        JImGui.drawVec2Control("Position", this.position);
-
-        if(!pos.equals(position)){
-            for (GameObject go : activegameObjects) {
-                Transform ccomp=go.getComponent(Transform.class);
-                if(ccomp!=null){
-
-                    ccomp.position.x-=pos.x-this.position.x;
-                    ccomp.position.y-=pos.y-this.position.y;
-                }
-            }
-        }
-
-        Vector2f siz=new Vector2f(this.scale.x,this.scale.y);
-        JImGui.drawVec2Control("Scale", this.scale, 32.0f);
-        if(!siz.equals(this.scale)){
-            for (GameObject go : activegameObjects) {
-                Transform ccomp=go.getComponent(Transform.class);
-                if(ccomp!=null){
-
-                    ccomp.scale.x-=siz.x-this.scale.x;
-                    ccomp.scale.y-=siz.y-this.scale.y;
-                }
-            }
-        }
-
-
-        float rot = JImGui.dragFloat("Rotation", this.rotation);
-        if(this.rotation!=rot) {
-            for (GameObject go : activegameObjects) {
-                Transform ccomp=go.getComponent(Transform.class);
-                if(ccomp!=null){
-                    ccomp.rotation+=rot-this.rotation;
-                }
-            }
-            this.rotation = rot;
-        }
-        int index=JImGui.dragInt("Z-Index", this.zIndex);
-        if(this.zIndex !=index ) {
-
-            for (GameObject go : activegameObjects) {
-                Transform ccomp=go.getComponent(Transform.class);
-                if(ccomp!=null){
-                    ccomp.zIndex+=index-this.zIndex;
-                }
-            }
-            this.zIndex = index;
-        }
-
-
-        return activegameObjects;
-    }
-
-    @Override
-    public void imgui() {
+    public void LevelEditorStuffImgui() {
         gameObject.name = JImGui.inputText("Name: ", gameObject.name);
         JImGui.drawVec2Control("Position", this.position);
         JImGui.drawVec2Control("Scale", this.scale, 32.0f);

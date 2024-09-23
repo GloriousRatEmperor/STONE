@@ -1,5 +1,6 @@
 package util;
 
+import org.jbox2d.common.Vec2;
 import org.joml.Vector2d;
 import org.joml.Vector2f;
 
@@ -26,6 +27,13 @@ public class Maf {
         return distance(pos1.x,pos2.x,pos1.y,pos2.y);
     }
     public static double distance(Vector2d pos1, Vector2d pos2){
+        return distance(pos1.x,pos2.x,pos1.y,pos2.y);
+    }
+    public static double distance(Vec2 pos1, Vec2 pos2){
+        return distance(pos1.x,pos2.x,pos1.y,pos2.y);
+    }
+
+    public static double distance(Vec2 pos1, Vector2f pos2) {
         return distance(pos1.x,pos2.x,pos1.y,pos2.y);
     }
 }

@@ -1,6 +1,6 @@
 package scenes;
 
-import SubComponents.Abilities.Ability;
+import SubComponents.SubComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.*;
@@ -8,17 +8,22 @@ import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;
 import jade.Transform;
-import org.joml.*;
+import org.joml.Vector2f;
+import org.joml.Vector2i;
+import org.joml.Vector3d;
+import org.joml.Vector3i;
 import physics2d.Physics2D;
 import renderer.Renderer;
 
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.Math;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -164,6 +169,14 @@ public class Scene {
 
         } else {
             pendingObjects.add(go);
+        }
+    }
+    public void addDrawObjecttoScene(GameObject go) {
+        if (!isRunning) {
+            gameObjects.add(go);
+
+        } else {
+            drawObjectsPending.add(go);
         }
     }
 
@@ -453,7 +466,7 @@ public class Scene {
     public void save(String file) {
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
-                .registerTypeAdapter(Ability.class, new AbilityDeserializer())
+                .registerTypeAdapter(SubComponent.class, new SubComponentDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()
@@ -488,7 +501,7 @@ public class Scene {
     public void load(){
         Gson gson = new GsonBuilder()
                 .setPrettyPrinting()
-                .registerTypeAdapter(Ability.class, new AbilityDeserializer())
+                .registerTypeAdapter(SubComponent.class, new SubComponentDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()

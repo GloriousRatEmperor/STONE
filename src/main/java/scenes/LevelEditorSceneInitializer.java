@@ -172,7 +172,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
         ImGui.setNextWindowPos(io.getDisplaySizeX()*3/4,0);
 
         ImGui.begin("Level Editor Stuff");
-        levelEditorStuff.imgui();
+        levelEditorStuff.EditorStuffImgui();
         ImGui.end();
 
         ImGui.setNextWindowSize(io.getDisplaySizeX(),io.getDisplaySizeY()/5);
@@ -290,7 +290,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                     ImGui.pushID(i);
                     if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                        GameObject object = Unit.make(name,new Vector2f(),1);
+                        GameObject object = Unit.makeBuilding(name,new Vector2f(),1);
                         levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();

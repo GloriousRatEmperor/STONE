@@ -9,14 +9,14 @@ import jade.GameObject;
 import jade.KeyListener;
 import jade.Window;
 import org.joml.Vector2f;
+import util.AssetPool;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.GLFW_MOD_CONTROL;
 
-public class Ability implements SubComponent {
-    public static final int ImguiGroup=1;
+public class Ability extends SubComponent {
     public String  name;
     public int id;
     public float mp=0;
@@ -31,19 +31,17 @@ public class Ability implements SubComponent {
         return null;
     }
     public Ability(int id) {
+        imguiGroup =1;
         this.id = id;
     }
     public void setName(String name){
         this.name = name;
     }
     @Override
-    public String Imgui(int AbilitySize, List<GameObject> activeGameObjects,int ID){
+    public String RunningGui(int AbilitySize, List<GameObject> activeGameObjects, int ID){
         ImGui.tableNextColumn();
         ImGui.pushID(ID);
         Sprite Asprite=getSprite();
-
-
-        Asprite.setTexture(sprite.getTexture());
         Vector2f[] AtexCoords = Asprite.getTexCoords();
 
 
@@ -91,34 +89,32 @@ public class Ability implements SubComponent {
 
     }
 
-    @Override
-    public void EditorImgui() {
 
-    }
 
-    public void start(){
 
-    }
     public void setDesc(String description){
         if(mp!=0) {
+
             this.description = description + "|4 costs" + (int) mp + "mp";
         }else{
             this.description = description;
         }
     }
 
-
+@Override
+public void start(){
+        if (sprite.getTexture() != null) {
+                sprite.setTexture(AssetPool.getTexture(sprite.getTexture().getFilepath()));
+        }
+}
 
     public void cast(ServerData data, GameObject self){
+
     }
     public Sprite getSprite(){
         return sprite;
     }
 
-    @Override
-    public void destroy() {
-
-    }
 
 
 }

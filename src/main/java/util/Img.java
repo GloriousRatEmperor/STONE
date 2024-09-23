@@ -6,6 +6,11 @@ import components.Sprite;
 public class Img {
     public static Sprite get(String name){
         MapSpriteSheet Sprites = AssetPool.getMapSheet("assets/images/spritesheets/joined.png");
-        return Sprites.getSprite(name);
+        Sprite sprite=Sprites.getSprite(name);
+//        if(sprite==null){
+//            System.out.println("no such image as "+name);
+//        }
+        return sprite;
     }
+    public static int Color(int r, int g, int b, int a) { int ret = a; ret <<= 8; ret += b; ret <<= 8; ret += g; ret <<= 8; ret += r; return ret; }
 }

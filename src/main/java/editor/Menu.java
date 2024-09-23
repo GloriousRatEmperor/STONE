@@ -4,6 +4,7 @@ import components.SpriteRenderer;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
+import jade.MasterObject;
 import jade.Window;
 import org.joml.Vector4f;
 import renderer.PickingTexture;
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Menu {
     private List<GameObject> activeGameObjects;
-    GameObject MasterObject;
+    MasterObject MasterObject=new MasterObject(true);
     public int allied;
     private List<Vector4f> activeGameObjectsOgColor;
     private GameObject primairyObject = null;
@@ -33,7 +34,6 @@ public class Menu {
 
     public Menu(PickingTexture pickingTexture) {
         this.allied= Window.get().allied;
-        this.MasterObject=new GameObject("MasterObject");
         this.ids=new ArrayList<>();
         this.activeGameObjects = new ArrayList<>();
         this.pickingTexture = pickingTexture;
@@ -60,7 +60,7 @@ public class Menu {
 //                }
 //            }
             activeGameObjects.removeIf(GameObject::isDead);
-            MasterObject.masterGui(activeGameObjects);
+            MasterObject.RunningGui(activeGameObjects);
 
             ImGui.end();
 
@@ -72,7 +72,7 @@ public class Menu {
     }
 
     public void clearSelected() {
-        this.MasterObject=new GameObject("MasterObject");
+        this.MasterObject.clear();
         this.ids=new ArrayList<>();
         if (activeGameObjectsOgColor.size() > 0) {
             int i = 0;
@@ -94,7 +94,7 @@ public class Menu {
         if (go != null) {
             clearSelected();
             this.activeGameObjects.add(go);
-            MasterObject=go.copyMissingComponents(MasterObject);
+            MasterObject.addGameObject(go);
             ids.add(go.getUid());
         }
 
@@ -115,7 +115,7 @@ public class Menu {
             this.activeGameObjectsOgColor.add(new Vector4f());
         }
         this.activeGameObjects.add(go);
-        MasterObject=go.copyMissingComponents(MasterObject);
+        MasterObject.addGameObject(go);
         ids.add(go.getUid());
 
     }

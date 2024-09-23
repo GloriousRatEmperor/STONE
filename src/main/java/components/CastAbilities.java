@@ -1,162 +1,171 @@
 package components;
 
-import SubComponents.Abilities.*;
 import Multiplayer.ServerData;
-import SubComponents.Abilities.Ability;
-import SubComponents.Abilities.BuildBarracks;
-import SubComponents.Abilities.BuildPeasant;
-import SubComponents.Abilities.BuildWhitler;
+import SubComponents.Abilities.*;
+import SubComponents.SubComponent;
 import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
 import jade.Window;
-import util.AssetPool;
 
 import java.util.*;
 
 public class CastAbilities extends Component {
-    private float mp=100f;
-    private float maxmp=100f;
-    public List<Ability> abilities = new ArrayList<>();
-    public transient HashSet<Integer> abilityIds = new HashSet<>();
-    public String[] guiRemoveAbility =new String[]{};
+    private float mp = 100f;
+    private float maxmp = 100f;
+    public transient List<Ability> abilities = new ArrayList<>();
+
     @Override
-    public CastAbilities Clone(){
-        CastAbilities ablits=new CastAbilities();
+    public CastAbilities Clone() {
+        CastAbilities ablits = new CastAbilities();
         copyProperties(ablits);
         return ablits;
     }
-    public CastAbilities(){
-        updateName();
+
+    public CastAbilities() {
+        subComponents = abilities;
     }
-    public Boolean isCastable(int id){
+
+    public Boolean isCastable(int id) {
         for (Ability a : abilities) {
             if (Objects.equals(a.id, id)) {
-                return a.Castable(mp)&&gameObject.allied== Window.get().allied;
+                return a.Castable(mp) && gameObject.allied == Window.get().allied;
             }
         }
         return false;
     }
-    public void castAbility(ServerData data){
-            for (Ability a : abilities) {
-                if (a.id==data.getIntValue()) {
-                    if(a.Castable(mp)) {
-                        a.cast(data, super.gameObject);
-                        mp-=a.mp;
-                    }
-                }
-            }
 
-    }
-    public void start(){
+    public Boolean containsAbility(int id) {
         for (Ability a : abilities) {
-            if (a.sprite.getTexture() != null) {
-                a.sprite.setTexture(AssetPool.getTexture(a.sprite.getTexture().getFilepath()));
+            if (Objects.equals(a.id, id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Boolean containsAbility(AbilityName aName) {
+        for (Ability a : abilities) {
+            if (Objects.equals(a.id, aName.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void castAbility(ServerData data) {
+        for (Ability a : abilities) {
+            if (a.id == data.getIntValue()) {
+                if (a.Castable(mp)) {
+                    a.cast(data, super.gameObject);
+                    mp -= a.mp;
+                }
             }
         }
 
     }
+
+
+
     @Override
-    public void copyProperties(Component master){
-        for (Ability a:
-        abilities) {
-            if(!((CastAbilities) master).abilityIds.contains(a.id)){
-                Ability copy=a.Copy();
-                copy.description=a.description;
+    public void copyProperties(Component master) {
+        for (Ability a :
+                abilities) {
+            if (!((CastAbilities) master).containsAbility(a.id)) {
+                Ability copy = a.Copy();
+                copy.description = a.description;
                 ((CastAbilities) master).addAbility(copy);
             }
 
         }
-
-        ((CastAbilities) master).updateName();
     }
 
-    public Ability getAbility(AbilityName a){
-        Ability ability=switch (a){
-            case Move ->
-                new Move(1);
-            case Speed ->
-                new Speed(2);
-            case Heal ->
-                new Heal(3);
-            case BuildRock ->
-                    new BuildRock(5);
-            case BuildBase ->
-
-                    new BuildBase(6); //is actually 6+0 for blooodbase, 6+1 for greenbase ... 6+3 for whitebase so nuffin else can have id 6-9
-            case BuildTank ->
-                    new BuildTank(10);
-            case BuildBarracks ->
-                    new BuildBarracks(11);
-            case BuildPeasant ->
-                    new BuildPeasant(12);
-            case BuildWhitler ->
-                    new BuildWhitler(13);
-            case BuildWisp ->
-                    new BuildWisp(14);
-            case BuildBoarCavalary -> new BuildBoarCavalary(14);
+    public Ability getAbility(AbilityName a) {
+        Ability ability = switch (a) {
+            case move -> new Move(a.getId());
+            case speed -> new Speed(a.getId());
+            case heal -> new Heal(a.getId());
+            case buildRock -> new BuildRock(a.getId());
+            case buildwraith -> new BuildWraith(a.getId());
+            case getBuildHeadlessHorseman -> new BuildHeadlessHorseman(a.getId());
+            case buildHeadless->new BuildHeadless(a.getId());
+            case buildGreenBarracks -> new BuildGreenBarracks(a.getId());
+            case buildMorticum -> new BuildMorticum(a.getId());
+            case buildSnek ->new BuildSnek(a.getId());
+            case buildBase -> new BuildBase(a.getId());
+            case buildTank -> new BuildTank(a.getId());
+            case buildBarracks -> new BuildBarracks(a.getId());
+            case buildPeasant -> new BuildPeasant(a.getId());
+            case buildWhitler -> new BuildWhitler(a.getId());
+            case buildWisp -> new BuildWisp(a.getId());
+            case buildBoarCavalary -> new BuildBoarCavalary(a.getId());
             default -> null;
 
         };
-        if(ability==null){
-            System.out.println("OOPS WE DON'T HAVE NO SUCH ABILITY TYPE "+a+" HERE");
+        if (ability == null) {
+            System.out.println("OOPS WE DON'T HAVE NO SUCH ABILITY TYPE " + a + " HERE");
             return null;
         }
         ability.setName(a.toString());
+
         return ability;
     }
 
-    public void addAbility(Ability Ability){
-        if(Ability==null){
+    public void addAbility(Ability ability) {
+        if (ability == null) {
             System.out.println("wtf you tyina add bruv?");
-        }else {
-            abilities.add(Ability);
+        } else {
+            ability.owner = this;
+            abilities.add(ability);
             abilities.sort(Comparator.comparingInt(s -> s.id));
-            abilityIds.add( Ability.id);
-            updateName();
         }
     }
-    public void addAbility(AbilityName a){
-        Ability Ability=getAbility(a);
-        if(Ability==null){
+
+
+    public void addAbility(AbilityName a) {
+        Ability Ability = getAbility(a);
+        if (Ability == null) {
             System.out.println("wtf you tyina add bruv?");
-        }else {
+        } else {
             abilities.add(Ability);
             abilities.sort(Comparator.comparingInt(s -> s.id));
-            abilityIds.add( Ability.id);
-            updateName();
         }
     }
+
     @Override
-    public List<GameObject> masterGui(List<GameObject> activegameObjects) {
-        super.masterGui(activegameObjects);
+    public List<GameObject> EditorGui(List<GameObject> activegameObjects, HashMap<String, String> guiData) {
+        super.EditorGui(activegameObjects, guiData);
         String[] enumValues = getEnumValues(AbilityName.class);
-        ImInt index=new ImInt(0);
+        ImInt index = new ImInt(0);
 
 
-        if (ImGui.combo("Add Ability",index, enumValues, enumValues.length)) {
-            if(index.get()!=0) {
+        if (ImGui.combo("Add Ability", index, enumValues, enumValues.length)) {
+            if (index.get() != 0) {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
-                        cast.addAbility(cast.getAbility(AbilityName.class.getEnumConstants()[index.get()]));
-
+                        AbilityName name = AbilityName.class.getEnumConstants()[index.get()];
+                        if (!cast.containsAbility(name)) {
+                            cast.addAbility(cast.getAbility(name));
+                            guiData.put("guiRemoveAbility", guiData.get("guiRemoveAbility") + '0' + name);
+                        }
                     }
 
                 }
             }
         }
-        ImInt inde=new ImInt(0);
-
-        if (ImGui.combo("Remove Ability",inde, guiRemoveAbility, guiRemoveAbility.length)) {
-            String name = guiRemoveAbility[inde.get()];
-            if(inde.get()!=0) {
+        ImInt inde = new ImInt(0);
+        String[] s = guiData.get("guiRemoveAbility").split("0");
+        if (ImGui.combo("Remove Ability", inde, s, s.length)) {
+            String name = s[inde.get()];
+            if (inde.get() != 0) {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
                         cast.removeAbility(name);
                     }
+                    guiData.put("guiRemoveAbility", guiData.get("guiRemoveAbility").replace('0' + name, ""));
 
                 }
             }
@@ -164,32 +173,45 @@ public class CastAbilities extends Component {
         }
         return activegameObjects;
     }
-    public void removeAbility(String name){
-        for (Ability a:abilities){
-            if(a.name.equals(name)){
+
+    public void removeAbility(String name) {
+        for (Ability a : abilities) {
+            if (a.name.equals(name)) {
                 abilities.remove(a);
-                abilityIds.remove(a.id);
-                updateName();
                 break;
             }
         }
 
     }
 
-    private void updateName(){
-        List<String> names = new ArrayList<>();
-        names.add("Remove ability");
-        for (Ability a :abilities){
-            names.add(a.name);
+    @Override
+    public void updateData(HashMap<String, String> guiData, boolean running) {
+        if (!running) {
+            StringBuilder alreadyHas = new StringBuilder(guiData.getOrDefault("guiRemoveAbility", ""));
+
+            if (Objects.equals(alreadyHas.toString(), "")) {
+                alreadyHas.append("Remove ability");
+            }
+            List<String> names = new ArrayList<>(List.of(alreadyHas.toString().split(",")));
+            for (Ability a : abilities) {
+                if (!names.contains(a.name)) {
+                    alreadyHas.append('0').append(a.name);
+                }
+            }
+            guiData.put("guiRemoveAbility", alreadyHas.toString());
 
         }
-        guiRemoveAbility = new String[names.size()];
-        guiRemoveAbility = names.toArray(guiRemoveAbility);
     }
+
     @Override
 
-    public void destroy(){
-        this.abilityIds.clear();
+    public void destroy() {
         this.abilities.clear();
+    }
+
+    @Override
+    public void addSubComponent(SubComponent c) {
+    Ability a=((Ability)c);
+    addAbility(a);
     }
 }

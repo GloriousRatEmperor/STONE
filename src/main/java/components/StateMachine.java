@@ -51,9 +51,12 @@ public class StateMachine extends Component {
 
     public void setDefaultState(String animationTitle) {
         for (AnimationState state : states) {
+
             if (state.title.equals(animationTitle)) {
+
                 defaultStateTitle = animationTitle;
                 if (currentState == null) {
+
                     currentState = state;
                 }
                 return;
@@ -108,31 +111,23 @@ public class StateMachine extends Component {
     }
 
     @Override
-    public void update(float dt) {
+    public void updateDraw() {
         if (currentState != null) {
-            currentState.update(dt);
+            boolean animationFinished=currentState.updateDraw(gameObject.transform);
             SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
             if (sprite != null) {
                 sprite.setSprite(currentState.getCurrentSprite());
                 sprite.setTexture(currentState.getCurrentSprite().getTexture());
             }
+            if(animationFinished){
+                currentState.reset();
+                currentState=null;
+            }
         }
     }
-//    I.... this useless right?
-//    @Override
-//    public void editorUpdate(float dt) {
-//        if (currentState != null) {
-//            currentState.update(dt);
-//            SpriteRenderer sprite = gameObject.getComponent(SpriteRenderer.class);
-//            if (sprite != null) {
-//                sprite.setSprite(currentState.getCurrentSprite());
-//                sprite.setTexture(currentState.getCurrentSprite().getTexture());
-//            }
-//        }
-//    }
 
     @Override
-    public void imgui() {
+    public void LevelEditorStuffImgui() {
         for (AnimationState state : states) {
             ImString title = new ImString(state.title);
             ImGui.inputText("State: ", title);
@@ -149,7 +144,7 @@ public class StateMachine extends Component {
         }
     }
     @Override
-    public List<GameObject> masterGui(List<GameObject> activegameObjects) {
+    public List<GameObject> EditorGui(List<GameObject> activegameObjects,HashMap<String,String> guiData) {
         for (AnimationState state : states) {
             ImString title = new ImString(state.title);
             ImGui.inputText("State: ", title);

@@ -19,6 +19,7 @@ public class Heal extends Ability{
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");
 
     }
+
     @Override
     public void cast(ServerData data, GameObject self) {
         Mortal mortal=self.getComponent(Mortal.class);
