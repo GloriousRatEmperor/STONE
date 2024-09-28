@@ -1,21 +1,25 @@
 package SubComponents.Abilities;
 
+import enums.AbilityName;
 import util.Img;
 import util.Unit;
 
+import static enums.AbilityName.*;
+
 public class BuildBase extends SubComponents.Abilities.BuildBuilding {
     private int race=4;//1->blood 2->rock 3->magic 4->white
-    private int startID;
     @Override
     public BuildBase Copy(){
-        BuildBase buildBase=new BuildBase(startID);
-        buildBase.setRace(race);
+        BuildBase buildBase=new BuildBase(type);
+        buildBase.race=race;
         return  buildBase;
     }
-    public BuildBase( int id) {
-        super(id);
-        startID=id;
-
+    public BuildBase(AbilityName type) {
+        super(type);
+    }
+    public BuildBase(AbilityName type,int race) {
+        super(type);
+        setRace(race);
     }
     @Override
     public void start(){
@@ -23,30 +27,33 @@ public class BuildBase extends SubComponents.Abilities.BuildBuilding {
     }
     public void startRace(int race){
         this.race=race;
-        this.id=startID-1+race;
         switch (race){
             case 1-> {
+                this.type=buildBaseR;
                 this.cost = Unit.getBuildCost("bloodBase");
                 setDesc("Builds a bloody base");
-                BuildName = "bloodbase";
+                buildName = "bloodbase";
                 super.sprite = Img.get("bloodbase");
             }
             case 2-> {
+                this.type=buildBaseG;
                 this.cost =  Unit.getBuildCost("rockbase");
                 setDesc("Builds a rock base");
-                BuildName = "rockbase";
+                buildName = "rockbase";
                 super.sprite = Img.get("rockbase");
             }
                 case 3-> {
+                    this.type=buildBaseB;
                     this.cost =Unit.getBuildCost("magicbase");
                     setDesc("Builds a magic base");
-                    BuildName = "magicbase";
+                    buildName = "magicbase";
                     super.sprite = Img.get("magicbase");
                 }
             case 4-> {
+                this.type=buildBaseA;
                 this.cost = Unit.getBuildCost("whitebase");
                 setDesc("Builds a balanced base");
-                BuildName ="whitebase";
+                buildName ="whitebase";
                 super.sprite = Img.get("whitebase");
             }
         }

@@ -3,6 +3,7 @@ package SubComponents.Abilities;
 import Multiplayer.ServerData;
 import SubComponents.Effects.SpeedUp;
 import components.Effects;
+import enums.AbilityName;
 import enums.EffectName;
 import jade.GameObject;
 import util.Img;
@@ -16,15 +17,15 @@ public class Speed extends Ability{
     private float keepSpeedPercent=0;
     @Override
     public Speed Copy(){
-        Speed speed=new Speed(id);
+        Speed speed=new Speed(type);
         speed.mult=mult;
         speed.lastActive=lastActive;
         speed.keepSpeedPercent=keepSpeedPercent;
         return speed;
     }
 
-    public Speed( int id) {
-        super(id);
+    public Speed(AbilityName type) {
+        super(type);
         mp=0;
         sprite = Img.get("speed");
         setDesc("Incrases speed by "+ (Math.round(mult*100)-100)+"%% " +

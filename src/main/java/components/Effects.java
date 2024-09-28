@@ -178,7 +178,7 @@ public class Effects extends Component {
     }
     public boolean hasEffect(int id) {
         for (Effect a : effects) {
-            if (a.id== id) {
+            if (a.getID()== id) {
                 return true;
             }
         }

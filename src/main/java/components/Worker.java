@@ -3,6 +3,7 @@ package components;
 import jade.GameObject;
 import jade.MineralCluster;
 import jade.Transform;
+import jade.Window;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3d;
@@ -132,8 +133,11 @@ public class Worker extends Component{
         conserveMineral=false;
     }
     @Override
-    public void start(){
-        this.gameObject.getComponent(Rigidbody2D.class).friction=0;
+    public void start() {
+        if(Window.runtimePlaying) {
+            gameObject.getComponent(MoveContollable.class).moveCommand(getScene().getClosestBase(gameObject.transform.position).transform);
+            this.gameObject.getComponent(Rigidbody2D.class).friction = 0;
+        }
     }
 
 

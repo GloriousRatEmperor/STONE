@@ -16,13 +16,13 @@ public class UnlockAbility extends Ability{
     public UnlockAbility clone(){
 
         System.out.println("there is a use for clone apparently");
-        return new UnlockAbility(this.id,unlockName, unlockType);
+        return new UnlockAbility( unlockType,unlockName);
     }
 
 
 
-    public UnlockAbility( int id,String unlockName,AbilityName type) {
-        super(id);
+    public UnlockAbility(AbilityName type,String unlockName) {
+        super(type);
         unlockCost= Unit.getUnlockCost(unlockName);
         this.unlockName=unlockName;
         mp=0;
@@ -36,7 +36,7 @@ public class UnlockAbility extends Ability{
         CastAbilities cast= self.getComponent(CastAbilities.class);
 
         cast.addAbility(unlockType);
-        cast.removeAbility(name);
+        cast.removeAbility(getID());
     }
     public void setDescription(String description) {
         String bldcost="",rockcost="",magecost="";

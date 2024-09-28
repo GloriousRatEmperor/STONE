@@ -2,6 +2,7 @@ package SubComponents.Abilities;
 
 import Multiplayer.ServerData;
 import components.UnitBuilder;
+import enums.AbilityName;
 import jade.GameObject;
 import org.joml.Vector3f;
 import util.Img;
@@ -9,26 +10,26 @@ import util.Unit;
 
 public class BuildUnit extends Ability{
     public Vector3f cost;
-    public String UnitName;
+    public String unitName;
     @Override
     public BuildUnit Copy(){
-        BuildUnit buildUnit=new BuildUnit(id,this.UnitName);
+        BuildUnit buildUnit=new BuildUnit(type,this.unitName);
         return buildUnit;
     }
-    public BuildUnit( int id,String unitName) {
-        super(id);
+    public BuildUnit(AbilityName type, String unitName) {
+        super(type);
+        this.unitName =unitName;
         cost= Unit.getCost(unitName);
-        UnitName=unitName;
-        mp=0;
-        super.sprite= Img.get(UnitName);
-        setDescription("Builds a ??"+UnitName+"??");
 
+        mp=0;
+        super.sprite= Img.get(this.unitName);
+        setDescription(type.getDesc());
     }
     @Override
     public void cast(ServerData data, GameObject self){
         UnitBuilder build= self.getComponent(UnitBuilder.class);
         if (build!=null){
-            build.addqueue(UnitName,cost);
+            build.addqueue(unitName,cost);
         }
     }
     public void setDescription(String description) {

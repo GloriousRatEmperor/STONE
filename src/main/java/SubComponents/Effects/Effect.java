@@ -15,7 +15,6 @@ public abstract class Effect extends SubComponent {
     public float durationNow;
     public float power;
     public String description="dunno";
-    public int id;
     protected Sprite sprite;
     public String name;
     public String type="";

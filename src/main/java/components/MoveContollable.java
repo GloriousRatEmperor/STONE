@@ -140,6 +140,14 @@ public class MoveContollable extends Component {
         Bigtimer= (int) (Maf.distance(movePos,self.transform.position)/speed/ Window.physicsStep*1.5/Math.pow(acceleration,2));
         SharedMoveCommand();
     }
+    public void moveCommand(Vector2f pos){
+        closeenuf=0;
+
+        this.target=null;
+        this.movePos=new Vector2f(pos.get(0), pos.get(1));
+        Bigtimer= (int) (Maf.distance(movePos,gameObject.transform.position)/speed/ Window.physicsStep*1.5/Math.pow(acceleration,2));
+        SharedMoveCommand();
+    }
     public void moveCommand(Transform target){
         this.target=target;
         CircleCollider circle=target.gameObject.getComponent(CircleCollider.class);

@@ -1,6 +1,7 @@
 package SubComponents.Abilities;
 
 import Multiplayer.ServerData;
+import enums.AbilityName;
 import jade.GameObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
@@ -13,10 +14,10 @@ public class BuildBuilding extends Ability {
 
 
     public Vector3f cost=new Vector3f(0,0,0);
-    public String BuildName;
+    public String buildName;
     @Override
     public BuildBuilding Copy(){
-        BuildBuilding buildBuilding=new BuildBuilding(id);
+        BuildBuilding buildBuilding=new BuildBuilding(type);
         return buildBuilding;
     }
     @Override
@@ -24,25 +25,25 @@ public class BuildBuilding extends Ability {
         if(getScene().addmoney(-cost.x,-cost.y,-cost.z,self.allied)) {
 
             Vector2f position = new Vector2f(data.position.get(0), data.position.get(1));
-            GameObject unit = Unit.makeBuilding(BuildName, position, self.allied);
+            GameObject unit = Unit.makeBuilding(buildName, position, self.allied);
             getScene().addGameObjectToScene(unit);
         }
     }
-
-    public BuildBuilding( int id,String name) {
-        super( id);
+    public BuildBuilding(AbilityName type,String name) {
+        super( type);
+        buildName=name;
         cost=Unit.getBuildCost(name);
-        setDesc( "Builds a ??"+name+"?");
+        setDesc( type.getDesc());
         targetable=true;
         mp=0;
         super.sprite= Img.get(name);
     }
-    public BuildBuilding( int id) {
-        super( id);
-        setDesc( "Builds a ??UNKNOWN??");
+    public BuildBuilding(AbilityName type) {
+        super( type);
+
+        setDesc( type.getDesc());
         targetable=true;
         mp=0;
-        super.sprite= Img.get("barracks");
     }
     @Override
     public void setDesc(String description) {

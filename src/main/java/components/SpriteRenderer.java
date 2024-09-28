@@ -110,6 +110,22 @@ public class SpriteRenderer extends Component {
             this.color.set(r,g,b,a);
         }
     }
+    public void addColor(float color){
+        this.color.add(color,color,color,color);
+        setDirty();
+    }
+    public void multColor(float color){
+        this.color.mul(color);
+        setDirty();
+    }
+    public void addColor(float r, float g, float b, float a){
+        this.color.add(r,g,b,a);
+        setDirty();
+    }
+    public void multColor(float r, float g, float b, float a){
+        this.color.mul(r,g,b,a);
+        setDirty();
+    }
     public void setColorVec(Vector4f color) {
         //                                        only use if not new vector! apparently better performance maybe
         if (!this.color.equals(color)) {

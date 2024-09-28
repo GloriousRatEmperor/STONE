@@ -512,6 +512,7 @@ public abstract class Component {
         ID_COUNTER = maxId;
     }
     public void begin(){
+
         isactive=true;
     }
 }

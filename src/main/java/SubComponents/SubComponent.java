@@ -18,6 +18,10 @@ import java.util.List;
 public abstract class  SubComponent{
     public int imguiGroup =0;
     public transient Component owner;
+    public int id;
+    public int getID(){
+        return id;
+    }
     public void destroy(){
 
     }

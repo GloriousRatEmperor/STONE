@@ -2,32 +2,50 @@ package enums;
 
 public enum AbilityName {
 
-    Select_Ability(-1),
-    move(0),
-    heal(1),
-    speed(2),
-    buildBase(3),//is actually 3+0 for blooodbase, 3+1 for greenbase ... 3+3 for whitebase so nuffin else can have id 3-6
-    buildBarracks(7),
-    buildTank(8),
-    buildBoarCavalary(9),
-    buildWisp(10),
-    buildPeasant(12),
-    buildWhitler(13),
-    buildRock(14),
-    buildPriest(40),
-    buildHeadless(18),
-    buildwraith(17),
-    buildSnek(21),
-    getBuildHeadlessHorseman(16),
-    buildGreenBarracks(15),
+    Select_Ability(-1,""),
+    move(0,"issues a move command"),
+    heal(1,"restores this unit's hp"), //these descriptions may not necessarily show up, that depends on the specific ability
+    speed(2, "increases this unit's move speed"),
+    buildBase(3, "builds a base"),
+    buildBaseR(4,"builds a bloody base"),
+    buildBaseG(5,"builds a rock base"),
+    buildBaseB(6,"builds a magic base"),
+    buildBaseA(7,"builds a white base"),
+    buildBarracks(22, "builds a barracs"),
+    buildTank(8, "builds a tank"),
+    buildBoarCavalary(9, "Builds a Boar cavalary"),
+    buildWisp(10, "Builds a Wisp, a fragile magic worker with a decent attack (compared to other workers)"),
+    buildPeasant(12,"Builds a Peasant, fleshy lil worker"),
+    buildWhitler(13,"Builds a Whitler, basic workers"),
+    buildRock(14,"Builds a Rock, the standard rock worker"),
+    buildPriest(40,"Builds a priest"),
+    buildHeadless(18,"Builds a headless undead sworsman"),
+    buildwraith(17,"Builds a wraith"),
+    buildSnek(21,"Builds a fire serpent"),
+    getBuildHeadlessHorseman(16,"Builds a headless undead horseman"),
+    buildGreenBarracks(15,"Builds a Barracks that creates meaty units"),
 
-    buildMorticum(20);
+    buildMorticum(20,"Builds a morticum that creates magical undead units");
 
     private final int id;
-    AbilityName(int id){
+    private final String desc;
+    AbilityName(int id, String description){
+        this.desc=description;
         this.id=id;
     }
     public int getId(){
         return id;
+    }
+    public String getDesc(){
+        return desc;
+    }
+    public static AbilityName StringToAbilityName(String name) {
+        for (AbilityName a : AbilityName.class.getEnumConstants()) {
+            if (a.name().equals(name)) {
+                return a;
+            }
+
+        }
+        return null;
     }
 }

@@ -2,6 +2,7 @@ package jade;
 
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
+import components.MouseControls;
 import components.ServerInputs;
 import util.Variables;
 import observers.EventSystem;
@@ -57,7 +58,7 @@ public class Window implements Observer {
     public static HashMap<Vector2i, Vector3i> floor;
 
 
-    private boolean runtimePlaying = false;
+    public static boolean runtimePlaying = false;
     private float beginTime;
     private float endTime;
 
@@ -164,7 +165,7 @@ public class Window implements Observer {
 
     }
     public void begin(){
-
+        MouseControls.discardHoldingObject();
         start=false;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
         long StartTime=inputs.getStartTime();

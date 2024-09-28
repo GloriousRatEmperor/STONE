@@ -58,6 +58,7 @@ public class MouseControls extends Component {
         newObj.removeComponent(NonPickable.class);
         Window.getScene().addGameObjectToScene(newObj);
     }
+
     @Override
     public void runningUpdateDraw(){
         debounce -=timer.getTime()-last;
@@ -205,8 +206,8 @@ public class MouseControls extends Component {
             }
 
             if (KeyListener.isKeyPressed(GLFW_KEY_ESCAPE)) {
-                holdingObject.destroy();
-                holdingObject = null;
+                discardHoldingObject();
+
             }
         } else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {
             int x = (int)MouseListener.getScreenX();
@@ -295,5 +296,11 @@ public class MouseControls extends Component {
 
 
         return false;
+    }
+    public static void discardHoldingObject(){
+        if(holdingObject!=null) {
+            holdingObject.destroy();
+            holdingObject = null;
+        }
     }
 }

@@ -40,7 +40,7 @@ public class MasterObject {
             List<? extends SubComponent> subs=comp.GetAllsubComponents();
             if(subs!=null) {
                 for (SubComponent sub : subs) {
-                    if (getSubComponent(sub.getClass()) == null) {
+                    if (!containsSubcomponent(sub.getID())) {
                         if(sub.imguiGroup>0||!isPlaying) {
                             subComponents.add(sub);
                         }
@@ -461,6 +461,14 @@ public class MasterObject {
         }
 
         return null;
+    }
+    public Boolean containsSubcomponent(int id) {
+        for (SubComponent c : subComponents) {
+            if(c.getID()==id) {
+                return true;
+            }
+        }
+        return false;
     }
     public void clear(){
         this.object=null;

@@ -14,6 +14,7 @@ import org.joml.Vector3f;
 
 import java.util.*;
 
+import static enums.AbilityName.StringToAbilityName;
 import static renderer.DebugDraw.addLine2D;
 
 public class CastAbilities extends Component {
@@ -35,7 +36,7 @@ public class CastAbilities extends Component {
 
     public Boolean isCastable(int id) {
         for (Ability a : abilities) {
-            if (Objects.equals(a.id, id)) {
+            if (a.getID()== id) {
                 return a.Castable(mp) && gameObject.allied == Window.get().allied;
             }
         }
@@ -44,7 +45,7 @@ public class CastAbilities extends Component {
 
     public Boolean containsAbility(int id) {
         for (Ability a : abilities) {
-            if (Objects.equals(a.id, id)) {
+            if (a.getID()== id) {
                 return true;
             }
         }
@@ -53,7 +54,7 @@ public class CastAbilities extends Component {
 
     public Boolean containsAbility(AbilityName aName) {
         for (Ability a : abilities) {
-            if (Objects.equals(a.id, aName.getId())) {
+            if (Objects.equals(a.type, aName)) {
                 return true;
             }
         }
@@ -62,7 +63,7 @@ public class CastAbilities extends Component {
 
     public void castAbility(ServerData data) {
         for (Ability a : abilities) {
-            if (a.id == data.getIntValue()) {
+            if (a.getID() == data.getIntValue()) {
                 if (a.Castable(mp)) {
                     a.cast(data, super.gameObject);
                     mp -= a.mp;
@@ -78,7 +79,7 @@ public class CastAbilities extends Component {
     public void copyProperties(Component master) {
         for (Ability a :
                 abilities) {
-            if (!((CastAbilities) master).containsAbility(a.id)) {
+            if (!((CastAbilities) master).containsAbility(a.getID())) {
                 Ability copy = a.Copy();
                 copy.description = a.description;
                 ((CastAbilities) master).addAbility(copy);
@@ -89,24 +90,28 @@ public class CastAbilities extends Component {
 
     public Ability getAbility(AbilityName a) {
         Ability ability = switch (a) {
-            case move -> new Move(a.getId());
-            case speed -> new Speed(a.getId());
-            case heal -> new Heal(a.getId());
-            case buildRock -> new BuildRock(a.getId());
-            case buildwraith -> new BuildWraith(a.getId());
-            case getBuildHeadlessHorseman -> new BuildHeadlessHorseman(a.getId());
-            case buildHeadless->new BuildHeadless(a.getId());
-            case buildPriest->new BuildPriest(a.getId());
-            case buildGreenBarracks -> new BuildGreenBarracks(a.getId());
-            case buildMorticum -> new BuildMorticum(a.getId());
-            case buildSnek ->new BuildSnek(a.getId());
-            case buildBase -> new BuildBase(a.getId());
-            case buildTank -> new BuildTank(a.getId());
-            case buildBarracks -> new BuildBarracks(a.getId());
-            case buildPeasant -> new BuildPeasant(a.getId());
-            case buildWhitler -> new BuildWhitler(a.getId());
-            case buildWisp -> new BuildWisp(a.getId());
-            case buildBoarCavalary -> new BuildBoarCavalary(a.getId());
+            case move -> new Move(a);
+            case speed -> new Speed(a);
+            case heal -> new Heal(a);
+            case buildRock -> new BuildUnit(a,"rock");
+            case buildwraith -> new BuildUnit(a,"wraith");
+            case getBuildHeadlessHorseman -> new BuildUnit(a,"headlesshorseman");
+            case buildHeadless->new BuildUnit(a,"headless");
+            case buildPriest->new BuildUnit(a,"Priest");
+            case buildGreenBarracks -> new BuildBuilding(a,"greenbarracks");
+            case buildMorticum -> new BuildBuilding(a,"morticum");
+            case buildSnek ->new BuildUnit(a,"snek");
+            case buildBase -> new BuildBase(a);
+            case buildBaseA -> new BuildBase(a,4);
+            case buildBaseR -> new BuildBase(a,1);
+            case buildBaseG -> new BuildBase(a,2);
+            case buildBaseB -> new BuildBase(a,3);
+            case buildTank -> new BuildUnit(a,"tank");
+            case buildBarracks -> new BuildBuilding(a,"barracks");
+            case buildPeasant -> new BuildUnit(a,"peasant");
+            case buildWhitler -> new BuildUnit(a,"whitler");
+            case buildWisp -> new BuildUnit(a,"wisp");
+            case buildBoarCavalary -> new BuildUnit(a,"boarcavalary");
             default -> null;
 
         };
@@ -114,7 +119,6 @@ public class CastAbilities extends Component {
             System.out.println("OOPS WE DON'T HAVE NO SUCH ABILITY TYPE " + a + " HERE");
             return null;
         }
-        ability.setName(a.toString());
 
         return ability;
     }
@@ -122,21 +126,21 @@ public class CastAbilities extends Component {
     public void addAbility(Ability ability) {
         if (ability == null) {
             System.out.println("wtf you tyina add bruv?");
-        } else {
+        }  else {
             ability.owner = this;
             abilities.add(ability);
-            abilities.sort(Comparator.comparingInt(s -> s.id));
+            abilities.sort(Comparator.comparingInt(Ability::getID));
         }
     }
 
 
     public void addAbility(AbilityName a) {
-        Ability Ability = getAbility(a);
-        if (Ability == null) {
+        Ability ability = getAbility(a);
+        if (ability == null) {
             System.out.println("wtf you tyina add bruv?");
         } else {
-            abilities.add(Ability);
-            abilities.sort(Comparator.comparingInt(s -> s.id));
+            abilities.add(ability);
+            abilities.sort(Comparator.comparingInt(Ability::getID));
         }
     }
     @Override
@@ -170,30 +174,32 @@ public class CastAbilities extends Component {
         String[] s = guiData.get("guiRemoveAbility").split("0");
         if (ImGui.combo("Remove Ability", inde, s, s.length)) {
             String name = s[inde.get()];
+            int id=StringToAbilityName(name).getId();
             if (inde.get() != 0) {
                 for (GameObject go : activegameObjects) {
                     CastAbilities cast = go.getComponent(CastAbilities.class);
                     if (cast != null) {
-                        cast.removeAbility(name);
+                        cast.removeAbility(id);
                     }
                     guiData.put("guiRemoveAbility", guiData.get("guiRemoveAbility").replace('0' + name, ""));
 
                 }
             }
-            this.removeAbility(name);
+            this.removeAbility(id);
         }
         return activegameObjects;
     }
 
-    public void removeAbility(String name) {
+    public void removeAbility(int id) {
         for (Ability a : abilities) {
-            if (a.name.equals(name)) {
+            if (a.getID()==id) {
                 abilities.remove(a);
                 break;
             }
         }
 
     }
+
     @Override
     public void updateDraw(){
         Transform tra=gameObject.transform;
@@ -210,10 +216,10 @@ public class CastAbilities extends Component {
             if (Objects.equals(alreadyHas.toString(), "")) {
                 alreadyHas.append("Remove ability");
             }
-            List<String> names = new ArrayList<>(List.of(alreadyHas.toString().split(",")));
+            List<String> names = new ArrayList<>(List.of(alreadyHas.toString().split("0")));
             for (Ability a : abilities) {
-                if (!names.contains(a.name)) {
-                    alreadyHas.append('0').append(a.name);
+                if (!names.contains(a.type.name())) {
+                    alreadyHas.append('0').append(a.type.name());
                 }
             }
             guiData.put("guiRemoveAbility", alreadyHas.toString());

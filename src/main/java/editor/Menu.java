@@ -6,7 +6,6 @@ import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
 import jade.MasterObject;
 import jade.Window;
-import org.joml.Vector4f;
 import renderer.PickingTexture;
 
 import java.util.ArrayList;
@@ -15,7 +14,7 @@ public class Menu {
     private List<GameObject> activeGameObjects;
     MasterObject MasterObject=new MasterObject(true);
     public int allied;
-    private List<Vector4f> activeGameObjectsOgColor;
+
     private GameObject primairyObject = null;
     private List<Integer> ids;
     private PickingTexture pickingTexture;
@@ -37,7 +36,7 @@ public class Menu {
         this.ids=new ArrayList<>();
         this.activeGameObjects = new ArrayList<>();
         this.pickingTexture = pickingTexture;
-        this.activeGameObjectsOgColor = new ArrayList<>();
+
     }
 
     public void imgui() throws NoSuchFieldException {
@@ -74,19 +73,13 @@ public class Menu {
     public void clearSelected() {
         this.MasterObject.clear();
         this.ids=new ArrayList<>();
-        if (activeGameObjectsOgColor.size() > 0) {
-            int i = 0;
-            for (GameObject go : activeGameObjects) {
-                SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
-                if (spr != null) {
-
-                    spr.setColorVec(activeGameObjectsOgColor.get(i));
-                }
-                i++;
+        for (GameObject go : activeGameObjects) {
+            SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
+            if (spr != null) {
+                spr.addColor(0,-0.5f,0,0);
             }
         }
         this.activeGameObjects.clear();
-        this.activeGameObjectsOgColor.clear();
     }
 
     public void setActiveGameObject(GameObject go) {
@@ -109,10 +102,7 @@ public class Menu {
 //        }
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null ) {
-            this.activeGameObjectsOgColor.add(new Vector4f(spr.getColor()));
-            spr.setColor(8f, 0.8f, 0.0f, 0.8f);
-        } else {
-            this.activeGameObjectsOgColor.add(new Vector4f());
+            spr.addColor(0,0.5f,0,0);
         }
         this.activeGameObjects.add(go);
         MasterObject.addGameObject(go);

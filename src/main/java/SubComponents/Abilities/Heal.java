@@ -2,6 +2,7 @@ package SubComponents.Abilities;
 
 import Multiplayer.ServerData;
 import components.Mortal;
+import enums.AbilityName;
 import jade.GameObject;
 import util.Img;
 
@@ -9,11 +10,11 @@ public class Heal extends Ability{
     private float power=0.5f;
     @Override
     public Heal Copy(){
-        Heal heal=new Heal(id);
+        Heal heal=new Heal(type);
         return heal;
     }
-    public Heal( int id) {
-        super(id);
+    public Heal(AbilityName type) {
+        super(type);
         mp=50;
         sprite = Img.get("heal");
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");

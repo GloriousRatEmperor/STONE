@@ -4,6 +4,7 @@ import Multiplayer.ServerData;
 import SubComponents.SubComponent;
 import components.CastAbilities;
 import components.Sprite;
+import enums.AbilityName;
 import imgui.ImGui;
 import jade.GameObject;
 import jade.KeyListener;
@@ -17,8 +18,7 @@ import java.util.List;
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_CONTROL;
 
 public class Ability extends SubComponent {
-    public String  name;
-    public int id;
+    public AbilityName type;
     public float mp=0;
     public Sprite sprite;
     public Boolean targetable=false;
@@ -30,12 +30,13 @@ public class Ability extends SubComponent {
         System.out.println( "this ability has no copy function"+this.getClass());
         return null;
     }
-    public Ability(int id) {
+    public Ability(AbilityName type) {
+        this.type=type;
         imguiGroup =1;
-        this.id = id;
     }
-    public void setName(String name){
-        this.name = name;
+    @Override
+    public int getID(){
+        return type.getId();
     }
     @Override
     public String RunningGui(int AbilitySize, List<GameObject> activeGameObjects, int ID){
@@ -50,7 +51,7 @@ public class Ability extends SubComponent {
             for (GameObject go:activeGameObjects) {
                 CastAbilities cast= go.getComponent(CastAbilities.class);
                 if (!(cast ==null)){
-                    if (cast.isCastable(id)){
+                    if (cast.isCastable(getID())){
                         Ids.add(go.getUid());
                         if (!KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL)){
                             activeGameObjects.remove(go);
@@ -62,9 +63,9 @@ public class Ability extends SubComponent {
             }
             if (Ids.size()>0){
                 if(targetable) {
-                    Window.targetCast(Ids, id);
+                    Window.targetCast(Ids, getID());
                 }else{
-                    Window.sendCast(Ids, id);
+                    Window.sendCast(Ids, getID());
                 }
             }
         }ImGui.popID();

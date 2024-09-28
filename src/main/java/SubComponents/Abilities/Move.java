@@ -1,18 +1,19 @@
 package SubComponents.Abilities;
 
 import Multiplayer.ServerData;
-import jade.GameObject;
 import components.MoveContollable;
+import enums.AbilityName;
+import jade.GameObject;
 import util.Img;
 
 public class Move extends Ability{
     @Override
     public Move Copy(){
-        Move Move=new Move(id);
+        Move Move=new Move(type);
         return Move;
     }
-    public Move( int id) {
-        super(id);
+    public Move(AbilityName type) {
+        super(type);
         mp=0;
         sprite = Img.get("move");
         targetable=true;
