@@ -175,23 +175,25 @@ public class MoveContollable extends Component {
     }
 
     public void stop(Boolean gotthere){
+        if(targeted()&gotthere){
+            if(!target.gameObject.isDead()) {
+                super.gameObject.Interact(this.target.gameObject);
+                return;
+            }
+        }
+        cannaygetclosertimeout = 0;
+        Rigidbody2D body = super.gameObject.getComponent(Rigidbody2D.class);
 
-        cannaygetclosertimeout=0;
-        Rigidbody2D body=super.gameObject.getComponent(Rigidbody2D.class);
-
-        if(body!=null){
+        if (body != null) {
             body.setLinearDamping(body.stopDamping);
             body.setVelocity(new Vector2f());
         }
-        if(targeted()) {
-            Transform temp=target;
-            this.target=null;
+        if (targeted()) {
+            this.target = null;
 
-            if(gotthere) {
-                super.gameObject.Interact(temp.gameObject);
-            }
         }
         super.gameObject.stopMove();
+
 
     }
     @Override

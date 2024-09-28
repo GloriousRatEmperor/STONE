@@ -14,6 +14,7 @@ public enum AbilityName {
     buildPeasant(12),
     buildWhitler(13),
     buildRock(14),
+    buildPriest(40),
     buildHeadless(18),
     buildwraith(17),
     buildSnek(21),

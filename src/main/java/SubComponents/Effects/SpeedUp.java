@@ -4,13 +4,14 @@ import components.MoveContollable;
 import jade.GameObject;
 import org.joml.Vector2f;
 import physics2d.components.Rigidbody2D;
+import util.Img;
 
 public class SpeedUp extends Effect{
     public float keepSpeedPercent;
 
     public SpeedUp(float duration, float power) {
         super(duration, power);
-        //this.sprite= Img.get("rock");
+        this.sprite= Img.get("rock");
 
         type="Buff";
         updateDesc();

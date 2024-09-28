@@ -14,7 +14,7 @@ import util.AssetPool;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.lwjgl.glfw.GLFW.GLFW_MOD_CONTROL;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_CONTROL;
 
 public class Ability extends SubComponent {
     public String  name;
@@ -24,7 +24,7 @@ public class Ability extends SubComponent {
     public Boolean targetable=false;
     public String description="??UNKNOWN ABILITY??";
     public boolean Castable(float MP){
-        return MP > mp;
+        return MP >= mp;
     }
     public Ability Copy(){
         System.out.println( "this ability has no copy function"+this.getClass());
@@ -52,7 +52,9 @@ public class Ability extends SubComponent {
                 if (!(cast ==null)){
                     if (cast.isCastable(id)){
                         Ids.add(go.getUid());
-                        if (!KeyListener.isKeyPressed(GLFW_MOD_CONTROL)){
+                        if (!KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL)){
+                            activeGameObjects.remove(go);
+                            activeGameObjects.add(go); //this is imporant because it makes sure if you spam an ability it cycles through
                             break;
                         }
                     }

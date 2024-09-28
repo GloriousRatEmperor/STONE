@@ -29,6 +29,7 @@ public class Unit {
     static public ArrayList<String> unitNames = new ArrayList<String>();
     static public ArrayList<String> buildNames = new ArrayList<String>();
     static public HashMap<String,Float> stats = new HashMap<String, Float>();
+    static public HashMap<String,Float> unlockCosts = new HashMap<String, Float>();
     static public HashMap<String,Float> Bstats = new HashMap<String, Float>();
     static public ArrayList<String> projectileNames = new ArrayList<String>();
     static public HashMap<String,Float> Pstats = new HashMap<String, Float>();
@@ -51,6 +52,10 @@ public class Unit {
 
                     }
                     if(oneLine.length==2){
+                        if(oneLine[0].startsWith("unlock")){
+                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]) );
+                            continue;
+                        }
                         stats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
@@ -75,6 +80,10 @@ public class Unit {
 
                     }
                     if(oneLine.length==2){
+                        if(oneLine[0].startsWith("unlock")){
+                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
+                            continue;
+                        }
                         Bstats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
@@ -99,6 +108,11 @@ public class Unit {
 
                     }
                     if(oneLine.length==2){
+                        if(oneLine[0].startsWith("unlock")){
+                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
+                            continue;
+                        }
+                        
                         Pstats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
@@ -128,6 +142,8 @@ public class Unit {
                 BuildSnake(name,position,allied);
             case "wraith"->
                     BuildWraith(name,position,allied);
+            case "priest"->
+                BuildPriest(name,position,allied);
             default->
                 BuildGeneral(name,position,allied);
         };
@@ -230,13 +246,16 @@ public class Unit {
             case "bloodbase" -> {
                 name = "bloodbase";
                 c.addAbility(buildPeasant);
+                c.addAbility(buildGreenBarracks);
             }
             case "rockbase" -> {
                 name = "rockbase";
                 c.addAbility(buildRock);
+                c.addAbility(buildBarracks);
             }
             case "magicbase" -> {
                 name = "magicbase";
+                c.addAbility(buildMorticum);
                 c.addAbility(buildWisp);
             }
             case "whitebase" -> {
@@ -246,7 +265,6 @@ public class Unit {
 
             }
         }
-        c.addAbility(buildBarracks);
         GameObject unit=genBuilding(name,position,allied);
         Mortal mort=new Mortal(b(name+"health"));
         unit.addComponent(mort);
@@ -260,6 +278,7 @@ public class Unit {
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
         c.addAbility(c.getAbility(buildTank));
+        c.addAbility(c.getAbility(buildPriest));
         Mortal mort=new Mortal(b(name+"health"));
         unit.addComponent(mort);
         unit.addComponent(c);
@@ -319,16 +338,23 @@ public class Unit {
         e.durationTotal= Float.MAX_VALUE;
         e.radius=1.5f;
         e.damage=40;
-        effects.addEffect(e);
+        fballer.addEffect(e);
         return snek;
 
     }
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
-        u("wraithhealth");
         GameObject wraith= BuildGeneral(name,position,allied);
-        Shooter fballer=new Shooter(2,2,"magicball");
+        Shooter fballer=new Shooter(3,1.25f,"magicball");
         wraith.addComponent(fballer);
         return wraith;
+    }
+    private static GameObject BuildPriest(String name,Vector2f position,int allied){
+        GameObject priest= BuildGeneral(name,position,allied);
+        CastAbilities cast=new CastAbilities();
+        cast.mpRegen=0.1f;
+        cast.addAbility(cast.getAbility(heal));
+        priest.addComponent(cast);
+        return priest;
     }
 
     private static GameObject BuildGeneral(String name, Vector2f position,int allied){
@@ -440,6 +466,13 @@ public class Unit {
     public static Vector3f getBuildCost(String name){
         name=name.toLowerCase();
         return new Vector3f( bd(name+"costblood",0f),bd(name+"costrock",0f),bd(name+"costmagic",0f));
+    }
+    public static Vector3f getUnlockCost(String name){
+        name=name.toLowerCase();
+        
+        return new Vector3f( unlockCosts.getOrDefault(name+"costblood",0f)
+                ,unlockCosts.getOrDefault(name+"costrock",0f)
+                ,unlockCosts.getOrDefault(name+"costmagic",0f));
     }
     public static Sprite getSprite(String name){
         return items.getSprite(name);

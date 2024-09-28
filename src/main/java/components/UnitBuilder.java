@@ -18,6 +18,7 @@ import static jade.Window.getScene;
 public class UnitBuilder extends Component{
     public ArrayList<UNMADE> queue= new ArrayList<>();
     public int alliedB =1;
+    private float buildSpeed=1;
     public transient Transform tr;
     public Sprite icon;
     @Override
@@ -58,7 +59,7 @@ public class UnitBuilder extends Component{
 
         if(!queue.isEmpty()){
             UNMADE unm=queue.get(0);
-            unm.time-=dt;
+            unm.time-=dt*buildSpeed;
             if(unm.time<0){
                 makeUnit(unm);
                 queue.remove(unm);

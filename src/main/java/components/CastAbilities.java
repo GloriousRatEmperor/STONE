@@ -7,12 +7,18 @@ import enums.AbilityName;
 import imgui.ImGui;
 import imgui.type.ImInt;
 import jade.GameObject;
+import jade.Transform;
 import jade.Window;
+import org.joml.Vector2f;
+import org.joml.Vector3f;
 
 import java.util.*;
 
+import static renderer.DebugDraw.addLine2D;
+
 public class CastAbilities extends Component {
     private float mp = 100f;
+    public float mpRegen = 0.01f;
     private float maxmp = 100f;
     public transient List<Ability> abilities = new ArrayList<>();
 
@@ -90,6 +96,7 @@ public class CastAbilities extends Component {
             case buildwraith -> new BuildWraith(a.getId());
             case getBuildHeadlessHorseman -> new BuildHeadlessHorseman(a.getId());
             case buildHeadless->new BuildHeadless(a.getId());
+            case buildPriest->new BuildPriest(a.getId());
             case buildGreenBarracks -> new BuildGreenBarracks(a.getId());
             case buildMorticum -> new BuildMorticum(a.getId());
             case buildSnek ->new BuildSnek(a.getId());
@@ -131,6 +138,10 @@ public class CastAbilities extends Component {
             abilities.add(Ability);
             abilities.sort(Comparator.comparingInt(s -> s.id));
         }
+    }
+    @Override
+    public void update(float dt){
+        mp+= Math.min(mpRegen,maxmp-mp);
     }
 
     @Override
@@ -181,6 +192,13 @@ public class CastAbilities extends Component {
                 break;
             }
         }
+
+    }
+    @Override
+    public void updateDraw(){
+        Transform tra=gameObject.transform;
+
+        addLine2D(new Vector2f( tra.drawPos.x-tra.scale.x/2,tra.drawPos.y+tra.scale.y/2+0.05f), new Vector2f( tra.drawPos.x+(tra.scale.x/2)*(mp/maxmp*2-1),tra.drawPos.y+tra.scale.y/2+0.05f), new Vector3f(0,0,1), 1);
 
     }
 

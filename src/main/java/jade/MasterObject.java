@@ -97,11 +97,10 @@ public class MasterObject {
                         ImGui.endTable();
 
                     }
-
+                    ImGui.endChild();
                 }
             }
 
-            ImGui.endChild();
         }
         if(!subComponents.isEmpty()) {
             descmb= imguiSubComponents(activeGameObjects);
@@ -154,11 +153,11 @@ public class MasterObject {
                         ImGui.endTable();
 
                     }
-
+                    ImGui.endChild();
                 }
             }
 
-            ImGui.endChild();
+
             //////////////////////////////IMGUI ABILITIES\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             //////////////////////////////IMGUI ABILITIES\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
             //////////////////////////////IMGUI ABILITIES\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -196,11 +195,11 @@ public class MasterObject {
                         ImGui.endTable();
 
                     }
-
+                    ImGui.endChild();
                 }
             }
 
-            ImGui.endChild();
+
         }
         return desc;
     }

@@ -4,7 +4,7 @@ public enum EffectName {
     Select_Effect(0),
     speedUp(2),
     explodeOnDeath(1),
-    explodingProjectiles(2);
+    explodingProjectiles(3);
 
 
     private final int id;

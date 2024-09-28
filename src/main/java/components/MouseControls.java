@@ -44,9 +44,9 @@ public class MouseControls extends Component {
             this.holdingObject.destroy();
         }
         this.holdingObject = go;
-        //this.holdingObject.getComponent(SpriteRenderer.class).setColor(0.8f, 0.8f, 0.8f, 0.5f);
+        this.holdingObject.getComponent(SpriteRenderer.class).setColor(0.8f, 0.8f, 0.8f, 0.5f);
         this.holdingObject.addComponent(new NonPickable());
-        //Window.getScene().addGameObjectToScene(go);
+        Window.getScene().addGameObjectToScene(go);
     }
 
     public static void place() {

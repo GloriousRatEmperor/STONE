@@ -52,7 +52,7 @@ public class BuildBase extends SubComponents.Abilities.BuildBuilding {
         }
     }
     public void setRace(int race){
-        race=race;
+        this.race=race;
     }
     public int getRace(){
         return race;

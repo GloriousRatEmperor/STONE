@@ -14,7 +14,7 @@ public class Heal extends Ability{
     }
     public Heal( int id) {
         super(id);
-        mp=100;
+        mp=50;
         sprite = Img.get("heal");
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");
 

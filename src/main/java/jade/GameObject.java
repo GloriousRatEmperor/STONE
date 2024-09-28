@@ -220,8 +220,9 @@ public class GameObject {
             ImGui.setNextWindowPos(10, io.getDisplaySizeY() * 3 / 4 + 50);
             if (ImGui.beginChild("mainImage", 200, 200)) {
                 ImGui.image(sprite.getTexture().getId(), 200, 200, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y);
+                ImGui.endChild();
             }
-            ImGui.endChild();
+
 
 
         }
