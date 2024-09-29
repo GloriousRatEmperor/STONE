@@ -12,8 +12,8 @@ public class Mineral extends Component{
     public Vector3i minerals;
     private MineralCluster cluster;
     private Vector2i origin;
-    public Base getTiedBase(){
-        return cluster.owner;
+    public Base getTiedBase(int allied){
+        return cluster.getOwner(allied);
     }
     @Override
     public void destroy(){

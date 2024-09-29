@@ -18,14 +18,17 @@ public enum AbilityName {
     buildPeasant(12,"Builds a Peasant, fleshy lil worker"),
     buildWhitler(13,"Builds a Whitler, basic workers"),
     buildRock(14,"Builds a Rock, the standard rock worker"),
-    buildPriest(40,"Builds a priest"),
+    buildPriest(23,"Builds a priest"),
     buildHeadless(18,"Builds a headless undead sworsman"),
     buildwraith(17,"Builds a wraith"),
     buildSnek(21,"Builds a fire serpent"),
     getBuildHeadlessHorseman(16,"Builds a headless undead horseman"),
     buildGreenBarracks(15,"Builds a Barracks that creates meaty units"),
 
-    buildMorticum(20,"Builds a morticum that creates magical undead units");
+    buildMorticum(20,"Builds a morticum that creates magical undead units"),
+    buildChicken(25,"builds a ruthless chicken that knows no mercy"),
+    buildPebble(25,"builds a smol rock"),
+    buildSpearman(24,"Builds a burly spearman. spearmen do additional damage to enemies charging at them");
 
     private final int id;
     private final String desc;

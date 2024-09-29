@@ -15,9 +15,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static enums.AbilityName.*;
 import static enums.EffectName.explodingProjectiles;
@@ -33,6 +31,8 @@ public class Unit {
     static public HashMap<String,Float> Bstats = new HashMap<String, Float>();
     static public ArrayList<String> projectileNames = new ArrayList<String>();
     static public HashMap<String,Float> Pstats = new HashMap<String, Float>();
+    static private String currentItem="";
+    static String lastItem;
 
     public static void init() {
 
@@ -53,10 +53,10 @@ public class Unit {
                     }
                     if(oneLine.length==2){
                         if(oneLine[0].startsWith("unlock")){
-                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]) );
+                            unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]) );
                             continue;
                         }
-                        stats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
+                        stats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
 
@@ -81,10 +81,10 @@ public class Unit {
                     }
                     if(oneLine.length==2){
                         if(oneLine[0].startsWith("unlock")){
-                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
+                            unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
                             continue;
                         }
-                        Bstats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
+                        Bstats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
 
@@ -109,11 +109,11 @@ public class Unit {
                     }
                     if(oneLine.length==2){
                         if(oneLine[0].startsWith("unlock")){
-                            unlockCosts.put(fileName+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
+                            unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
                             continue;
                         }
                         
-                        Pstats.put(fileName+oneLine[0], Float.parseFloat(oneLine[1]) );
+                        Pstats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
 
@@ -125,10 +125,12 @@ public class Unit {
     }
     public static GameObject make(String name, Vector2f position,int allied){
         name=name.toLowerCase();
+        currentItem=name;
         GameObject unit =switch(name){
             case "rock"->
                 BuildWorker(name,position,allied,2);
-
+            case "spearman"->
+                    BuildSpearman(name,position,allied);
             case "peasant"->
                 BuildWorker(name,position,allied,1);
 
@@ -152,6 +154,7 @@ public class Unit {
     }
     public static GameObject makeBuilding(String name, Vector2f position,int allied){
         name=name.toLowerCase();
+        currentItem=name;
         GameObject unit =switch(name){
             case "mineral0","mineral1","mineral2"->
                  BuildMineral(name,position,allied);
@@ -175,6 +178,7 @@ public class Unit {
     }
     public static GameObject makeProjectile(String name, Vector2f position,Transform target,int allied){
         name=name.toLowerCase();
+        currentItem=name;
         GameObject unit =switch(name){
             case "magicball"->
                 BuildMagicball(name,position,target,allied);
@@ -212,11 +216,11 @@ public class Unit {
     private static GameObject BuildProjectile(String name, Vector2f position,Transform target,int allied){
 
         float sizeX,sizeY;
-        if(Pstats.containsKey(name+"sizex")){
-            sizeX=p(name+"sizex");
-            sizeY=p(name+"sizey");
+        if(cp("sizex")){
+            sizeX=p("sizex");
+            sizeY=p("sizey");
         }else{
-            sizeX=sizeY= pd(name + "size", 1f);
+            sizeX=sizeY= pd("size", 1f);
         }
         GameObject proj = generateSpriteObject(items.getSprite(name),  sizeX, sizeY,name,position);
         proj.allied=allied;
@@ -226,10 +230,10 @@ public class Unit {
         rb.setFixedRotation(false);
         proj.addComponent(rb);
         Projectile p=new Projectile();
-        p.damage=pd(name+"damage",10);
-        p.speed=pd(name+"speed",5);
-        p.attackSpeed=pd(name+"attackspeed",1);
-        p.guided=p(name+"guided")==1f;
+        p.damage=pd("damage",10);
+        p.speed=pd("speed",5);
+        p.attackSpeed=pd("attackspeed",1);
+        p.guided=p("guided")==1f;
         if(!p.guided){
             CircleCollider circleCollider = new CircleCollider();
             circleCollider.setRadius((sizeX+sizeY)/4);
@@ -244,30 +248,24 @@ public class Unit {
         name=name.toLowerCase();
         switch (name) {
             case "bloodbase" -> {
-                name = "bloodbase";
                 c.addAbility(buildPeasant);
                 c.addAbility(buildGreenBarracks);
             }
             case "rockbase" -> {
-                name = "rockbase";
                 c.addAbility(buildRock);
                 c.addAbility(buildBarracks);
             }
             case "magicbase" -> {
-                name = "magicbase";
                 c.addAbility(buildMorticum);
                 c.addAbility(buildWisp);
             }
             case "whitebase" -> {
-                name = "whitebase";
                 c.addAbility(buildWhitler);c.addAbility(buildPeasant);
                 c.addAbility(buildWisp);c.addAbility(buildRock);
 
             }
         }
         GameObject unit=genBuilding(name,position,allied);
-        Mortal mort=new Mortal(b(name+"health"));
-        unit.addComponent(mort);
         unit.addComponent(new Base());
         unit.addComponent(c);
         unit.addComponent(new UnitBuilder());
@@ -279,8 +277,6 @@ public class Unit {
         CastAbilities c =new CastAbilities();
         c.addAbility(c.getAbility(buildTank));
         c.addAbility(c.getAbility(buildPriest));
-        Mortal mort=new Mortal(b(name+"health"));
-        unit.addComponent(mort);
         unit.addComponent(c);
 
 
@@ -293,8 +289,8 @@ public class Unit {
         CastAbilities c =new CastAbilities();
         c.addAbility(c.getAbility(buildSnek));
         c.addAbility(c.getAbility(buildBoarCavalary));
-        Mortal mort=new Mortal(b(name+"health"));
-        unit.addComponent(mort);
+        c.addAbility(c.getAbility(buildChicken));
+        c.addAbility(c.getAbility(buildSpearman));
         unit.addComponent(c);
 
 
@@ -308,8 +304,6 @@ public class Unit {
         c.addAbility(c.getAbility(buildwraith));
         c.addAbility(c.getAbility(buildHeadless));
         c.addAbility(c.getAbility(getBuildHeadlessHorseman));
-        Mortal mort=new Mortal(b(name+"health"));
-        unit.addComponent(mort);
         unit.addComponent(c);
 
 
@@ -356,38 +350,42 @@ public class Unit {
         priest.addComponent(cast);
         return priest;
     }
-
+    private static GameObject BuildSpearman(String name,Vector2f position,int allied){
+        GameObject spearman= BuildGeneral(name,position,allied);
+        spearman.getComponent(Mortal.class).chargeDefense=u("chargedefense");
+        return spearman;
+    }
     private static GameObject BuildGeneral(String name, Vector2f position,int allied){
         GameObject unit=genBase(name,position,allied);
-        if(stats.containsKey(name+"attack")){
-            Hitter hit=new Hitter(u(name+"attack"),u(name+"attackspeed"));
-            if(stats.containsKey(name+"chargebonus")){
-                hit.chargeBonus=u(name+"chargebonus");
+        if(cu("attack")){
+            Hitter hit=new Hitter(u("attack"),u("attackspeed"));
+            if(cu("chargebonus")){
+                hit.chargeBonus=u("chargebonus");
             }
             unit.addComponent(hit);
         }
-        if(stats.containsKey(name+"health")) {
-            Mortal mort = new Mortal(u(name + "health"));
+        if(cu("health")) {
+            Mortal mort = new Mortal(u( "health"),ud("armor",0));
             unit.addComponent(mort);
         }
-        if(stats.containsKey(name+ "harvestamount")) {
-            unit.addComponent(new Worker(u(name + "harvestamount")));
+        if(cu( "harvestamount")) {
+            unit.addComponent(new Worker(u( "harvestamount")));
         }
 
-        if(stats.containsKey(name+"speed")){
+        if(cu("speed")){
             MoveContollable move= new MoveContollable();
-            move.speed=u(name+"speed");
-            if(stats.containsKey(name+"acceleration")){
-                move.acceleration=u(name+"acceleration");
-                if(stats.containsKey(name+"turn")) {
-                    move.turn = u(name + "turn");
+            move.speed=u("speed");
+            if(cu("acceleration")){
+                move.acceleration=u("acceleration");
+                if(cu("turn")) {
+                    move.turn = u( "turn");
                 }
             }
             unit.addComponent(move);
         }
 
 
-        float size=ud(name + "size", 0.9f);
+        float size=ud( "size", 0.9f);
         unit.getComponent(CircleCollider.class).setRadius(size/2);
         unit.transform.scale.set(new Vector2f(size,size));
         unit.addComponent(new Effects());
@@ -431,11 +429,11 @@ public class Unit {
     }
     private static GameObject genBuilding(String name, Vector2f position, int allied){
         float sizeX,sizeY;
-        if(Bstats.containsKey(name+"sizex")){
-            sizeX=b(name+"sizex");
-            sizeY=b(name+"sizey");
+        if(cb("sizex")){
+            sizeX=b("sizex");
+            sizeY=b("sizey");
         }else{
-            sizeX=sizeY= bd(name + "size", 1f);
+            sizeX=sizeY= bd( "size", 1f);
         }
         GameObject newBuilding = generateSpriteObject(items.getSprite(name),  sizeX, sizeY,name,position);
         CircleCollider circleCollider = new CircleCollider();
@@ -448,31 +446,92 @@ public class Unit {
 
 
         newBuilding.addComponent(circleCollider);
+        if(cb("health")) {
+            Mortal mort = new Mortal(b( "health"), bd( "armor", 0));
+            newBuilding.addComponent(mort);
+        }
+
         return newBuilding;
     }
 
 
     public static float getBuildTime(String name){
         name=name.toLowerCase();
-        if(!stats.containsKey(name+"buildtime")){
+        lastItem=currentItem;
+        currentItem=name;
+
+        if(!stats.containsKey(name+"."+"buildtime")){
             System.out.println("BOZO this nay exist  "+name);
         }
-        return u(name+"buildtime");
+        float ret=u("buildtime");
+        currentItem=lastItem;
+        return ret;
     }
     public static Vector3f getCost(String name){
+
         name=name.toLowerCase();
-        return new Vector3f( ud(name+"costblood",0f),ud(name+"costrock",0f),ud(name+"costmagic",0f));
+        lastItem=currentItem;
+        currentItem=name;
+        Vector3f ret=new Vector3f( ud("costblood",0f),ud("costrock",0f),ud("costmagic",0f));
+        currentItem=lastItem;
+        return ret;
     }
     public static Vector3f getBuildCost(String name){
         name=name.toLowerCase();
-        return new Vector3f( bd(name+"costblood",0f),bd(name+"costrock",0f),bd(name+"costmagic",0f));
+        lastItem=currentItem;
+        currentItem=name;
+        Vector3f ret=new Vector3f( bd("costblood",0f),bd("costrock",0f),bd("costmagic",0f));
+        currentItem=lastItem;
+
+        return ret;
+
     }
     public static Vector3f getUnlockCost(String name){
         name=name.toLowerCase();
         
-        return new Vector3f( unlockCosts.getOrDefault(name+"costblood",0f)
-                ,unlockCosts.getOrDefault(name+"costrock",0f)
-                ,unlockCosts.getOrDefault(name+"costmagic",0f));
+        return new Vector3f( unlockCosts.getOrDefault(name+"."+"costblood",0f)
+                ,unlockCosts.getOrDefault(name+"."+"costrock",0f)
+                ,unlockCosts.getOrDefault(name+"."+"costmagic",0f));
+    }
+    public static String getUStats(String unitname){
+        StringBuilder result= new StringBuilder();
+        Set<String> keys= new HashSet<>(stats.keySet().stream().filter(stat -> stat.startsWith(unitname+".")).toList());
+        lastItem=currentItem;
+        currentItem=unitname;
+        keys.remove(unitname+"."+"costblood");
+        keys.remove(unitname+"."+"costrock");
+        keys.remove(unitname+"."+"costmagic");
+
+
+        if(keys.contains(unitname+"."+"health")){
+            keys.remove(unitname+"."+"health");
+            result.append("|1 Health").append(u( "health"));
+        }
+        if(keys.contains(unitname+"."+"armor")){
+            keys.remove(unitname+"."+"armor");
+            result.append("|5 Armor").append(u( "armor"));
+        }
+        if(keys.contains(unitname+"."+"attack")){
+            keys.remove(unitname+"."+"attack");
+            result.append("|7 Attack").append(u( "attack"));
+        }
+        if(keys.contains(unitname+"."+"attackspeed")){
+            keys.remove(unitname+"."+"attackspeed");
+            result.append("|6 Attackspeed").append(u( "attackspeed"));
+        }
+        if(keys.contains(unitname+"."+"speed")){
+            keys.remove(unitname+"."+"speed");
+            result.append("|2 Speed").append(u( "speed"));
+        }
+        if(!keys.isEmpty()) {
+            result.append("|0");
+            for (String key : keys) {
+                result.append(" ").append(key.substring(unitname.length()+1)).append(" ").append(stats.get(key));
+            }
+        }
+        currentItem=lastItem;
+        return result.toString();
+
     }
     public static Sprite getSprite(String name){
         return items.getSprite(name);
@@ -480,24 +539,33 @@ public class Unit {
 
 
     private static float ud(String stat,float defalt){
-        return stats.getOrDefault(stat,defalt);
+        return stats.getOrDefault(currentItem+"."+ stat,defalt);
     }
     private static float bd(String stat,float defalt){
-        return Bstats.getOrDefault(stat,defalt);
+        return Bstats.getOrDefault(currentItem+"."+ stat,defalt);
     }
     private static float pd(String stat,float defalt){
-        return Pstats.getOrDefault(stat,defalt);
+        return Pstats.getOrDefault(currentItem+"."+ stat,defalt);
     }
     private static float u(String stat) {
-        return stats.get(stat);
+        return stats.get(currentItem+"."+ stat);
     }
 
     private static float b(String stat){
-        return Bstats.get(stat);
+        return Bstats.get(currentItem+"."+ stat);
     }
 
     private static float p(String stat){
-        return Pstats.get(stat);
+        return Pstats.get(currentItem+"."+ stat);
+    }
+    private static boolean cu(String stat){
+        return stats.containsKey(currentItem+"."+ stat);
+    }
+    private static boolean cb(String stat){
+        return Bstats.containsKey(currentItem+"."+ stat);
+    }
+    private static boolean cp(String stat){
+        return Pstats.containsKey(currentItem+"."+ stat);
     }
     public static void generateAnimation(Vector2f position, float sizeX, float sizeY, AnimationState animation) {
         GameObject anime = generateSpriteObject(animation.getFirstSprite(), sizeX, sizeY, "disposableTemp", position);

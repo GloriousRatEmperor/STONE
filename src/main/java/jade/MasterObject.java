@@ -8,6 +8,7 @@ import imgui.ImGui;
 import imgui.ImVec2;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiWindowFlags;
+import imgui.type.ImBoolean;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import org.joml.Vector4f;
@@ -108,6 +109,7 @@ public class MasterObject {
                 desc=descmb;
             }
         }
+        ImGui.end();
         if(desc!=null){
             imguiDescription(desc);
         }
@@ -204,30 +206,39 @@ public class MasterObject {
         return desc;
     }
     public void imguiDescription(String desc){
-        ImGui.setNextWindowPos(ImGui.getMousePosX(), ImGui.getMousePosY());
+
         int width=600;
-            float mouseX=ImGui.getMousePosX()+10;
-            float mouseY=ImGui.getMousePosY()-10;
+        int height=7000;
+            float mouseX=ImGui.getMousePosX();
+            float mouseY=ImGui.getMousePosY();
             ImVec2 size=new ImVec2();
             String[] displaytexts=desc.split("\\|");
             int color;
             float wide=0;
             float high=0;
+            ImGui.pushStyleColor(ImGuiCol.Text,Color(255,255,255,255));
             for (String str:displaytexts) {
 
-                ImGui.calcTextSize(size, str, width);
+                ImGui.calcTextSize(size, str, false,width);
                 if (wide < size.x) {
                     wide = size.x;
                 }
                 high += size.y;
 
             }
-            if(mouseX>ImGui.getIO().getDisplaySizeX()-Math.min(width,wide)){
-                mouseX=ImGui.getIO().getDisplaySizeX()-Math.min(width,wide);
+            ImGui.popStyleColor();
+            if(mouseX>-10+ImGui.getIO().getDisplaySizeX()-Math.min(width,wide+20)){
+                mouseX=-10+ImGui.getIO().getDisplaySizeX()-Math.min(width,wide+20);
+
             }
-            ImGui.setNextWindowPos(mouseX,mouseY);
+            if(mouseY>ImGui.getIO().getDisplaySizeY()-20-Math.min(height,high)){
+                mouseY=ImGui.getIO().getDisplaySizeY()-20-Math.min(height,high);
+                high+=20;
+            }
+            ImGui.setNextWindowPos(mouseX,mouseY-20);     //these ugly twenties are weird but necessary? they come from shit like window padding and my not enough understanding of imgui magic
+            ImGui.setNextWindowSize(Math.min(wide+20,width),high+20);
             if(desc!=null){
-                if(ImGui.beginChild("Desc",width,700,false, ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
+                if(ImGui.begin("Desc", new ImBoolean(true), ImGuiWindowFlags.NoMouseInputs|ImGuiWindowFlags.NoTitleBar|ImGuiWindowFlags.NoDecoration)) {
 
                     ImGui.getWindowDrawList().addRectFilled(mouseX, mouseY,
                             mouseX + wide,
@@ -235,6 +246,8 @@ public class MasterObject {
 
                     for (String str:displaytexts){
                         switch (str.charAt(0)){
+                            case ('0')->
+                                color=Color(220,220,220,255);
                             case ('1') ->
                                     color=Color(255,0,0,255);
                             case('2')->
@@ -243,7 +256,12 @@ public class MasterObject {
                                     color=Color(0,0,255,255);
                             case('4')->
                                     color=Color(70,70,255,255);
-
+                            case('5')->
+                                    color=Color(90,90,90,255);
+                            case('6')->
+                                    color=Color(255,220,20,255); //yellow
+                            case('7')->
+                                color=Color(225,80,0,255);//orange
                             default -> color=Color(255,255,255,255);
 
 
@@ -259,8 +277,9 @@ public class MasterObject {
 
 
                     }
+                    ImGui.end();
+                }
 
-                }ImGui.endChild();
 
 
             }

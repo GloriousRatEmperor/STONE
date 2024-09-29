@@ -17,10 +17,13 @@ public class Heal extends Ability{
         super(type);
         mp=50;
         sprite = Img.get("heal");
-        setDesc("restores "+ Math.round(power*100)+"%% missing hp");
+
 
     }
-
+    @Override
+    public void updateDesc(){
+        setDesc("restores "+ Math.round(power*100)+"%% missing hp");
+    }
     @Override
     public void cast(ServerData data, GameObject self) {
         Mortal mortal=self.getComponent(Mortal.class);

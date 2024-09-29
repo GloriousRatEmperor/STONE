@@ -33,7 +33,7 @@ public class Scene {
     private Renderer renderer;
 
     private Camera camera;
-    private List<GameObject> bases=new ArrayList();
+
     ConcurrentLinkedQueue<Integer> requestIds =new ConcurrentLinkedQueue<>();
     ConcurrentLinkedQueue<GameObject> reuestObjects=new ConcurrentLinkedQueue<>();
     private boolean isRunning;
@@ -100,25 +100,7 @@ public class Scene {
         return false;
     }
 
-    public void addBase(GameObject gameobject){
-        bases.add(gameobject);
-    }
-    public void removeBase(GameObject gameobject){
-        bases.remove(gameobject);
-    }
-    public GameObject getClosestBase(Vector2f position){
-        GameObject base=null;
-        double lastDistance=99999999;
-        for (GameObject go:bases){
-            double  distance = Math.sqrt( Math.pow( go.transform.position.x-position.x,2)+Math.pow( go.transform.position.y-position.y,2));
-            if (distance<lastDistance){
-                lastDistance=distance;
-                base=go;
-            }
-        }
-        return base;
 
-    }
 
     public Scene(SceneInitializer sceneInitializer, File leveltemp) {
         this.sceneInitializer = sceneInitializer;

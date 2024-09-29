@@ -9,6 +9,7 @@ import org.joml.Vector2f;
 import org.joml.Vector3d;
 import physics2d.components.Rigidbody2D;
 
+import static components.Base.getClosestBase;
 import static jade.Window.getScene;
 
 public class Worker extends Component{
@@ -41,14 +42,15 @@ public class Worker extends Component{
             }
             harvest(mineral);
         } else if (base!=null){
-            depositMineral(base);
+            if(gameObject.allied==target.allied) {
+                depositMineral(base);
+            }
         }
     }
     public void harvest(Mineral mineral){
         
         int allblood=mineral.minerals.x, allstone=mineral.minerals.y, allmagic=mineral.minerals.z;
         int total=allblood+allstone+allmagic;
-        Base homeBase=harvestCluster.owner;
         if(total>harvestAmount) {
             cargo.x = harvestAmount * allblood / total;
             mineral.minerals.x-=harvestAmount * allblood / total;
@@ -67,9 +69,10 @@ public class Worker extends Component{
             }else{
                 this.harvestCluster=null;
                 this.currentMineral=null;
+                return;
             }
         }
-
+        Base homeBase=harvestCluster.getOwner(gameObject.allied);
         if(homeBase!=null){
             GameObject base=homeBase.gameObject;
             MoveContollable move=super.gameObject.getComponent(MoveContollable.class);
@@ -102,9 +105,10 @@ public class Worker extends Component{
     }
     @Override
     public void preSolve(GameObject obj, Contact contact, Vector2f contactNormal) {
-
-        Rigidbody2D body=super.gameObject.getComponent(Rigidbody2D.class);
-        body.addVelocity(new Vector2f(contactNormal).perpendicular().mul(0.5f));
+        if (cargo.x != 0 | cargo.y != 0 | cargo.z != 0) {
+            Rigidbody2D body = super.gameObject.getComponent(Rigidbody2D.class);
+            body.addVelocity(new Vector2f(contactNormal).perpendicular().mul(0.5f));
+        }
     }
     public void moveToMineral(){
 
@@ -135,7 +139,7 @@ public class Worker extends Component{
     @Override
     public void start() {
         if(Window.runtimePlaying) {
-            gameObject.getComponent(MoveContollable.class).moveCommand(getScene().getClosestBase(gameObject.transform.position).transform);
+            gameObject.getComponent(MoveContollable.class).moveCommand(getClosestBase(gameObject.transform.position).transform);
             this.gameObject.getComponent(Rigidbody2D.class).friction = 0;
         }
     }

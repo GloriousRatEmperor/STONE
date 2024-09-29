@@ -12,16 +12,21 @@ public class Hitter extends Component {
     public float nextSmak=0;
     public float chargeBonus=0; //charge bonus 1 means +100% damage for max speed,
                                 // the damage is sqrt with the speed until 1.5 times max speed (achievable thu like units pushing and stuff probably) where it's maxed at 150%.
-
+    private Damage damage;
     public void smak(Mortal enemy){
         MoveContollable move=gameObject.getComponent(MoveContollable.class);
-        float chargedmg=0;
+        float charge=0;
         if(move!=null){
             Rigidbody2D body=gameObject.getComponent(Rigidbody2D.class);
-            chargedmg=(float)Math.min(Math.pow( body.getSpeed()/ move.speed,2),1.5)*chargeBonus*dmg;
+            charge=(float)Math.min(Math.pow( body.getSpeed()/ move.speed,2),1.5)*chargeBonus;
 
         }
-        enemy.takeDamage(dmg+ chargedmg);
+        if(charge!=1) {
+            damage.addGlobalMult(charge, "charge");
+        }
+        damage.updateTemps();
+
+        enemy.takeDamage(damage);
 
     }
     @Override
@@ -47,6 +52,9 @@ public class Hitter extends Component {
     public Hitter(float attack, float attackSpeed){
         dmg=attack;
         this.attackSpeed=attackSpeed;
+    }
+    public void start(){
+        damage=new Damage(dmg,"physical");
     }
     @Override
     public void update(float dt) {

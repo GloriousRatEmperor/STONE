@@ -6,12 +6,14 @@ import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
+import util.Maf;
 import util.Unit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static jade.MineralCluster.mineralClusters;
 import static jade.Window.*;
 
 public class Base extends Component{
@@ -19,9 +21,67 @@ public class Base extends Component{
 
     private float mineralDistance=4f;
     private boolean genned=false;
+    private static List<GameObject> bases=new ArrayList();
     private List<MineralCluster> ownedClusters=new ArrayList<MineralCluster>();
 
+    public static void addBase(GameObject gameobject){
+        Vector2f pos=gameobject.transform.position;
+        bases.add(gameobject);
+        Base base=gameobject.getComponent(Base.class);
+        for(MineralCluster min:mineralClusters){
+            Base ownbase=min.getOwner(gameobject.allied);
+            double dist=Maf.distance(pos, min.position);
+            if(ownbase!=null) {
+                GameObject own =ownbase.gameObject;
+                if (dist <Maf.distance(own.transform.position,min.position)){
+                    if(dist > base.mineralDistance/physicsStep*2){
+                        min.setOwner(gameobject.allied,base);
+                        base.ownedClusters.add(min);
+                        ownbase.removeCluster(min);
+                    }
+                }
+                continue;
 
+            }
+            if(dist> base.mineralDistance/physicsStep*2){
+                min.setOwner(gameobject.allied,base);
+                base.ownedClusters.add(min);
+            }
+        }
+
+    }
+    public static void removeBase(GameObject gameobject){
+        bases.remove(gameobject);
+    }
+    public static GameObject getClosestBase(Vector2f position){
+        GameObject base=null;
+        double lastDistance=99999999;
+        for (GameObject go:bases){
+            double  distance = Math.sqrt( Math.pow( go.transform.position.x-position.x,2)+Math.pow( go.transform.position.y-position.y,2));
+            if (distance<lastDistance){
+                lastDistance=distance;
+                base=go;
+            }
+        }
+        return base;
+
+    }
+    public static GameObject getClosestBase(Vector2f position, int allied){
+        GameObject base=null;
+        double lastDistance=99999999;
+        for (GameObject go:bases){
+            if(go.allied!=allied){
+                continue;
+            }
+            double  distance = Math.sqrt( Math.pow( go.transform.position.x-position.x,2)+Math.pow( go.transform.position.y-position.y,2));
+            if (distance<lastDistance){
+                lastDistance=distance;
+                base=go;
+            }
+        }
+        return base;
+
+    }
 
     public MineralCluster assignMineral(){
         if(ownedClusters.isEmpty()){
@@ -31,7 +91,10 @@ public class Base extends Component{
     }
     public void removeCluster(MineralCluster mineralCluster){
         ownedClusters.remove(mineralCluster);
+    }    public void addCluster(MineralCluster mineralCluster){
+        ownedClusters.add(mineralCluster);
     }
+
     @Override
     public Base Clone(){
         Base base=new Base();
@@ -39,33 +102,49 @@ public class Base extends Component{
     }
     @Override
     public void destroy(){
-        getScene().removeBase(super.gameObject);
-        GameObject nearest= getScene().getClosestBase(super.gameObject.transform.position);
+        removeBase(super.gameObject);
+        GameObject nearest= getClosestBase(super.gameObject.transform.position);
         if(nearest!=null) {
             Base nearbase=nearest.getComponent(Base.class);
-            ownedClusters.forEach(e -> e.owner = nearbase);
+            ownedClusters.forEach(e -> e.setOwner(gameObject.allied,nearbase));
             nearbase.ownedClusters.addAll(ownedClusters);
         }else{
-            ownedClusters.forEach(e -> e.owner = null);
+            ownedClusters.forEach(e -> e.setOwner(gameObject.allied,null));
         }
         ownedClusters.clear();
 
     }
     @Override
     public void update(float dt) {
+
         if (!this.genned){
-            genMinerals();
-            getScene().addBase(super.gameObject);
-            genned=true;
+            if(0<=gameObject.allied&&gameObject.allied<=playerAmount+1) {
+                genMinerals();
+                addBase(super.gameObject);
+                genned = true;
+            }else{
+                genned=true;
+                System.out.println("prevented a base from working because high (2 or more over the player amount) " +
+                        "or sub-zero allied bases aren't supported due to lack of a reason why they should be supported");
+            }
+        }else{
+            for (MineralCluster cluster:ownedClusters
+                 ) {
+                if(cluster.getOwner(gameObject.allied)!=this){
+                    System.out.println(Maf.distance(cluster.position,gameObject.transform.position));
+                    System.out.println(Maf.distance(cluster.position,cluster.getOwner(gameObject.allied).gameObject.transform.position));
+                    System.out.println("wtf");
+                }
+            }
         }
     }
     public void genMinerals(){
-        MineralCluster cluster= new MineralCluster();
-        cluster.owner=this;
+        Vector2f position=super.gameObject.transform.position;
+        MineralCluster cluster= new MineralCluster(gameObject.allied,position);
+        cluster.setOwner(gameObject.allied, this);
         HashMap<Vector2i, Vector3i> floor=getFloor();
         //int count=floor.get(new Vector2i(0,1)).x;
         int spacing=floor.get(new Vector2i(0,1)).y;
-        Vector2f position=super.gameObject.transform.position;
         //assuming there always zero zero point!
 
         int rang=((int) range/spacing)+1;

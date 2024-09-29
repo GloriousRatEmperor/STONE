@@ -47,7 +47,7 @@ public class Menu {
             ImGui.setNextWindowSize(io.getDisplaySizeX(),io.getDisplaySizeY()/4);
             ImGui.setNextWindowPos(0,io.getDisplaySizeY()*3/4);
             ImGui.begin("Menu" , ImGuiWindowFlags.MenuBar| ImGuiWindowFlags.NoResize
-                    | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration);
+                    | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration|ImGuiWindowFlags.NoBringToFrontOnFocus);
 
             ///this is how (and where) shit would be presented here for button options of the right click
 //            if (ImGui.menuItem("Add Circle Collider")) {
@@ -61,7 +61,7 @@ public class Menu {
             activeGameObjects.removeIf(GameObject::isDead);
             MasterObject.RunningGui(activeGameObjects);
 
-            ImGui.end();
+
 
         }
     }
@@ -86,7 +86,7 @@ public class Menu {
 
         if (go != null) {
             clearSelected();
-            this.activeGameObjects.add(go);
+            addActiveGameObject(go);
             MasterObject.addGameObject(go);
             ids.add(go.getUid());
         }

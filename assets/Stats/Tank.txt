@@ -1,8 +1,9 @@
 health :450
 attack:75
 attackspeed: 2
+armor:20
 speed:1.25
-size:1
+size:0.75
 
 
 

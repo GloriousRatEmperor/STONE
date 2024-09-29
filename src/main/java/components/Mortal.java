@@ -13,7 +13,8 @@ public class Mortal extends Component {
     public float maxHealth=30;
     public boolean isAlive=true;
     public int alliedM =0;
-
+    public float armor=0;
+    public float chargeDefense; //charge defense is damage reduction from charging enemies that works the same as armor vs attack
     private transient Rigidbody2D rb;
     @Override
     public Mortal Clone(){
@@ -25,6 +26,17 @@ public class Mortal extends Component {
     }
     public void takeDamage(float damage){
         if(this.isAlive) {
+            damage=damage/(1+(armor/damage));
+            health -= damage;
+            if (health <= 0) {
+                death();
+            }
+        }
+    }
+    public void takeDamage(Damage dmg){
+        if(this.isAlive) {
+            dmg.allDamage(); // calculates the damage and updates alldmg
+            float damage=dmg.allDmg/(1+(armor/dmg.allDmg));
             health -= damage;
             if (health <= 0) {
                 death();
@@ -61,9 +73,10 @@ public class Mortal extends Component {
         }
     }
 
-    public Mortal(float health){
+    public Mortal(float health,float armor){
         this.health = health;
         maxHealth = health;
+        this.armor=armor;
     }
     public Mortal(){
 

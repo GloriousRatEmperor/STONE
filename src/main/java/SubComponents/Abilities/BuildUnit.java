@@ -23,7 +23,7 @@ public class BuildUnit extends Ability{
 
         mp=0;
         super.sprite= Img.get(this.unitName);
-        setDescription(type.getDesc());
+        setDesc(type.getDesc());
     }
     @Override
     public void cast(ServerData data, GameObject self){
@@ -32,7 +32,10 @@ public class BuildUnit extends Ability{
             build.addqueue(unitName,cost);
         }
     }
-    public void setDescription(String description) {
+    @Override
+    public void setDesc(String description) {
+        //adds a colored list in the form of a string of the basic stats like hp, armor etc and at the end a black slab of all the other things the mob has
+        String unitStats=Unit.getUStats(unitName);
         String bldcost="",rockcost="",magecost="";
         if(cost.x!=0){
             bldcost=cost.x+ " Blood ";
@@ -44,7 +47,7 @@ public class BuildUnit extends Ability{
             magecost=cost.z+ " Magic ";
         }
         if(!bldcost.equals("")||!magecost.equals("")||!rockcost.equals("")) {
-            this.description = description + "|2 costs: " +bldcost+rockcost+magecost;
+            this.description = description + "|2 costs: " +bldcost+rockcost+magecost+unitStats;
         }else{
             this.description = description;
         }

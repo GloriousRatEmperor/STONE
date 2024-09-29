@@ -112,6 +112,9 @@ public class CastAbilities extends Component {
             case buildWhitler -> new BuildUnit(a,"whitler");
             case buildWisp -> new BuildUnit(a,"wisp");
             case buildBoarCavalary -> new BuildUnit(a,"boarcavalary");
+            case buildSpearman -> new BuildUnit(a,"spearman");
+            case buildChicken -> new BuildUnit(a,"chicken");
+            case buildPebble ->new BuildUnit(a,"pebble");
             default -> null;
 
         };

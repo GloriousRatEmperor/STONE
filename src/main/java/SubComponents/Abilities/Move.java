@@ -17,8 +17,8 @@ public class Move extends Ability{
         mp=0;
         sprite = Img.get("move");
         targetable=true;
-        setDesc( "issues a move command");
     }
+
     public void cast(ServerData data, GameObject self) {
         MoveContollable move=self.getComponent(MoveContollable.class);
         if (move!=null) {

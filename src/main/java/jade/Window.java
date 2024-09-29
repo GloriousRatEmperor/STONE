@@ -51,6 +51,7 @@ public class Window implements Observer {
     private File leveltemp;
     public int allied=0;
     private boolean end=false;
+    public static int playerAmount;
     private boolean endPlay=false;
     public ImGuiLayer imguiLayer;
 
@@ -189,6 +190,7 @@ public class Window implements Observer {
         Scene scene=Window.getScene();
         scene.setFloor(floor);
         scene.initiatePlayers(inputs.playeramount);
+        this.playerAmount=inputs.playeramount;
         scene.setAllied(allied);
         newInputs.setTime(0f);
         Variables.start();

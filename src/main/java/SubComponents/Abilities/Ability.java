@@ -13,6 +13,7 @@ import org.joml.Vector2f;
 import util.AssetPool;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_CONTROL;
@@ -30,7 +31,15 @@ public class Ability extends SubComponent {
         System.out.println( "this ability has no copy function"+this.getClass());
         return null;
     }
+    @Override
+    public void updateData(HashMap<String, String> guiData, boolean running) {
+        updateDesc();
+    }
+    public void updateDesc(){
+        setDesc(type.getDesc());
+    }
     public Ability(AbilityName type) {
+
         this.type=type;
         imguiGroup =1;
     }
@@ -104,8 +113,8 @@ public class Ability extends SubComponent {
         }
     }
 
-@Override
-public void start(){
+    @Override
+    public void start(){
         if (sprite.getTexture() != null) {
                 sprite.setTexture(AssetPool.getTexture(sprite.getTexture().getFilepath()));
         }

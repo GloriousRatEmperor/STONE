@@ -28,10 +28,13 @@ public class Speed extends Ability{
         super(type);
         mp=0;
         sprite = Img.get("speed");
-        setDesc("Incrases speed by "+ (Math.round(mult*100)-100)+"%% " +
-                "for " +(int)duration+" ...timeunits (about 0.89 seconds unless it's friday)");
         lastActive=-duration;
 
+    }
+    @Override
+    public void updateDesc(){
+        setDesc("Incrases speed by "+ (Math.round(mult*100)-100)+"%% " +
+                "for " +(int)duration+" ...timeunits (about 0.89 seconds unless it's friday)");
     }
     @Override
     public void cast(ServerData data, GameObject self) {
