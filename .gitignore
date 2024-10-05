@@ -2,10 +2,13 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
+!**/Leveltemps/
+!**assets/images/kras/
 !**/src/test/**/build/
 
 ### IntelliJ IDEA ###
 .idea
+
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/

@@ -7,21 +7,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="couple things">
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="save system sucks but like works though I guess">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Singleplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Damage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Damage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/DamagePart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/DamagePart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Hitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Hitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Modifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Modifier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Mortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Mortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +382,21 @@
       <option name="project" value="LOCAL" />
       <updated>1727630734992</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="save system sucks but like works though I guess">
+      <created>1728127567869</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1728127567869</updated>
+    </task>
+    <task id="LOCAL-00014" summary="save system sucks but like works though I guess">
+      <created>1728127604774</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1728127604774</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -437,7 +438,8 @@
     <MESSAGE value="lowered need for lots of ability classes that barely do anything, effects still need a lot and are almost unchanged but barely any effects exist willv deal with it later prolly" />
     <MESSAGE value="fancy desc, some stuff I forgot" />
     <MESSAGE value="couple things" />
-    <option name="LAST_COMMIT_MESSAGE" value="couple things" />
+    <MESSAGE value="save system sucks but like works though I guess" />
+    <option name="LAST_COMMIT_MESSAGE" value="save system sucks but like works though I guess" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
