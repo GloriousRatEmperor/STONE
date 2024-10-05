@@ -94,12 +94,6 @@ public class Menu {
     }
 
     public void addActiveGameObject(GameObject go) {
-//        Mortal m=go.getComponent(Mortal.class);
-//        if(m!=null){
-//            if(m.allied!=allied){
-//                return;
-//            }
-//        }
         SpriteRenderer spr = go.getComponent(SpriteRenderer.class);
         if (spr != null ) {
             spr.addColor(0,0.5f,0,0);

@@ -95,6 +95,7 @@ public class ServerInputs extends Component {
                 int count=serverData.getIntValue3();
                 newfloor.put(new Vector2i(0,1),new Vector3i(count,space,0));
                 Window.floor=newfloor;
+                Window.startLevel =serverData.getstrValue();
                 playeramount=serverData.getPlayerAmount();
             }
             case "Cast" -> {

@@ -127,15 +127,6 @@ public class Base extends Component{
                 System.out.println("prevented a base from working because high (2 or more over the player amount) " +
                         "or sub-zero allied bases aren't supported due to lack of a reason why they should be supported");
             }
-        }else{
-            for (MineralCluster cluster:ownedClusters
-                 ) {
-                if(cluster.getOwner(gameObject.allied)!=this){
-                    System.out.println(Maf.distance(cluster.position,gameObject.transform.position));
-                    System.out.println(Maf.distance(cluster.position,cluster.getOwner(gameObject.allied).gameObject.transform.position));
-                    System.out.println("wtf");
-                }
-            }
         }
     }
     public void genMinerals(){

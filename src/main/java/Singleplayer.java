@@ -12,6 +12,8 @@ public class Singleplayer {
 
 
     public static void main(String[] args) throws Exception {
+
+
         Boolean debugging= Boolean.valueOf(args[0]);
 
 

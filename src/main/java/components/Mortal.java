@@ -14,7 +14,8 @@ public class Mortal extends Component {
     public boolean isAlive=true;
     public int alliedM =0;
     public float armor=0;
-    public float chargeDefense; //charge defense is damage reduction from charging enemies that works the same as armor vs attack
+    public float magicArmor=0;
+    public float chargeDefense=0; //charge defense is damage reduction from charging enemies that makes the bonus x times smaller
     private transient Rigidbody2D rb;
     @Override
     public Mortal Clone(){
@@ -34,10 +35,45 @@ public class Mortal extends Component {
         }
     }
     public void takeDamage(Damage dmg){
+
+        //ORDER: 1+: resistMod (will affect mods tempmult it theoretically works if this happens like 20s before the actual hit but will only work on next hit)
+              // resistMod=makes the bonus(or benefit) resistance times smaller, resistance 0.5 also makes it twice as big
+
+              // 2+: calcMod() -> calcs tempMod from tempmults of the modifiers
+
+              // 3+: resistType (will reduce the damage of anything with a type, for example all fire damage but affects tempMod so it HAS TO BE called AFTER calcMod or it has no effect)
+              // resistType=makes damage resistance times smaller (assuming it has the type), resistance 0.5 also makes it twice as big
+
+              //+ 4: calcDamage() -> will calculate all ap and non ap damage but keep them separate
+
+              // 5: resistPhysical or resistMagic -> armor calls resistPhysical, magicArmor will do the same but for magic
+                    //damage=dmg.allDmg/(1+(armor/dmg.allDmg)) is the formula
+
+              // 6: mergeDamage() -> will merge physical and magical damage
+
+              // 7: resistAllPercent(), resistAllFlat() -> resist all the damage in some way, but no option to resist one part of the damage anymore
+
+              // 8:takedamage(...)
+
+              // FINALLY: updateMod() updateDamage() -> sets the temps back to permanent values
+
+
+
+
         if(this.isAlive) {
-            dmg.allDamage(); // calculates the damage and updates alldmg
-            float damage=dmg.allDmg/(1+(armor/dmg.allDmg));
-            health -= damage;
+            if(chargeDefense!=0) {
+                dmg.resistMod("charge", chargeDefense);
+            }
+            dmg.calcMod();
+
+
+
+            dmg.calcDamage();
+            dmg.resistPhysical(armor);
+            dmg.resistMagic(magicArmor);
+            dmg.mergeDamage();
+
+            health-=dmg.getDamage();
             if (health <= 0) {
                 death();
             }

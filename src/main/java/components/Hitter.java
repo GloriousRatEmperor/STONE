@@ -21,10 +21,9 @@ public class Hitter extends Component {
             charge=(float)Math.min(Math.pow( body.getSpeed()/ move.speed,2),1.5)*chargeBonus;
 
         }
-        if(charge!=1) {
-            damage.addGlobalMult(charge, "charge");
+        if(charge!=0) {
+            damage.addGlobalMult(charge+1, "charge");
         }
-        damage.updateTemps();
 
         enemy.takeDamage(damage);
 

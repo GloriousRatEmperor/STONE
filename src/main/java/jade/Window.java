@@ -4,7 +4,6 @@ import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 import components.MouseControls;
 import components.ServerInputs;
-import util.Variables;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
@@ -29,9 +28,13 @@ import scenes.SceneInitializer;
 import util.AssetPool;
 import util.UniTime;
 import util.Unit;
+import util.Variables;
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
@@ -44,6 +47,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window implements Observer {
     public Thread clientThread;
+    public static String startLevel;
     public BlockingQueue<ClientData> requests;
     public BlockingQueue<ServerData> responses;
     private int width, height;
@@ -137,10 +141,11 @@ public class Window implements Observer {
     }
     private void cleanTemps(File dir){
         List<File> cleans =getFilesOF(dir.getAbsolutePath());
+        int deletionTimer=300000;
         for (File f:cleans){
-            if(f.lastModified()<System.currentTimeMillis()-300000){
+            if(f.lastModified()<System.currentTimeMillis()-deletionTimer){
                 if(!f.delete()){
-                    System.out.println("ÜGH deletion failed");
+                    System.out.println("ÜGH deletion failed, perhaps somathing has been playing for like "+deletionTimer/(1000*60)+" minutes");
                 }
             }
 
@@ -165,7 +170,7 @@ public class Window implements Observer {
         Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
 
     }
-    public void begin(){
+    public void begin() {
         MouseControls.discardHoldingObject();
         start=false;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
@@ -180,11 +185,18 @@ public class Window implements Observer {
         allied= inputs.getAlly();
         getImguiLayer().getMenu().allied=allied;
 
+        try {
+            FileWriter writer = new FileWriter(leveltemp);
+            writer.write(startLevel);
+            writer.close();
+            startLevel=null;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        currentScene.load();
 
-        currentScene.save(null);
 
         Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
-
 
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
         Scene scene=Window.getScene();
@@ -643,6 +655,13 @@ public class Window implements Observer {
                     ready = true;
                     ClientData request = new ClientData();
                     request.setName("start");
+                    currentScene.save(null);
+                    try {
+
+                        request.setString(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
+                    }catch (java.io.IOException e){
+                        e.printStackTrace();
+                    }
                     requests.add(request);
 
                 }

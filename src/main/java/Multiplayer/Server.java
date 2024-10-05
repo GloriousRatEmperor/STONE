@@ -72,9 +72,9 @@ public class Server extends ChannelInboundHandlerAdapter {
 
 
 
-        ClientData ClientData = (ClientData) msg;
+        ClientData clientData = (ClientData) msg;
         Player player = getPlayer(ctx.channel().id());
-        switch (ClientData.getName()) {
+        switch (clientData.getName()) {
             case "stop" -> {
                 if (player.state!=inactive){
                     if(player.state==waiting){
@@ -196,10 +196,11 @@ public class Server extends ChannelInboundHandlerAdapter {
                             for (Player p:players) {
                                 if(p.state==waiting) {
                                     ServerData ServerData = new ServerData();
+                                    ServerData.setstrValue(clientData.getString());
                                     ServerData.setPlayerAmount(playerCountAdd);
                                     ServerData.setStart(curTime);
                                     ServerData.setTime(time.getTime());
-                                    ServerData.setName(ClientData.getName());
+                                    ServerData.setName(clientData.getName());
                                     p.state = playing;
                                     ServerData.setIntValue(p.allied);
                                     ServerData.setIntValue2(boxsize*2);
@@ -231,20 +232,20 @@ public class Server extends ChannelInboundHandlerAdapter {
                 ServerData ServerData = new ServerData();
 
                 ServerData.setTime(time.getTime() + delay);
-                ServerData.setIntValue(ClientData.getIntValue());
-                ServerData.setGameObjects(ClientData.getGameObjects());
-                ServerData.setName(ClientData.getName());
-                ServerData.setPos(ClientData.getPos());
+                ServerData.setIntValue(clientData.getIntValue());
+                ServerData.setGameObjects(clientData.getGameObjects());
+                ServerData.setName(clientData.getName());
+                ServerData.setPos(clientData.getPos());
                 toClients(ServerData);
             }
             case "Cast" -> {
 
                 ServerData ServerData = new ServerData();
-                ServerData.setIntValue(ClientData.getIntValue());
+                ServerData.setIntValue(clientData.getIntValue());
                 ServerData.setTime(time.getTime() + delay);
-                ServerData.setGameObjects(ClientData.getGameObjects());
+                ServerData.setGameObjects(clientData.getGameObjects());
                 ServerData.setName("Cast");
-                ServerData.setPos(ClientData.getPos());
+                ServerData.setPos(clientData.getPos());
                 toClients(ServerData);
             }
         }

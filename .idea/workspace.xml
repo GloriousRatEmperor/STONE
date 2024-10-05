@@ -7,32 +7,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="fancy desc, some stuff I forgot">
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/Damage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/DamagePart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/Modifier.java" afterDir="false" />
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="couple things">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/Stats/Tank.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Tank.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Ability.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Ability.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildUnit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/BuildUnit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Heal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Heal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Move.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Move.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Speed.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/SubComponents/Abilities/Speed.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Multiplayer/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Singleplayer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Singleplayer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Base.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Base.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/CastAbilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Damage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Damage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/DamagePart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/DamagePart.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Hitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Hitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Mineral.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Mineral.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Modifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Modifier.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/Mortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Mortal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/editor/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/MineralCluster.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/MineralCluster.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/util/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Unit.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +138,7 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Singleplayer">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client D" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
@@ -399,7 +388,14 @@
       <option name="project" value="LOCAL" />
       <updated>1727543140913</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="couple things">
+      <created>1727630734992</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1727630734992</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -440,7 +436,8 @@
     <MESSAGE value="I mean like I don't even know when the last update was or what happened anymore tbh" />
     <MESSAGE value="lowered need for lots of ability classes that barely do anything, effects still need a lot and are almost unchanged but barely any effects exist willv deal with it later prolly" />
     <MESSAGE value="fancy desc, some stuff I forgot" />
-    <option name="LAST_COMMIT_MESSAGE" value="fancy desc, some stuff I forgot" />
+    <MESSAGE value="couple things" />
+    <option name="LAST_COMMIT_MESSAGE" value="couple things" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -467,5 +464,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/STONE$Client.ic" NAME="Client Coverage Results" MODIFIED="1722194464061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/STONE$Images.ic" NAME="Images Coverage Results" MODIFIED="1728124548308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
