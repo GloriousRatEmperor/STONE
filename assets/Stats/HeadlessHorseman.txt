@@ -1,0 +1,13 @@
+health :175
+attack:50
+attackspeed: 1
+speed:12
+size:0.75
+chargebonus:3
+acceleration:0.02
+turn:0.03
+
+costblood:50
+costrock:0
+costmagic:250
+buildtime:9

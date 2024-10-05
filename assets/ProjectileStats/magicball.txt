@@ -1,0 +1,5 @@
+speed:3
+damage:20
+size:0.2
+health:1
+guided:1
