@@ -195,16 +195,18 @@ public class Server extends ChannelInboundHandlerAdapter {
 
                             for (Player p:players) {
                                 if(p.state==waiting) {
-                                    ServerData ServerData = new ServerData();
-                                    ServerData.setstrValue(clientData.getString());
-                                    ServerData.setPlayerAmount(playerCountAdd);
-                                    ServerData.setStart(curTime);
-                                    ServerData.setTime(time.getTime());
-                                    ServerData.setName(clientData.getName());
+
+                                    ServerData serverData = new ServerData();
+                                    serverData.setIdCounter(clientData.getIntValue2());
+                                    serverData.setstrValue(clientData.getString());
+                                    serverData.setPlayerAmount(playerCountAdd);
+                                    serverData.setStart(curTime);
+                                    serverData.setTime(time.getTime());
+                                    serverData.setName(clientData.getName());
                                     p.state = playing;
-                                    ServerData.setIntValue(p.allied);
-                                    ServerData.setIntValue2(boxsize*2);
-                                    ServerData.setIntValue3(size/(boxsize*2));
+                                    serverData.setIntValue(p.allied);
+                                    serverData.setIntValue2(boxsize*2);
+                                    serverData.setIntValue3(size/(boxsize*2));
                                     List<Integer> map1=new ArrayList<>();
                                     List<Integer> map2=new ArrayList<>();
                                     List<Integer> map3=new ArrayList<>();
@@ -215,8 +217,8 @@ public class Server extends ChannelInboundHandlerAdapter {
                                         map3.add(map.get(key).y);
                                         map3.add(map.get(key).z);
                                     }
-                                    ServerData.setMap(map1, map2, map3);
-                                    toclient(p, ServerData);
+                                    serverData.setMap(map1, map2, map3);
+                                    toclient(p, serverData);
 
                                 }
                             }

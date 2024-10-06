@@ -80,6 +80,9 @@ public class Scene {
     public double getEnemyMagic(){
         return money.get(money.size()-allied).z;
     }
+    public LevelEditorSceneInitializer getLevelEditorSceneInitiallizer(){
+        return (LevelEditorSceneInitializer) sceneInitializer;
+    }
     public void setMoney(float  setblood, float setrock, float setmagic,int player){
         Vector3d moneys=money.get(player-1);
         moneys.set(setblood,setrock,setmagic);

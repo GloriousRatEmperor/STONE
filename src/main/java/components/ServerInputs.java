@@ -18,8 +18,6 @@ public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
-    public int playeramount;
-    private int ally;
 
     private long startTime=0;
     private Thread clientThread;
@@ -87,7 +85,6 @@ public class ServerInputs extends Component {
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
                 startTime = serverData.getStart();
                 setTime(startTime);
-                this.ally=serverData.getIntValue();
 
                 HashMap<Vector2i, Vector3i> newfloor= makeMap(serverData.getMap1(),serverData.getMap2(),serverData.getMap3());
 
@@ -95,8 +92,7 @@ public class ServerInputs extends Component {
                 int count=serverData.getIntValue3();
                 newfloor.put(new Vector2i(0,1),new Vector3i(count,space,0));
                 Window.floor=newfloor;
-                Window.startLevel =serverData.getstrValue();
-                playeramount=serverData.getPlayerAmount();
+                Window.startData=serverData;
             }
             case "Cast" -> {
                 ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
@@ -110,9 +106,6 @@ public class ServerInputs extends Component {
                 }
             }
         }
-    }
-    public int getAlly(){
-        return ally;
     }
     public HashMap<Vector2i,Vector3i> makeMap(List<Integer> map1,List<Integer> map2,List<Integer> map3){
         HashMap<Vector2i, Vector3i> map= new HashMap<>();

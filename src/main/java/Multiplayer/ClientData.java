@@ -4,16 +4,23 @@ import java.util.List;
 
 public class ClientData {
     public int intValue;
+    public int intValue2;
     public String name;
     public String string;
     public int getIntValue(){
         return intValue;
+    }
+    public int getIntValue2(){
+        return intValue2;
     }
     public String getName(){
         return name;
     }
     public void setIntValue(int newval){
         intValue=newval;
+    }
+    public void setIntValue2(int newval){
+        intValue2=newval;
     }
     public void setName(String newval){ name =newval;}
     public void setString(String value){

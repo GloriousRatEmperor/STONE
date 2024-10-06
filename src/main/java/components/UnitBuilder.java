@@ -17,7 +17,7 @@ import static jade.Window.getScene;
 
 public class UnitBuilder extends Component{
     public ArrayList<UNMADE> queue= new ArrayList<>();
-    public int alliedB =1;
+    public int alliedB =0;
     private float buildSpeed=1;
     public transient Transform tr;
     public Sprite icon;

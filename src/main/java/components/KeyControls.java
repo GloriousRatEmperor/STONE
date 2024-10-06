@@ -69,6 +69,55 @@ public class KeyControls extends Component {
         float multiplier = KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT) ? 0.1f : 1.0f;
 
         if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL)) {
+            if((KeyListener.keyBeginPress(GLFW_KEY_KP_2)||KeyListener.keyBeginPress(GLFW_KEY_KP_0)||KeyListener.keyBeginPress(GLFW_KEY_KP_1)||
+                    KeyListener.keyBeginPress(GLFW_KEY_KP_0)||KeyListener.keyBeginPress(GLFW_KEY_KP_4)||KeyListener.keyBeginPress(GLFW_KEY_KP_5)||KeyListener.keyBeginPress(GLFW_KEY_KP_6)||
+                    KeyListener.keyBeginPress(GLFW_KEY_KP_7)||KeyListener.keyBeginPress(GLFW_KEY_KP_8)||KeyListener.keyBeginPress(GLFW_KEY_KP_9)) && activeGameObject != null){
+                int allied=-999999;
+                if(KeyListener.keyBeginPress(GLFW_KEY_KP_2)){
+                    allied=2;
+                }else if(KeyListener.keyBeginPress(GLFW_KEY_KP_0)){
+                    allied=0;
+
+                } else if (KeyListener.keyBeginPress(GLFW_KEY_KP_3)) {
+                    allied=3;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_1)) {
+                    allied=1;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_4)) {
+                    allied=4;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_5)) {
+                    allied=5;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_6)) {
+                    allied=6;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_7)) {
+                    allied=7;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_8)) {
+                    allied=8;
+                }
+                else if (KeyListener.keyBeginPress(GLFW_KEY_KP_9)) {
+                    allied=9;
+                }
+                for (GameObject go:activeGameObjects){
+                    go.allied=allied;
+                    Mortal mort=go.getComponent(Mortal.class);
+                    if(mort!=null) {
+                        mort.alliedM = allied;
+                    }
+                    UnitBuilder build=go.getComponent(UnitBuilder.class);
+                    if(build!=null) {
+                        build.alliedB = allied;
+                    }
+                    Hitter hit=go.getComponent(Hitter.class);
+                    if(hit!=null) {
+                        hit.alliedH = allied;
+                    }
+                }
+            }
             if (KeyListener.keyBeginPress(GLFW_KEY_C) && activeGameObject != null) {
                 copy(activeGameObjects);
 

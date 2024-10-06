@@ -47,7 +47,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window implements Observer {
     public Thread clientThread;
-    public static String startLevel;
+    public static ServerData startData;
     public BlockingQueue<ClientData> requests;
     public BlockingQueue<ServerData> responses;
     private int width, height;
@@ -92,6 +92,9 @@ public class Window implements Observer {
     public static boolean casting;
     private static List<Integer> targetIds;
     private static int targetAbility;
+    public static void setAllied(int allied){
+        get().allied=allied;
+    }
 
     private Window() {
 
@@ -182,14 +185,14 @@ public class Window implements Observer {
         UniTime.setFrame(lastPhysics);
         physicsTimes=0;
 
-        allied= inputs.getAlly();
+        allied= startData.getIntValue();
         getImguiLayer().getMenu().allied=allied;
-
+        GameObject.setCounter(startData.getIdCounter());
         try {
             FileWriter writer = new FileWriter(leveltemp);
+            String startLevel=startData.getstrValue();
             writer.write(startLevel);
             writer.close();
-            startLevel=null;
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -201,13 +204,15 @@ public class Window implements Observer {
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
         Scene scene=Window.getScene();
         scene.setFloor(floor);
-        scene.initiatePlayers(inputs.playeramount);
-        this.playerAmount=inputs.playeramount;
+        scene.initiatePlayers(startData.getPlayerAmount());
+        this.playerAmount=startData.getPlayerAmount();
         scene.setAllied(allied);
         newInputs.setTime(0f);
         Variables.start();
         this.runtimePlaying = true;
         starttime=UniTime.getExact();
+
+        startData=null;
     }
 
 
@@ -657,7 +662,7 @@ public class Window implements Observer {
                     request.setName("start");
                     currentScene.save(null);
                     try {
-
+                        request.setIntValue2(GameObject.ID_COUNTER);
                         request.setString(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
                     }catch (java.io.IOException e){
                         e.printStackTrace();

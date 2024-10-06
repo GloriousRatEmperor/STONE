@@ -23,7 +23,6 @@ public class BuildBuilding extends Ability {
     @Override
     public void cast(ServerData data, GameObject self){
         if(getScene().addmoney(-cost.x,-cost.y,-cost.z,self.allied)) {
-
             Vector2f position = new Vector2f(data.position.get(0), data.position.get(1));
             GameObject unit = Unit.makeBuilding(buildName, position, self.allied);
             getScene().addGameObjectToScene(unit);

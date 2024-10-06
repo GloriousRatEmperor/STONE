@@ -29,6 +29,9 @@ public class GameObject {
     private boolean doSerialization = true;
     private boolean isDead = false;
 
+    public static void setCounter(int countnumba){
+        ID_COUNTER=countnumba;
+    }
 
     public GameObject(String name) {
         this.name = name;

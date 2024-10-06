@@ -5,6 +5,7 @@ import java.util.List;
 public class ServerData {
     public int intValue;
     public String strValue;
+    public int idCounter;
     public int intValue2;
     public int intValue3;
     public float time;
@@ -28,6 +29,12 @@ public class ServerData {
     }
     public String getstrValue(){
         return strValue;
+    }
+    public void setIdCounter(int value){
+        idCounter =value;
+    }
+    public int getIdCounter(){
+        return idCounter;
     }
     public void setstrValue(String str){
         strValue=str;

@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import static jade.Window.get;
+import static jade.Window.getScene;
+
 public abstract class Component {
     private static int ID_COUNTER = 0;
     private int uid = -1;
@@ -423,8 +426,17 @@ public abstract class Component {
 
                 if (type == int.class) {
                     int val = (int)value;
+                    if(name.equals("placeAllied")){
+                        int newVal=JImGui.dragInt(name, val);
+                        if(val!=newVal){
+                            get().allied=newVal;
+                            getScene().getLevelEditorSceneInitiallizer().setAllied(newVal);
+                            field.set(this, newVal);
+                        }
+                    }else {
 
-                    field.set(this, JImGui.dragInt(name, val));
+                        field.set(this, JImGui.dragInt(name, val));
+                    }
                 } else if (type == float.class) {
 
                     float val = (float)value;
