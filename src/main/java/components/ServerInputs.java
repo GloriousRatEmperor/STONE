@@ -41,6 +41,7 @@ public class ServerInputs extends Component {
                 if(responseList.get(0).getTime()<time){
                     if(response.getTime()<time-dt){
                         System.out.println("FUCK, got message really fucking late");
+                        System.out.println("frames late: "+ ((time-response.getTime())/dt));
                     }
                     apply(response);
                     responseList.remove(response);

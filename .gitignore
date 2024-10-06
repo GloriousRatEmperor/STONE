@@ -4,8 +4,9 @@ build/
 !**/src/main/**/build/
 !**/Leveltemps/
 !**assets/images/kras/
+!**/imgui.ini
 !**/src/test/**/build/
-
+!**/.idea/workspace.xml
 ### IntelliJ IDEA ###
 .idea
 
