@@ -39,6 +39,9 @@ public class ServerInputs extends Component {
             while(!responseList.isEmpty()){
                 ServerData response=responseList.get(0);
                 if(responseList.get(0).getTime()<time){
+                    if(response.getTime()<time-dt){
+                        System.out.println("FUCK, got message really fucking late");
+                    }
                     apply(response);
                     responseList.remove(response);
                 }else{
@@ -77,6 +80,7 @@ public class ServerInputs extends Component {
                 }
                 else {
                     for (GameObject selectedObject : selectedObjects) {
+
                         selectedObject.getComponent(MoveContollable.class).moveCommand(pos, selectedObject);
                     }
                 }
