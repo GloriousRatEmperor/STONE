@@ -8,6 +8,7 @@ import observers.events.Event;
 import observers.events.EventType;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
+import util.UniTime;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,7 +20,6 @@ public class ServerInputs extends Component {
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
 
-    private long startTime=0;
     private Thread clientThread;
     public ServerInputs(Thread clientThread, BlockingQueue<ServerData> responses) {
         this.clientThread = clientThread;
@@ -27,7 +27,6 @@ public class ServerInputs extends Component {
     }
     @Override
     public void update(float dt) {
-
         time+=dt;
         try {
             while (!responses.isEmpty()) {
@@ -88,9 +87,7 @@ public class ServerInputs extends Component {
             }
             case "start" -> {
                 EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
-                startTime = serverData.getStart();
-                setTime(startTime);
-
+                UniTime.setStartNow();
                 HashMap<Vector2i, Vector3i> newfloor= makeMap(serverData.getMap1(),serverData.getMap2(),serverData.getMap3());
 
                 int space=serverData.getIntValue2();
@@ -120,9 +117,6 @@ public class ServerInputs extends Component {
             map.put(new Vector2i(map1.get(e),map2.get(e)),new Vector3i( map3.get(e*3),map3.get(e*3+1),map3.get(e*3+2)));
         }
         return map;
-    }
-    public long getStartTime(){
-        return startTime;
     }
 
     public void setTime(float tim){

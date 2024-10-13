@@ -7,11 +7,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="added check to check something">
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="added anotha check to check something">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Tank.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Tank.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/UniTime.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/UniTime.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Variables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Variables.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +132,7 @@
       <recent name="jade" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Client">
+  <component name="RunManager" selected="Application.Singleplayer">
     <configuration name="Client D" type="Application" factoryName="Application" singleton="false">
       <option name="MAIN_CLASS_NAME" value="ClientBooter" />
       <module name="STONE.main" />
@@ -434,7 +438,14 @@
       <option name="project" value="LOCAL" />
       <updated>1728210305827</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added anotha check to check something">
+      <created>1728227828443</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1728227828443</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -481,7 +492,8 @@
     <MESSAGE value="..." />
     <MESSAGE value="FIX" />
     <MESSAGE value="added check to check something" />
-    <option name="LAST_COMMIT_MESSAGE" value="added check to check something" />
+    <MESSAGE value="added anotha check to check something" />
+    <option name="LAST_COMMIT_MESSAGE" value="added anotha check to check something" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

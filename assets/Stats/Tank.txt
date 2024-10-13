@@ -1,4 +1,4 @@
-health :450
+health :380
 attack:75
 attackspeed: 2
 armor:20

@@ -177,8 +177,8 @@ public class Window implements Observer {
         MouseControls.discardHoldingObject();
         start=false;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
-        long StartTime=inputs.getStartTime();
-        UniTime.set(StartTime);
+
+        UniTime.setStartNow();
         inputs.setTime(0f);
         beginTime=0f;
         lastPhysics = 0f;

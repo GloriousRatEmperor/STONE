@@ -13,9 +13,16 @@ public class UniTime {
         // the time in seconds from when the game began to the last physics frame
         return FrameTime;
     }
-    public static void set(long tim){
+    public static void setStartNow(){ //states that it is currently time 0 and resets frames
+        time=System.currentTimeMillis();
+        FrameTime=0;
+    }
+    public static void setStart(long tim){ // starts counting time from tim point and resets frames
         time=(tim);
         FrameTime=0;
+    }
+    public static long getStart(){
+        return time;
     }
     public static void setFrame(float tim){
         FrameTime=(long) tim;

@@ -2,11 +2,13 @@
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
-!**/Leveltemps/
+!**/Leveltemps/**
 !**assets/images/kras/
 !**/imgui.ini
+imgui.ini
 !**/src/test/**/build/
 !**/.idea/workspace.xml
+.idea/workspace.xml
 ### IntelliJ IDEA ###
 .idea
 
