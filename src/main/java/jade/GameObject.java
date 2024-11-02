@@ -340,6 +340,10 @@ public class GameObject {
     public void setNoSerialize() {
         this.doSerialization = false;
     }
+    public void setYesSerialize() {
+        this.doSerialization = true;
+    }
+
 
     public void generateUid() {
         this.uid = ID_COUNTER++;

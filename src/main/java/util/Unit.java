@@ -275,8 +275,10 @@ public class Unit {
         GameObject unit=genBuilding(name,position,allied);
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
+        c.addAbility(c.getAbility(buildPebble));
         c.addAbility(c.getAbility(buildTank));
         c.addAbility(c.getAbility(buildPriest));
+
         unit.addComponent(c);
 
 

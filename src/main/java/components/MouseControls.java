@@ -44,13 +44,16 @@ public class MouseControls extends Component {
             this.holdingObject.destroy();
         }
         this.holdingObject = go;
+        holdingObject.setNoSerialize();
         this.holdingObject.getComponent(SpriteRenderer.class).setColor(0.8f, 0.8f, 0.8f, 0.5f);
         this.holdingObject.addComponent(new NonPickable());
         Window.getScene().addGameObjectToScene(go);
     }
 
     public static void place() {
+
         GameObject newObj = holdingObject.copy();
+        newObj.setYesSerialize();
         if (newObj.getComponent(StateMachine.class) != null) {
             newObj.getComponent(StateMachine.class).refreshTextures();
         }

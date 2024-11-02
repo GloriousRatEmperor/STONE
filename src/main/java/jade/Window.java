@@ -2,7 +2,6 @@ package jade;
 
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
-import components.MouseControls;
 import components.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
@@ -174,7 +173,6 @@ public class Window implements Observer {
 
     }
     public void begin() {
-        MouseControls.discardHoldingObject();
         start=false;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
 
