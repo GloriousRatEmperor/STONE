@@ -909,7 +909,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -944,7 +944,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -955,7 +955,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -989,7 +989,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1001,7 +1001,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -1034,7 +1034,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1044,9 +1044,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -1079,7 +1079,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1286,7 +1286,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -1321,7 +1321,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1332,7 +1332,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -1366,7 +1366,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1378,7 +1378,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -1411,7 +1411,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1421,9 +1421,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -1456,7 +1456,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1663,7 +1663,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -1698,7 +1698,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1709,7 +1709,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -1743,7 +1743,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1755,7 +1755,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -1788,7 +1788,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -1798,9 +1798,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -1833,7 +1833,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2040,7 +2040,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -2075,7 +2075,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2086,7 +2086,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2120,7 +2120,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2132,7 +2132,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -2165,7 +2165,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2175,9 +2175,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -2210,7 +2210,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2417,7 +2417,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -2452,7 +2452,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2463,7 +2463,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2497,7 +2497,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2509,7 +2509,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -2542,7 +2542,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2552,9 +2552,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -2587,7 +2587,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2794,7 +2794,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -2829,7 +2829,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2840,7 +2840,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2874,7 +2874,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2886,7 +2886,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -2919,7 +2919,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2929,9 +2929,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -2964,7 +2964,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a white base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3171,7 +3171,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -3206,7 +3206,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3217,7 +3217,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -3251,7 +3251,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3263,7 +3263,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -3296,7 +3296,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3306,9 +3306,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -3341,7 +3341,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3548,7 +3548,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -3583,7 +3583,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3594,7 +3594,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -3628,7 +3628,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3640,7 +3640,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -3673,7 +3673,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3683,9 +3683,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -3718,7 +3718,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3925,7 +3925,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -3960,7 +3960,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3971,7 +3971,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4005,7 +4005,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4017,7 +4017,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -4050,7 +4050,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4060,9 +4060,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -4095,7 +4095,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4302,7 +4302,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -4337,7 +4337,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4348,7 +4348,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4382,7 +4382,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4394,7 +4394,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -4427,7 +4427,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4437,9 +4437,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -4472,7 +4472,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4679,7 +4679,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -4714,7 +4714,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4725,7 +4725,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4759,7 +4759,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4771,7 +4771,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -4804,7 +4804,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4814,9 +4814,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -4849,7 +4849,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5056,7 +5056,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -5091,7 +5091,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5102,7 +5102,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5136,7 +5136,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5148,7 +5148,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -5181,7 +5181,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5191,9 +5191,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -5226,7 +5226,7 @@
                 ]
               },
               "targetable": true,
-              "description": "builds a white base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5433,7 +5433,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -5468,7 +5468,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5479,7 +5479,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5513,7 +5513,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5525,7 +5525,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -5558,7 +5558,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5568,9 +5568,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -5603,7 +5603,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5810,7 +5810,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -5845,7 +5845,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5856,7 +5856,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5890,7 +5890,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5902,7 +5902,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -5935,7 +5935,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5945,9 +5945,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -5980,7 +5980,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6187,7 +6187,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -6222,7 +6222,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6233,7 +6233,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -6267,7 +6267,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6279,7 +6279,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -6312,7 +6312,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6322,9 +6322,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -6357,7 +6357,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6564,7 +6564,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -6599,7 +6599,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6610,7 +6610,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -6644,7 +6644,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6656,7 +6656,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -6689,7 +6689,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6699,9 +6699,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -6734,7 +6734,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6941,7 +6941,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -6976,7 +6976,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6987,7 +6987,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -7021,7 +7021,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7033,7 +7033,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -7066,7 +7066,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7076,9 +7076,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -7111,7 +7111,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7318,7 +7318,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -7353,7 +7353,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7364,7 +7364,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -7398,7 +7398,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7410,7 +7410,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -7443,7 +7443,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7453,9 +7453,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -7488,7 +7488,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7695,7 +7695,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -7730,7 +7730,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7741,7 +7741,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -7775,7 +7775,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7787,7 +7787,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -7820,7 +7820,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -7830,9 +7830,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -7865,7 +7865,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -8072,7 +8072,7 @@
             "properties": {
               "race": 1,
               "cost": {
-                "x": 500.0,
+                "x": 0.0,
                 "y": 0.0,
                 "z": 0.0
               },
@@ -8107,7 +8107,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
+              "description": "Builds a bloody base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -8118,7 +8118,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 500.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -8152,7 +8152,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a rock base|4 costs500.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -8164,7 +8164,7 @@
               "cost": {
                 "x": 0.0,
                 "y": 0.0,
-                "z": 500.0
+                "z": 0.0
               },
               "buildName": "magicbase",
               "type": "buildBaseB",
@@ -8197,7 +8197,7 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a magic base|4 costs500.0 Magic",
+              "description": "Builds a magic base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -8207,9 +8207,9 @@
             "properties": {
               "race": 4,
               "cost": {
-                "x": 175.0,
-                "y": 175.0,
-                "z": 175.0
+                "x": 0.0,
+                "y": 0.0,
+                "z": 0.0
               },
               "buildName": "whitebase",
               "type": "buildBaseA",
@@ -8242,12 +8242,1879 @@
                 ]
               },
               "targetable": true,
-              "description": "Builds a balanced base|4 costs175.0 Blood175.0 Rock175.0 Magic",
+              "description": "Builds a balanced base",
               "imguiGroup": 1,
               "id": 0
             }
           }
         ]
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -6.375,
+            "y": 13.375
+          },
+          "drawPos": {
+            "x": -6.375,
+            "y": 13.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -6.375,
+            "y": 13.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 3.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 136
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.125,
+            "y": 13.375
+          },
+          "drawPos": {
+            "x": 0.125,
+            "y": 13.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.125,
+            "y": 13.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 140
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 0.125,
+            "y": 8.375
+          },
+          "drawPos": {
+            "x": 0.125,
+            "y": 8.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 0.125,
+            "y": 8.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 141
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 141
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": -7.875,
+            "y": 8.375
+          },
+          "drawPos": {
+            "x": -7.875,
+            "y": 8.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": -7.875,
+            "y": 8.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 142
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 142
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 48.125,
+            "y": 13.375
+          },
+          "drawPos": {
+            "x": 48.125,
+            "y": 13.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 48.125,
+            "y": 13.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 2,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 143
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 143
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 55.125,
+            "y": 13.375
+          },
+          "drawPos": {
+            "x": 55.125,
+            "y": 13.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 55.125,
+            "y": 13.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 2,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 144
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 144
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 55.125,
+            "y": 8.375
+          },
+          "drawPos": {
+            "x": 55.125,
+            "y": 8.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 55.125,
+            "y": 8.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 2,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 145
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 145
+        }
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "wraith",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 47.125,
+            "y": 8.375
+          },
+          "drawPos": {
+            "x": 47.125,
+            "y": 8.375
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 47.125,
+            "y": 8.375
+          },
+          "scale": {
+            "x": 2.5,
+            "y": 2.5
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 124
+        }
+      },
+      {
+        "type": "components.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 472.0,
+            "height": 818.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 9436,
+              "height": 826
+            },
+            "texCoords": [
+              {
+                "x": 0.23060618,
+                "y": 1.0
+              },
+              {
+                "x": 0.23060618,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 0.00968523
+              },
+              {
+                "x": 0.180585,
+                "y": 1.0
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 125
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 1.0,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 126
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 1.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 127
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 128
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Hitter",
+        "properties": {
+          "dmg": 10.0,
+          "alliedH": 2,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "magical": 0.0
+          },
+          "uid": 129
+        }
+      },
+      {
+        "type": "components.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "chargeDefense": 0.0,
+          "uid": 130
+        }
+      },
+      {
+        "type": "components.Effects",
+        "properties": {
+          "uid": 132
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.Shooter",
+        "properties": {
+          "range": 7.0,
+          "damageMult": 5.0,
+          "speedMult": 3.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "rangeHitbox": {
+            "radius": 7.0,
+            "collisionGroup": -2,
+            "allyOverride": 0,
+            "isSensor": true,
+            "enabled": true,
+            "offset": {
+              "x": 0.0,
+              "y": 0.0
+            },
+            "uid": 146
+          },
+          "uid": 133
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 135
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 3.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 136
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 140
+        }
+      },
+      {
+        "type": "components.ShootCollider",
+        "properties": {
+          "radius": 7.0,
+          "collisionGroup": -2,
+          "allyOverride": 0,
+          "isSensor": true,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 146
+        }
       }
     ],
     "doSerialization": true,

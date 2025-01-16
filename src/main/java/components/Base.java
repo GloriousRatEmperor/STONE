@@ -18,7 +18,6 @@ import static jade.Window.*;
 
 public class Base extends Component{
     private float range=15f;
-
     private float mineralDistance=4f;
     private boolean genned=false;
     private static List<GameObject> bases=new ArrayList();
