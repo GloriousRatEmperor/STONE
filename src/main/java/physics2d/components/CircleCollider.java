@@ -6,10 +6,7 @@ import org.joml.Vector2f;
 import renderer.DebugDraw;
 
 public class CircleCollider extends Component {
-    @Override
-    public CircleCollider Clone(){
-        return new CircleCollider();
-    }
+
     public float radius = 1f;
     public int collisionGroup=1;
     public int allyOverride=0;

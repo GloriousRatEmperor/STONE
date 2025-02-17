@@ -3,9 +3,9 @@ package util;
 import static jade.Window.getScene;
 
 public class Variables {
-    public static int startBlood = 50;
-    public static int startRock = 50;
-    public static int startMagic = 50;
+    public static int startBlood = 500;
+    public static int startRock = 500;
+    public static int startMagic = 500;
 
 
     public static void start() {

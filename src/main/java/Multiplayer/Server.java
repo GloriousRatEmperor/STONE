@@ -238,11 +238,13 @@ public class Server extends ChannelInboundHandlerAdapter {
                 ServerData.setGameObjects(clientData.getGameObjects());
                 ServerData.setName(clientData.getName());
                 ServerData.setPos(clientData.getPos());
+                ServerData.intValue2= clientData.intValue2;
                 toClients(ServerData);
             }
             case "Cast" -> {
 
                 ServerData ServerData = new ServerData();
+                ServerData.intValue2= clientData.intValue2;
                 ServerData.setIntValue(clientData.getIntValue());
                 ServerData.setTime(time.getTime() + delay);
                 ServerData.setGameObjects(clientData.getGameObjects());

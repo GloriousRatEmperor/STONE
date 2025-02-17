@@ -3,6 +3,8 @@ package scenes;
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
 import components.*;
+import components.gamestuff.*;
+import components.unitcapabilities.defaults.Sprite;
 import imgui.ImGui;
 import imgui.ImVec2;
 import jade.GameObject;

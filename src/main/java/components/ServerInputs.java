@@ -1,11 +1,15 @@
 package components;
 
 import Multiplayer.ServerData;
+import components.SubComponents.Commands.CastCommand;
+import components.SubComponents.Commands.MoveCommand;
+import components.unitcapabilities.Brain;
 import jade.GameObject;
 import jade.Window;
 import observers.EventSystem;
 import observers.events.Event;
 import observers.events.EventType;
+import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
 import util.UniTime;
@@ -73,15 +77,59 @@ public class ServerInputs extends Component {
                 ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
                 List<Float> pos= serverData.getPos();
                 GameObject target= Window.getScene().runningGetGameObject(serverData.getIntValue());
-                if(target!=null){
-                    for (GameObject selectedObject : selectedObjects){
-                            selectedObject.getComponent(MoveContollable.class).moveCommand(target.transform);
-                    }
+                boolean Qmoving =serverData.intValue2>=10;
+                if(Qmoving){
+
+
+                    serverData.intValue2-=10;
                 }
+                if(target!=null){
+                    boolean stopAtTarget=false;
+                    if(target.allied==selectedObjects.get(0).allied) {
+                        stopAtTarget=true;
+                    }
+
+                        for (GameObject selectedObject : selectedObjects){
+                            Brain brain=selectedObject.getComponent(Brain.class);
+                            if(brain==null){
+                                continue;
+                            }
+                            int tolerance;
+                            if(!stopAtTarget) {
+                                tolerance=-100;
+
+                            }else {
+                                tolerance = -1;
+                            }
+                            if(Qmoving){
+                                brain.setGuard(false);
+                            }
+
+                            if(serverData.intValue2==1) {
+                                brain.addCommand(new MoveCommand( target.transform,tolerance));
+                            }else{
+                                brain.setCommand(new MoveCommand( target.transform,tolerance));
+                            }
+
+                        }
+                    }
+
                 else {
                     for (GameObject selectedObject : selectedObjects) {
 
-                        selectedObject.getComponent(MoveContollable.class).moveCommand(pos, selectedObject);
+                        Brain brain=selectedObject.getComponent(Brain.class);
+                        if(brain==null){
+                            continue;
+                        }
+                        if(Qmoving){
+                            brain.setGuard(false);
+                        }
+                        if(serverData.intValue2==1) {
+                            brain.addCommand(new MoveCommand(new Vector2f(pos.get(0), pos.get(1))));
+                        }else{
+                            brain.setCommand(new MoveCommand(new Vector2f(pos.get(0), pos.get(1))));
+                        }
+
                     }
                 }
             }
@@ -100,11 +148,14 @@ public class ServerInputs extends Component {
                 ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
                 for (GameObject go:
                      selectedObjects) {
-                    CastAbilities cast=go.getComponent(CastAbilities.class);
-                    if(cast!=null){
-                        cast.castAbility(serverData);
+                    Brain brain=go.getComponent(Brain.class);
+                    if(brain!=null){
+                        if(serverData.intValue2==1) {
+                            brain.addCommand(new CastCommand(serverData.intValue, serverData.position));
+                        }else{
+                            brain.setCommand(new CastCommand(serverData.intValue, serverData.position));
+                        }
                     }
-
                 }
             }
         }

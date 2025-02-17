@@ -1,9 +1,13 @@
 package scenes;
 
-import SubComponents.SubComponent;
+import components.SubComponents.SubComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.*;
+import components.gamestuff.ComponentDeserializer;
+import components.gamestuff.GameCamera;
+import components.gamestuff.SubComponentDeserializer;
+import components.unitcapabilities.NonPickable;
 import jade.Camera;
 import jade.GameObject;
 import jade.GameObjectDeserializer;

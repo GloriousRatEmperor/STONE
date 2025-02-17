@@ -1,6 +1,6 @@
 package components;
 
-import SubComponents.SubComponent;
+import components.SubComponents.SubComponent;
 import editor.JImGui;
 import imgui.ImGui;
 import imgui.type.ImInt;
@@ -53,9 +53,6 @@ public abstract class Component {
         return null;
     }
 
-    public Component Clone(){
-        throw new RuntimeException("you fucktart cloning dumbly dumass"+this.getClass()+" is the class you clonin and it has no clown function STUPID");
-    }
     public void updateDraw(){
 
     }
@@ -81,9 +78,6 @@ public abstract class Component {
         }
     }
     public void startMove(Transform target) {
-
-    }
-    public void stopMove() {
 
     }
 

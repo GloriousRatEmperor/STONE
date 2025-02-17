@@ -1,7 +1,7 @@
 package util;
 
-import components.MapSpriteSheet;
-import components.Spritesheet;
+import components.gamestuff.MapSpriteSheet;
+import components.gamestuff.Spritesheet;
 import jade.Sound;
 import renderer.Shader;
 import renderer.Texture;

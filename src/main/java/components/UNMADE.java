@@ -1,5 +1,6 @@
 package components;
 
+import components.unitcapabilities.defaults.Sprite;
 import jade.GameObject;
 import util.Unit;
 
@@ -13,10 +14,6 @@ public class UNMADE {
         this.name=name;
         this.time=Unit.getBuildTime(name);
         this.sprite=Unit.getSprite(name);
-    }
-
-    public UNMADE Clone(){
-        return new UNMADE(this.name);
     }
 
 

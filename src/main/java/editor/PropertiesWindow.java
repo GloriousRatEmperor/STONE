@@ -1,6 +1,13 @@
 package editor;
 
-import components.*;
+import components.Component;
+import components.gamestuff.StateMachine;
+import components.unitcapabilities.*;
+import components.unitcapabilities.damage.Hitter;
+import components.unitcapabilities.damage.Mortal;
+import components.unitcapabilities.defaults.CastAbilities;
+import components.unitcapabilities.defaults.Effects;
+import components.unitcapabilities.defaults.MoveContollable;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import imgui.type.ImInt;
@@ -66,6 +73,11 @@ public class PropertiesWindow {
                     for(GameObject go : activeGameObjects) {
                         if (go.getComponent(Effects.class) == null) {
                             go.addComponent(new Effects());
+                        }
+                    }
+                    for(GameObject go : activeGameObjects) {
+                        if (go.getComponent(Brain.class) == null) {
+                            go.addComponent(new Brain());
                         }
                     }
 
@@ -161,6 +173,13 @@ public class PropertiesWindow {
                     for(GameObject go : activeGameObjects) {
                         if (go.getComponent(Effects.class) == null) {
                             go.addComponent(new Effects());
+                        }
+                    }
+                }
+                if (ImGui.menuItem("Add Brain")) {
+                    for(GameObject go : activeGameObjects) {
+                        if (go.getComponent(Brain.class) == null) {
+                            go.addComponent(new Brain());
                         }
                     }
                 }

@@ -5,10 +5,7 @@ import editor.JImGui;
 import org.joml.Vector2f;
 
 public class Transform extends Component {
-    @Override
-    public Transform Clone(){
-        return new Transform(new Vector2f(this.position), new Vector2f(this.scale));
-    }
+
     public Vector2f position;
     public Vector2f drawPos;
     private boolean flippedX = false;

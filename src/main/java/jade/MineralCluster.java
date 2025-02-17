@@ -1,12 +1,12 @@
 package jade;
 
-import components.Base;
+import components.unitcapabilities.Base;
 import org.joml.Vector2f;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static components.Base.getClosestBase;
+import static components.unitcapabilities.Base.getClosestBase;
 import static jade.Window.playerAmount;
 
 public class MineralCluster {

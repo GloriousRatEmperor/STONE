@@ -1,6 +1,6 @@
 package editor;
 
-import components.SpriteRenderer;
+import components.gamestuff.SpriteRenderer;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;

@@ -5,10 +5,7 @@ import jade.Window;
 import org.joml.Vector2f;
 
 public class PillboxCollider extends Component {
-    @Override
-    public PillboxCollider Clone(){
-        return new PillboxCollider();
-    }
+
     private transient CircleCollider bottomCircle = new CircleCollider();
     private transient Box2DCollider box = new Box2DCollider();
     private transient boolean resetFixtureNextFrame = false;

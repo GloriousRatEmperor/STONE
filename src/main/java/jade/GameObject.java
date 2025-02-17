@@ -1,9 +1,13 @@
 package jade;
 
-import SubComponents.SubComponent;
+import components.SubComponents.SubComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.*;
+import components.gamestuff.ComponentDeserializer;
+import components.gamestuff.SpriteRenderer;
+import components.gamestuff.SubComponentDeserializer;
+import components.unitcapabilities.defaults.Sprite;
 import editor.JImGui;
 import imgui.ImGui;
 import org.joml.Vector2f;
@@ -88,12 +92,6 @@ public class GameObject {
         for (int i=0; i < components.size(); i++) {
 
             components.get(i).startMove(target);
-        }
-    }
-    public void stopMove() {
-        for (int i=0; i < components.size(); i++) {
-
-            components.get(i).stopMove();
         }
     }
     public void update(float dt) {

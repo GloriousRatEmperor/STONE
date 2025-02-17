@@ -7,6 +7,9 @@ public class ClientData {
     public int intValue2;
     public String name;
     public String string;
+    public List<Integer> GameObjects;
+    public List<Float> position;
+
     public int getIntValue(){
         return intValue;
     }
@@ -29,9 +32,6 @@ public class ClientData {
     public String getString(){
         return string;
     }
-    public List<Integer> GameObjects;
-    public List<Float> position;
-
     public List<Integer> getGameObjects() {
         return GameObjects;
     }

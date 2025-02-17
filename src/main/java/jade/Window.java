@@ -38,6 +38,7 @@ import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
+import static components.gamestuff.KeyControls.getQmove;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.openal.ALC10.*;
@@ -551,6 +552,13 @@ public class Window implements Observer {
         pos.add(position.get(0));
         pos.add(position.get(1));
         clientData.setPos(pos);
+        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
+            clientData.setIntValue2(1);
+        }else {
+            clientData.setIntValue2(0);
+        }if(getQmove()){
+            clientData.setIntValue2(clientData.getIntValue2()+10);
+        }
         get().requests.add(clientData);
     }
     public static void sendMove(Vector2f position,List<Integer> Ids,int targetId){
@@ -562,18 +570,16 @@ public class Window implements Observer {
         List<Float> pos = new ArrayList<>();
         pos.add(position.get(0));
         pos.add(position.get(1));
+        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
+            clientData.setIntValue2(1);
+        }else {
+            clientData.setIntValue2(0);
+        }if(getQmove()){
+            clientData.setIntValue2(clientData.getIntValue2()+10);
+        }
         clientData.setPos(pos);
         get().requests.add(clientData);
     }
-//    public static void sendBuild(String name,List<Integer> Ids){
-//
-//        ClientData clientData = new ClientData();
-//        clientData.setName("Build");
-//        clientData.setGameObjects(Ids);
-//        List<Float> pos = new ArrayList<>();
-//        clientData.setPos(pos);
-//        get().requests.add(clientData);
-//    }
     public static void sendCast(List<Integer> Ids,int AbilityID){
         if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
             casting = false;
@@ -585,6 +591,11 @@ public class Window implements Observer {
         List<Float> pos= new ArrayList<Float>();
         pos.add(MouseListener.getWorld().x);
         pos.add(MouseListener.getWorld().y);
+        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
+            clientData.setIntValue2(1);
+        }else {
+            clientData.setIntValue2(0);
+        }
         clientData.setPos(pos);
         get().requests.add(clientData);
     }

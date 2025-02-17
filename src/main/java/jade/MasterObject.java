@@ -1,8 +1,8 @@
 package jade;
 
-import SubComponents.SubComponent;
+import components.SubComponents.SubComponent;
 import components.Component;
-import components.UnitBuilder;
+import components.unitcapabilities.UnitBuilder;
 import editor.JImGui;
 import imgui.ImGui;
 import imgui.ImVec2;

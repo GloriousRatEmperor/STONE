@@ -1,8 +1,16 @@
 package util;
 
-import SubComponents.Abilities.BuildBase;
-import SubComponents.Effects.ExplodingProjectiles;
-import components.*;
+import components.SubComponents.Abilities.BuildBase;
+import components.SubComponents.Effects.ExplodingProjectiles;
+import components.gamestuff.MapSpriteSheet;
+import components.gamestuff.StateMachine;
+import components.unitcapabilities.*;
+import components.unitcapabilities.damage.Mortal;
+import components.unitcapabilities.defaults.CastAbilities;
+import components.unitcapabilities.defaults.Effects;
+import components.unitcapabilities.damage.Hitter;
+import components.unitcapabilities.defaults.MoveContollable;
+import components.unitcapabilities.defaults.Sprite;
 import jade.GameObject;
 import jade.Transform;
 import org.joml.Vector2f;
@@ -174,26 +182,26 @@ public class Unit {
         return unit;
 
     }
-    public static GameObject makeProjectile(String name, Vector2f position,Transform target,int allied){
+    public static GameObject makeProjectile(String name,int ownerId, Vector2f position,Transform target,int allied){
         name=name.toLowerCase();
         GameObject unit =switch(name){
             case "magicball"->
-                BuildMagicball(name,position,target,allied);
+                BuildMagicball(name,position,target,allied,ownerId);
             case "fireball"->
-                BuildFireball(name,position,target,allied);
+                BuildFireball(name,position,target,allied,ownerId);
 
             default->
-                BuildProjectile(name,position,target,allied);
+                BuildProjectile(name,position,target,allied,ownerId);
         };
         return unit;
 
     }
-    private static GameObject BuildFireball(String name, Vector2f position,Transform target,int allied){
-        return BuildProjectile(name,position,target,allied);
+    private static GameObject BuildFireball(String name, Vector2f position,Transform target,int allied,int ownerId){
+        return BuildProjectile(name,position,target,allied,ownerId);
 
     }
-    private static GameObject BuildMagicball(String name, Vector2f position,Transform target,int allied) {
-        GameObject wraith=BuildProjectile(name,position,target,allied);
+    private static GameObject BuildMagicball(String name, Vector2f position,Transform target,int allied,int ownerId) {
+        GameObject wraith=BuildProjectile(name,position,target,allied, ownerId);
         AnimationState animation = new AnimationState();
         Sprite magicball = Img.get("magicball");
         animation.addFrame(magicball, 0.3f, 1.5f, 0);
@@ -210,7 +218,7 @@ public class Unit {
         wraith.addComponent(stateMachine);
         return wraith;
     }
-    private static GameObject BuildProjectile(String name, Vector2f position,Transform target,int allied){
+    private static GameObject BuildProjectile(String name, Vector2f position,Transform target,int allied,int ownerId){
 
         float sizeX,sizeY;
         if(cp(name,"sizex")){
@@ -226,8 +234,8 @@ public class Unit {
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(false);
         proj.addComponent(rb);
-        Projectile p=new Projectile();
-        p.damage=pd(name,"damage",10);
+        Projectile p=new Projectile(pd(name,"damage",10));
+        p.damage.owner=ownerId;
         p.speed=pd(name,"speed",5);
         p.attackSpeed=pd(name,"attackspeed",1);
         p.guided=p(name,"guided")==1f;
@@ -253,7 +261,7 @@ public class Unit {
                 c.addAbility(buildBarracks);
             }
             case "magicbase" -> {
-                c.addAbility(buildMorticum);
+
                 c.addAbility(buildWisp);
             }
             case "whitebase" -> {
@@ -272,9 +280,9 @@ public class Unit {
         GameObject unit=genBuilding(name,position,allied);
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
-        c.addAbility(c.getAbility(buildPebble));
-        c.addAbility(c.getAbility(buildTank));
-        c.addAbility(c.getAbility(buildPriest));
+        c.addAbility(c.makeAbility(buildPebble));
+        c.addAbility(c.makeAbility(buildTank));
+        c.addAbility(c.makeAbility(buildPriest));
 
         unit.addComponent(c);
 
@@ -286,10 +294,10 @@ public class Unit {
         GameObject unit=genBuilding(name,position,allied);
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
-        c.addAbility(c.getAbility(buildSnek));
-        c.addAbility(c.getAbility(buildBoarCavalary));
-        c.addAbility(c.getAbility(buildChicken));
-        c.addAbility(c.getAbility(buildSpearman));
+        c.addAbility(c.makeAbility(buildSnek));
+        c.addAbility(c.makeAbility(buildBoarCavalary));
+        c.addAbility(c.makeAbility(buildChicken));
+        c.addAbility(c.makeAbility(buildSpearman));
         unit.addComponent(c);
 
 
@@ -300,9 +308,9 @@ public class Unit {
         GameObject unit=genBuilding(name,position,allied);
         unit.addComponent(new UnitBuilder());
         CastAbilities c =new CastAbilities();
-        c.addAbility(c.getAbility(buildwraith));
-        c.addAbility(c.getAbility(buildHeadless));
-        c.addAbility(c.getAbility(getBuildHeadlessHorseman));
+        c.addAbility(c.makeAbility(buildwraith));
+        c.addAbility(c.makeAbility(buildHeadless));
+        c.addAbility(c.makeAbility(getBuildHeadlessHorseman));
         unit.addComponent(c);
 
 
@@ -345,7 +353,7 @@ public class Unit {
         GameObject priest= BuildGeneral(name,position,allied);
         CastAbilities cast=new CastAbilities();
         cast.mpRegen=0.1f;
-        cast.addAbility(cast.getAbility(heal));
+        cast.addAbility(cast.makeAbility(heal));
         priest.addComponent(cast);
         return priest;
     }
@@ -356,6 +364,7 @@ public class Unit {
     }
     private static GameObject BuildGeneral(String name, Vector2f position,int allied){
         GameObject unit=genBase(name,position,allied);
+
         if(cu(name,"attack")){
             Hitter hit=new Hitter(u(name,"attack"),u(name,"attackspeed"));
             if(cu(name,"chargebonus")){
@@ -393,16 +402,27 @@ public class Unit {
     public static GameObject BuildWorker(String name, Vector2f position,int allied,int race){
         GameObject worker= BuildGeneral(name,position,allied);
         CastAbilities c=new CastAbilities();
-        BuildBase a=(BuildBase) c.getAbility(buildBase);
+        BuildBase a=(BuildBase) c.makeAbility(buildBase);
         a.setRace(race);
         c.addAbility(a);
+
         if(race==4){
             for (int i=1;i<4;i++){
-                SubComponents.Abilities.BuildBase b=(BuildBase) c.getAbility(buildBase);
+                BuildBase b=(BuildBase) c.makeAbility(buildBase);
                 b.setRace(i);
                 c.addAbility(b);
             }
+        }else{
+            switch (race){
+                case (1)->
+                        c.addAbility(buildGreenBarracks);
+                case (2)->
+                        c.addAbility(buildBarracks);
+                case (3)->
+                        c.addAbility(buildMorticum);
+            }
         }
+
         worker.addComponent(c);
         return worker;
     }
@@ -412,7 +432,8 @@ public class Unit {
 
         GameObject newObject = generateSpriteObject(items.getSprite(name), 0.18f, 0.18f,name,position);
         newObject.allied=allied;
-
+        newObject.addComponent(new Brain());
+        newObject.addComponent(new aggroDetector());
 
 
         Rigidbody2D rb = new Rigidbody2D();
@@ -442,7 +463,7 @@ public class Unit {
         rb.setBodyType(BodyType.Static);
         rb.setFixedRotation(true);
         newBuilding.addComponent(rb);
-
+        newBuilding.addComponent(new Brain());
 
         newBuilding.addComponent(circleCollider);
         if(cb(name,"health")) {

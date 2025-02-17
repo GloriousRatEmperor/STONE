@@ -1,6 +1,6 @@
 package renderer;
 
-import components.SpriteRenderer;
+import components.gamestuff.SpriteRenderer;
 import jade.GameObject;
 import jade.Transform;
 import jade.Window;

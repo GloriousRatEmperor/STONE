@@ -1,7 +1,7 @@
 package util;
 
-import components.MapSpriteSheet;
-import components.Sprite;
+import components.gamestuff.MapSpriteSheet;
+import components.unitcapabilities.defaults.Sprite;
 
 public class Img {
     public static Sprite get(String name){

@@ -1,13 +1,20 @@
 package jade;
 
-import components.*;
+import components.gamestuff.SpriteRenderer;
+import components.gamestuff.Spritesheet;
+import components.gamestuff.StateMachine;
+import components.unitcapabilities.AnimationState;
+import components.unitcapabilities.damage.Hitter;
+import components.unitcapabilities.damage.Mortal;
+import components.unitcapabilities.defaults.MoveContollable;
+import components.unitcapabilities.defaults.Sprite;
 import org.joml.Vector2f;
 import physics2d.components.*;
 import physics2d.enums.BodyType;
 import util.AssetPool;
 
 public class Prefabs {
-    public static GameObject generateSpriteObject(Sprite sprite, float sizeX, float sizeY,String name,Vector2f position) {
+    public static GameObject generateSpriteObject(Sprite sprite, float sizeX, float sizeY, String name, Vector2f position) {
         GameObject block = Window.getScene().createGameObject(name,position);
         block.transform.scale.x = sizeX;
         block.transform.scale.y = sizeY;

@@ -1,5 +1,5 @@
 health :200
-attack:50
+attack:35
 attackspeed: 0.55
 speed:3
 size:0.65

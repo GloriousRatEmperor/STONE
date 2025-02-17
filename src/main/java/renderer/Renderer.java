@@ -1,8 +1,8 @@
 package renderer;
 
-import components.Sprite;
-import components.SpriteRenderer;
-import components.Spritesheet;
+import components.unitcapabilities.defaults.Sprite;
+import components.gamestuff.SpriteRenderer;
+import components.gamestuff.Spritesheet;
 import jade.GameObject;
 import jade.Window;
 import org.joml.Vector2i;

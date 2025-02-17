@@ -27,8 +27,9 @@ public enum AbilityName {
 
     buildMorticum(20,"Builds a morticum that creates magical undead units"),
     buildChicken(25,"builds a ruthless chicken that knows no mercy"),
-    buildPebble(25,"builds a smol rock"),
-    buildSpearman(24,"Builds a burly spearman. spearmen do additional damage to enemies charging at them");
+    buildPebble(26,"builds a smol rock"),
+    buildSpearman(24,"Builds a burly spearman. spearmen do additional damage to enemies charging at them"),
+    guardMode(27,"toggles guardmode");
 
     private final int id;
     private final String desc;
