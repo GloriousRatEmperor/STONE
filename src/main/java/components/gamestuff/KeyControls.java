@@ -67,6 +67,7 @@ public class KeyControls extends Component {
                 }
 
             }
+
             Window.sendMove(position,ids);
         }else if(KeyListener.keyBeginPress(GLFW_KEY_Q)){
             Qmove =true;

@@ -1,9 +1,9 @@
 package scenes;
 
-import components.SubComponents.SubComponent;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import components.*;
+import components.Component;
+import components.SubComponents.SubComponent;
 import components.gamestuff.ComponentDeserializer;
 import components.gamestuff.GameCamera;
 import components.gamestuff.SubComponentDeserializer;
@@ -134,6 +134,7 @@ public class Scene {
     public void start() {
         for (int i = 0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
+
             go.start();
             this.physics2D.add(go);
             //drawObjectsPending.add(go);

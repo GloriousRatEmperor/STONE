@@ -332,6 +332,7 @@ public class Unit {
     private static GameObject BuildSnake(String name, Vector2f position,int allied){
         GameObject snek= BuildGeneral(name,position,allied);
         Shooter fballer=new Shooter(3.5f,6,"fireball");
+
         snek.addComponent(fballer);
         Effects effects=snek.getComponent(Effects.class);
         ExplodingProjectiles e=(ExplodingProjectiles) effects.getEffect(explodingProjectiles);
@@ -346,6 +347,9 @@ public class Unit {
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
         GameObject wraith= BuildGeneral(name,position,allied);
         Shooter fballer=new Shooter(3,1.25f,"magicball");
+        wraith.removeComponent(Brain.class);
+        wraith.addComponent(new RangedBrain());
+
         wraith.addComponent(fballer);
         return wraith;
     }

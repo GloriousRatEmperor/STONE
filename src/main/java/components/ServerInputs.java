@@ -76,13 +76,23 @@ public class ServerInputs extends Component {
 
                 ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
                 List<Float> pos= serverData.getPos();
-                GameObject target= Window.getScene().runningGetGameObject(serverData.getIntValue());
+                GameObject target=null;
+                if(serverData.getIntValue()!=-1) {
+                    target = Window.getScene().runningGetGameObject(serverData.getIntValue());
+                    if(target==null){
+                        return;
+                    }
+                }
+                if(selectedObjects.isEmpty()){
+                    return;
+                }
                 boolean Qmoving =serverData.intValue2>=10;
                 if(Qmoving){
 
 
                     serverData.intValue2-=10;
                 }
+
                 if(target!=null){
                     boolean stopAtTarget=false;
                     if(target.allied==selectedObjects.get(0).allied) {
@@ -106,9 +116,10 @@ public class ServerInputs extends Component {
                             }
 
                             if(serverData.intValue2==1) {
-                                brain.addCommand(new MoveCommand( target.transform,tolerance));
+
+                                brain.addCommand(brain.moveCommand( target.transform,tolerance,Qmoving));
                             }else{
-                                brain.setCommand(new MoveCommand( target.transform,tolerance));
+                                brain.setCommand(brain.moveCommand( target.transform,tolerance,Qmoving));
                             }
 
                         }
@@ -125,9 +136,9 @@ public class ServerInputs extends Component {
                             brain.setGuard(false);
                         }
                         if(serverData.intValue2==1) {
-                            brain.addCommand(new MoveCommand(new Vector2f(pos.get(0), pos.get(1))));
+                            brain.addCommand(brain.moveCommand(new Vector2f(pos.get(0), pos.get(1)),Qmoving));
                         }else{
-                            brain.setCommand(new MoveCommand(new Vector2f(pos.get(0), pos.get(1))));
+                            brain.setCommand(brain.moveCommand(new Vector2f(pos.get(0), pos.get(1)),Qmoving));
                         }
 
                     }

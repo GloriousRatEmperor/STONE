@@ -20,7 +20,7 @@ public class Command extends SubComponent {
         kill();
         return true;
     }
-    public void update(float dt){
+    public void update(float dt,GameObject self){
 
     }
     public void kill(){

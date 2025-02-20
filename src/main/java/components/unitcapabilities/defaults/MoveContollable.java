@@ -49,6 +49,11 @@ public class MoveContollable extends Component {
             lastmove=distance;
         }
     }
+    public void reverse(GameObject self){
+
+        Rigidbody2D body=self.getComponent(Rigidbody2D.class);
+        body.setVelocity(-body.getVelocity().x,-body.getVelocity().y);
+    }
     private Boolean timeout(){
             return cannaygetclosertimeout==0||Bigtimer==0;
     }

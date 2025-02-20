@@ -1,32 +1,32 @@
 [
   {
-    "name": "peasant",
+    "name": "wraith",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": -65.625,
-            "y": 4.625
+            "x": 0.875,
+            "y": 8.125
           },
           "drawPos": {
-            "x": -65.625,
-            "y": 4.625
+            "x": 0.875,
+            "y": 8.125
           },
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": -65.625,
-            "y": 4.625
+            "x": 0.875,
+            "y": 8.125
           },
           "scale": {
-            "x": 0.3,
-            "y": 0.3
+            "x": 0.5,
+            "y": 0.5
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 223
+          "uid": 707
         }
       },
       {
@@ -39,8 +39,8 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 538.0,
-            "height": 570.0,
+            "width": 472.0,
+            "height": 818.0,
             "texture": {
               "filepath": "assets/images/spritesheets/joined.png",
               "width": 12323,
@@ -48,326 +48,33 @@
             },
             "texCoords": [
               {
-                "x": 0.55521405,
+                "x": 0.33847278,
                 "y": 1.0
               },
               {
-                "x": 0.55521405,
-                "y": 0.30992737
+                "x": 0.33847278,
+                "y": 0.15583076
               },
               {
-                "x": 0.4981984,
-                "y": 0.30992737
+                "x": 0.30017042,
+                "y": 0.15583076
               },
               {
-                "x": 0.4981984,
+                "x": 0.30017042,
                 "y": 1.0
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 224
+          "uid": 708
         }
       },
       {
-        "type": "components.unitcapabilities.Brain",
+        "type": "components.unitcapabilities.aggroDetector",
         "properties": {
-          "stunTimer": 0.0,
-          "afk": true,
-          "guard": true,
-          "pullrange": 300.0,
-          "commandqueue": [],
-          "uid": 225
-        }
-      },
-      {
-        "type": "physics2d.components.Rigidbody2D",
-        "properties": {
-          "velocity": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "angularDamping": 0.9,
-          "linearDamping": 1.0,
-          "moveDamping": 0.0,
-          "stopDamping": 8.0E7,
-          "mass": 0.0,
-          "bodyType": "Dynamic",
-          "friction": 0.1,
-          "angularVelocity": 0.0,
-          "gravityScale": 1.0,
-          "isSensor": false,
-          "fixedRotation": true,
-          "continuousCollision": 0,
-          "uid": 226
-        }
-      },
-      {
-        "type": "physics2d.components.CircleCollider",
-        "properties": {
-          "radius": 0.15,
-          "collisionGroup": 1,
-          "allyOverride": 0,
-          "isSensor": false,
-          "enabled": true,
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 227
-        }
-      },
-      {
-        "type": "components.unitcapabilities.defaults.Effects",
-        "properties": {
-          "uid": 228
-        },
-        "SUBS": []
-      },
-      {
-        "type": "components.unitcapabilities.damage.Hitter",
-        "properties": {
-          "dmg": 7.0,
-          "alliedH": 1,
-          "attackSpeed": 1.0,
-          "nextSmak": 0.0,
-          "chargeBonus": 0.0,
-          "damage": {
-            "allDmg": 0.0,
-            "physical": 0.0,
-            "owner": 20,
-            "magical": 0.0
-          },
-          "uid": 229
-        }
-      },
-      {
-        "type": "components.unitcapabilities.damage.Mortal",
-        "properties": {
-          "health": 50.0,
-          "maxHealth": 50.0,
-          "isAlive": true,
-          "alliedM": 1,
-          "armor": 0.0,
-          "magicArmor": 0.0,
-          "guardMode": false,
-          "chargeDefense": 0.0,
-          "uid": 230
-        }
-      },
-      {
-        "type": "components.unitcapabilities.Worker",
-        "properties": {
-          "harvestAmount": 5.0,
-          "conserveMineral": false,
-          "cargo": {
-            "x": 0.0,
-            "y": 0.0,
-            "z": 0.0
-          },
-          "uid": 231
-        }
-      },
-      {
-        "type": "components.unitcapabilities.defaults.MoveContollable",
-        "properties": {
-          "first": true,
-          "speed": 2.0,
-          "turn": 0.0,
-          "acceleration": 1.0,
-          "lastmove": 1.0E7,
-          "timeoutafter": 20,
-          "Bigtimer": 9000,
-          "closeenuf": 0.0,
-          "cannaygetclosertimeout": 0,
-          "movePos": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 232
-        }
-      },
-      {
-        "type": "components.unitcapabilities.defaults.Effects",
-        "properties": {
-          "uid": 233
-        },
-        "SUBS": []
-      },
-      {
-        "type": "components.unitcapabilities.defaults.CastAbilities",
-        "properties": {
-          "mp": 100.0,
-          "mpRegen": 0.01,
-          "maxmp": 100.0,
-          "uid": 234
-        },
-        "SUBS": [
-          {
-            "type": "components.SubComponents.Abilities.BuildBase",
-            "properties": {
-              "race": 1,
-              "cost": {
-                "x": 500.0,
-                "y": 0.0,
-                "z": 0.0
-              },
-              "buildName": "bloodbase",
-              "type": "buildBaseR",
-              "mp": 0.0,
-              "range": 0.1,
-              "sprite": {
-                "width": 442.0,
-                "height": 396.0,
-                "texture": {
-                  "filepath": "assets/images/spritesheets/joined.png",
-                  "width": 12323,
-                  "height": 969
-                },
-                "texCoords": [
-                  {
-                    "x": 0.67580944,
-                    "y": 0.4117647
-                  },
-                  {
-                    "x": 0.67580944,
-                    "y": 0.0030959751
-                  },
-                  {
-                    "x": 0.6399416,
-                    "y": 0.0030959751
-                  },
-                  {
-                    "x": 0.6399416,
-                    "y": 0.4117647
-                  }
-                ]
-              },
-              "targetable": true,
-              "description": "Builds a bloody base|4 costs500.0 Blood",
-              "imguiGroup": 1,
-              "id": 0
-            }
-          },
-          {
-            "type": "components.SubComponents.Abilities.BuildBuilding",
-            "properties": {
-              "cost": {
-                "x": 120.0,
-                "y": 10.0,
-                "z": 0.0
-              },
-              "buildName": "greenbarracks",
-              "type": "buildGreenBarracks",
-              "mp": 0.0,
-              "range": 0.1,
-              "sprite": {
-                "width": 388.0,
-                "height": 365.0,
-                "texture": {
-                  "filepath": "assets/images/spritesheets/joined.png",
-                  "width": 12323,
-                  "height": 969
-                },
-                "texCoords": [
-                  {
-                    "x": 0.73219585,
-                    "y": 0.45157385
-                  },
-                  {
-                    "x": 0.73219585,
-                    "y": 0.00968523
-                  },
-                  {
-                    "x": 0.69107676,
-                    "y": 0.00968523
-                  },
-                  {
-                    "x": 0.69107676,
-                    "y": 0.45157385
-                  }
-                ]
-              },
-              "targetable": true,
-              "description": "Builds a Barracks that creates meaty units|4 costs120.0 Blood10.0 Rock",
-              "imguiGroup": 1,
-              "id": 0
-            }
-          }
-        ]
-      }
-    ],
-    "doSerialization": true,
-    "isDead": false
-  },
-  {
-    "name": "morticum",
-    "allied": 2,
-    "components": [
-      {
-        "type": "jade.Transform",
-        "properties": {
-          "position": {
-            "x": 16.875,
-            "y": 7.125
-          },
-          "drawPos": {
-            "x": 16.875,
-            "y": 7.125
-          },
-          "flippedX": false,
-          "flippedY": false,
-          "pastPos": {
-            "x": 16.875,
-            "y": 7.125
-          },
-          "scale": {
-            "x": 0.9,
-            "y": 0.9
-          },
-          "rotation": 0.0,
-          "zIndex": 0,
-          "uid": 395
-        }
-      },
-      {
-        "type": "components.gamestuff.SpriteRenderer",
-        "properties": {
-          "color": {
-            "x": 1.0,
-            "y": 1.0,
-            "z": 1.0,
-            "w": 1.0
-          },
-          "sprite": {
-            "width": 388.0,
-            "height": 365.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/joined.png",
-              "width": 12323,
-              "height": 969
-            },
-            "texCoords": [
-              {
-                "x": 0.8465471,
-                "y": 0.5964912
-              },
-              {
-                "x": 0.8465471,
-                "y": 0.21981424
-              },
-              {
-                "x": 0.8150613,
-                "y": 0.21981424
-              },
-              {
-                "x": 0.8150613,
-                "y": 0.5964912
-              }
-            ]
-          },
-          "shaderIndex": 0,
-          "uid": 396
+          "range": 2.5,
+          "active": true,
+          "uid": 710
         }
       },
       {
@@ -382,31 +89,20 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
           "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 397
-        }
-      },
-      {
-        "type": "components.unitcapabilities.Brain",
-        "properties": {
-          "stunTimer": 0.0,
-          "afk": true,
-          "guard": true,
-          "pullrange": 6.0,
-          "commandqueue": [],
-          "uid": 398
+          "uid": 711
         }
       },
       {
         "type": "physics2d.components.CircleCollider",
         "properties": {
-          "radius": 0.45,
+          "radius": 0.25,
           "collisionGroup": 1,
           "allyOverride": 0,
           "isSensor": false,
@@ -415,237 +111,131 @@
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 399
+          "uid": 712
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 713
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 7.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 969,
+            "magical": 0.0
+          },
+          "uid": 714
         }
       },
       {
         "type": "components.unitcapabilities.damage.Mortal",
         "properties": {
-          "health": 180.0,
-          "maxHealth": 180.0,
+          "health": 40.0,
+          "maxHealth": 40.0,
           "isAlive": true,
-          "alliedM": 2,
+          "alliedM": 1,
           "armor": 0.0,
           "magicArmor": 0.0,
           "guardMode": true,
           "chargeDefense": 0.0,
-          "uid": 400
+          "uid": 715
         }
       },
       {
-        "type": "components.unitcapabilities.UnitBuilder",
+        "type": "components.unitcapabilities.defaults.MoveContollable",
         "properties": {
-          "queue": [],
-          "alliedB": 2,
-          "buildSpeed": 1.0,
-          "icon": {
-            "width": 388.0,
-            "height": 365.0,
-            "texture": {
-              "filepath": "assets/images/spritesheets/joined.png",
-              "width": 12323,
-              "height": 969
-            },
-            "texCoords": [
-              {
-                "x": 0.8465471,
-                "y": 0.5964912
-              },
-              {
-                "x": 0.8465471,
-                "y": 0.21981424
-              },
-              {
-                "x": 0.8150613,
-                "y": 0.21981424
-              },
-              {
-                "x": 0.8150613,
-                "y": 0.5964912
-              }
-            ]
+          "first": true,
+          "speed": 2.75,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "lastmove": 1.0E7,
+          "timeoutafter": 20,
+          "Bigtimer": 9000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
           },
-          "uid": 401
+          "uid": 716
         }
       },
       {
-        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "type": "components.unitcapabilities.defaults.Effects",
         "properties": {
-          "mp": 100.0,
-          "mpRegen": 0.01,
-          "maxmp": 100.0,
-          "uid": 402
+          "uid": 717
         },
-        "SUBS": [
-          {
-            "type": "components.SubComponents.Abilities.BuildUnit",
-            "properties": {
-              "cost": {
-                "x": 50.0,
-                "y": 0.0,
-                "z": 250.0
-              },
-              "unitName": "headlesshorseman",
-              "type": "getBuildHeadlessHorseman",
-              "mp": 0.0,
-              "range": -1.0,
-              "sprite": {
-                "width": 348.0,
-                "height": 779.0,
-                "texture": {
-                  "filepath": "assets/images/spritesheets/joined.png",
-                  "width": 12323,
-                  "height": 969
-                },
-                "texCoords": [
-                  {
-                    "x": 0.46328005,
-                    "y": 1.0
-                  },
-                  {
-                    "x": 0.46328005,
-                    "y": 0.19607843
-                  },
-                  {
-                    "x": 0.43504018,
-                    "y": 0.19607843
-                  },
-                  {
-                    "x": 0.43504018,
-                    "y": 1.0
-                  }
-                ]
-              },
-              "targetable": false,
-              "description": "Builds a headless undead horseman|2 costs: 50.0 Blood 250.0 Magic |1 Health175.0|7 Attack35.0|6 Attackspeed1.0|2 Speed12.0|0 chargebonus 3.0 turn 0.03 acceleration 0.02 buildtime 9.0 size 0.75",
-              "imguiGroup": 1,
-              "id": 0
-            }
-          },
-          {
-            "type": "components.SubComponents.Abilities.BuildUnit",
-            "properties": {
-              "cost": {
-                "x": 10.0,
-                "y": 0.0,
-                "z": 80.0
-              },
-              "unitName": "wraith",
-              "type": "buildwraith",
-              "mp": 0.0,
-              "range": -1.0,
-              "sprite": {
-                "width": 472.0,
-                "height": 818.0,
-                "texture": {
-                  "filepath": "assets/images/spritesheets/joined.png",
-                  "width": 12323,
-                  "height": 969
-                },
-                "texCoords": [
-                  {
-                    "x": 0.33847278,
-                    "y": 1.0
-                  },
-                  {
-                    "x": 0.33847278,
-                    "y": 0.15583076
-                  },
-                  {
-                    "x": 0.30017042,
-                    "y": 0.15583076
-                  },
-                  {
-                    "x": 0.30017042,
-                    "y": 1.0
-                  }
-                ]
-              },
-              "targetable": false,
-              "description": "Builds a wraith|2 costs: 10.0 Blood 80.0 Magic |1 Health40.0|7 Attack7.0|6 Attackspeed2.0|2 Speed2.75|0 buildtime 2.5 size 0.5",
-              "imguiGroup": 1,
-              "id": 0
-            }
-          },
-          {
-            "type": "components.SubComponents.Abilities.BuildUnit",
-            "properties": {
-              "cost": {
-                "x": 20.0,
-                "y": 0.0,
-                "z": 180.0
-              },
-              "unitName": "headless",
-              "type": "buildHeadless",
-              "mp": 0.0,
-              "range": -1.0,
-              "sprite": {
-                "width": 537.0,
-                "height": 579.0,
-                "texture": {
-                  "filepath": "assets/images/spritesheets/joined.png",
-                  "width": 12323,
-                  "height": 969
-                },
-                "texCoords": [
-                  {
-                    "x": 0.6399416,
-                    "y": 1.0
-                  },
-                  {
-                    "x": 0.6399416,
-                    "y": 0.4024768
-                  },
-                  {
-                    "x": 0.5963645,
-                    "y": 0.4024768
-                  },
-                  {
-                    "x": 0.5963645,
-                    "y": 1.0
-                  }
-                ]
-              },
-              "targetable": false,
-              "description": "Builds a headless undead sworsman|2 costs: 20.0 Blood 180.0 Magic |1 Health200.0|7 Attack35.0|6 Attackspeed0.55|2 Speed3.0|0 size 0.65 buildtime 8.0",
-              "imguiGroup": 1,
-              "id": 0
-            }
-          }
-        ]
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.RangedBrain",
+        "properties": {
+          "skirmish": true,
+          "range": 3.0,
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 718
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Shooter",
+        "properties": {
+          "damageMult": 1.0,
+          "speedMult": 1.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "range": 3.0,
+          "active": true,
+          "uid": 719
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "chicken",
+    "name": "wraith",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 11.625,
+            "x": 0.875,
             "y": 7.125
           },
           "drawPos": {
-            "x": 11.625,
+            "x": 0.875,
             "y": 7.125
           },
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 11.625,
+            "x": 0.875,
             "y": 7.125
           },
           "scale": {
-            "x": 0.32,
-            "y": 0.32
+            "x": 0.5,
+            "y": 0.5
           },
           "rotation": 0.0,
           "zIndex": 0,
-          "uid": 404
+          "uid": 707
         }
       },
       {
@@ -658,8 +248,8 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 568.0,
-            "height": 580.0,
+            "width": 472.0,
+            "height": 818.0,
             "texture": {
               "filepath": "assets/images/spritesheets/joined.png",
               "width": 12323,
@@ -667,25 +257,234 @@
             },
             "texCoords": [
               {
-                "x": 0.5963645,
+                "x": 0.33847278,
                 "y": 1.0
               },
               {
-                "x": 0.5963645,
-                "y": 0.4014448
+                "x": 0.33847278,
+                "y": 0.15583076
               },
               {
-                "x": 0.55027187,
-                "y": 0.4014448
+                "x": 0.30017042,
+                "y": 0.15583076
               },
               {
-                "x": 0.55027187,
+                "x": 0.30017042,
                 "y": 1.0
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 405
+          "uid": 708
+        }
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 710
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 711
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.25,
+          "collisionGroup": 1,
+          "allyOverride": 0,
+          "isSensor": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 712
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 713
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 7.0,
+          "alliedH": 1,
+          "attackSpeed": 2.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 970,
+            "magical": 0.0
+          },
+          "uid": 714
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 40.0,
+          "maxHealth": 40.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 715
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "first": true,
+          "speed": 2.75,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "lastmove": 1.0E7,
+          "timeoutafter": 20,
+          "Bigtimer": 9000,
+          "closeenuf": 0.0,
+          "cannaygetclosertimeout": 0,
+          "movePos": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 716
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 717
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.RangedBrain",
+        "properties": {
+          "skirmish": true,
+          "range": 3.0,
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 718
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Shooter",
+        "properties": {
+          "damageMult": 1.0,
+          "speedMult": 1.0,
+          "attackSpeed": 1.25,
+          "projectileName": "magicball",
+          "nextAttack": 0.0,
+          "range": 3.0,
+          "active": true,
+          "uid": 719
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "tank",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 4.875,
+            "y": 6.875
+          },
+          "drawPos": {
+            "x": 4.875,
+            "y": 6.875
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 4.875,
+            "y": 6.875
+          },
+          "scale": {
+            "x": 0.75,
+            "y": 0.75
+          },
+          "rotation": 0.0,
+          "zIndex": 0,
+          "uid": 721
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 620.0,
+            "height": 392.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12323,
+              "height": 969
+            },
+            "texCoords": [
+              {
+                "x": 0.8150613,
+                "y": 0.5624355
+              },
+              {
+                "x": 0.8150613,
+                "y": 0.15789473
+              },
+              {
+                "x": 0.7647489,
+                "y": 0.15789473
+              },
+              {
+                "x": 0.7647489,
+                "y": 0.5624355
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 722
         }
       },
       {
@@ -695,28 +494,15 @@
           "afk": true,
           "guard": false,
           "pullrange": 6.0,
-          "commandqueue": [],
-          "uid": 406
+          "uid": 723
         }
       },
       {
         "type": "components.unitcapabilities.aggroDetector",
         "properties": {
-          "range": 3.0,
+          "range": 2.5,
           "active": true,
-          "detectCircle": {
-            "radius": 3.0,
-            "collisionGroup": -2,
-            "allyOverride": 0,
-            "isSensor": true,
-            "enabled": true,
-            "offset": {
-              "x": 0.0,
-              "y": 0.0
-            },
-            "uid": 417
-          },
-          "uid": 407
+          "uid": 724
         }
       },
       {
@@ -738,13 +524,13 @@
           "isSensor": false,
           "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 408
+          "uid": 725
         }
       },
       {
         "type": "physics2d.components.CircleCollider",
         "properties": {
-          "radius": 0.16,
+          "radius": 0.375,
           "collisionGroup": 1,
           "allyOverride": 0,
           "isSensor": false,
@@ -753,52 +539,52 @@
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 409
+          "uid": 726
         }
       },
       {
         "type": "components.unitcapabilities.defaults.Effects",
         "properties": {
-          "uid": 410
+          "uid": 727
         },
         "SUBS": []
       },
       {
         "type": "components.unitcapabilities.damage.Hitter",
         "properties": {
-          "dmg": 3.5,
-          "alliedH": 1,
-          "attackSpeed": 0.25,
+          "dmg": 35.0,
+          "alliedH": 2,
+          "attackSpeed": 2.0,
           "nextSmak": 0.0,
           "chargeBonus": 0.0,
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 33,
+            "owner": 972,
             "magical": 0.0
           },
-          "uid": 411
+          "uid": 728
         }
       },
       {
         "type": "components.unitcapabilities.damage.Mortal",
         "properties": {
-          "health": 50.0,
-          "maxHealth": 50.0,
+          "health": 380.0,
+          "maxHealth": 380.0,
           "isAlive": true,
-          "alliedM": 1,
-          "armor": 0.0,
+          "alliedM": 2,
+          "armor": 20.0,
           "magicArmor": 0.0,
           "guardMode": false,
           "chargeDefense": 0.0,
-          "uid": 412
+          "uid": 729
         }
       },
       {
         "type": "components.unitcapabilities.defaults.MoveContollable",
         "properties": {
           "first": true,
-          "speed": 4.0,
+          "speed": 1.25,
           "turn": 0.0,
           "acceleration": 1.0,
           "lastmove": 1.0E7,
@@ -810,45 +596,15 @@
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 413
+          "uid": 730
         }
       },
       {
         "type": "components.unitcapabilities.defaults.Effects",
         "properties": {
-          "uid": 414
+          "uid": 731
         },
         "SUBS": []
-      },
-      {
-        "type": "components.unitcapabilities.detectCollider",
-        "properties": {
-          "radius": 3.0,
-          "collisionGroup": -2,
-          "allyOverride": 0,
-          "isSensor": true,
-          "enabled": true,
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 416
-        }
-      },
-      {
-        "type": "components.unitcapabilities.detectCollider",
-        "properties": {
-          "radius": 3.0,
-          "collisionGroup": -2,
-          "allyOverride": 0,
-          "isSensor": true,
-          "enabled": true,
-          "offset": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "uid": 417
-        }
       }
     ],
     "doSerialization": true,

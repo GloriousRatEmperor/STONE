@@ -67,12 +67,22 @@ public class GameObject {
         for (int i=0; i < components.size(); i++) {
             Component c = components.get(i);
             if (componentClass.isAssignableFrom(c.getClass())) {
+                c.destroy();
                 components.remove(i);
                 return;
             }
         }
     }
+    public void removeComponent(Component comp) {
 
+        for (int i=0; i < components.size(); i++) {
+            Component c = components.get(i);
+            if (c==comp) {
+                components.remove(i);
+                return;
+            }
+        }
+    }
 
     public void addComponent(Component c) {
         c.generateId();

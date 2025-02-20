@@ -39,6 +39,7 @@ import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import static components.gamestuff.KeyControls.getQmove;
+import static components.gamestuff.KeyControls.setQmove;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.openal.ALC10.*;
@@ -546,6 +547,7 @@ public class Window implements Observer {
     public static void sendMove(Vector2f position,List<Integer> Ids){
 
         ClientData clientData = new ClientData();
+        clientData.setIntValue(-1);
         clientData.setName("Move");
         clientData.setGameObjects(Ids);
         List<Float> pos = new ArrayList<>();
@@ -558,6 +560,7 @@ public class Window implements Observer {
             clientData.setIntValue2(0);
         }if(getQmove()){
             clientData.setIntValue2(clientData.getIntValue2()+10);
+            setQmove(false);
         }
         get().requests.add(clientData);
     }
@@ -576,6 +579,7 @@ public class Window implements Observer {
             clientData.setIntValue2(0);
         }if(getQmove()){
             clientData.setIntValue2(clientData.getIntValue2()+10);
+            setQmove(false);
         }
         clientData.setPos(pos);
         get().requests.add(clientData);

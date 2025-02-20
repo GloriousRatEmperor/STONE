@@ -183,6 +183,14 @@ public class PropertiesWindow {
                         }
                     }
                 }
+                if (ImGui.menuItem("Add RangedBrain")) {
+                    for(GameObject go : activeGameObjects) {
+                        if (go.getComponent(RangedBrain.class) == null) {
+                            go.removeComponent(Brain.class);
+                            go.addComponent(new RangedBrain());
+                        }
+                    }
+                }
                 if (ImGui.menuItem("Add Base")) {
                     for (GameObject go : activeGameObjects) {
                         if (go.getComponent(Base.class) == null) {

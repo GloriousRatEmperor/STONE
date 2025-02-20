@@ -6,20 +6,22 @@ import components.SubComponents.Commands.MoveCommand;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.MoveContollable;
 import jade.GameObject;
+import jade.Transform;
 import jade.Window;
+import org.joml.Vector2f;
 import util.Maf;
 
 import java.util.LinkedList;
 
 public class Brain extends Component {
-    private double stunTimer=0;
-    private boolean afk=true;
-    private boolean guard=true;
+    public double stunTimer=0;
+    public boolean afk=true;
+    public boolean guard=true;
 
-    private float pullrange=6f;
+    public float pullrange=6f;
 
-    private Command currentCommand=null;
-    private LinkedList<Command> commandqueue=new LinkedList<>();
+    protected transient Command currentCommand=null;
+    protected transient LinkedList<Command> commandqueue=new LinkedList<>();
 
     public void setGuard(boolean state){
         if(guard!=state){
@@ -40,6 +42,8 @@ public class Brain extends Component {
                 mortal.guardMode = false;
             }
             guard=false;
+        }else{
+            guard=true;
         }
     }
     public void setCommand(Command command){
@@ -62,20 +66,28 @@ public class Brain extends Component {
     public void addCommand(Command command){
         commandqueue.add(command);
     }
-    public void considerMove(int enemyID){
+    public void considerAggro(int enemyID){
 
         if(afk){
             GameObject enemy=Window.getScene().runningGetGameObject(enemyID);
             if(enemy!=null){
                 if(enemy.allied!=gameObject.allied&& Maf.distance(gameObject.transform.position,enemy.transform.position)<=pullrange){
-                    addCommand(new MoveCommand(enemy.transform));
+                    setCommand(new MoveCommand(enemy.transform));
 
                 }
             }
 
         }
     }
-
+    public void aggro(Transform enemy){
+        setCommand(new MoveCommand(enemy,-100));
+    }
+    public MoveCommand moveCommand(Transform t,float tolerance,boolean amove){
+        return new MoveCommand(t,tolerance,amove);
+    }
+    public MoveCommand moveCommand(Vector2f p, boolean amove){
+        return new MoveCommand(p,amove);
+    }
     public void priorityCommand(Command command){
         commandqueue.addFirst(command);
     }
@@ -101,7 +113,7 @@ public class Brain extends Component {
             }
             return;
         }
-        currentCommand.update(dt);
+        currentCommand.update(dt,gameObject);
 
     }
 }
