@@ -198,6 +198,7 @@ public class Physics2D {
 
         addCircleCollider(rb, circleCollider);
         body.resetMassData();
+        body.setAwake(true);
     }
 
     public void resetBox2DCollider(Rigidbody2D rb, Box2DCollider boxCollider) {
