@@ -155,13 +155,13 @@ public class MoveCommand extends Command{
     @Override
     public void kill(){
         super.kill();
-        transform=null;
-        pos=null;
+        move.halt(true);
         move=null;
     }
     @Override
     public void destroy(){
         transform=null;
+        pos=null;
         move=null;
     }
 

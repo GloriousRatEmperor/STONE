@@ -44,7 +44,7 @@ public class RangedBrain extends Brain{
     }
     @Override
     public void aggro(Transform enemy){
-        setCommand(new SkirmishCommand(enemy,range*0.875f,range*0.99f));
+        priorityCommand(new SkirmishCommand(enemy,range*0.875f,range*0.99f));
     }
     @Override
     public MoveCommand moveCommand(Transform t, float tolerance, boolean amove){

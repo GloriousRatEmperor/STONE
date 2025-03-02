@@ -30,7 +30,7 @@ public class Brain extends Component {
             if(mortal!=null){
                 mortal.guardMode=state;
             }
-            gameObject.getComponent(aggroDetector.class).setActive(state);
+            gameObject.getComponent(aggroDetector.class).setActive(!state);
         }
     }
     @Override
@@ -83,7 +83,7 @@ public class Brain extends Component {
         }
     }
     public void aggro(Transform enemy){
-        setCommand(new MoveCommand(enemy,-100));
+        priorityCommand(new MoveCommand(enemy,-100));
     }
     public MoveCommand moveCommand(Transform t,float tolerance,boolean amove){
         return new MoveCommand(t,tolerance,amove);
@@ -91,8 +91,17 @@ public class Brain extends Component {
     public MoveCommand moveCommand(Vector2f p, boolean amove){
         return new MoveCommand(p,amove);
     }
+    public void interruptCommand(){
+        if(currentCommand!=null){
+            this.currentCommand.cancel();
+            addCommand(currentCommand);
+            currentCommand=null;
+        }
+
+    }
     public void priorityCommand(Command command){
         commandqueue.addFirst(command);
+        interruptCommand();
     }
 
     public void notifyDone(){

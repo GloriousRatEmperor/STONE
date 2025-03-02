@@ -5,10 +5,10 @@ import components.SubComponents.Effects.ExplodingProjectiles;
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
 import components.unitcapabilities.*;
+import components.unitcapabilities.damage.Hitter;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.CastAbilities;
 import components.unitcapabilities.defaults.Effects;
-import components.unitcapabilities.damage.Hitter;
 import components.unitcapabilities.defaults.MoveContollable;
 import components.unitcapabilities.defaults.Sprite;
 import jade.GameObject;
@@ -154,7 +154,7 @@ public class Unit {
             case "priest"->
                 BuildPriest(name,position,allied);
             default->
-                BuildGeneral(name,position,allied);
+                BuildGeneralUnit(name,position,allied);
         };
         return unit;
 
@@ -177,7 +177,7 @@ public class Unit {
                     buildMorticum(name,position,allied);
 
             default->
-                BuildGeneral(name,position,allied);
+                BuildGeneralUnit(name,position,allied);
         };
         return unit;
 
@@ -330,7 +330,7 @@ public class Unit {
 
 
     private static GameObject BuildSnake(String name, Vector2f position,int allied){
-        GameObject snek= BuildGeneral(name,position,allied);
+        GameObject snek= BuildGeneralUnit(name,position,allied);
         Shooter fballer=new Shooter(3.5f,6,"fireball");
 
         snek.addComponent(fballer);
@@ -345,7 +345,7 @@ public class Unit {
 
     }
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
-        GameObject wraith= BuildGeneral(name,position,allied);
+        GameObject wraith= BuildGeneralUnit(name,position,allied);
         Shooter fballer=new Shooter(3,1.25f,"magicball");
         wraith.removeComponent(Brain.class);
         wraith.addComponent(new RangedBrain());
@@ -354,23 +354,24 @@ public class Unit {
         return wraith;
     }
     private static GameObject BuildPriest(String name,Vector2f position,int allied){
-        GameObject priest= BuildGeneral(name,position,allied);
-        CastAbilities cast=new CastAbilities();
+        GameObject priest= BuildGeneralUnit(name,position,allied);
+        CastAbilities cast=priest.getComponent(CastAbilities.class);
         cast.maxmp=100;
         cast.mp=50;
         cast.mpRegen=0.1f;
         cast.addAbility(cast.makeAbility(heal));
-        priest.addComponent(cast);
         return priest;
     }
     private static GameObject BuildSpearman(String name,Vector2f position,int allied){
-        GameObject spearman= BuildGeneral(name,position,allied);
+        GameObject spearman= BuildGeneralUnit(name,position,allied);
         spearman.getComponent(Mortal.class).chargeDefense=u(name,"chargedefense");
         return spearman;
     }
-    private static GameObject BuildGeneral(String name, Vector2f position,int allied){
+    private static GameObject BuildGeneralUnit(String name, Vector2f position, int allied){
         GameObject unit=genBase(name,position,allied);
-
+        CastAbilities cast=new CastAbilities();
+        cast.addAbility(cast.makeAbility(guardMode));
+        unit.addComponent(cast);
         if(cu(name,"attack")){
             Hitter hit=new Hitter(u(name,"attack"),u(name,"attackspeed"));
             if(cu(name,"chargebonus")){
@@ -406,8 +407,8 @@ public class Unit {
         return unit;
     }
     public static GameObject BuildWorker(String name, Vector2f position,int allied,int race){
-        GameObject worker= BuildGeneral(name,position,allied);
-        CastAbilities c=new CastAbilities();
+        GameObject worker= BuildGeneralUnit(name,position,allied);
+        CastAbilities c=worker.getComponent(CastAbilities.class);
         BuildBase a=(BuildBase) c.makeAbility(buildBase);
         a.setRace(race);
         c.addAbility(a);
@@ -429,7 +430,6 @@ public class Unit {
             }
         }
 
-        worker.addComponent(c);
         return worker;
     }
 
