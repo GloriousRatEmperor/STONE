@@ -18,9 +18,9 @@ import static enums.AbilityName.StringToAbilityName;
 import static renderer.DebugDraw.addLine2D;
 
 public class CastAbilities extends Component {
-    private float mp = 100f;
+    public float mp = 0f;
     public float mpRegen = 0.01f;
-    private float maxmp = 100f;
+    public float maxmp = 0f;
     public transient List<Ability> abilities = new ArrayList<>();
 
 

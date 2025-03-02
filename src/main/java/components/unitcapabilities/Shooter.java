@@ -5,7 +5,6 @@ import components.SubComponents.SubComponent;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.Effects;
 import jade.GameObject;
-import physics2d.components.Rigidbody2D;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -28,6 +27,7 @@ public class Shooter extends CircleDetector {
         this.subComponents=this.projectileEffects;
     }
     public Shooter(){
+        super();
         this.subComponents=this.projectileEffects;
     }
     public void addEffect(ImbuneEffect effect){
@@ -41,11 +41,12 @@ public class Shooter extends CircleDetector {
     }
     @Override
     public void update(float dt){
+        super.update(dt);
         this.nextAttack-=dt;
         if(this.nextAttack<=0){
-            detectCircle.setEnabled();
-            detectCircle.update(dt);
-            gameObject.getComponent(Rigidbody2D.class).setSleepAllowed(false);
+            setActive(true);
+
+
         }
     }
     public void shoot(GameObject go){
@@ -59,8 +60,8 @@ public class Shooter extends CircleDetector {
             }
             getScene().addGameObjectToScene(projectile);
             nextAttack=attackSpeed;
-            detectCircle.setDisabled();
-            go.getComponent(Rigidbody2D.class).setSleepAllowed(true);
+
+            setActive(false);
 
         }
     }

@@ -22,6 +22,7 @@ public class RangedBrain extends Brain{
         }else{
             range= shot.range;
         }
+        super.start();
     }
 
     public void setSkirmish(boolean state){
@@ -47,10 +48,11 @@ public class RangedBrain extends Brain{
     }
     @Override
     public MoveCommand moveCommand(Transform t, float tolerance, boolean amove){
-        if(!amove){
+
+        if(!skirmish){
             return super.moveCommand(t,tolerance,amove);
         }else{
-            return new SkirmishCommand(t,tolerance,amove,range*0.875f,range*0.99f);
+            return new SkirmishCommand(t,amove,range*0.875f,range*0.99f);
         }
 
     }

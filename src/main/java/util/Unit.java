@@ -356,6 +356,8 @@ public class Unit {
     private static GameObject BuildPriest(String name,Vector2f position,int allied){
         GameObject priest= BuildGeneral(name,position,allied);
         CastAbilities cast=new CastAbilities();
+        cast.maxmp=100;
+        cast.mp=50;
         cast.mpRegen=0.1f;
         cast.addAbility(cast.makeAbility(heal));
         priest.addComponent(cast);

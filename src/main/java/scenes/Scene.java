@@ -349,6 +349,7 @@ public class Scene {
 
     }
     public void update(float dt,boolean complete) {
+
         if(complete){
             for (GameObject go : gameObjects) {
                 Transform tr = go.getComponent(Transform.class);

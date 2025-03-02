@@ -78,9 +78,12 @@ public class Mortal extends Component {
                 death();
             }else if(!guardMode&&dmg.owner!=-1){
                 Brain brain=gameObject.getComponent(Brain.class);
-                brain. considerAggro(dmg.owner);
+                brain.considerAggro(dmg.owner);
             }
         }
+    }
+    @Override
+    public void update(float dt){
     }
     @Override
     public void die(){

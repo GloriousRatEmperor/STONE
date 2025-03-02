@@ -64,14 +64,9 @@ public class Rigidbody2D extends Component {
     public Vector2f getVelocity() {
         return velocity;
     }
-    public void setDisabled(Box2DCollider boxCollider){
+    public void setDisabled(Object collider){
         if (rawBody != null) {
-            Window.getPhysics().setDisabled(this,boxCollider);
-        }
-    }
-    public void setDisabled(CircleCollider circleCollider){
-        if (rawBody != null) {
-            Window.getPhysics().setDisabled(this,circleCollider);
+            Window.getPhysics().removeFixturesOf(this,collider);
         }
     }
 

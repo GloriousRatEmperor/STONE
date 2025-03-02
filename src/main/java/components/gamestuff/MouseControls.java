@@ -73,7 +73,7 @@ public class MouseControls extends Component {
 
         PickingTexture pickingTexture = Window.getImguiLayer().getMenu().getPickingTexture();
         Scene currentScene = Window.getScene();
-        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)&& debounce < 0) {
+        if (MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_RIGHT)&& debounce < -debounceTime) {
             debounce=debounceTime;
             Vector2f position = new Vector2f(MouseListener.getWorldX(),MouseListener.getWorldY());
             List<GameObject> obj= Window.getImguiLayer().getMenu().getActiveGameObjects();
@@ -114,7 +114,7 @@ public class MouseControls extends Component {
                 this.debounce = debounceTime / 2;
             }
         } else if (MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT)&& debounce < 0) {
-            setQmove(false);
+
             if(casting){
                 activateCast();
                 debounce=debounceTime*4;

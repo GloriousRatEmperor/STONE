@@ -1,7 +1,7 @@
 health :325
 attack:20
 attackspeed: 1.12
-speed:2.75
+speed:2.3
 size:0.7
 
 

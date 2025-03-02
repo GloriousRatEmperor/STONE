@@ -1,8 +1,8 @@
 health : 30
 attack:10
 attackspeed: 1
-speed:2
-harvestamount:5
+speed:1.5
+harvestamount:2.5
 size:0.2
 
 costblood:0

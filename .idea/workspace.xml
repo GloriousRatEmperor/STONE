@@ -8,24 +8,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="removed a couple unused clones and made units chase Q-move, guard mode etc">
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/SkirmishCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/CircleDetector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/RangedBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/BoarCavalary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/BoarCavalary.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Headless.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Headless.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/HeadlessHorseman.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/HeadlessHorseman.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Peasant.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Peasant.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Priest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Priest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Rock.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Rock.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Snek.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Snek.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Tank.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Tank.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Whitler.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Whitler.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Wisp.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Wisp.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Wraith.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/Wraith.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/chicken.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/chicken.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/pebble.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/pebble.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/spearman.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/Stats/spearman.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/ServerInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/MoveCommand.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/components/gamestuff/KeyControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/gamestuff/KeyControls.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/SkirmishCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/SkirmishCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/gamestuff/MouseControls.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/gamestuff/MouseControls.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Brain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Brain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/CircleDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/CircleDetector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/RangedBrain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/RangedBrain.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Shooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Shooter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/aggroDetector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/aggroDetector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Mortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Mortal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/CastAbilities.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/MoveContollable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/MoveContollable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/editor/PropertiesWindow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Window.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Window.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/detectCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/detectCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/scenes/Scene.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/util/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Unit.java" afterDir="false" />
     </list>
@@ -548,15 +563,6 @@
           <properties class="java.lang.NullPointerException" package="java.lang" />
           <option name="timeStamp" value="29" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java</url>
-          <line>62</line>
-          <properties class="physics2d.components.CircleCollider" method="update">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="31" />
-        </line-breakpoint>
       </breakpoints>
       <breakpoints-defaults>
         <breakpoint suspend="THREAD" type="java-line" />
@@ -566,5 +572,8 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/STONE$Client.ic" NAME="Client Coverage Results" MODIFIED="1722194464061" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
     <SUITE FILE_PATH="coverage/STONE$Images.ic" NAME="Images Coverage Results" MODIFIED="1728124548308" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/STONE$Singleplayer.ic" NAME="Singleplayer Coverage Results" MODIFIED="1740760105219" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>org.example.*</FILTER>
+    </SUITE>
   </component>
 </project>

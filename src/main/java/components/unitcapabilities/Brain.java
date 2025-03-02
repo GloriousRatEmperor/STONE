@@ -35,9 +35,11 @@ public class Brain extends Component {
     }
     @Override
     public void start() {
+
         Mortal mortal=gameObject.getComponent(Mortal.class);
         aggroDetector detect=gameObject.getComponent(aggroDetector.class);
         if((gameObject.getComponent(MoveContollable .class)!=null)&&(detect!=null)) {
+
             if(mortal!=null) {
                 mortal.guardMode = false;
             }
@@ -45,6 +47,7 @@ public class Brain extends Component {
         }else{
             guard=true;
         }
+
     }
     public void setCommand(Command command){
         if(currentCommand!=null) {

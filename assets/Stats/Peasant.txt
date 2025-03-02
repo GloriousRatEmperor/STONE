@@ -1,7 +1,7 @@
 health :50 
 attack:5
 attackspeed: 1
-speed:2
+speed:1.5
 peasant harvestamount needs buff? (just a comment for testing not real oppinionn)
 harvestamount:5
 size:0.3

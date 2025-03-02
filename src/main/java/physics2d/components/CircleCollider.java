@@ -43,26 +43,28 @@ public class CircleCollider extends Component {
             DebugDraw.addCircle(center, this.radius);
         if (resetFixtureNextFrame) {
             resetFixture();
+
         }
     }
     public void setDisabled() {
         if (enabled) {
             this.enabled = false;
-
-            gameObject.getComponent(Rigidbody2D.class).setDisabled(this);
+            resetFixtureNextFrame=true;
         }
     }
     public void setEnabled(){
         if(!enabled) {
             this.enabled = true;
-            resetFixture();//maybe try resetFixtureNextFrame=true if there problems?
-
+            resetFixtureNextFrame=true;
         }
     }
     @Override
     public void update(float dt) {
         if (resetFixtureNextFrame) {
+
             resetFixture();
+
+
         }
     }
     public int getCollisionGroup(){
@@ -75,13 +77,18 @@ public class CircleCollider extends Component {
             return;
         }
         resetFixtureNextFrame = false;
-
         if (gameObject != null) {
-            Rigidbody2D rb = gameObject.getComponent(Rigidbody2D.class);
-            if (rb != null) {
-                Window.getPhysics().resetCircleCollider(rb, this);
+            if(enabled){
+                Rigidbody2D rb = gameObject.getComponent(Rigidbody2D.class);
+                if (rb != null) {
+                    Window.getPhysics().resetCircleCollider(rb, this);
+                }
+            }else{
+                gameObject.getComponent(Rigidbody2D.class).setDisabled(this);
             }
+
         }
+        
     }
 
 }

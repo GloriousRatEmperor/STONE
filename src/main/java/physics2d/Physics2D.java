@@ -26,8 +26,8 @@ public class Physics2D {
     private Vec2 gravity = new Vec2(0, 0);
     private World world = new World(gravity);
 
-    private int velocityIterations = 8;
-    private int positionIterations = 3;
+    private int velocityIterations = 1;
+    private int positionIterations = 7;
     public Physics2D() {
 
         world.setContactListener(new JadeContactListener());
@@ -59,6 +59,7 @@ public class Physics2D {
             }
 
             Body body = this.world.createBody(bodyDef);
+
             body.m_mass = rb.getMass();
             rb.setRawBody(body);
 
@@ -89,7 +90,7 @@ public class Physics2D {
             }
         }
     }
-
+    public static long millis=System.currentTimeMillis();
     public void update(float dt) {
         world.step(dt, velocityIterations, positionIterations);
     }
@@ -103,19 +104,37 @@ public class Physics2D {
             fixture = fixture.m_next;
         }
     }
-    public void setDisabled(Rigidbody2D rb,CircleCollider circle){
+    public void removeFixturesOf(Rigidbody2D rb, Object obj){ //!!! physics must not be locked for this to work !!! (so like don't if a gameloop is running!)
         Body body = rb.getRawBody();
         if (body == null) return;
         Fixture fixture = body.getFixtureList();
-        while (fixture != null) {
-            if(fixture.getUserData()==circle){
-
-                body.destroyFixture( fixture);
-                break;
+        while(fixture!=null){
+            Fixture next=fixture.m_next;
+            if(fixture.m_userData.equals(obj)){
+                body.destroyFixture(fixture);
+                fixture.destroy();
             }
-            fixture = fixture.m_next;
+            fixture=next;
+
         }
+
     }
+//    public void disableFixturesOf(Rigidbody2D rb, Object obj){ //DOESN'T WORK BECAUSE WE DON'T HAVE C++ but JAVA SO OUR VERSION IS BEHIND AND DOESN'T HAVE ACTIVE!!!
+//        Body body = rb.getRawBody();
+//        if (body == null) return;
+//        Fixture fixture = body.getFixtureList();
+//        while(fixture!=null){
+//            Fixture next=fixture.m_next;
+//            if(fixture.m_userData.equals(obj)){
+//
+//                fixture.setActive(false);
+//            }
+//            fixture=next;
+//
+//
+//        }
+//
+//    }
     private List<Fixture> getFixturesTouchingCircle(Vector2f position , Float radius){
         Vec2 lowerBound = new Vec2( position.x- radius,position.y-radius);
         Vec2 upperBound = new Vec2( position.x+ radius,position.y+radius);
@@ -159,18 +178,7 @@ public class Physics2D {
         }
         return returnObjects;
     }
-    public void setDisabled(Rigidbody2D rb,Box2DCollider box){
-        Body body = rb.getRawBody();
-        if (body == null) return;
-        Fixture fixture = body.getFixtureList();
-        while (fixture != null) {
-            if(fixture.getUserData()==box){
-                body.destroyFixture( fixture);
-                break;
-            }
-            fixture = fixture.m_next;
-        }
-    }
+
     public void setNotSensor(Rigidbody2D rb) {
         Body body = rb.getRawBody();
         if (body == null) return;
@@ -186,17 +194,7 @@ public class Physics2D {
         Body body = rb.getRawBody();
         if (body == null) return;
 
-        //int size = fixtureListSize(body);
-//        for (int i = 0; i < size; i++) {
-//            body.destroyFixture(body.getFixtureList());
-//        }
-        Fixture fixture = body.getFixtureList();
-        while (fixture != null) {
-            if(fixture.getUserData()==circleCollider){
-                body.destroyFixture(fixture);
-            }
-            fixture=fixture.m_next;
-        }
+        removeFixturesOf(rb,circleCollider);//kills the previous fixture to replace it with the new one
 
         addCircleCollider(rb, circleCollider);
         body.resetMassData();
@@ -206,18 +204,7 @@ public class Physics2D {
         Body body = rb.getRawBody();
         if (body == null) return;
 
-        //int size = fixtureListSize(body);
-//        for (int i = 0; i < size; i++) {
-//            body.destroyFixture(body.getFixtureList());
-//        }
-        Fixture fixture = body.getFixtureList();
-        while (fixture != null) {
-            if(fixture.getUserData()==boxCollider){
-                body.destroyFixture(fixture);
-            }
-            fixture=fixture.m_next;
-        }
-
+        removeFixturesOf(rb,boxCollider);//kills the previous fixture to replace it with the new one
         addBox2DCollider(rb, boxCollider);
         body.resetMassData();
     }
@@ -291,11 +278,13 @@ public class Physics2D {
              but for regulat unit to unit the collision group is the same so they collide regardless due to overrule)*/
         }
         fixtureDef.shape = shape;
+
         fixtureDef.density = 1.0f;
         fixtureDef.isSensor=circleCollider.isSensor;
         fixtureDef.friction = rb.getFriction();
         fixtureDef.userData = circleCollider;
-        body.createFixture(fixtureDef);
+        Fixture a=body.createFixture(fixtureDef);
+
     }
 
     public RaycastInfo raycast(GameObject requestingObject, Vector2f point1, Vector2f point2) {

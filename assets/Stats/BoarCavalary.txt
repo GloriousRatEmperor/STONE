@@ -1,7 +1,7 @@
 health :275
 attack:35
 attackspeed: 2.5
-speed:15
+speed:11
 size:1
 chargebonus:4
 acceleration:0.01

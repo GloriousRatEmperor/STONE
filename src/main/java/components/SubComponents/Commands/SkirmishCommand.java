@@ -1,6 +1,5 @@
 package components.SubComponents.Commands;
 
-import components.unitcapabilities.defaults.MoveContollable;
 import jade.GameObject;
 import jade.Transform;
 import util.Maf;
@@ -14,32 +13,35 @@ public class SkirmishCommand extends MoveCommand {
         this.maxRange=maxRange;
         this.minRange=minrange;
     }
-    public SkirmishCommand(Transform t,float tolerance,boolean amove,float minrange,float maxRange){
-        super(t,tolerance,amove);
+    public SkirmishCommand(Transform t,boolean amove,float minrange,float maxRange){
+        super(t);
+        this.amove=amove;
         this.maxRange=maxRange;
         this.minRange=minrange;
 
     }
 
     @Override
-    public void apply(GameObject self) {
-        if(amove){
-            brain.setAfk(true);
-        }
-        this.move=self.getComponent(MoveContollable.class);
-        self.getComponent(MoveContollable.class).moveCommand(transform, this, tolerance);
-
-
-    }
-    @Override
     public void update(float dt,GameObject self){
-        double distance=Maf.distance(transform.position,self.transform.position);
-        if(distance>maxRange){
-            move.move(dt);
-        }else if(Maf.distance(transform.position,self.transform.position)<minRange){
-            move.move(dt);
-            move.reverse(self);
+        if(!validTransform()){
+            done();
         }
+        double distance= Maf.distance(transform.position,self.transform.position);
+        double dist;
+        if(distance<minRange){
+            dist=move.moveAway(dt,transform.position);
+        }else if(distance<maxRange){
+            dist=Maf.distance(transform.position,self.transform.position);
+            move.halt(false);
+        }else{
+            dist=move.moveToward(dt,transform.position);
+        }
+
+        Bigtimer--;
+        if(Bigtimer==0||dist<0) {
+            done();
+        }
+
     }
 
 }

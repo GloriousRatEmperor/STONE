@@ -30,6 +30,9 @@ public class Rigidbody2D extends Component {
 
     private boolean fixedRotation = false;
 
+    public Rigidbody2D(){
+        System.out.println("aaa");
+    }
     public Vector2f getPosition() {
         return position;
     }
@@ -46,6 +49,7 @@ public class Rigidbody2D extends Component {
     }
 
     public void physicsUpdate(float dt) {
+        System.out.println("aaa");
         if (this.mass == 0.0f) return;
 
         // Calculate linear velocity
@@ -56,6 +60,7 @@ public class Rigidbody2D extends Component {
         clearAccumulators();
     }
     public void synchCollisionTransforms() {
+        System.out.println("aaa");
         if (rawTransform != null) {
             rawTransform.position.set(this.position);
         }
