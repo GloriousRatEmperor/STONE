@@ -15,7 +15,6 @@ public class Rigidbody2D extends Component {
     public float moveDamping = 0.0f;
     public float stopDamping = 80000000.0f;
     public float mass = 0;
-
     public BodyType bodyType = BodyType.Dynamic;
     public float friction = 0.1f;
     public float angularVelocity = 0.0f;

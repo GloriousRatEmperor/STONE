@@ -33,6 +33,7 @@ public class Brain extends Component {
             gameObject.getComponent(aggroDetector.class).setActive(!state);
         }
     }
+
     @Override
     public void start() {
 
@@ -91,24 +92,41 @@ public class Brain extends Component {
     public MoveCommand moveCommand(Vector2f p, boolean amove){
         return new MoveCommand(p,amove);
     }
-    public void interruptCommand(){
+    public boolean interruptCommand(){ //returns true on successs
         if(currentCommand!=null){
-            this.currentCommand.cancel();
-            addCommand(currentCommand);
-            currentCommand=null;
+            if(this.currentCommand.cancel()){
+                addCommand(currentCommand);
+                currentCommand=null;
+                return true;
+            }else{
+                return false;
+            }
+
         }
+        return true;
 
     }
     public void priorityCommand(Command command){
-        commandqueue.addFirst(command);
-        interruptCommand();
+        if(interruptCommand()){
+            currentCommand=null;
+            commandqueue.addFirst(command);
+            update(0);
+        }else{
+            commandqueue.addFirst(command);
+        }
+
+
     }
 
     public void notifyDone(){
         currentCommand=null;
+        update(0);
     }
     @Override
     public void update(float dt){
+        if(gameObject.isDead()){
+            return;
+        }
         if(stunTimer>0) {
             stunTimer -= dt;
             return;

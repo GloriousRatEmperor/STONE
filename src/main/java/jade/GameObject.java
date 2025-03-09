@@ -117,9 +117,9 @@ public class GameObject {
             components.get(i).updateDraw();
         }
     }
-    public void die() {
+    public void die(GameObject self) {
         for (int i=0; i < components.size(); i++) {
-            components.get(i).die();
+            components.get(i).die(self);
         }
         destroy();
     }

@@ -36,6 +36,9 @@ public class Projectile extends Component {
     public Projectile(float damage){
         this.damage=new Damage(damage);
     }
+    public Projectile(float damage,float magicPercent){
+        this.damage=new Damage(damage,magicPercent);
+    }
     public void smak(Mortal enemy){
         if(!gameObject.isDead()) {
             enemy.takeDamage(damage);
@@ -50,7 +53,7 @@ public class Projectile extends Component {
     }
     public void death(){
         if(!gameObject.isDead()) {
-            gameObject.die();
+            gameObject.die(gameObject);
         }
     }
     @Override

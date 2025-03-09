@@ -1,6 +1,7 @@
 package jade;
 
 import components.Component;
+import components.gamestuff.SpriteRenderer;
 import editor.JImGui;
 import org.joml.Vector2f;
 
@@ -13,16 +14,22 @@ public class Transform extends Component {
     public Vector2f pastPos;
     public Vector2f scale;
     public float rotation = 0.0f;
+    public float drawRotation = 0.0f; //added to rotation when drawing useful for stuff like wraithball when the projectile is spinning but also aimed at the enemy
     public int zIndex;
-    public void updatePastPos(){pastPos.set(position);}
+    public void updatePastPos(){
+        pastPos.set(position);
+    }
     @Override
     public void editorUpdateDraw(){
 
         updatePastPos();
     }
     public void updateDrawPos(float fraction){
+        if(drawPos.x!=pastPos.x||pastPos.y!=drawPos.y){
+            drawPos.set(pastPos);
+            gameObject.getComponent(SpriteRenderer.class).setDirty();
+        }
 
-        drawPos.set(pastPos);
 
 //        drawPos.x=pastPos.x* (1-fraction)+position.x * fraction;
 //        drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
@@ -129,6 +136,7 @@ public class Transform extends Component {
         JImGui.drawVec2Control("Position", this.position);
         JImGui.drawVec2Control("Scale", this.scale, 32.0f);
         this.rotation = JImGui.dragFloat("Rotation", this.rotation);
+        this.drawRotation = JImGui.dragFloat("Rotation", this.rotation);
         this.zIndex = JImGui.dragInt("Z-Index", this.zIndex);
     }
     public void copy(Transform to) {

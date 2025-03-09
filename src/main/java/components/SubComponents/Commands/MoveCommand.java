@@ -75,7 +75,7 @@ public class MoveCommand extends Command{
     }
     @Override
     public void done(){
-        move.halt(true);
+        move.stopDamping();
         brain.notifyDone();
     }
     boolean validTransform(){
@@ -155,7 +155,7 @@ public class MoveCommand extends Command{
     @Override
     public void kill(){
         super.kill();
-        move.halt(true);
+        move.stopDamping();
         move=null;
     }
     @Override

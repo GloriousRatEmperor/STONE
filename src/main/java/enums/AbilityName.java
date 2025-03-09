@@ -29,7 +29,12 @@ public enum AbilityName {
     buildChicken(25,"builds a ruthless chicken that knows no mercy"),
     buildPebble(26,"builds a smol rock"),
     buildSpearman(24,"Builds a burly spearman. spearmen do additional damage to enemies charging at them"),
-    guardMode(27,"toggles guardmode");
+    guardMode(27,"toggles guardmode"),
+    buildSpider(28,"Builds a spider charriot (artillery unit)"),
+    buildStoneborn(30,"Builds a stoneborn"),
+    buildVolcano(31,"Builds a volcano"),
+    buildTotem(32,"Builds a drowned totem, which is like kind of not really a super intended to be hype unit or anything but here it... exists I guess? mb will get update"),
+    errupt(33,"ERRUPTION, a deathrattle that murders nearby stuff");
 
     private final int id;
     private final String desc;

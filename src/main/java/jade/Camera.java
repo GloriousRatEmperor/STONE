@@ -14,7 +14,7 @@ public class Camera {
     public Vector4f clearColor = new Vector4f(1, 1, 1, 1);
     private Vector2f projectionSize = new Vector2f(projectionWidth, projectionHeight);
 
-    private float zoom = 5.0f;
+    private float zoom = 10.0f;
 
     public Camera(Vector2f position) {
         this.position = position;

@@ -49,6 +49,11 @@ public class DamagePart {
         baseDamage=dmg;
         tempDmg=dmg;
     }
+    public DamagePart(float dmg,boolean magic){
+        baseDamage=dmg;
+        tempDmg=dmg;
+        this.magic=magic;
+    }
     public DamagePart(float dmg,String type){
         baseDamage=dmg;
         tempDmg=dmg;

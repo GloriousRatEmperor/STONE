@@ -218,7 +218,7 @@ public class RenderBatch implements Comparable<RenderBatch> {
         if (isRotated) {
             transformMatrix.translate(trans.drawPos.x,
                                         trans.drawPos.y, 0f);
-            transformMatrix.rotate((float)Math.toRadians(trans.rotation),
+            transformMatrix.rotate((float)Math.toRadians(trans.rotation+trans.drawRotation),
                     0, 0, 1);
 
             transformMatrix.scale(trans.scale.x,

@@ -24,6 +24,15 @@ public class Damage {
         this.damage.add(new DamagePart(baseDamage,type));
         calcDamage();
     }
+    public Damage(float baseDamage,float magicPercent){
+        if(magicPercent!=100){
+            this.damage.add(new DamagePart(baseDamage*(100-magicPercent)/100,false));
+        }
+        if(magicPercent!=0){
+            this.damage.add(new DamagePart(baseDamage*(magicPercent)/100,true));
+        }
+        calcDamage();
+    }
     public void setBaseDamage(float dmg){
         damage.get(0).baseDamage=dmg;
     }

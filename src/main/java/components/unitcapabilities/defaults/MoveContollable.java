@@ -100,11 +100,15 @@ public class MoveContollable extends Component {
         Rigidbody2D body = super.gameObject.getComponent(Rigidbody2D.class);
         if (body != null) {
             if(stopdamping){
-                body.setLinearDamping(body.stopDamping);
+                stopDamping();
             }
 
             body.setVelocity(new Vector2f());
         }
+    }
+    public void stopDamping(){
+        Rigidbody2D body = super.gameObject.getComponent(Rigidbody2D.class);
+        body.setLinearDamping(body.stopDamping);
     }
 
 }

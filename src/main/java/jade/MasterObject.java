@@ -262,6 +262,8 @@ public class MasterObject {
                                     color=Color(255,220,20,255); //yellow
                             case('7')->
                                 color=Color(225,80,0,255);//orange
+                            case('8')->
+                                    color=Color(90,0,255,255);
                             default -> color=Color(255,255,255,255);
 
 

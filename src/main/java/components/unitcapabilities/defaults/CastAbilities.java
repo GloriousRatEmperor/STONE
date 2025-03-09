@@ -62,6 +62,7 @@ public class CastAbilities extends Component {
                 if (a.Castable(mp)) {
                     a.cast(pos, super.gameObject);
                     mp -= a.mp;
+                    break;
                 }
             }
         }
@@ -121,6 +122,11 @@ public class CastAbilities extends Component {
             case buildChicken -> new BuildUnit(a,"chicken");
             case buildPebble ->new BuildUnit(a,"pebble");
             case guardMode ->new GuardMode(a);
+            case buildSpider -> new BuildUnit(a,"spider");
+            case buildTotem ->new BuildUnit(a,"drownedtotem");
+            case buildStoneborn -> new BuildUnit(a,"stoneborn");
+            case buildVolcano -> new BuildUnit(a,"volcano");
+            case errupt -> new Errupt(a);
             default -> null;
 
         };
@@ -208,6 +214,7 @@ public class CastAbilities extends Component {
         }
 
     }
+
 
     @Override
     public void updateDraw(){

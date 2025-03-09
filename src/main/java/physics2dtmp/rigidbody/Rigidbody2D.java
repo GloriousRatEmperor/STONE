@@ -48,8 +48,8 @@ public class Rigidbody2D extends Component {
         drawPos.y=pastPos.y* (1-fraction)+position.y * fraction;
     }
 
-    public void physicsUpdate(float dt) {
-        System.out.println("aaa");
+    public void physicsUpdate(float dt) { //never used
+        System.out.println("physics update being used???");
         if (this.mass == 0.0f) return;
 
         // Calculate linear velocity
@@ -58,6 +58,11 @@ public class Rigidbody2D extends Component {
         this.position.add(new Vector2f(linearVelocity).mul(dt));
         synchCollisionTransforms();
         clearAccumulators();
+    }
+
+    @Override
+    public void update(float dt){
+        System.out.println();
     }
     public void synchCollisionTransforms() {
         System.out.println("aaa");

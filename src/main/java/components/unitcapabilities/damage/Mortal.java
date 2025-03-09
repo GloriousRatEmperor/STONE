@@ -2,6 +2,7 @@ package components.unitcapabilities.damage;
 
 import components.Component;
 import components.unitcapabilities.Brain;
+import jade.GameObject;
 import jade.Transform;
 import jade.Window;
 import org.joml.Vector2f;
@@ -86,7 +87,7 @@ public class Mortal extends Component {
     public void update(float dt){
     }
     @Override
-    public void die(){
+    public void die(GameObject self){
         isAlive=false;
     }
     @Override
@@ -96,7 +97,7 @@ public class Mortal extends Component {
 
     public void death(){
         isAlive=false;
-        gameObject.die();
+        gameObject.die(gameObject);
     }
     @Override
     public void begin(){

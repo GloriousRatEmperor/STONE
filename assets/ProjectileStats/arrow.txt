@@ -1,6 +1,0 @@
-speed:9
-damage:30
-sizex:0.6
-sizeY:0.12
-health:1
-guided:1

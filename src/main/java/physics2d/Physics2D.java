@@ -26,11 +26,13 @@ public class Physics2D {
     private Vec2 gravity = new Vec2(0, 0);
     private World world = new World(gravity);
 
-    private int velocityIterations = 1;
-    private int positionIterations = 7;
+    private int velocityIterations = 3;
+    private int positionIterations = 4;
     public Physics2D() {
 
         world.setContactListener(new JadeContactListener());
+        world.setContinuousPhysics(true);
+
     }
 
     public Vector2f getGravity() {

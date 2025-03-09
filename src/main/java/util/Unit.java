@@ -1,6 +1,7 @@
 package util;
 
 import components.SubComponents.Abilities.BuildBase;
+import components.SubComponents.Abilities.Errupt;
 import components.SubComponents.Effects.ExplodingProjectiles;
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
@@ -26,6 +27,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import static enums.AbilityName.*;
+import static enums.AbilityName.errupt;
 import static enums.EffectName.explodingProjectiles;
 import static jade.Prefabs.generateSpriteObject;
 import static jade.Window.getScene;
@@ -44,7 +46,7 @@ public class Unit {
 
     public static void init() {
 
-        File directoryPath = new File("assets/Stats");
+        File directoryPath = new File("assets/Stats/Unit_stats");
         File[] fileList = directoryPath.listFiles();
         for (int i = 0; i < fileList.length; i++) {
             try {
@@ -72,7 +74,7 @@ public class Unit {
                 throw new RuntimeException(e);
             }
         }
-        directoryPath = new File("assets/BuildStats");
+        directoryPath = new File("assets/Stats/BuildStats");
         fileList = directoryPath.listFiles();
         for (int i = 0; i < fileList.length; i++) {
             try {
@@ -100,7 +102,7 @@ public class Unit {
                 throw new RuntimeException(e);
             }
         }
-        directoryPath = new File("assets/ProjectileStats");
+        directoryPath = new File("assets/Stats/ProjectileStats");
         fileList = directoryPath.listFiles();
         for (int i = 0; i < fileList.length; i++) {
             try {
@@ -153,6 +155,8 @@ public class Unit {
                     BuildWraith(name,position,allied);
             case "priest"->
                 BuildPriest(name,position,allied);
+            case "volcano"->
+                    BuildVolcano(name,position,allied);
             default->
                 BuildGeneralUnit(name,position,allied);
         };
@@ -202,10 +206,10 @@ public class Unit {
     }
     private static GameObject BuildMagicball(String name, Vector2f position,Transform target,int allied,int ownerId) {
         GameObject wraith=BuildProjectile(name,position,target,allied, ownerId);
-        AnimationState animation = new AnimationState();
+        Animation animation = new Animation();
         Sprite magicball = Img.get("magicball");
-        animation.addFrame(magicball, 0.3f, 1.5f, 0);
-        animation.addFrame(magicball, 0.3f, 1/1.5f,0);
+        animation.addFrame(magicball, 0.3f, 1.5f, 90);
+        animation.addFrame(magicball, 0.3f, 1/1.5f,90);
         animation.setLoop(true);
         animation.setDeathOnCompletion(false);
         animation.title = "wraithball";
@@ -234,7 +238,7 @@ public class Unit {
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(false);
         proj.addComponent(rb);
-        Projectile p=new Projectile(pd(name,"damage",10));
+        Projectile p=new Projectile(pd(name,"damage",10),pd(name,"magicpercent",0));
         p.damage.owner=ownerId;
         p.speed=pd(name,"speed",5);
         p.attackSpeed=pd(name,"attackspeed",1);
@@ -283,6 +287,8 @@ public class Unit {
         c.addAbility(c.makeAbility(buildPebble));
         c.addAbility(c.makeAbility(buildTank));
         c.addAbility(c.makeAbility(buildPriest));
+        c.addAbility(c.makeAbility(buildStoneborn));
+        c.addAbility(c.makeAbility(buildVolcano));
 
         unit.addComponent(c);
 
@@ -362,6 +368,19 @@ public class Unit {
         cast.addAbility(cast.makeAbility(heal));
         return priest;
     }
+    private static GameObject BuildVolcano(String name,Vector2f position,int allied){
+        GameObject volcano= BuildGeneralUnit(name,position,allied);
+        CastAbilities cast=volcano.getComponent(CastAbilities.class);
+        cast.maxmp=100;
+        cast.mp=0;
+        cast.mpRegen=0.4f;
+        Errupt erupt=(Errupt) cast.makeAbility(errupt);
+        erupt.damage=100;
+        erupt.radius=2;
+
+        cast.addAbility(erupt);
+        return volcano;
+    }
     private static GameObject BuildSpearman(String name,Vector2f position,int allied){
         GameObject spearman= BuildGeneralUnit(name,position,allied);
         spearman.getComponent(Mortal.class).chargeDefense=u(name,"chargedefense");
@@ -381,6 +400,7 @@ public class Unit {
         }
         if(cu(name,"health")) {
             Mortal mort = new Mortal(u( name,"health"),ud(name,"armor",0));
+            mort.magicArmor=ud(name,"magicarmor",0);
             unit.addComponent(mort);
         }
         if(cu( name,"harvestamount")) {
@@ -513,6 +533,7 @@ public class Unit {
                 ,unlockCosts.getOrDefault(name+"."+"costmagic",0f));
     }
     public static String getUStats(String unitname){
+        //colors in imguiDescription
         StringBuilder result= new StringBuilder();
         Set<String> keys= new HashSet<>(stats.keySet().stream().filter(stat -> stat.startsWith(unitname+".")).toList());
         keys.remove(unitname+"."+"costblood");
@@ -527,6 +548,10 @@ public class Unit {
         if(keys.contains(unitname+"."+"armor")){
             keys.remove(unitname+"."+"armor");
             result.append("|5 Armor").append(u( unitname,"armor"));
+        }
+        if(keys.contains(unitname+"."+"magicarmor")){
+            keys.remove(unitname+"."+"magicarmor");
+            result.append("|8 magicArmor").append(u( unitname,"magicarmor"));
         }
         if(keys.contains(unitname+"."+"attack")){
             keys.remove(unitname+"."+"attack");
@@ -583,7 +608,7 @@ public class Unit {
     private static boolean cp(String currentItem,String stat){
         return Pstats.containsKey(currentItem+"."+ stat);
     }
-    public static void generateAnimation(Vector2f position, float sizeX, float sizeY, AnimationState animation) {
+    public static void generateAnimation(Vector2f position, float sizeX, float sizeY, Animation animation) {
         GameObject anime = generateSpriteObject(animation.getFirstSprite(), sizeX, sizeY, "disposableTemp", position);
         StateMachine stateMachine = new StateMachine();
         animation.title = "Animation";

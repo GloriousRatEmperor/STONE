@@ -25,6 +25,7 @@ public class Hitter extends Component {
         }
         if(charge!=0) {
             damage.addGlobalMult(charge+1, "charge");
+            gameObject.getComponent(MoveContollable.class).halt(false);
         }
 
         enemy.takeDamage(damage);

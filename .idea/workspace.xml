@@ -7,7 +7,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="all units have guard, (deleted comment in main)" />
+    <list default="true" id="d445ac4c-2f0f-4da7-bb5b-c3cfa007ffb8" name="Changes" comment="setting a collider now wakes up the body. (relevant in things like a ranged unit attacking static target while itself static continuously)">
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Abilities/Errupt.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Frame/Frame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ZLevelSaves/permalevel.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/barracks.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/bloodbase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/greenbarracks.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/magicbase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/morticum.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/rockbase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/wall.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/BuildStats/whitebase.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ProjectileStats/arrow.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ProjectileStats/fireball.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/ProjectileStats/magicball.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/BoarCavalary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Headless.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/HeadlessHorseman.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Peasant.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Priest.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Rock.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Snek.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Tank.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Whitler.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Wisp.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/Wraith.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/chicken.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/pebble.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/Stats/spearman.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/Mineral2.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/ImagesSplit/Mineral2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/ImagesSplit/whitebarb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/key.txt" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/key.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/spritesheets/joined.png" beforeDir="false" afterPath="$PROJECT_DIR$/assets/images/spritesheets/joined.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/shaders/default.glsl" beforeDir="false" afterPath="$PROJECT_DIR$/assets/shaders/default.glsl" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/imgui.ini" beforeDir="false" afterPath="$PROJECT_DIR$/imgui.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/Component.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/Component.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/MoveCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Commands/MoveCommand.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Effects/ExplodeOnDeath.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Effects/ExplodeOnDeath.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/Effects/ExplodingProjectiles.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Effects/ExplodingProjectiles.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/SubComponents/SubComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/SubComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/gamestuff/SpriteRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/gamestuff/SpriteRenderer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/gamestuff/StateMachine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/gamestuff/StateMachine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/AnimationState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Animation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Brain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Brain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Frame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/SubComponents/Frame/GrowSpinFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/Projectile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Damage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Damage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/DamagePart.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/DamagePart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Hitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Hitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Mortal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/damage/Mortal.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/CastAbilities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/CastAbilities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/MoveContollable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/components/unitcapabilities/defaults/MoveContollable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/AbilityName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Camera.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Camera.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/GameObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/MasterObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Prefabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Prefabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/jade/Transform.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/jade/Transform.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/Physics2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/CircleCollider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2d/components/Rigidbody2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/physics2dtmp/rigidbody/Rigidbody2D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/renderer/RenderBatch.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/util/Unit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/util/Unit.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -81,7 +146,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectId" id="2U19947DOEYbnf8K4vTTSndsWnW" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -471,7 +536,14 @@
       <option name="project" value="LOCAL" />
       <updated>1740920752869</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="setting a collider now wakes up the body. (relevant in things like a ranged unit attacking static target while itself static continuously)">
+      <created>1740921748022</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1740921748022</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -497,7 +569,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Synchronised af bro!" />
     <MESSAGE value="Most of ability casting support done, so basically improved UI for gameplay!" />
     <MESSAGE value="added abilities  yippe" />
     <MESSAGE value="all" />
@@ -522,7 +593,8 @@
     <MESSAGE value="removed a couple unused clones and made units chase Q-move, guard mode etc" />
     <MESSAGE value="ehm... made stuff actually work... Also means BIG performance enhancement... yeah sum stuff was real bad..." />
     <MESSAGE value="all units have guard, (deleted comment in main)" />
-    <option name="LAST_COMMIT_MESSAGE" value="all units have guard, (deleted comment in main)" />
+    <MESSAGE value="setting a collider now wakes up the body. (relevant in things like a ranged unit attacking static target while itself static continuously)" />
+    <option name="LAST_COMMIT_MESSAGE" value="setting a collider now wakes up the body. (relevant in things like a ranged unit attacking static target while itself static continuously)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

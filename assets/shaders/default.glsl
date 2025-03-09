@@ -69,6 +69,9 @@ void main()
                 color = fColor * texture(uTextures[7], fTexCoords);
             break;
         }
+        color[0]*=color[3];
+        color[1]*=color[3];
+        color[2]*=color[3];
 
     } else {
         color = fColor;

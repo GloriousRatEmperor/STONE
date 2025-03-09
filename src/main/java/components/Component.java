@@ -62,11 +62,11 @@ public abstract class Component {
     public void Interact(GameObject target) {
 
     }
-    public void die() {
+    public void die(GameObject self) {
         if(subComponents!=null) {
             for (int i = 0; i < subComponents.size(); i++) {
 
-                subComponents.get(i).die();
+                subComponents.get(i).die(self);
             }
         }
     }

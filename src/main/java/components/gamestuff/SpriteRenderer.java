@@ -142,4 +142,9 @@ public class SpriteRenderer extends Component {
     public void setTexture(Texture texture) {
         this.sprite.setTexture(texture);
     }
+    @Override
+    public void die(GameObject self){
+        this.setClean();
+        this.color.w=0;
+    }
 }

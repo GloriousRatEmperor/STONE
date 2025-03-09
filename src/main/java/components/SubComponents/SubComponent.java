@@ -28,7 +28,7 @@ public abstract class  SubComponent{
     public void start(){
 
     }
-    public void die(){
+    public void die(GameObject self){
 
     }
     public String RunningGui(int AbilitySize, List<GameObject> activeGameObjects, int ID){
