@@ -1,0 +1,13 @@
+health :100
+attack:13
+attackspeed: 0.75
+magicarmor:20
+speed:2.7
+size:0.45
+
+
+
+costblood:0
+costrock:90
+costmagic:10
+buildtime:6

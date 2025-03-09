@@ -1,0 +1,7 @@
+health :800
+size:1.9
+
+costblood:500
+costrock:0
+costmagic:0
+buildtime:45
