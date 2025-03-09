@@ -45,15 +45,11 @@ public class Errupt extends Ability{
             }
         }
         Animation explode;
-//        if(animation!=null){
-//            explode = animation;
-//        }else {
         explode = new Animation();
         GrowSpinFrame frame =new GrowSpinFrame( Img.get("errupt"), 0.25f,  7.3f, 0);
         frame.growX=1.3f;
         explode.addFrame(frame);
 
-        //}
         Unit.generateAnimation(owner.gameObject.transform.position, radius*0.75f,radius*0.3f,explode);
 
 
