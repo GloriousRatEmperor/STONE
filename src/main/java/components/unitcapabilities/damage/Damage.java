@@ -35,6 +35,7 @@ public class Damage {
     }
     public void setBaseDamage(float dmg){
         damage.get(0).baseDamage=dmg;
+        calcDamage();
     }
     public void calcAllDamage(){
         calcMod();

@@ -254,7 +254,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                     ImGui.pushID(i);
                     if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                        GameObject object = Unit.make(name,new Vector2f(),placeAllied);
+                        GameObject object = Unit.makeUnit(name,new Vector2f(),placeAllied);
                         levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();

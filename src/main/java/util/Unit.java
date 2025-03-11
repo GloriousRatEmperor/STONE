@@ -1,5 +1,6 @@
 package util;
 
+import components.DamageZone;
 import components.SubComponents.Abilities.BuildBase;
 import components.SubComponents.Abilities.Errupt;
 import components.SubComponents.Effects.ExplodingProjectiles;
@@ -27,8 +28,8 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import static enums.AbilityName.*;
-import static enums.AbilityName.errupt;
 import static enums.EffectName.explodingProjectiles;
+import static enums.EffectName.timedLife;
 import static jade.Prefabs.generateSpriteObject;
 import static jade.Window.getScene;
 
@@ -36,24 +37,25 @@ public class Unit {
     static MapSpriteSheet items = AssetPool.getMapSheet("assets/images/spritesheets/joined.png");
     static public ArrayList<String> unitNames = new ArrayList<String>();
     static public ArrayList<String> buildNames = new ArrayList<String>();
-    static public HashMap<String,Float> stats = new HashMap<String, Float>();
+    static public HashMap<String,Float> unitStats = new HashMap<String, Float>();
     static public HashMap<String,Float> unlockCosts = new HashMap<String, Float>();
-    static public HashMap<String,Float> Bstats = new HashMap<String, Float>();
+    static public HashMap<String,Float> buildStats = new HashMap<String, Float>();
     static public ArrayList<String> projectileNames = new ArrayList<String>();
-    static public HashMap<String,Float> Pstats = new HashMap<String, Float>();
+    static public HashMap<String,Float> projectileStats = new HashMap<String, Float>();
+    static public ArrayList<String> miscNames = new ArrayList<String>();
+    static public HashMap<String,Float> miscStats = new HashMap<String, Float>();
 
     static String lastItem;
 
-    public static void init() {
-
-        File directoryPath = new File("assets/Stats/Unit_stats");
+    private static void initStats(String statsPath,HashMap<String,Float> intoStats,ArrayList<String> names){
+        File directoryPath = new File(statsPath);
         File[] fileList = directoryPath.listFiles();
         for (int i = 0; i < fileList.length; i++) {
             try {
 
                 File file = fileList[i];
                 String fileName=file.getName().toLowerCase().split("\\.")[0];
-                unitNames.add(fileName);
+                names.add(fileName);
                 List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
                 for (String s:inFile){
                     String[] oneLine=s.split(":");
@@ -66,7 +68,7 @@ public class Unit {
                             unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]) );
                             continue;
                         }
-                        stats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
+                        intoStats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
                     }
                 }
 
@@ -74,66 +76,30 @@ public class Unit {
                 throw new RuntimeException(e);
             }
         }
-        directoryPath = new File("assets/Stats/BuildStats");
-        fileList = directoryPath.listFiles();
-        for (int i = 0; i < fileList.length; i++) {
-            try {
+    }
 
-                File file = fileList[i];
-                String fileName=file.getName().toLowerCase().split("\\.")[0];
-                buildNames.add(fileName);
-                List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
-                for (String s:inFile){
-                    String[] oneLine=s.split(":");
-                    for (int h=0;h<oneLine.length; h++){
-                        oneLine[h]=oneLine[h].replaceAll(" ", "").toLowerCase();
 
-                    }
-                    if(oneLine.length==2){
-                        if(oneLine[0].startsWith("unlock")){
-                            unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
-                            continue;
-                        }
-                        Bstats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
-                    }
-                }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-        directoryPath = new File("assets/Stats/ProjectileStats");
-        fileList = directoryPath.listFiles();
-        for (int i = 0; i < fileList.length; i++) {
-            try {
-
-                File file = fileList[i];
-                String fileName=file.getName().toLowerCase().split("\\.")[0];
-                projectileNames.add(fileName);
-                List<String> inFile = Files.readAllLines(Paths.get(file.getPath()));
-                for (String s:inFile){
-                    String[] oneLine=s.split(":");
-                    for (int h=0;h<oneLine.length; h++){
-                        oneLine[h]=oneLine[h].replaceAll(" ", "").toLowerCase();
-
-                    }
-                    if(oneLine.length==2){
-                        if(oneLine[0].startsWith("unlock")){
-                            unlockCosts.put(fileName+"."+oneLine[0].substring(6), Float.parseFloat(oneLine[1]));
-                            continue;
-                        }
-                        
-                        Pstats.put(fileName+"."+oneLine[0], Float.parseFloat(oneLine[1]) );
-                    }
-                }
-
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
+    public static void init() {
+        initStats("assets/Stats/Unit_stats", unitStats,unitNames);
+        initStats("assets/Stats/BuildStats", buildStats,buildNames);
+        initStats("assets/Stats/ProjectileStats", projectileStats,projectileNames);
+        initStats("assets/Stats/MiscStats", miscStats,miscNames);
 
     }
-    public static GameObject make(String name, Vector2f position,int allied){
+    public static GameObject makeMisc(String name, Vector2f position, int allied) {
+        name=name.toLowerCase();
+        GameObject unit =switch(name){
+            case "mineral0","mineral1","mineral2"->
+                    BuildMineral(name,position,allied);
+            case "puddle"->
+                    BuildPuddle(name,position,allied);
+            default->
+                BuildGeneralUnit(name,position,allied);
+        };
+        return unit;
+
+    }
+    public static GameObject makeUnit(String name, Vector2f position, int allied){
         name=name.toLowerCase();
         GameObject unit =switch(name){
             case "rock"->
@@ -166,8 +132,6 @@ public class Unit {
     public static GameObject makeBuilding(String name, Vector2f position,int allied){
         name=name.toLowerCase();
         GameObject unit =switch(name){
-            case "mineral0","mineral1","mineral2"->
-                 BuildMineral(name,position,allied);
 
             case "bloodbase","rockbase","magicbase","whitebase"->
                  buildBase(name,position,allied);
@@ -371,15 +335,38 @@ public class Unit {
     private static GameObject BuildVolcano(String name,Vector2f position,int allied){
         GameObject volcano= BuildGeneralUnit(name,position,allied);
         CastAbilities cast=volcano.getComponent(CastAbilities.class);
-        cast.maxmp=100;
-        cast.mp=0;
-        cast.mpRegen=0.4f;
         Errupt erupt=(Errupt) cast.makeAbility(errupt);
         erupt.damage=100;
-        erupt.radius=2;
+        erupt.radius=1;
 
         cast.addAbility(erupt);
         return volcano;
+    }
+    private static GameObject BuildPuddle(String name,Vector2f position,int allied){
+        Vector2f size;
+        if(cm(name,"size")){
+            size=new Vector2f(m(name,"size"),m(name,"size"));
+        }else{
+            size=new Vector2f(m(name,"sizeX"),m(name,"sizeY"));
+        }
+
+        GameObject puddle=  generateSpriteObject(items.getSprite(name), size.x, size.y,name,position);
+        puddle.allied=allied;
+        Rigidbody2D rb = new Rigidbody2D();
+        rb.setBodyType(BodyType.Static);
+        rb.setFixedRotation(true);
+        puddle.addComponent(rb);
+        DamageZone dmg=new DamageZone(size.x,size.y);
+        dmg.setDamage(10);
+        dmg.damageFrequency=0.2;
+        puddle.addComponent(dmg);
+        Effects effects=new Effects();
+        effects.addEffect(effects.getEffect(timedLife,10,1));
+        puddle.addComponent(effects);
+
+
+
+        return puddle;
     }
     private static GameObject BuildSpearman(String name,Vector2f position,int allied){
         GameObject spearman= BuildGeneralUnit(name,position,allied);
@@ -458,14 +445,15 @@ public class Unit {
 
         GameObject newObject = generateSpriteObject(items.getSprite(name), 0.18f, 0.18f,name,position);
         newObject.allied=allied;
-        newObject.addComponent(new Brain());
-        newObject.addComponent(new aggroDetector());
-
-
         Rigidbody2D rb = new Rigidbody2D();
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(true);
         newObject.addComponent(rb);
+        newObject.addComponent(new Brain());
+        newObject.addComponent(new aggroDetector());
+
+
+
 
         CircleCollider circleCollider = new CircleCollider();
         circleCollider.setRadius(0.08f);
@@ -504,7 +492,7 @@ public class Unit {
     public static float getBuildTime(String name){
         name=name.toLowerCase();
 
-        if(!stats.containsKey(name+"."+"buildtime")){
+        if(!unitStats.containsKey(name+"."+"buildtime")){
             System.out.println("BOZO this nay exist  "+name);
         }
         float ret=u(name,"buildtime");
@@ -535,7 +523,7 @@ public class Unit {
     public static String getUStats(String unitname){
         //colors in imguiDescription
         StringBuilder result= new StringBuilder();
-        Set<String> keys= new HashSet<>(stats.keySet().stream().filter(stat -> stat.startsWith(unitname+".")).toList());
+        Set<String> keys= new HashSet<>(unitStats.keySet().stream().filter(stat -> stat.startsWith(unitname+".")).toList());
         keys.remove(unitname+"."+"costblood");
         keys.remove(unitname+"."+"costrock");
         keys.remove(unitname+"."+"costmagic");
@@ -568,7 +556,7 @@ public class Unit {
         if(!keys.isEmpty()) {
             result.append("|0");
             for (String key : keys) {
-                result.append(" ").append(key.substring(unitname.length()+1)).append(" ").append(stats.get(key));
+                result.append(" ").append(key.substring(unitname.length()+1)).append(" ").append(unitStats.get(key));
             }
         }
         return result.toString();
@@ -580,34 +568,43 @@ public class Unit {
 
 
     private static float ud(String currentItem,String stat,float defalt){
-        return stats.getOrDefault(currentItem+"."+ stat,defalt);
+        return unitStats.getOrDefault(currentItem+"."+ stat.toLowerCase(),defalt);
     }
     private static float bd(String currentItem,String stat,float defalt){
-        return Bstats.getOrDefault(currentItem+"."+ stat,defalt);
+        return buildStats.getOrDefault(currentItem+"."+ stat.toLowerCase(),defalt);
     }
     private static float pd(String currentItem,String stat,float defalt){
-        return Pstats.getOrDefault(currentItem+"."+ stat,defalt);
+        return projectileStats.getOrDefault(currentItem+"."+ stat.toLowerCase(),defalt);
+    }
+    private static float md(String currentItem,String stat,float defalt){
+        return miscStats.getOrDefault(currentItem+"."+ stat.toLowerCase(),defalt);
     }
     private static float u(String currentItem,String stat) {
-        return stats.get(currentItem+"."+ stat);
+        return unitStats.get(currentItem+"."+ stat.toLowerCase());
     }
-
+    private static float m(String currentItem,String stat) {
+        return miscStats.get(currentItem+"."+ stat.toLowerCase());
+    }
     private static float b(String currentItem,String stat){
-        return Bstats.get(currentItem+"."+ stat);
+        return buildStats.get(currentItem+"."+ stat.toLowerCase());
     }
 
     private static float p(String currentItem,String stat){
-        return Pstats.get(currentItem+"."+ stat);
+        return projectileStats.get(currentItem+"."+ stat.toLowerCase());
     }
     private static boolean cu(String currentItem,String stat){
-        return stats.containsKey(currentItem+"."+ stat);
+        return unitStats.containsKey(currentItem+"."+ stat.toLowerCase());
     }
     private static boolean cb(String currentItem,String stat){
-        return Bstats.containsKey(currentItem+"."+ stat);
+        return buildStats.containsKey(currentItem+"."+ stat.toLowerCase());
     }
     private static boolean cp(String currentItem,String stat){
-        return Pstats.containsKey(currentItem+"."+ stat);
+        return projectileStats.containsKey(currentItem+"."+ stat.toLowerCase());
     }
+    private static boolean cm(String currentItem,String stat){
+        return miscStats.containsKey(currentItem+"."+ stat.toLowerCase());
+    }
+
     public static void generateAnimation(Vector2f position, float sizeX, float sizeY, Animation animation) {
         GameObject anime = generateSpriteObject(animation.getFirstSprite(), sizeX, sizeY, "disposableTemp", position);
         StateMachine stateMachine = new StateMachine();

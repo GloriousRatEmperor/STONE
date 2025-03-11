@@ -12,7 +12,7 @@ import java.util.List;
 
 import static jade.Window.getScene;
 
-public class Shooter extends CircleDetector {
+public class Shooter extends CircleSensor {
 
     public float damageMult=1;
     public float speedMult=1;

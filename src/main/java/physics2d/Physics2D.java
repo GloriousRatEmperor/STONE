@@ -15,7 +15,6 @@ import org.jbox2d.dynamics.*;
 import org.joml.Vector2f;
 import physics2d.components.Box2DCollider;
 import physics2d.components.CircleCollider;
-import physics2d.components.PillboxCollider;
 import physics2d.components.Rigidbody2D;
 import util.Maf;
 
@@ -67,7 +66,6 @@ public class Physics2D {
 
             CircleCollider circleCollider;
             Box2DCollider boxCollider;
-            PillboxCollider pillboxCollider;
 
             if ((circleCollider = go.getComponent(CircleCollider.class)) != null) {
                 addCircleCollider(rb, circleCollider);
@@ -75,10 +73,6 @@ public class Physics2D {
 
             if ((boxCollider = go.getComponent(Box2DCollider.class)) != null) {
                 addBox2DCollider(rb, boxCollider);
-            }
-
-            if ((pillboxCollider = go.getComponent(PillboxCollider.class)) != null) {
-                addPillboxCollider(rb, pillboxCollider);
             }
         }
     }
@@ -210,28 +204,12 @@ public class Physics2D {
         removeFixturesOf(rb,boxCollider);//kills the previous fixture to replace it with the new one
         addBox2DCollider(rb, boxCollider);
         body.resetMassData();
+        body.setAwake(true);
     }
 
-    public void resetPillboxCollider(Rigidbody2D rb, PillboxCollider pb) {
-        Body body = rb.getRawBody();
-        if (body == null) return;
 
-        int size = fixtureListSize(body);
-        for (int i = 0; i < size; i++) {
-            body.destroyFixture(body.getFixtureList());
-        }
 
-        addPillboxCollider(rb, pb);
-        body.resetMassData();
-    }
 
-    public void addPillboxCollider(Rigidbody2D rb, PillboxCollider pb) {
-        Body body = rb.getRawBody();
-        assert body != null : "Raw body must not be null";
-
-        addBox2DCollider(rb, pb.getBox());
-        addCircleCollider(rb, pb.getBottomCircle());
-    }
 
     public void addBox2DCollider(Rigidbody2D rb, Box2DCollider boxCollider) {
         Body body = rb.getRawBody();

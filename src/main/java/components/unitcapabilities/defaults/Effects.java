@@ -1,9 +1,6 @@
 package components.unitcapabilities.defaults;
 
-import components.SubComponents.Effects.Effect;
-import components.SubComponents.Effects.ExplodeOnDeath;
-import components.SubComponents.Effects.ExplodingProjectiles;
-import components.SubComponents.Effects.SpeedUp;
+import components.SubComponents.Effects.*;
 import components.SubComponents.SubComponent;
 import components.Component;
 import enums.EffectName;
@@ -61,6 +58,8 @@ public class Effects extends Component {
                 new ExplodeOnDeath(duration,mult);
             case explodingProjectiles ->
                 new ExplodingProjectiles(duration,mult);
+            case timedLife ->
+                    new TimedLife(duration,mult);
 
                 default -> null;
         };

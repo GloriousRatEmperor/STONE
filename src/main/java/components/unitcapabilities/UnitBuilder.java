@@ -64,7 +64,7 @@ public class UnitBuilder extends Component {
 
     public void makeUnit(UNMADE unm) {
         Vector2f position = new Vector2f(tr.position.x,tr.position.y-0.001f);
-        GameObject unit = Unit.make(unm.name,position, alliedB);
+        GameObject unit = Unit.makeUnit(unm.name,position, alliedB);
         getScene().addGameObjectToScene(unit);
     }
     public void addqueue(String UnitName, Vector3f cost){

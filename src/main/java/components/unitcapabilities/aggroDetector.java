@@ -3,7 +3,7 @@ package components.unitcapabilities;
 import components.unitcapabilities.damage.Mortal;
 import jade.GameObject;
 
-public class aggroDetector extends CircleDetector{
+public class aggroDetector extends CircleSensor {
 
     public aggroDetector(float range){
         super(range);

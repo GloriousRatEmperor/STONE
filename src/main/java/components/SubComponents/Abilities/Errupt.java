@@ -12,6 +12,7 @@ import util.Unit;
 import java.util.ArrayList;
 
 import static jade.Window.getPhysics;
+import static jade.Window.getScene;
 
 public class Errupt extends Ability{
     public float damage;
@@ -30,14 +31,14 @@ public class Errupt extends Ability{
     public void die(GameObject self){
         explode();
         Vector2f trans=self.transform.position;
-        makePuddle(new Vector2f( trans.x-radius,trans.y),self.allied);
-        makePuddle(new Vector2f( trans.x+radius,trans.y),self.allied);
-        makePuddle(new Vector2f( trans.x,trans.y-radius),self.allied);
-        makePuddle(new Vector2f( trans.x,trans.y+radius),self.allied);
+        makePuddle(new Vector2f( trans.x-radius*1.5f,trans.y),self.allied);
+        makePuddle(new Vector2f( trans.x+radius*1.5f,trans.y),self.allied);
+        makePuddle(new Vector2f( trans.x,trans.y-radius*1.5f),self.allied);
+        makePuddle(new Vector2f( trans.x,trans.y+radius*1.5f),self.allied);
 
     }
     public void explode(){
-        ArrayList<GameObject> explodedObjects= getPhysics().getGameObjectsTouchingCircle(owner.gameObject.transform.position,radius);
+        ArrayList<GameObject> explodedObjects= getPhysics().getGameObjectsTouchingCircle(owner.gameObject.transform.position,radius*1.5f);
         for(GameObject go:explodedObjects){
             Mortal mort=go.getComponent(Mortal.class);
             if(mort!=null){
@@ -50,12 +51,14 @@ public class Errupt extends Ability{
         frame.growX=1.3f;
         explode.addFrame(frame);
 
-        Unit.generateAnimation(owner.gameObject.transform.position, radius*0.75f,radius*0.3f,explode);
+        Unit.generateAnimation(owner.gameObject.transform.position, radius*1.5f,radius*0.6f,explode);
 
 
     }
     public void makePuddle(Vector2f pos, int allied){
-        Unit.make("puddle",pos,allied);
+        GameObject puddle= Unit.makeMisc("puddle",pos,allied);
+        getScene().addGameObjectToScene(puddle);
+
     }
     @Override
     public void cast(final Vector2f pos, GameObject self){

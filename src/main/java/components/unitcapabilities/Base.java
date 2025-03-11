@@ -165,7 +165,7 @@ public class Base extends Component {
                             }
 
 
-                            GameObject mineral = Unit.makeBuilding("Mineral" + biggest, new Vector2f(minX, minY), 1);
+                            GameObject mineral = Unit.makeMisc("Mineral" + biggest, new Vector2f(minX, minY), 1);
                             mineral.name = "M";
 
                             Mineral miner = mineral.getComponent(Mineral.class);
