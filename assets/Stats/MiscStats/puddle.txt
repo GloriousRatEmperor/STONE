@@ -1,0 +1,2 @@
+sizeX:1.5
+sizeY:0.7
