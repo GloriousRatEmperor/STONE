@@ -60,7 +60,8 @@ public class Effects extends Component {
                 new ExplodingProjectiles(duration,mult);
             case timedLife ->
                     new TimedLife(duration,mult);
-
+            case FearProjectiles ->
+                    new FearProjectiles(duration,mult);
                 default -> null;
         };
         if(effect!=null){

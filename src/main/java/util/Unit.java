@@ -4,6 +4,7 @@ import components.DamageZone;
 import components.SubComponents.Abilities.BuildBase;
 import components.SubComponents.Abilities.Errupt;
 import components.SubComponents.Effects.ExplodingProjectiles;
+import components.SubComponents.Effects.FearProjectiles;
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
 import components.unitcapabilities.*;
@@ -123,6 +124,8 @@ public class Unit {
                 BuildPriest(name,position,allied);
             case "volcano"->
                     BuildVolcano(name,position,allied);
+            case "spider"->
+                    BuildSpider(name,position,allied);
             default->
                 BuildGeneralUnit(name,position,allied);
         };
@@ -301,7 +304,7 @@ public class Unit {
 
     private static GameObject BuildSnake(String name, Vector2f position,int allied){
         GameObject snek= BuildGeneralUnit(name,position,allied);
-        Shooter fballer=new Shooter(3.5f,6,"fireball");
+        Shooter fballer=new Shooter(u(name,"range"),u(name,"rangedattackspeed"),"fireball");
 
         snek.addComponent(fballer);
         Effects effects=snek.getComponent(Effects.class);
@@ -316,12 +319,21 @@ public class Unit {
     }
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
         GameObject wraith= BuildGeneralUnit(name,position,allied);
-        Shooter fballer=new Shooter(3,1.25f,"magicball");
+        Shooter fballer=new Shooter(u(name,"range"),u(name,"rangedattackspeed"),"magicball");
         wraith.removeComponent(Brain.class);
         wraith.addComponent(new RangedBrain());
 
         wraith.addComponent(fballer);
         return wraith;
+    }
+    private static GameObject BuildSpider(String name,Vector2f position,int allied){
+        GameObject spider= BuildGeneralUnit(name,position,allied);
+        Shooter fballer=new Shooter(u(name,"range"),u(name,"rangedattackspeed"),"skull");
+        fballer.addEffect(new FearProjectiles(Float.MAX_VALUE,7.5f));
+        spider.removeComponent(Brain.class);
+        spider.addComponent(new RangedBrain());
+        spider.addComponent(fballer);
+        return spider;
     }
     private static GameObject BuildPriest(String name,Vector2f position,int allied){
         GameObject priest= BuildGeneralUnit(name,position,allied);

@@ -31,9 +31,7 @@ public class CastCommand extends Command{
             cast.castAbility(castID, pos);
             done();
         }else{
-            brain.priorityCommand(this);
             brain.priorityCommand(new MoveCommand(pos,castRange));
-            done();
         }
     }
 

@@ -51,11 +51,7 @@ public class Brain extends Component {
 
     }
     public void setCommand(Command command){
-        if(currentCommand!=null) {
-            if (currentCommand.cancel()) {
-                currentCommand = null;
-            }
-        }
+        interruptCommand();
         commandqueue.clear();
         commandqueue.add(command);
     }
@@ -93,9 +89,12 @@ public class Brain extends Component {
         return new MoveCommand(p,amove);
     }
     public boolean interruptCommand(){ //returns true on successs
+        if(stunTimer>0){
+            return false;
+        }
         if(currentCommand!=null){
             if(this.currentCommand.cancel()){
-                addCommand(currentCommand);
+                commandqueue.addFirst(currentCommand);
                 currentCommand=null;
                 return true;
             }else{
@@ -127,11 +126,12 @@ public class Brain extends Component {
         if(gameObject.isDead()){
             return;
         }
-        if(stunTimer>0) {
-            stunTimer -= dt;
-            return;
-        }
+
         if(currentCommand==null){
+            if(stunTimer>0) {
+                stunTimer -= dt;
+                return;
+            }
             if(!commandqueue.isEmpty()) {
                 setAfk(false);
                 currentCommand = commandqueue.getFirst();
@@ -144,6 +144,7 @@ public class Brain extends Component {
             return;
         }
         currentCommand.update(dt,gameObject);
+        stunTimer -= dt;
 
     }
 }

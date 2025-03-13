@@ -5,7 +5,8 @@ public enum EffectName {
     speedUp(2),
     explodeOnDeath(1),
     explodingProjectiles(3),
-    timedLife(4);
+    timedLife(4),
+    FearProjectiles(5);
 
     private final int id;
     EffectName(int id){

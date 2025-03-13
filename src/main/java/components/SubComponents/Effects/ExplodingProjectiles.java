@@ -1,6 +1,7 @@
 package components.SubComponents.Effects;
 
 import components.unitcapabilities.Animation;
+import jade.GameObject;
 import util.Img;
 
 public class ExplodingProjectiles extends ImbuneEffect{
@@ -11,7 +12,6 @@ public class ExplodingProjectiles extends ImbuneEffect{
     public ExplodingProjectiles(float duration, float power) {
         super(duration, power);
         this.sprite= Img.get("rock");
-        type="ImbuneProjectiles";
         radius=power;
         damage=power*40;
         updateDesc();
@@ -30,7 +30,7 @@ public class ExplodingProjectiles extends ImbuneEffect{
         }
     }
     @Override
-    public Effect imbune(){
+    public Effect imbune(GameObject parent){
         ExplodeOnDeath e=new ExplodeOnDeath(durationTotal,power);
         e.damage=damage;
         e.radius=radius;

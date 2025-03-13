@@ -1,12 +1,17 @@
 package components.unitcapabilities;
 
 import components.Component;
+import components.SubComponents.Effects.Effect;
+import components.SubComponents.Effects.ImbuneEffect;
 import components.unitcapabilities.damage.Damage;
 import components.unitcapabilities.damage.Mortal;
+import components.unitcapabilities.defaults.Effects;
 import jade.GameObject;
 import jade.Transform;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
+import physics2d.components.Box2DCollider;
+import physics2d.components.CircleCollider;
 import physics2d.components.Rigidbody2D;
 
 import java.util.List;
@@ -18,12 +23,14 @@ public class Projectile extends Component {
     public Damage damage;
     public Boolean guided=false;
     public float attackSpeed=10;
+    public float tolerance;
     public float speed;
     private transient Rigidbody2D rb;
     public float nextSmak=0;
     private float turn=0;
     private Boolean first=true;
     private float lifespan=10;
+
     private Vector2f movePos=new Vector2f();
     public float acceleration=1;
     public boolean targeted(){
@@ -32,6 +39,25 @@ public class Projectile extends Component {
     private Transform target=null;
     public void start() {
         this.rb = gameObject.getComponent(Rigidbody2D.class);
+        calcTolerance();
+    }
+    protected void calcTolerance(){
+        tolerance=speed*1/60f;
+        if(guided){
+            GameObject enemy = target.gameObject;
+            if (enemy != null) {
+                CircleCollider circle=enemy.getComponent(CircleCollider.class);
+                if(circle!=null){
+                    tolerance+=circle.radius*0.8f;
+                } else {
+                    Box2DCollider box=enemy.getComponent(Box2DCollider.class);
+                    if(box!=null){
+                        Vector2f size=box.getHalfSize();
+                        tolerance+=(size.x+size.y)*0.4f;
+                    }
+                }
+            }
+        }
     }
     public Projectile(float damage){
         this.damage=new Damage(damage);
@@ -41,8 +67,14 @@ public class Projectile extends Component {
     }
     public void smak(Mortal enemy){
         if(!gameObject.isDead()) {
+            Effects thisEffects=gameObject.getComponent(Effects.class);
+            Effects theirEffects=enemy.gameObject.getComponent(Effects.class);
+            if(theirEffects!=null&&thisEffects!=null){
+                for(Effect e: thisEffects.getEffects("Imbune")){
+                    theirEffects.addEffect(((ImbuneEffect)e).imbune(gameObject));
+                }
+            }
             enemy.takeDamage(damage);
-
             health -= 1;
             if (health <= 0) {
                 death();
@@ -76,7 +108,7 @@ public class Projectile extends Component {
                 }
 
             }
-            if (guided && moveCommand() < speed * dt * 3) {
+            if (guided && moveCommand() < tolerance) {
                 GameObject enemy = target.gameObject;
                 if (enemy != null) {
                     Mortal mort = target.gameObject.getComponent(Mortal.class);
@@ -127,7 +159,6 @@ public class Projectile extends Component {
             if(first){
 
                 self.transform.setFlippedX(spdx<0);
-                self.transform.setFlippedY(spdy<0);
 
                 first=false;
             }
@@ -197,5 +228,6 @@ public class Projectile extends Component {
         this.target=null;
         this.rb=null;
     }
+
 
 }

@@ -1,7 +1,7 @@
-health : 820
+health : 1600
 size:1.8
 
-costblood:175
-costrock:175
-costmagic:175
+costblood:255
+costrock:255
+costmagic:255
 buildtime:40

@@ -5,6 +5,7 @@ import components.SubComponents.SubComponent;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.Effects;
 import jade.GameObject;
+import util.Maf;
 import util.Unit;
 
 import java.util.ArrayList;
@@ -19,6 +20,8 @@ public class Shooter extends CircleSensor {
     private float attackSpeed=1;
     private String projectileName="arrow";
     private float nextAttack=0;
+    private GameObject consideringObject=null;
+    private double closest=Double.MAX_VALUE;
     public transient List<ImbuneEffect> projectileEffects = new ArrayList<>();
     public Shooter(float range,float attackSpeed, String projectileName){
         super(range);
@@ -44,11 +47,23 @@ public class Shooter extends CircleSensor {
         super.update(dt);
         this.nextAttack-=dt;
         if(this.nextAttack<=0){
-            setActive(true);
+            if(consideringObject!=null){
+                shoot(consideringObject);
+            }else {
+                setActive(true);
+            }
+        }
 
-
+    }
+    @Override
+    public void setActive(boolean newactive){
+        super.setActive(newactive);
+        if(newactive!=isactive) {
+            consideringObject=null;
+            closest=Double.MAX_VALUE;
         }
     }
+
     public void shoot(GameObject go){
         if(nextAttack<=0) {
             GameObject projectile = Unit.makeProjectile(projectileName,gameObject.getUid(), this.gameObject.transform.position, go.transform, this.gameObject.allied);
@@ -56,7 +71,7 @@ public class Shooter extends CircleSensor {
             projectile.getComponent(Projectile.class).speed*=speedMult;
             Effects peffs =projectile.getComponent(Effects.class);
             for(ImbuneEffect e: projectileEffects){
-                peffs.addEffect( (e).imbune());
+                peffs.addEffect( (e).imbune(gameObject));
             }
             getScene().addGameObjectToScene(projectile);
             nextAttack=attackSpeed;
@@ -68,8 +83,11 @@ public class Shooter extends CircleSensor {
     @Override
     public void objectDetected(GameObject collidingObject) {
         if(collidingObject.getComponent(Mortal.class)!=null) {
-            shoot(collidingObject);
+            double dist= Maf.distance(gameObject.transform.position,collidingObject.transform.position);
+            if(closest>dist){
+                closest=dist;
+                consideringObject=collidingObject;
+            }
         }
-
     }
 }

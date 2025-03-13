@@ -35,7 +35,7 @@ public class BuildUnit extends Ability{
     @Override
     public void setDesc(String description) {
         //adds a colored list in the form of a string of the basic stats like hp, armor etc and at the end a black slab of all the other things the mob has
-        String unitStats=Unit.getUStats(unitName);
+        String unitStats=Unit.getUStats(unitName.toLowerCase());
         String bldcost="",rockcost="",magecost="";
         if(cost.x!=0){
             bldcost=cost.x+ " Blood ";
