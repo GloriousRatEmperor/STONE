@@ -4,12 +4,18 @@ import java.util.List;
 
 public class ClientData {
     public int intValue;
+    public int target;
     public int intValue2;
     public String name;
     public String string;
     public List<Integer> GameObjects;
     public List<Float> position;
-
+    public int getTarget(){
+        return target;
+    }
+    public void setTarget(int newtarget){
+        target=newtarget;
+    }
     public int getIntValue(){
         return intValue;
     }

@@ -32,7 +32,6 @@ public class Worker extends Component {
         Mineral mineral=target.getComponent(Mineral.class);
         Base base=target.getComponent(Base.class);
 
-
         if(mineral!=null){
             if(mineral!=currentMineral){
                 currentMineral=mineral;

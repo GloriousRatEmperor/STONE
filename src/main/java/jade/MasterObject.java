@@ -98,6 +98,7 @@ public class MasterObject {
                         ImGui.endTable();
 
                     }
+
                     ImGui.endChild();
                 }
             }
@@ -133,8 +134,8 @@ public class MasterObject {
 
                 ImGui.setNextWindowPos(250, io.getDisplaySizeY() * 3 / 4 + 50);
                 String descmb;
-                if (ImGui.beginChild("Abilities", columns * AbilitySize, AbilitySize, false, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
-                    if (ImGui.beginTable("null", columns, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
+                if (ImGui.beginChild("Abilities", columns * AbilitySize, AbilitySize,false,  ImGuiWindowFlags.NoResize| ImGuiWindowFlags.NoScrollWithMouse)) {
+                    if (ImGui.beginTable("null", columns,  ImGuiWindowFlags.NoResize)) {
                         int id = 1;
                         while (index < subComponents.size()) {
                             SubComponent a = subComponents.get((index));

@@ -39,8 +39,7 @@ public class Brain extends Component {
 
         Mortal mortal=gameObject.getComponent(Mortal.class);
         aggroDetector detect=gameObject.getComponent(aggroDetector.class);
-        if((gameObject.getComponent(MoveContollable .class)!=null)&&(detect!=null)) {
-
+        if((gameObject.getComponent(MoveContollable .class)!=null)&&(detect!=null)&&(gameObject.getComponent(Worker.class)==null)) {
             if(mortal!=null) {
                 mortal.guardMode = false;
             }

@@ -144,6 +144,7 @@ public class MoveCommand extends Command{
     }
 
     public void SharedPrepareMove(){
+
         move.prepareMove();
         Bigtimer=90000;
         lastdistance=1000000;

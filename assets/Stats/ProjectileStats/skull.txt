@@ -1,0 +1,7 @@
+speed:13
+damage:90
+magicPercent:25
+sizeX:0.75
+sizeY:0.75
+health:1
+guided:1

@@ -1,5 +1,5 @@
 speed:7
-damage:50
+damage:75
 magicPercent:25
 sizeX:2
 sizeY:1

@@ -135,7 +135,7 @@ public class MouseControls extends Component {
                         0.0f);
             }
         } else if (boxSelectSet) {
-            //actually mass selects shit I thinketh
+            //actually mass box selects shit I thinketh
 
             boxSelectSet = false;
             int screenStartX = (int)boxSelectStart.x;
@@ -245,7 +245,7 @@ public class MouseControls extends Component {
                     new Vector2f(halfSize).mul(2.0f),
                     0.0f);
         } else if (boxSelectSet) {
-            //actually mass selects shit I thinketh
+            //actually mass box selects shit I thinketh
             boxSelectSet = false;
             int screenStartX = (int)boxSelectStart.x;
             int screenStartY = (int)boxSelectStart.y;

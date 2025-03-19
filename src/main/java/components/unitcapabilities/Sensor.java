@@ -22,6 +22,7 @@ public abstract class Sensor extends Component {
     }
     @Override
     public void update(float dt){
+
         sensor.update(dt);
 
 

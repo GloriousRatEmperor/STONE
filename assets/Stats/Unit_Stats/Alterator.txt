@@ -1,0 +1,12 @@
+health :320
+attack:80
+attackspeed: 1
+speed:3.5
+size:1
+
+
+
+costblood:0
+costrock:0
+costmagic:375
+buildtime:16

@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static jade.Window.getScene;
+import static util.Img.Color;
 
 public class UnitBuilder extends Component {
     public ArrayList<UNMADE> queue= new ArrayList<>();
@@ -55,7 +56,10 @@ public class UnitBuilder extends Component {
             unm.time-=dt*buildSpeed;
             if(unm.time<0){
                 makeUnit(unm);
-                queue.remove(unm);
+                synchronized (queue){
+                    queue.remove(unm);
+                }
+
             }
         }
 
@@ -113,11 +117,21 @@ public class UnitBuilder extends Component {
 
     @Override
     public String RunningGui(int size, List<GameObject> activeGameObjects, int ID) {
-        ImGui.tableNextColumn();
         ImGui.pushID(ID);
-        Sprite Asprite = icon;
-        Vector2f[] AtexCoords = Asprite.getTexCoords();
-        ImGui.image(Asprite.getTexId(),  size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
+
+        int len=queue.size();
+        for (int i=0;len>i;i++) {
+            UNMADE unmade=queue.get(i);
+            ImGui.tableNextColumn();
+            Sprite Asprite = unmade.sprite;
+            Vector2f[] AtexCoords = Asprite.getTexCoords();
+            ImGui.image(Asprite.getTexId(),  size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
+            if(unmade.time!=unmade.maxTime) {
+                float progressBarLen = ImGui.getItemRectMaxX() - 5 - (ImGui.getItemRectMinX() + 5);
+                ImGui.getWindowDrawList().addLine(ImGui.getItemRectMinX() + 5, ImGui.getItemRectMaxY() - 5, ImGui.getItemRectMinX() + 5 + progressBarLen * (1 - unmade.time / unmade.maxTime), ImGui.getItemRectMaxY() - 5, Color(255, 255, 255, 220), 5);
+            }
+        }
+
 
 
         ImGui.popID();

@@ -9,10 +9,12 @@ import java.util.List;
 public class UNMADE {
     public String name;
     public float time;
+    public float maxTime;
     public Sprite sprite;
     public UNMADE(String name) {
         this.name=name;
-        this.time=Unit.getBuildTime(name);
+        this.maxTime=Unit.getBuildTime(name);
+        this.time=this.maxTime;
         this.sprite=Unit.getSprite(name);
     }
 

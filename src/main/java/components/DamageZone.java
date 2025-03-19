@@ -25,6 +25,7 @@ public class DamageZone extends BoxSensor {
     }
     @Override
     public void update(float dt){
+        super.update(dt);
         if(recentDamage){
             recentDamage=false;
             setActive(false);
@@ -34,7 +35,7 @@ public class DamageZone extends BoxSensor {
         if(currentCooldown<0){
             setActive(true);
         }
-        super.update(dt);
+
 
 
     }

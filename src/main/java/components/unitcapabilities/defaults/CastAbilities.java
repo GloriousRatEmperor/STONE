@@ -127,6 +127,8 @@ public class CastAbilities extends Component {
             case buildStoneborn -> new BuildUnit(a,"stoneborn");
             case buildVolcano -> new BuildUnit(a,"volcano");
             case errupt -> new Errupt(a);
+            case buildAlterator -> new BuildUnit(a,"Alterator");
+            case Alterate -> new Alterate(a);
             default -> null;
 
         };

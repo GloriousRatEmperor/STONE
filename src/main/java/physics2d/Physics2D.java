@@ -194,8 +194,7 @@ public class Physics2D {
 
         addCircleCollider(rb, circleCollider);
         body.resetMassData();
-        body.setAwake(true);
-        body.setActive(true);
+
 
     }
 
@@ -206,8 +205,7 @@ public class Physics2D {
         removeFixturesOf(rb,boxCollider);//kills the previous fixture to replace it with the new one
         addBox2DCollider(rb, boxCollider);
         body.resetMassData();
-        body.setAwake(true);
-        body.setActive(true);
+
     }
 
 
@@ -239,6 +237,8 @@ public class Physics2D {
         fixtureDef.userData = boxCollider;
         fixtureDef.isSensor = boxCollider.isSensor;
         body.createFixture(fixtureDef);
+        body.setAwake(true);
+        body.setActive(true);
     }
 
     public void addCircleCollider(Rigidbody2D rb, CircleCollider circleCollider) {
@@ -268,7 +268,8 @@ public class Physics2D {
         fixtureDef.friction = rb.getFriction();
         fixtureDef.userData = circleCollider;
         Fixture a=body.createFixture(fixtureDef);
-
+        body.setAwake(true);
+        body.setActive(true);
 
     }
 

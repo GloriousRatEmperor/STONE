@@ -600,7 +600,12 @@ public class Window implements Observer {
         }else {
             clientData.setIntValue2(0);
         }
+        int id=getImguiLayer().getPropertiesWindow().getPickingTexture().readPixel((int)MouseListener.getScreenX(),(int)MouseListener.getScreenY());
+        if( currentScene.getGameObject(id)!=null){
+            
+        }
         clientData.setPos(pos);
+
         get().requests.add(clientData);
     }
     public static void targetCast(List<Integer> Ids,int AbilityID){

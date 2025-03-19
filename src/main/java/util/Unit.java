@@ -126,6 +126,8 @@ public class Unit {
                     BuildVolcano(name,position,allied);
             case "spider"->
                     BuildSpider(name,position,allied);
+            case "alterator"->
+                BuildAlterator(name,position,allied);
             default->
                 BuildGeneralUnit(name,position,allied);
         };
@@ -225,11 +227,9 @@ public class Unit {
         switch (name) {
             case "bloodbase" -> {
                 c.addAbility(buildPeasant);
-                c.addAbility(buildGreenBarracks);
             }
             case "rockbase" -> {
                 c.addAbility(buildRock);
-                c.addAbility(buildBarracks);
             }
             case "magicbase" -> {
 
@@ -271,6 +271,7 @@ public class Unit {
         c.addAbility(c.makeAbility(buildBoarCavalary));
         c.addAbility(c.makeAbility(buildChicken));
         c.addAbility(c.makeAbility(buildSpearman));
+        c.addAbility(c.makeAbility(buildSpider));
         unit.addComponent(c);
 
 
@@ -283,6 +284,7 @@ public class Unit {
         CastAbilities c =new CastAbilities();
         c.addAbility(c.makeAbility(buildwraith));
         c.addAbility(c.makeAbility(buildHeadless));
+        c.addAbility(c.makeAbility(buildAlterator));
         c.addAbility(c.makeAbility(getBuildHeadlessHorseman));
         unit.addComponent(c);
 
@@ -317,9 +319,16 @@ public class Unit {
         return snek;
 
     }
+    private static GameObject BuildAlterator(String name,Vector2f position,int allied) {
+        GameObject alter= BuildGeneralUnit(name,position,allied);
+        CastAbilities cast=alter.getComponent(CastAbilities.class);
+        cast.addAbility(cast.makeAbility(Alterate));
+        return alter;
+    }
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
         GameObject wraith= BuildGeneralUnit(name,position,allied);
         Shooter fballer=new Shooter(u(name,"range"),u(name,"rangedattackspeed"),"magicball");
+
         wraith.removeComponent(Brain.class);
         wraith.addComponent(new RangedBrain());
 
@@ -365,7 +374,7 @@ public class Unit {
         GameObject puddle=  generateSpriteObject(items.getSprite(name), size.x, size.y,name,position);
         puddle.allied=allied;
         Rigidbody2D rb = new Rigidbody2D();
-        rb.setBodyType(BodyType.Static);
+        rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(true);
         puddle.addComponent(rb);
         DamageZone dmg=new DamageZone(size.x,size.y);
