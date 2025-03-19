@@ -120,15 +120,17 @@ public class UnitBuilder extends Component {
         ImGui.pushID(ID);
 
         int len=queue.size();
-        for (int i=0;len>i;i++) {
-            UNMADE unmade=queue.get(i);
-            ImGui.tableNextColumn();
-            Sprite Asprite = unmade.sprite;
-            Vector2f[] AtexCoords = Asprite.getTexCoords();
-            ImGui.image(Asprite.getTexId(),  size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
-            if(unmade.time!=unmade.maxTime) {
-                float progressBarLen = ImGui.getItemRectMaxX() - 5 - (ImGui.getItemRectMinX() + 5);
-                ImGui.getWindowDrawList().addLine(ImGui.getItemRectMinX() + 5, ImGui.getItemRectMaxY() - 5, ImGui.getItemRectMinX() + 5 + progressBarLen * (1 - unmade.time / unmade.maxTime), ImGui.getItemRectMaxY() - 5, Color(255, 255, 255, 220), 5);
+        synchronized (queue) {
+            for (int i = 0; len > i; i++) {
+                UNMADE unmade = queue.get(i);
+                ImGui.tableNextColumn();
+                Sprite Asprite = unmade.sprite;
+                Vector2f[] AtexCoords = Asprite.getTexCoords();
+                ImGui.image(Asprite.getTexId(), size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
+                if (unmade.time != unmade.maxTime) {
+                    float progressBarLen = ImGui.getItemRectMaxX() - 5 - (ImGui.getItemRectMinX() + 5);
+                    ImGui.getWindowDrawList().addLine(ImGui.getItemRectMinX() + 5, ImGui.getItemRectMaxY() - 5, ImGui.getItemRectMinX() + 5 + progressBarLen * (1 - unmade.time / unmade.maxTime), ImGui.getItemRectMaxY() - 5, Color(255, 255, 255, 220), 5);
+                }
             }
         }
 

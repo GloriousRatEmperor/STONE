@@ -89,7 +89,7 @@ public class KeyControls extends Component {
 
         if (KeyListener.isKeyPressed(GLFW_KEY_LEFT_CONTROL)) {
             if((KeyListener.keyBeginPress(GLFW_KEY_KP_2)||KeyListener.keyBeginPress(GLFW_KEY_KP_0)||KeyListener.keyBeginPress(GLFW_KEY_KP_1)||
-                    KeyListener.keyBeginPress(GLFW_KEY_KP_0)||KeyListener.keyBeginPress(GLFW_KEY_KP_4)||KeyListener.keyBeginPress(GLFW_KEY_KP_5)||KeyListener.keyBeginPress(GLFW_KEY_KP_6)||
+                    KeyListener.keyBeginPress(GLFW_KEY_KP_0)||KeyListener.keyBeginPress(GLFW_KEY_KP_3)||KeyListener.keyBeginPress(GLFW_KEY_KP_4)||KeyListener.keyBeginPress(GLFW_KEY_KP_5)||KeyListener.keyBeginPress(GLFW_KEY_KP_6)||
                     KeyListener.keyBeginPress(GLFW_KEY_KP_7)||KeyListener.keyBeginPress(GLFW_KEY_KP_8)||KeyListener.keyBeginPress(GLFW_KEY_KP_9)) && activeGameObject != null){
                 int allied=-999999;
                 if(KeyListener.keyBeginPress(GLFW_KEY_KP_2)){
