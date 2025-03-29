@@ -20,10 +20,13 @@ public class Move extends Ability{
         targetable=true;
     }
 
-    public void cast(final Vector2f pos, GameObject self) {
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target) {
         Brain brain=self.getComponent(Brain.class);
         if (brain!=null) {
             brain.addCommand(new MoveCommand(pos));
+            return true;
+        }else{
+            return false;
         }
     }
 }

@@ -20,11 +20,14 @@ public class BuildBuilding extends Ability {
         return buildBuilding;
     }
     @Override
-    public void cast(final Vector2f pos, GameObject self){
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
         if(getScene().addmoney(-cost.x,-cost.y,-cost.z,self.allied)) {
 
             GameObject unit = Unit.makeBuilding(buildName, new Vector2f(pos), self.allied);
             getScene().addGameObjectToScene(unit);
+            return true;
+        }else{
+            return false;
         }
     }
     public BuildBuilding(AbilityName type,String name) {

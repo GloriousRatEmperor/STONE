@@ -9,6 +9,7 @@ import jade.GameObject;
 import jade.KeyListener;
 import jade.Window;
 import org.joml.Vector2f;
+import renderer.DebugDraw;
 import util.AssetPool;
 
 import java.util.ArrayList;
@@ -22,7 +23,8 @@ public class Ability extends SubComponent {
     public float mp=0;
     public float range=-1;
     public Sprite sprite;
-    public Boolean targetable=false;
+    public Boolean targetable=false; //targetable false can be cast without requiring a position to cast to
+    public Boolean requiresTarget=false; // requirestarget means it needs a gameobject as a target, it's not the same as targetable which is satisfied with a position to cast at but any requiresTarget ability is targetable!
     public String description="??UNKNOWN ABILITY??";
     public boolean Castable(float MP){
         return MP >= mp;
@@ -120,8 +122,19 @@ public class Ability extends SubComponent {
         }
 }
 
-    public void cast(final Vector2f pos, GameObject self){
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
+        return true;
+    }
+    public void castGui(Vector2f castPos, Vector2f selfPos){
+        if(!targetable){
+            System.out.println("uhh this is not a targetable ability??? ["+this.getClass()+"]");
+        }else{
+            if(range!=-1){
+                DebugDraw.addCircle(selfPos,range);
+            }
+            DebugDraw.addCircle(castPos,0.1f);
 
+        }
     }
     public Sprite getSprite(){
         return sprite;

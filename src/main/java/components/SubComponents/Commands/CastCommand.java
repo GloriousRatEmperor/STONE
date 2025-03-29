@@ -1,7 +1,9 @@
 package components.SubComponents.Commands;
 
+import components.SubComponents.Abilities.Ability;
 import components.unitcapabilities.defaults.CastAbilities;
 import jade.GameObject;
+import jade.Window;
 import org.joml.Vector2f;
 import util.Maf;
 
@@ -9,16 +11,17 @@ import java.util.List;
 
 public class CastCommand extends Command{
     public int castID;
-    public final Vector2f pos;
-    public int castRange;
-    public CastCommand(int castID,Vector2f pos){
+    public Vector2f pos;
+    public int targetId=-1;
+    public CastCommand(int castID,Vector2f pos,int targetId){
 
         this.castID=castID;
         this.pos=new Vector2f(pos);
+        this.targetId=targetId;
 
     }
-    public CastCommand(int castID,List<Float> p){
-        this(castID,new Vector2f(p.get(0),p.get(1)));
+    public CastCommand(int castID,List<Float> p,int targetId){
+        this(castID,new Vector2f(p.get(0),p.get(1)),targetId);
 
     }
 
@@ -26,12 +29,24 @@ public class CastCommand extends Command{
     @Override
     public void apply(GameObject self) {
         CastAbilities cast=self.getComponent(CastAbilities.class);
-        float range=cast.getAbility(castID).range;
+        Ability ability=cast.getAbility(castID);
+        float range=ability.range;
+        GameObject target= Window.getScene().getGameObject(targetId);
+        if(target!=null&&!target.isDead()){
+
+            pos=target.transform.position;
+
+        }else if(ability.requiresTarget){
+            pos=null;
+            done();
+            return;
+        }
+
         if(range==-1||Maf.distance(self.transform.position,pos)<=range) {
-            cast.castAbility(castID, pos);
+            cast.castAbility(castID, pos,target);
             done();
         }else{
-            brain.priorityCommand(new MoveCommand(pos,castRange));
+            brain.priorityCommand(new MoveCommand(pos,range));
         }
     }
 

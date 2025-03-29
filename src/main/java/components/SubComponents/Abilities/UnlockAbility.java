@@ -26,11 +26,12 @@ public class UnlockAbility extends Ability{
     }
     
     @Override
-    public void cast(final Vector2f pos, GameObject self){
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
         CastAbilities cast= self.getComponent(CastAbilities.class);
 
         cast.addAbility(unlockType);
         cast.removeAbility(getID());
+        return true;
     }
     public void setDescription(String description) {
         String bldcost="",rockcost="",magecost="";

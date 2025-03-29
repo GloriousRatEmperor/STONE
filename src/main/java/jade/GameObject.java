@@ -239,29 +239,6 @@ public class GameObject {
         }
     }
 
-//        int BuildSize=80;
-//        UnitBuilder unitBuilder=this.getComponent(UnitBuilder.class);
-//        int columnsBuild=(int)(io.getDisplaySizeX()-250)/BuildSize;
-//        if( columnsBuild>0 & unitBuilder!=null) { //in case screen is minimized
-//            ImGui.setNextWindowPos(250,io.getDisplaySizeY()*3/4+50);
-//            if (ImGui.beginChild("Abilities",  columnsBuild * BuildSize, BuildSize, false, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
-//                if (ImGui.beginTable("null",  columnsBuild, ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse | ImGuiWindowFlags.NoResize)) {
-//                    int id=1;
-////                        for(UNMADE a:unitBuilder.queue) {
-////                            id++;
-////                            a.Imgui(BuildSize,activeGameObjects,id);
-////                        }
-//
-//                    ImGui.endTable();
-//
-//                }
-//
-//            }
-//
-//            ImGui.endChild();
-//
-//        }
-
 
     public GameObject CopyProperties(GameObject master){
 

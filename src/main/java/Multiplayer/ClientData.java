@@ -3,13 +3,13 @@ package Multiplayer;
 import java.util.List;
 
 public class ClientData {
-    public int intValue;
-    public int target;
-    public int intValue2;
-    public String name;
-    public String string;
-    public List<Integer> GameObjects;
-    public List<Float> position;
+    private int intValue;
+    private int target;
+    private int intValue2;
+    private String name;
+    private String string;
+    private List<Integer> GameObjects;
+    private List<Float> position;
     public int getTarget(){
         return target;
     }

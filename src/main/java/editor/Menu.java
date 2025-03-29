@@ -1,15 +1,23 @@
 package editor;
 
+import components.SubComponents.Abilities.Ability;
 import components.gamestuff.SpriteRenderer;
+import components.unitcapabilities.defaults.CastAbilities;
 import imgui.ImGui;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
 import jade.MasterObject;
+import jade.MouseListener;
 import jade.Window;
+import org.joml.Vector2f;
 import renderer.PickingTexture;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static jade.Window.casting;
+import static jade.Window.massCast;
+
 public class Menu {
     private List<GameObject> activeGameObjects;
     MasterObject MasterObject=new MasterObject(true);
@@ -59,6 +67,25 @@ public class Menu {
 //                }
 //            }
             activeGameObjects.removeIf(GameObject::isDead);
+            if(casting){
+                Vector2f pos= MouseListener.getWorld();
+                for (GameObject go:
+                     activeGameObjects) {
+
+                    CastAbilities cast=go.getComponent(CastAbilities.class);
+                    if(cast!=null){
+                        Ability ability=cast.getAbility(Window.targetAbility);
+                        if(ability!=null){
+                            ability.castGui(pos, go.transform.position);
+                            if(!massCast()){ //TODO move casting process from window to imguilayer?
+                                break;
+                            }
+                        }
+                    }
+
+                }
+            }
+
             MasterObject.RunningGui(activeGameObjects);
 
 
@@ -87,7 +114,6 @@ public class Menu {
         if (go != null) {
             clearSelected();
             addActiveGameObject(go);
-            MasterObject.addGameObject(go);
             ids.add(go.getUid());
         }
 

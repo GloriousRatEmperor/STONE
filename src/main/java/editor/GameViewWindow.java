@@ -65,9 +65,11 @@ public class GameViewWindow {
         style.setFramePadding(0,0);
         ImGui.begin("Game Viewport", ImGuiWindowFlags.NoScrollbar | ImGuiWindowFlags.NoScrollWithMouse
                         | ImGuiWindowFlags.MenuBar| ImGuiWindowFlags.NoResize| ImGuiWindowFlags.NoBringToFrontOnFocus
-                        | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration);
+                        | ImGuiWindowFlags.NoTitleBar| ImGuiWindowFlags.NoCollapse| ImGuiWindowFlags.NoDecoration|ImGuiWindowFlags.NoBackground);
+
 
         ImGui.beginMenuBar();
+
         if (ImGui.menuItem("Play", "", isPlaying, !isPlaying)) {
             isPlaying = true;
             EventSystem.notify(null, new Event(EventType.GameRequestPlay));
@@ -123,6 +125,7 @@ public class GameViewWindow {
 
         ImGui.setCursorPos(ImGui.getCursorPosX(), ImGui.getCursorPosY());
         ImVec2 windowSize = getLargestSizeForViewport();
+
         ImVec2 windowPos = getCenteredPositionForViewport(windowSize);
         ImGui.setCursorPos(windowPos.x, windowPos.y);
 

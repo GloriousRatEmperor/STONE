@@ -92,7 +92,13 @@ public class Window implements Observer {
     public Boolean debugging;
     public static boolean casting;
     private static List<Integer> targetIds;
-    private static int targetAbility;
+    public static int targetAbility;
+    public static boolean massCast(){
+        if(targetIds==null){
+            return false;
+        }
+        return targetIds.size()>1;
+    }
     public static void setAllied(int allied){
         get().allied=allied;
     }
@@ -171,6 +177,8 @@ public class Window implements Observer {
 
     }
     public void stop(){
+        glLineWidth(2.0f);
+
         Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
 
     }
@@ -213,6 +221,7 @@ public class Window implements Observer {
         starttime=UniTime.getExact();
 
         startData=null;
+        glLineWidth(4.5f);
     }
 
 
@@ -252,14 +261,14 @@ public class Window implements Observer {
                 Renderer.bindShader(pickingShader);
 
                 currentScene.render(true);
-                imguiLayer.update(currentScene, runtimePlaying);
+
 
                 pickingTexture.disableWriting();
                 glEnable(GL_BLEND);
 
                 // Render pass 2. Render actual game
                 DebugDraw.beginFrame();
-
+                imguiLayer.update(currentScene, runtimePlaying);
                 framebuffer.bind();
 
 
@@ -602,7 +611,9 @@ public class Window implements Observer {
         }
         int id=getImguiLayer().getPropertiesWindow().getPickingTexture().readPixel((int)MouseListener.getScreenX(),(int)MouseListener.getScreenY());
         if( currentScene.getGameObject(id)!=null){
-            
+            clientData.setTarget(id);
+        }else{
+            clientData.setTarget(-1);
         }
         clientData.setPos(pos);
 
@@ -612,6 +623,7 @@ public class Window implements Observer {
         targetIds=Ids;
         targetAbility=AbilityID;
         casting=true;
+
     }
     public static void activateCast(){
 

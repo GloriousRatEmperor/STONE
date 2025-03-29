@@ -37,13 +37,14 @@ public class Speed extends Ability{
                 "for " +(int)duration+" ...timeunits (about 0.89 seconds unless it's friday)");
     }
     @Override
-    public void cast(final Vector2f pos, GameObject self) {
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target) {
 
         this.lastActive= UniTime.getFrame();
         Effects effects=self.getComponent(Effects.class);
         SpeedUp speed=(SpeedUp) effects.getEffect(EffectName.speedUp,duration,mult);
         speed.keepSpeedPercent=keepSpeedPercent;
         effects.addEffect(speed);
+        return true;
 
     }
 

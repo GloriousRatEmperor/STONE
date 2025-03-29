@@ -65,6 +65,7 @@ public class MoveCommand extends Command{
             done();
         }
         if(dist<closeenuf+move.speed*dt){
+
             done();
             if(transform!=null){
                 self.Interact(transform.gameObject);

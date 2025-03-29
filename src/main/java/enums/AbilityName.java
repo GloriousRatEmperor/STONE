@@ -36,6 +36,8 @@ public enum AbilityName {
     buildTotem(32,"Builds a drowned totem, which is like kind of not really a super intended to be hype unit or anything but here it... exists I guess? mb will get update"),
     errupt(33,"ERRUPTION, a deathrattle that murders nearby stuff"),
     buildAlterator(34,"Builds an alternator, a powerful spellcaster that marks enemy units"),
+    shootAlterBolt(36,"shoots an alterbolt"),
+    teleportMarked(37,"tp to a marked enemy"),
     Alterate(35,"does nothing yet!");
 
     private final int id;

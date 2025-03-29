@@ -74,6 +74,7 @@ public class DebugDraw {
                 Vector3f color = line.getColor();
 
                 // Load position
+
                 vertexArray[index] = position.x;
                 vertexArray[index + 1] = position.y;
                 vertexArray[index + 2] = 10.0f;
@@ -98,7 +99,6 @@ public class DebugDraw {
         glBindVertexArray(vaoID);
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
-
         // Draw the batch
         glDrawArrays(GL_LINES, 0, lines.size());
 
@@ -136,6 +136,195 @@ public class DebugDraw {
             return;
         }
         DebugDraw.lines.add(new Line2D(from, to, color, lifetime));
+    }
+    public static boolean addLine2DReturnSuccess(Vector2f from, Vector2f to, Vector3f color, int lifetime) {
+        Camera camera = Window.getScene().camera();
+        Vector2f cameraLeft = new Vector2f(camera.position).add(new Vector2f(-2.0f, -2.0f));
+        Vector2f cameraRight = new Vector2f(camera.position).
+                add(new Vector2f(camera.getProjectionSize()).mul(camera.getZoom())).
+                add(new Vector2f(4.0f, 4.0f));
+        boolean lineInView =
+                ((from.x >= cameraLeft.x && from.x <= cameraRight.x) && (from.y >= cameraLeft.y && from.y <= cameraRight.y)) ||
+                        ((to.x >= cameraLeft.x && to.x <= cameraRight.x) && (to.y >= cameraLeft.y && to.y <= cameraRight.y));
+        if (lines.size() >= MAX_LINES || !lineInView) {
+            return false;
+        }
+        DebugDraw.lines.add(new Line2D(from, to, color, lifetime));
+        return true;
+    }
+    public static void addStrip2D(Vector2f from, final Vector2f direction,float stripeLen,boolean ends, Vector3f color, int lifetime){//makes a stripped line with segments of length [stripeLen]
+        //from [from] in a direction to point [direction] towards which it is aimed at, if [ends] is false it does not end at direction. [color] and [lifetime] are that of all line segments
+
+        Vector2f dir= new Vector2f( direction.x-from.x,direction.y-from.y);
+
+        float length=((float)Math.sqrt(Math.pow(dir.x,2)+Math.pow(dir.y,2)));
+        dir.mul(stripeLen/length);
+        int maxcount;
+        if(ends){
+            maxcount=(int) (length/(stripeLen));
+        }else{
+            maxcount=Integer.MAX_VALUE;
+        }
+
+        Camera camera = Window.getScene().camera();
+        Vector2f cameraLeft = new Vector2f(camera.position).add(new Vector2f(-2.0f, -2.0f));
+        Vector2f cameraRight = new Vector2f(camera.position).
+                add(new Vector2f(camera.getProjectionSize()).mul(camera.getZoom())).
+                add(new Vector2f(4.0f, 4.0f));
+
+
+        int minX,maxX;
+        minX=(int) ((cameraLeft.x-from.x)/dir.x);
+        maxX=(int) ((cameraRight.x-from.x)/dir.x);
+
+        if(minX>maxX){
+            int tmp=minX;
+            minX=maxX;
+            maxX=tmp;
+        }
+
+        int minY,maxY;
+        minY=(int) ((cameraLeft.y-from.y)/dir.y);
+        maxY=(int) ((cameraRight.y-from.y)/dir.y);
+
+        if(minY>maxY){
+            int tmp=minY;
+            minY=maxY;
+            maxY=tmp;
+        }
+
+        int minimum=0;
+        if(minX>minY){
+            minimum=minX;
+        }else{
+            minimum=minY;
+        }
+        if(minimum<0){
+            minimum=0;
+        }
+        int maximum=0;
+        if(maxX>maxY){
+            maximum=maxY;
+        }else{
+            maximum=maxX;
+        }
+
+        if(maximum>maxcount){
+            maximum=maxcount;
+        }
+        if(maximum<minimum){
+            return;
+        }
+
+
+        int currentStep=minimum%2;
+        from.x += dir.x * 2*currentStep;
+        from.y += dir.y * 2*currentStep;
+        while (currentStep<maximum-1) {
+            if (lines.size() >= MAX_LINES) {
+                return;
+            }
+            DebugDraw.lines.add(new Line2D(new Vector2f(from), new Vector2f(from.x + dir.x, from.y + dir.y), color, lifetime));
+            currentStep+=2;
+            from.x += dir.x * 2;
+            from.y += dir.y * 2;
+        }
+
+        if(!from.equals(direction,0.0001f)){
+            DebugDraw.addLine2DReturnSuccess(from,direction,color,lifetime);
+        }
+
+
+
+    }
+    public static void addStrip2DOfLen(Vector2f from, Vector2f direction,float stripeLen,boolean ends, Vector3f color, int lifetime,float len){//makes a stripped line with segments of length [stripeLen]
+        //from [from] in a direction to point [direction] towards which it is aimed at, if [ends] is false it does not end at direction. [color] and [lifetime] are that of all line segments
+
+        Vector2f dir= new Vector2f( direction.x-from.x,direction.y-from.y);
+
+        float length=((float)Math.sqrt(Math.pow(dir.x,2)+Math.pow(dir.y,2)));
+        dir.mul(len/length);
+        direction=new Vector2f(from.x+dir.x,from.y+dir.y);
+        length=len;
+        dir.mul(stripeLen/length);
+
+        int maxcount;
+        if(ends){
+            maxcount=(int) (length/(stripeLen));
+        }else{
+            maxcount=Integer.MAX_VALUE;
+        }
+
+        Camera camera = Window.getScene().camera();
+        Vector2f cameraLeft = new Vector2f(camera.position).add(new Vector2f(-2.0f, -2.0f));
+        Vector2f cameraRight = new Vector2f(camera.position).
+                add(new Vector2f(camera.getProjectionSize()).mul(camera.getZoom())).
+                add(new Vector2f(4.0f, 4.0f));
+
+
+        int minX,maxX;
+        minX=(int) ((cameraLeft.x-from.x)/dir.x);
+        maxX=(int) ((cameraRight.x-from.x)/dir.x);
+
+        if(minX>maxX){
+            int tmp=minX;
+            minX=maxX;
+            maxX=tmp;
+        }
+
+        int minY,maxY;
+        minY=(int) ((cameraLeft.y-from.y)/dir.y);
+        maxY=(int) ((cameraRight.y-from.y)/dir.y);
+
+        if(minY>maxY){
+            int tmp=minY;
+            minY=maxY;
+            maxY=tmp;
+        }
+
+        int minimum=0;
+        if(minX>minY){
+            minimum=minX;
+        }else{
+            minimum=minY;
+        }
+        if(minimum<0){
+            minimum=0;
+        }
+        int maximum=0;
+        if(maxX>maxY){
+            maximum=maxY;
+        }else{
+            maximum=maxX;
+        }
+
+        if(maximum>maxcount){
+            maximum=maxcount;
+        }
+        if(maximum<minimum){
+            return;
+        }
+
+
+        int currentStep=minimum%2;
+        from.x += dir.x * 2*currentStep;
+        from.y += dir.y * 2*currentStep;
+        while (currentStep<maximum-1) {
+            if (lines.size() >= MAX_LINES) {
+                return;
+            }
+            DebugDraw.lines.add(new Line2D(new Vector2f(from), new Vector2f(from.x + dir.x, from.y + dir.y), color, lifetime));
+            currentStep+=2;
+            from.x += dir.x * 2;
+            from.y += dir.y * 2;
+        }
+
+        if(!from.equals(direction,0.0001f)){
+            DebugDraw.addLine2DReturnSuccess(from,direction,color,lifetime);
+        }
+
+
+
     }
 
     // ==================================================

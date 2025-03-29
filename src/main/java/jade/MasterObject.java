@@ -48,7 +48,7 @@ public class MasterObject {
                     }
                 }
             }
-            if(comp.getClass()==UnitBuilder.class&isPlaying) {
+            if(comp.getClass()==UnitBuilder.class&&isPlaying) {
                 builders.add((UnitBuilder) comp);
             }
             else if(getComponent(comp.getClass())==null){

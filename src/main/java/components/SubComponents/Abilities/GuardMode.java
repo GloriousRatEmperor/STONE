@@ -25,7 +25,8 @@ public class GuardMode extends Ability{
     }
 
     @Override
-    public void cast(final Vector2f pos, GameObject self) {
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target) {
         self.getComponent(Brain.class).setGuard(true);
+        return true;
     }
 }

@@ -5,6 +5,7 @@ import components.SubComponents.Abilities.BuildBase;
 import components.SubComponents.Abilities.Errupt;
 import components.SubComponents.Effects.ExplodingProjectiles;
 import components.SubComponents.Effects.FearProjectiles;
+import components.SubComponents.Effects.ImbuneAlternatorMark;
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
 import components.unitcapabilities.*;
@@ -164,17 +165,28 @@ public class Unit {
                 BuildFireball(name,position,target,allied,ownerId);
 
             default->
-                BuildProjectile(name,position,target,allied,ownerId);
+                BuildGuidedProjectile(name,position,target,allied,ownerId);
+        };
+        return unit;
+
+    }
+    public static GameObject makeProjectile(String name,int ownerId, Vector2f position,Vector2f target,int allied){
+        name=name.toLowerCase();
+        GameObject unit =switch(name){
+            case "alterbolt"->
+                    BuildAlterbolt(name,position,target,allied,ownerId);
+            default->
+                    BuildLinearProjectile(name,position,target,allied,ownerId);
         };
         return unit;
 
     }
     private static GameObject BuildFireball(String name, Vector2f position,Transform target,int allied,int ownerId){
-        return BuildProjectile(name,position,target,allied,ownerId);
+        return BuildGuidedProjectile(name,position,target,allied,ownerId);
 
     }
     private static GameObject BuildMagicball(String name, Vector2f position,Transform target,int allied,int ownerId) {
-        GameObject wraith=BuildProjectile(name,position,target,allied, ownerId);
+        GameObject wraith= BuildGuidedProjectile(name,position,target,allied, ownerId);
         Animation animation = new Animation();
         Sprite magicball = Img.get("magicball");
         animation.addFrame(magicball, 0.3f, 1.5f, 90);
@@ -191,7 +203,53 @@ public class Unit {
         wraith.addComponent(stateMachine);
         return wraith;
     }
-    private static GameObject BuildProjectile(String name, Vector2f position,Transform target,int allied,int ownerId){
+    private static GameObject BuildAlterbolt(String name, Vector2f position,Vector2f target,int allied,int ownerId){
+        GameObject proj= BuildLinearProjectile(name,position,target,allied,ownerId);
+
+        Effects e=proj.getComponent(Effects.class);
+        e.addEffect(new ImbuneAlternatorMark(Float.MAX_VALUE,25));
+        return proj;
+    }
+    private static GameObject BuildGuidedProjectile(String name, Vector2f position, Transform target, int allied, int ownerId){
+
+        GameObject proj = BuildProjectileBase( name, position,allied,ownerId);
+
+        GuidedProjectile p=new GuidedProjectile(pd(name,"damage",10),pd(name,"magicpercent",0));
+        proj.addComponent(p);
+        p.damage.owner=ownerId;
+        p.speed=pd(name,"speed",5);
+        p.lifespan=pd(name,"lifespan",20);
+        p.attackSpeed=pd(name,"attackspeed",1);
+        p.guided=true;
+        p.prepMoveCommand(target);
+
+        return proj;
+    }
+    private static GameObject BuildLinearProjectile(String name, Vector2f position, Vector2f pos, int allied, int ownerId){
+
+        GameObject proj = BuildProjectileBase( name, position,allied,ownerId);
+        LinearProjectile p=new LinearProjectile(pd(name,"damage",10),pd(name,"magicpercent",0));
+        proj.addComponent(p);
+        p.damage.owner=ownerId;
+        p.speed=pd(name,"speed",5);
+        p.attackSpeed=pd(name,"attackspeed",1);
+        p.guided=false;
+        p.lifespan=pd(name,"lifespan",20);
+        p.prepMoveCommand(pos);
+
+
+        float sizeX,sizeY;
+        if(cp(name,"sizex")){
+            sizeX=p(name,"sizex");
+            sizeY=p(name,"sizey");
+        }else{
+            sizeX=sizeY= pd(name,"size", 1f);
+        }
+        CircleSensor circleCollider = new CircleSensor((sizeX+sizeY)/4);
+        proj.addComponent(circleCollider);
+        return proj;
+    }
+    private static GameObject BuildProjectileBase(String name, Vector2f position, int allied, int ownerId){
 
         float sizeX,sizeY;
         if(cp(name,"sizex")){
@@ -207,18 +265,6 @@ public class Unit {
         rb.setBodyType(BodyType.Dynamic);
         rb.setFixedRotation(false);
         proj.addComponent(rb);
-        Projectile p=new Projectile(pd(name,"damage",10),pd(name,"magicpercent",0));
-        p.damage.owner=ownerId;
-        p.speed=pd(name,"speed",5);
-        p.attackSpeed=pd(name,"attackspeed",1);
-        p.guided=p(name,"guided")==1f;
-        if(!p.guided){
-            CircleCollider circleCollider = new CircleCollider();
-            circleCollider.setRadius((sizeX+sizeY)/4);
-            proj.addComponent(circleCollider);
-        }
-        proj.addComponent(p);
-        p.moveCommand(target);
         return proj;
     }
     private static GameObject buildBase(String name, Vector2f position,int allied){
@@ -322,7 +368,11 @@ public class Unit {
     private static GameObject BuildAlterator(String name,Vector2f position,int allied) {
         GameObject alter= BuildGeneralUnit(name,position,allied);
         CastAbilities cast=alter.getComponent(CastAbilities.class);
-        cast.addAbility(cast.makeAbility(Alterate));
+        cast.addAbility(cast.makeAbility(shootAlterBolt));
+        cast.addAbility(cast.makeAbility(teleportMarked));
+        cast.maxmp=100;
+        cast.mp=0;
+        cast.mpRegen=0.1f;
         return alter;
     }
     private static GameObject BuildWraith(String name,Vector2f position,int allied){
@@ -519,6 +569,18 @@ public class Unit {
         float ret=u(name,"buildtime");
         return ret;
     }
+    public static float calcRange(String projectileName){ //may misbehave with more complex projectile or if it doesn't reach
+        float speed=p(projectileName.toLowerCase(),"speed");
+        float acceleration=pd(projectileName.toLowerCase(),"acceleration",1);
+        float lifespan=p(projectileName,"lifespan");
+        if(acceleration!=1){
+            lifespan-= (1/(acceleration*60f))/2; //Because: acceleration is in frames and lifespan is in seconds so *60,
+                                                    //divided by two because the first part is the time it takes to get to full speed so the average speed in that interval is half speed
+        }
+        return speed*lifespan;
+
+    }
+
     public static Vector3f getCost(String name){
 
         name=name.toLowerCase();

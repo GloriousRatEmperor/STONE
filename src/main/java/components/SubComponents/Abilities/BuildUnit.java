@@ -26,10 +26,13 @@ public class BuildUnit extends Ability{
         setDesc(type.getDesc());
     }
     @Override
-    public void cast(final Vector2f pos, GameObject self){
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
         UnitBuilder build= self.getComponent(UnitBuilder.class);
         if (build!=null){
             build.addqueue(unitName,cost);
+            return true;
+        }else{
+            return false;
         }
     }
     @Override

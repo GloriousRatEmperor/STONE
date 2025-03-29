@@ -25,10 +25,13 @@ public class Heal extends Ability{
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");
     }
     @Override
-    public void cast(final Vector2f pos, GameObject self) {
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target) {
         Mortal mortal=self.getComponent(Mortal.class);
         if(mortal!=null){
             mortal.health+= power*(mortal.maxHealth-mortal.health);
+            return true;
+        }else{
+            return false;
         }
 }
 }

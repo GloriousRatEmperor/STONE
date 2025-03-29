@@ -56,12 +56,14 @@ public class CastAbilities extends Component {
         return false;
     }
 
-    public void castAbility(int id,Vector2f pos) {
+    public void castAbility(int id,Vector2f pos,GameObject target) {
         for (Ability a : abilities) {
             if (a.getID() == id) {
                 if (a.Castable(mp)) {
-                    a.cast(pos, super.gameObject);
-                    mp -= a.mp;
+                    if(a.cast(pos, super.gameObject,target)){
+                        mp -= a.mp;
+                    }
+
                     break;
                 }
             }
@@ -129,6 +131,8 @@ public class CastAbilities extends Component {
             case errupt -> new Errupt(a);
             case buildAlterator -> new BuildUnit(a,"Alterator");
             case Alterate -> new Alterate(a);
+            case shootAlterBolt -> new ShootAlterBolt(a);
+            case teleportMarked -> new TeleportMarked(a);
             default -> null;
 
         };

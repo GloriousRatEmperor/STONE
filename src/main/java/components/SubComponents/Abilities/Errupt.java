@@ -61,8 +61,9 @@ public class Errupt extends Ability{
 
     }
     @Override
-    public void cast(final Vector2f pos, GameObject self){
+    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
         self.die(self);
+        return true;
     }
 
 

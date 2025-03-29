@@ -2,7 +2,6 @@ package components;
 
 import Multiplayer.ServerData;
 import components.SubComponents.Commands.CastCommand;
-import components.SubComponents.Commands.MoveCommand;
 import components.unitcapabilities.Brain;
 import jade.GameObject;
 import jade.Window;
@@ -162,9 +161,9 @@ public class ServerInputs extends Component {
                     Brain brain=go.getComponent(Brain.class);
                     if(brain!=null){
                         if(serverData.intValue2==1) {
-                            brain.addCommand(new CastCommand(serverData.intValue, serverData.position));
+                            brain.addCommand(new CastCommand(serverData.intValue, serverData.position,serverData.getIntValue3()));
                         }else{
-                            brain.setCommand(new CastCommand(serverData.intValue, serverData.position));
+                            brain.setCommand(new CastCommand(serverData.intValue, serverData.position,serverData.getIntValue3()));
                         }
                     }
                 }
