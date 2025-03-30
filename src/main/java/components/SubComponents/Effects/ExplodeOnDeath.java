@@ -4,7 +4,7 @@ import components.unitcapabilities.Animation;
 import components.unitcapabilities.damage.Mortal;
 import jade.GameObject;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.CreatorTools;
 
 import java.util.ArrayList;
 
@@ -45,7 +45,7 @@ public class ExplodeOnDeath extends Effect {
             explode = new Animation();
             explode.addFrame(Img.get("explod"), 0.2f, radius * 2 * 10, 2000);
         //}
-        Unit.generateAnimation(owner.gameObject.transform.position, 0.1f,0.1f,explode);
+        CreatorTools.generateAnimation(owner.gameObject.transform.position, 0.1f,0.1f,explode);
 
 
     }

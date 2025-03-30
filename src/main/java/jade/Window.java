@@ -26,7 +26,10 @@ import scenes.Scene;
 import scenes.SceneInitializer;
 import util.AssetPool;
 import util.UniTime;
-import util.Unit;
+import util.UnitUtils.BuildingCreator;
+import util.UnitUtils.MiscCreator;
+import util.UnitUtils.ProjectileCreator;
+import util.UnitUtils.UnitCreator;
 import util.Variables;
 
 import java.io.File;
@@ -439,7 +442,10 @@ public class Window implements Observer {
                 Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
 
 
-                Unit.init();
+                BuildingCreator.init();
+                UnitCreator.init();
+                MiscCreator.init();
+                ProjectileCreator.init();
                 while (!glfwWindowShouldClose(glfwWindow)) {
 
                     try {

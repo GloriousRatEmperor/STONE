@@ -2,7 +2,7 @@ package components.SubComponents.Abilities;
 
 import enums.AbilityName;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.BuildingCreator;
 
 import static enums.AbilityName.*;
 
@@ -30,28 +30,28 @@ public class BuildBase extends BuildBuilding {
         switch (race){
             case 1-> {
                 this.type=buildBaseR;
-                this.cost = Unit.getBuildCost("bloodBase");
+                this.cost = BuildingCreator.getBuildCost("bloodBase");
                 setDesc("Builds a bloody base");
                 buildName = "bloodbase";
                 super.sprite = Img.get("bloodbase");
             }
             case 2-> {
                 this.type=buildBaseG;
-                this.cost =  Unit.getBuildCost("rockbase");
+                this.cost =  BuildingCreator.getBuildCost("rockbase");
                 setDesc("Builds a rock base");
                 buildName = "rockbase";
                 super.sprite = Img.get("rockbase");
             }
                 case 3-> {
                     this.type=buildBaseB;
-                    this.cost =Unit.getBuildCost("magicbase");
+                    this.cost =BuildingCreator.getBuildCost("magicbase");
                     setDesc("Builds a magic base");
                     buildName = "magicbase";
                     super.sprite = Img.get("magicbase");
                 }
             case 4-> {
                 this.type=buildBaseA;
-                this.cost = Unit.getBuildCost("whitebase");
+                this.cost = BuildingCreator.getBuildCost("whitebase");
                 setDesc("Builds a balanced base");
                 buildName ="whitebase";
                 super.sprite = Img.get("whitebase");

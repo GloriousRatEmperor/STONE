@@ -6,7 +6,7 @@ import jade.GameObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.UnitCreator;
 
 public class BuildUnit extends Ability{
     public Vector3f cost;
@@ -19,7 +19,7 @@ public class BuildUnit extends Ability{
     public BuildUnit(AbilityName type, String unitName) {
         super(type);
         this.unitName =unitName;
-        cost= Unit.getCost(unitName);
+        cost= UnitCreator.getUnitCost(unitName);
 
         mp=0;
         super.sprite= Img.get(this.unitName);
@@ -38,7 +38,7 @@ public class BuildUnit extends Ability{
     @Override
     public void setDesc(String description) {
         //adds a colored list in the form of a string of the basic stats like hp, armor etc and at the end a black slab of all the other things the mob has
-        String unitStats=Unit.getUStats(unitName.toLowerCase());
+        String unitStats= UnitCreator.getUStats(unitName.toLowerCase());
         String bldcost="",rockcost="",magecost="";
         if(cost.x!=0){
             bldcost=cost.x+ " Blood ";

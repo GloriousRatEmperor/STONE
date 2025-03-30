@@ -9,7 +9,7 @@ import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
 import util.Maf;
-import util.Unit;
+import util.UnitUtils.MiscCreator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -165,7 +165,7 @@ public class Base extends Component {
                             }
 
 
-                            GameObject mineral = Unit.makeMisc("Mineral" + biggest, new Vector2f(minX, minY), 1);
+                            GameObject mineral = MiscCreator.makeMisc("Mineral" + biggest, new Vector2f(minX, minY), 1);
                             mineral.name = "M";
 
                             Mineral miner = mineral.getComponent(Mineral.class);

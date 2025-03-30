@@ -2,7 +2,8 @@ package components;
 
 import components.unitcapabilities.defaults.Sprite;
 import jade.GameObject;
-import util.Unit;
+import util.UnitUtils.CreatorTools;
+import util.UnitUtils.UnitCreator;
 
 import java.util.List;
 
@@ -13,9 +14,9 @@ public class UNMADE {
     public Sprite sprite;
     public UNMADE(String name) {
         this.name=name;
-        this.maxTime=Unit.getBuildTime(name);
+        this.maxTime= UnitCreator.getBuildTime(name);
         this.time=this.maxTime;
-        this.sprite=Unit.getSprite(name);
+        this.sprite= CreatorTools.getSprite(name);
     }
 
 

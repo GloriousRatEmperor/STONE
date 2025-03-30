@@ -2,7 +2,7 @@ package scenes;
 
 import Multiplayer.ClientData;
 import Multiplayer.ServerData;
-import components.*;
+import components.ServerInputs;
 import components.gamestuff.*;
 import components.unitcapabilities.defaults.Sprite;
 import imgui.ImGui;
@@ -17,7 +17,8 @@ import physics2d.components.Rigidbody2D;
 import physics2d.enums.BodyType;
 import util.AssetPool;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.BuildingCreator;
+import util.UnitUtils.UnitCreator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,8 +28,8 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 
-import static util.Unit.buildNames;
-import static util.Unit.unitNames;
+import static util.UnitUtils.BuildingCreator.buildNames;
+import static util.UnitUtils.UnitCreator.unitNames;
 
 public class LevelEditorSceneInitializer extends SceneInitializer {
 
@@ -254,7 +255,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                     ImGui.pushID(i);
                     if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                        GameObject object = Unit.makeUnit(name,new Vector2f(),placeAllied);
+                        GameObject object = UnitCreator.makeUnit(name,new Vector2f(),placeAllied);
                         levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();
@@ -295,7 +296,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
                     ImGui.pushID(i);
                     if (ImGui.imageButton(id, spriteWidth, spriteHeight, texCoords[2].x, texCoords[0].y, texCoords[0].x, texCoords[2].y)) {
-                        GameObject object = Unit.makeBuilding(name,new Vector2f(),placeAllied);
+                        GameObject object = BuildingCreator.makeBuilding(name,new Vector2f(),placeAllied);
                         levelEditorStuff.getComponent(MouseControls.class).pickupObject(object);
                     }
                     ImGui.popID();

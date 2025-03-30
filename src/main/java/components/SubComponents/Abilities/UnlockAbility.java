@@ -6,7 +6,7 @@ import jade.GameObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.UnlockTracker;
 
 public class UnlockAbility extends Ability{
     AbilityName unlockType;
@@ -17,7 +17,7 @@ public class UnlockAbility extends Ability{
 
     public UnlockAbility(AbilityName type,String unlockName) {
         super(type);
-        unlockCost= Unit.getUnlockCost(unlockName);
+        unlockCost= UnlockTracker.getUnlockCost(unlockName);
         this.unlockName=unlockName;
         mp=0;
         super.sprite= Img.get(unlockName);

@@ -5,7 +5,7 @@ import jade.GameObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.BuildingCreator;
 
 import static jade.Window.getScene;
 
@@ -23,7 +23,7 @@ public class BuildBuilding extends Ability {
     public boolean cast(final Vector2f pos, GameObject self,GameObject target){
         if(getScene().addmoney(-cost.x,-cost.y,-cost.z,self.allied)) {
 
-            GameObject unit = Unit.makeBuilding(buildName, new Vector2f(pos), self.allied);
+            GameObject unit = BuildingCreator.makeBuilding(buildName, new Vector2f(pos), self.allied);
             getScene().addGameObjectToScene(unit);
             return true;
         }else{
@@ -34,7 +34,7 @@ public class BuildBuilding extends Ability {
         super( type);
         range=0.1f;
         buildName=name;
-        cost=Unit.getBuildCost(name);
+        cost=BuildingCreator.getBuildCost(name);
         setDesc( type.getDesc());
         targetable=true;
         mp=0;

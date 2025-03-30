@@ -8,7 +8,8 @@ import enums.AbilityName;
 import jade.GameObject;
 import org.joml.Vector2f;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.CreatorTools;
+import util.UnitUtils.MiscCreator;
 
 import java.util.ArrayList;
 
@@ -55,12 +56,12 @@ public class Errupt extends Ability{
 
         explode.addFrame(frame);
 
-        Unit.generateAnimation(owner.gameObject.transform.position, radius*1.5f,radius*0.6f,explode);
+        CreatorTools.generateAnimation(owner.gameObject.transform.position, radius*1.5f,radius*0.6f,explode);
 
 
     }
     public void makePuddle(Vector2f pos, int allied){
-        GameObject puddle= Unit.makeMisc("puddle",pos,allied);
+        GameObject puddle= MiscCreator.makeMisc("puddle",pos,allied);
         getScene().addGameObjectToScene(puddle);
 
     }

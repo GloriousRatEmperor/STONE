@@ -6,7 +6,7 @@ import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.Effects;
 import jade.GameObject;
 import util.Maf;
-import util.Unit;
+import util.UnitUtils.ProjectileCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -66,7 +66,7 @@ public class Shooter extends CircleSensor {
 
     public void shoot(GameObject go){
         if(nextAttack<=0) {
-            GameObject projectile = Unit.makeProjectile(projectileName,gameObject.getUid(), this.gameObject.transform.position, go.transform, this.gameObject.allied);
+            GameObject projectile = ProjectileCreator.makeProjectile(projectileName,gameObject.getUid(), this.gameObject.transform.position, go.transform, this.gameObject.allied);
             projectile.getComponent(Projectile.class).damage.addGlobalMult(damageMult,"baseMult");
             projectile.getComponent(Projectile.class).speed*=speedMult;
             Effects peffs =projectile.getComponent(Effects.class);

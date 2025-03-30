@@ -5,7 +5,7 @@ import jade.GameObject;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import renderer.DebugDraw;
-import util.Unit;
+import util.UnitUtils.ProjectileCreator;
 
 import static jade.Window.getScene;
 
@@ -21,9 +21,9 @@ public abstract class ShootProjectile extends Ability{
     public boolean cast(final Vector2f pos, GameObject self, GameObject target){
         GameObject projectile;
         if(requiresTarget){
-            projectile= Unit.makeProjectile(projectileName, self.getUid(), self.transform.position, target.transform,self.allied);
+            projectile= ProjectileCreator.makeProjectile(projectileName, self.getUid(), self.transform.position, target.transform,self.allied);
         }else{
-            projectile= Unit.makeProjectile(projectileName, self.getUid(), self.transform.position, pos,self.allied);
+            projectile= ProjectileCreator.makeProjectile(projectileName, self.getUid(), self.transform.position, pos,self.allied);
         }
         getScene().addGameObjectToScene(projectile);
         return true;

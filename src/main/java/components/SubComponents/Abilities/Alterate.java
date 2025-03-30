@@ -4,7 +4,7 @@ import enums.AbilityName;
 import jade.GameObject;
 import org.joml.Vector2f;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.ProjectileCreator;
 
 public class Alterate extends Ability {
 
@@ -27,7 +27,7 @@ public class Alterate extends Ability {
     }
     @Override
     public boolean cast(final Vector2f pos, GameObject self, GameObject target){
-        Unit.makeProjectile("alterbolt",self.getUid(),self.transform.position,pos,self.allied);
+        ProjectileCreator.makeProjectile("alterbolt",self.getUid(),self.transform.position,pos,self.allied);
         return true;
     }
 }

@@ -10,7 +10,7 @@ import jade.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector3f;
 import util.AssetPool;
-import util.Unit;
+import util.UnitUtils.UnitCreator;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,7 +68,7 @@ public class UnitBuilder extends Component {
 
     public void makeUnit(UNMADE unm) {
         Vector2f position = new Vector2f(tr.position.x,tr.position.y-0.001f);
-        GameObject unit = Unit.makeUnit(unm.name,position, alliedB);
+        GameObject unit = UnitCreator.makeUnit(unm.name,position, alliedB);
         getScene().addGameObjectToScene(unit);
     }
     public void addqueue(String UnitName, Vector3f cost){

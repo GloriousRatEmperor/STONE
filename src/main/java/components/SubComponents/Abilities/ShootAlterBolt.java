@@ -2,7 +2,7 @@ package components.SubComponents.Abilities;
 
 import enums.AbilityName;
 import util.Img;
-import util.Unit;
+import util.UnitUtils.ProjectileCreator;
 
 public class ShootAlterBolt extends ShootProjectile{
 
@@ -11,7 +11,7 @@ public class ShootAlterBolt extends ShootProjectile{
         sprite= Img.get("alteratormark");
         projectileName="alterbolt";
         updateDesc();
-        this.range=Unit.calcRange("alterbolt");
+        this.range= ProjectileCreator.calcRange("alterbolt");
     }
 
 
