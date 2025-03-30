@@ -9,6 +9,7 @@ public class Transform extends Component {
 
     public Vector2f position;
     public Vector2f drawPos;
+    public Vector2f drawOffset=new Vector2f();
     private boolean flippedX = false;
     private boolean flippedY = false;
     public Vector2f pastPos;
@@ -25,8 +26,8 @@ public class Transform extends Component {
         updatePastPos();
     }
     public void updateDrawPos(float fraction){
-        if(drawPos.x!=pastPos.x||pastPos.y!=drawPos.y){
-            drawPos.set(pastPos);
+        if(drawPos.x+drawOffset.x!=pastPos.x||pastPos.y+drawOffset.y!=drawPos.y){
+            drawPos.set(pastPos).add(drawOffset);
             gameObject.getComponent(SpriteRenderer.class).setDirty();
         }
 

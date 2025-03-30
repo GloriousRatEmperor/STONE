@@ -1,6 +1,7 @@
 package components.SubComponents.Abilities;
 
-import components.SubComponents.Frame.GrowSpinFrame;
+import components.SubComponents.Frame.Frame;
+import components.SubComponents.Frame.FrameEffects.GrowSpinFrameEffect;
 import components.unitcapabilities.Animation;
 import components.unitcapabilities.damage.Mortal;
 import enums.AbilityName;
@@ -47,8 +48,11 @@ public class Errupt extends Ability{
         }
         Animation explode;
         explode = new Animation();
-        GrowSpinFrame frame =new GrowSpinFrame( Img.get("errupt"), 0.25f,  7.3f, 0);
-        frame.growX=1.3f;
+        Frame frame=new Frame(Img.get("errupt"), 0.25f);
+        GrowSpinFrameEffect effect= new GrowSpinFrameEffect(   7.3f, 0);
+        effect.growX=1.3f;
+        frame.addFrameEffect(effect);
+
         explode.addFrame(frame);
 
         Unit.generateAnimation(owner.gameObject.transform.position, radius*1.5f,radius*0.6f,explode);

@@ -1,7 +1,7 @@
 package components.unitcapabilities;
 
 import components.SubComponents.Frame.Frame;
-import components.SubComponents.Frame.GrowSpinFrame;
+import components.SubComponents.Frame.FrameEffects.GrowSpinFrameEffect;
 import components.unitcapabilities.defaults.Sprite;
 import jade.Transform;
 import util.AssetPool;
@@ -46,16 +46,21 @@ public class Animation {
 
     }
     public void addFrame(Sprite sprite, float frameTime) {
-        animationFrames.add(new GrowSpinFrame(sprite, frameTime));
+        animationFrames.add(new Frame(sprite, frameTime));
     }
     public void addFrame(Sprite sprite, float frameTime,float size,float rotation) {
-        animationFrames.add(new GrowSpinFrame(sprite, frameTime,size,rotation));
+        Frame frame=new Frame(sprite,frameTime);
+        if(size!=1||rotation!=0){
+            frame.addFrameEffect(new GrowSpinFrameEffect(size,rotation));
+        }
+
+        animationFrames.add(frame);
     }
 
 
     public void addFrames(List<Sprite> sprites, float frameTime) {
         for (Sprite sprite : sprites) {
-            this.animationFrames.add(new GrowSpinFrame(sprite, frameTime));
+            this.animationFrames.add(new Frame(sprite, frameTime));
         }
     }
 
