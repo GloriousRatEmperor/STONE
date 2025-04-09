@@ -44,13 +44,4 @@ public class Singleplayer {
 
 
     }
-    public static double calcDeviation(int maxRolls,int dice){
-        double deviation=0;
-        for(int e=0;e<dice;e++){
-            deviation+=Math.pow( e+1-(maxRolls*2+1),2);
-        }
-        deviation=Math.sqrt( deviation/dice);
-
-        return deviation;
-    }
 }

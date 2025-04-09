@@ -6,11 +6,11 @@ import components.gamestuff.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
+import observers.events.EventType;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
 import org.joml.Vector4f;
-import org.lwjgl.Version;
 import org.lwjgl.glfw.GLFWErrorCallback;
 import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.openal.AL;
@@ -51,6 +51,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window implements Observer {
     public Thread clientThread;
+    public static boolean hasDrawThread=true;
     public static Sstart startData;
     public BlockingQueue<ClientData> requests;
     public BlockingQueue<ServerData> responses;
@@ -147,7 +148,6 @@ public class Window implements Observer {
 
     public void run(Boolean debugging) throws NoSuchFieldException, InterruptedException {
         this.debugging=debugging;
-        System.out.println("Hello LWJGL " + Version.getVersion() + "!");
 
         loop();
 
@@ -238,67 +238,69 @@ public class Window implements Observer {
          fractionPassed=0f;
          physicsStep=1/60f;
          lastPhysics=UniTime.getExact();
+        Thread screen=null;
+         if(hasDrawThread) {
 
 
-        Thread screen = new Thread(new Runnable() {
+             screen = new Thread(new Runnable() {
 
-            String title = "Stone Throne";
-            private long glfwWindow;
-            private Shader defaultShader;
-            private Shader groundShader;
-            private Shader pickingShader;
-            private Shader invertedShader;
-            private Shader BlackShader;
-            private PickingTexture pickingTexture;
+                 String title = "Stone Throne";
+                 private long glfwWindow;
+                 private Shader defaultShader;
+                 private Shader groundShader;
+                 private Shader pickingShader;
+                 private Shader invertedShader;
+                 private Shader BlackShader;
+                 private PickingTexture pickingTexture;
 
-            public void renderGame() throws NoSuchFieldException, InterruptedException {
-                // Poll events
-                glfwPollEvents();
+                 public void renderGame() throws NoSuchFieldException, InterruptedException {
+                     // Poll events
+                     glfwPollEvents();
 
-                // Render pass 1. Render to picking texture
-                glDisable(GL_BLEND);
-                pickingTexture.enableWriting();
+                     // Render pass 1. Render to picking texture
+                     glDisable(GL_BLEND);
+                     pickingTexture.enableWriting();
 
-                glViewport(0, 0, 3840, 2160);
-                glClearColor(0, 0, 0, 0);
-                glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+                     glViewport(0, 0, 3840, 2160);
+                     glClearColor(0, 0, 0, 0);
+                     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-                Renderer.bindShader(pickingShader);
+                     Renderer.bindShader(pickingShader);
 
-                currentScene.render(true);
-
-
-                pickingTexture.disableWriting();
-                glEnable(GL_BLEND);
-
-                // Render pass 2. Render actual game
-                DebugDraw.beginFrame();
-                imguiLayer.update(currentScene, runtimePlaying);
-                framebuffer.bind();
+                     currentScene.render(true);
 
 
-                if(runtimePlaying) {
-                    Renderer.bindShader(groundShader);
-                    currentScene.renderFloor();
-                }else {
-                    Vector4f clearColor = currentScene.camera().clearColor;
-                    glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
-                    glClear(GL_COLOR_BUFFER_BIT);
-                }
+                     pickingTexture.disableWriting();
+                     glEnable(GL_BLEND);
 
-                Renderer.bindShader(defaultShader);
-                if(runtimePlaying) {
+                     // Render pass 2. Render actual game
+                     DebugDraw.beginFrame();
+                     imguiLayer.update(currentScene, runtimePlaying);
+                     framebuffer.bind();
 
-                    currentScene.visualUpdate(fractionPassed, runtimePlaying);
-                }else{
-                    //misleading esp with editor update bc it does everything, like this for possibility of splitting things into the thread but probably never going to do it
-                    currentScene.editorUpdateDraw();
-                }
 
-                currentScene.render(false);
-                DebugDraw.draw();
+                     if (runtimePlaying) {
+                         Renderer.bindShader(groundShader);
+                         currentScene.renderFloor();
+                     } else {
+                         Vector4f clearColor = currentScene.camera().clearColor;
+                         glClearColor(clearColor.x, clearColor.y, clearColor.z, clearColor.w);
+                         glClear(GL_COLOR_BUFFER_BIT);
+                     }
 
-                framebuffer.unbind();
+                     Renderer.bindShader(defaultShader);
+                     if (runtimePlaying) {
+
+                         currentScene.visualUpdate(fractionPassed, runtimePlaying);
+                     } else {
+                         //misleading esp with editor update bc it does everything, like this for possibility of splitting things into the thread but probably never going to do it
+                         currentScene.editorUpdateDraw();
+                     }
+
+                     currentScene.render(false);
+                     DebugDraw.draw();
+
+                     framebuffer.unbind();
 
 //                      this could be instead of imguiLayer.update(currentScene, runtimePlaying); if no imgui
 //                    glBindFramebuffer(GL_READ_FRAMEBUFFER, framebuffer.getFboID());
@@ -307,213 +309,203 @@ public class Window implements Observer {
 //                            GL_COLOR_BUFFER_BIT, GL_NEAREST);
 
 
+                     glfwSwapBuffers(glfwWindow);
+                 }
+
+                 @Override
+                 public void run() {
+                     // Setup an error callback
+                     GLFWErrorCallback.createPrint(System.err).set();
+
+                     // Initialize GLFW
+                     if (!glfwInit()) {
+                         throw new IllegalStateException("Unable to initialize GLFW.");
+                     }
 
 
+                     // Configure GLFW
+                     glfwDefaultWindowHints();
+                     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+                     glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
+                     long monitor = glfwGetPrimaryMonitor();
+                     final GLFWVidMode mode = glfwGetVideoMode(monitor);
 
-                glfwSwapBuffers(glfwWindow);
-            }
+                     glfwWindowHint(GLFW_RED_BITS, mode.redBits());
+                     glfwWindowHint(GLFW_GREEN_BITS, mode.greenBits());
+                     glfwWindowHint(GLFW_BLUE_BITS, mode.blueBits());
+                     glfwWindowHint(GLFW_REFRESH_RATE, mode.refreshRate());
+                     glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will not be resizable
 
-            @Override
-            public void run() {
-                // Setup an error callback
-                GLFWErrorCallback.createPrint(System.err).set();
-
-                // Initialize GLFW
-                if (!glfwInit()) {
-                    throw new IllegalStateException("Unable to initialize GLFW.");
-                }
-
-
-
-
-
-                // Configure GLFW
-                glfwDefaultWindowHints();
-                glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-                glfwWindowHint(GLFW_MAXIMIZED, GLFW_TRUE);
-                long monitor=glfwGetPrimaryMonitor();
-                final GLFWVidMode mode = glfwGetVideoMode(monitor);
-
-                glfwWindowHint(GLFW_RED_BITS, mode.redBits());
-                glfwWindowHint(GLFW_GREEN_BITS, mode.greenBits());
-                glfwWindowHint(GLFW_BLUE_BITS, mode.blueBits());
-                glfwWindowHint(GLFW_REFRESH_RATE, mode.refreshRate());
-                glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE); // the window will not be resizable
-
-                // Create the window
-                if(!debugging) {
-                    glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
-                }else {
-                    glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title,monitor, NULL);
-                }
-                if (glfwWindow == NULL) {
-                    throw new IllegalStateException("Failed to create the GLFW window.");
-                }
+                     // Create the window
+                     if (!debugging) {
+                         glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
+                     } else {
+                         glfwWindow = glfwCreateWindow(mode.width(), mode.height(), this.title, monitor, NULL);
+                     }
+                     if (glfwWindow == NULL) {
+                         throw new IllegalStateException("Failed to create the GLFW window.");
+                     }
 
 
+                     glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
+                     glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
+                     glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
+                     glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
+                     glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
+                         Window.setWidth(newWidth);
+                         Window.setHeight(newHeight);
+                     });
+                     // Make the OpenGL context current
+                     glfwMakeContextCurrent(glfwWindow);
+
+                     // Enable v-sync
+                     glfwSwapInterval(1);
+
+                     // Make the window visible
+                     glfwShowWindow(glfwWindow);
 
 
-                glfwSetCursorPosCallback(glfwWindow, MouseListener::mousePosCallback);
-                glfwSetMouseButtonCallback(glfwWindow, MouseListener::mouseButtonCallback);
-                glfwSetScrollCallback(glfwWindow, MouseListener::mouseScrollCallback);
-                glfwSetKeyCallback(glfwWindow, KeyListener::keyCallback);
-                glfwSetWindowSizeCallback(glfwWindow, (w, newWidth, newHeight) -> {
-                    Window.setWidth(newWidth);
-                    Window.setHeight(newHeight);
-                });
-                // Make the OpenGL context current
-                glfwMakeContextCurrent(glfwWindow);
+                     // Initialize the audio device
 
-                // Enable v-sync
-                glfwSwapInterval(1);
+                     String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
+                     audioDevice = alcOpenDevice(defaultDeviceName);
 
-                // Make the window visible
-                glfwShowWindow(glfwWindow);
+                     int[] attributes = {0};
+                     audioContext = alcCreateContext(audioDevice, attributes);
+                     alcMakeContextCurrent(audioContext);
 
+                     ALCCapabilities alcCapabilities = ALC.createCapabilities(audioDevice);
+                     ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
 
+                     assert alCapabilities.OpenAL10 : "Audio library not supported.";
 
+                     // This line is critical for LWJGL's interoperation with GLFW's
+                     // OpenGL context, or any context that is managed externally.
+                     // LWJGL detects the context that is current in the current thread,
+                     // creates the GLCapabilities instance and makes the OpenGL
+                     // bindings available for use.
+                     GL.createCapabilities();
 
-                // Initialize the audio device
+                     glEnable(GL_BLEND);
+                     glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
 
-                String defaultDeviceName = alcGetString(0, ALC_DEFAULT_DEVICE_SPECIFIER);
-                audioDevice = alcOpenDevice(defaultDeviceName);
+                     framebuffer = new Framebuffer(3840, 2160);
+                     this.pickingTexture = new PickingTexture(3840, 2160);
+                     glViewport(0, 0, 3840, 2160);
 
-                int[] attributes = {0};
-                audioContext = alcCreateContext(audioDevice, attributes);
-                alcMakeContextCurrent(audioContext);
+                     int leftLimit = 97; // letter 'a'
+                     int rightLimit = 122; // letter 'z'
+                     int targetStringLength = 10;
+                     Random random = new Random();
+                     StringBuilder buffer = new StringBuilder(targetStringLength);
+                     for (int i = 0; i < targetStringLength; i++) {
+                         int randomLimitedInt = leftLimit + (int)
+                                 (random.nextFloat() * (rightLimit - leftLimit + 1));
+                         buffer.append((char) randomLimitedInt);
+                     }
+                     try {
 
-                ALCCapabilities alcCapabilities = ALC.createCapabilities(audioDevice);
-                ALCapabilities alCapabilities = AL.createCapabilities(alcCapabilities);
+                         File dir = new File("Leveltemps");
+                         if (!dir.isDirectory()) {
+                             System.out.println("FUCK,this shit ain't a directory");
+                         }
+                         cleanTemps(dir);
+                         leveltemp = File.createTempFile("level", ".tmp", dir);
+                         //File tempFile = File.createTempFile("MyAppName-", ".tmp");
+                         leveltemp.deleteOnExit();
 
-                assert alCapabilities.OpenAL10 : "Audio library not supported.";
+                     } catch (IOException e) {
+                         throw new RuntimeException(e);
+                     }
 
-                // This line is critical for LWJGL's interoperation with GLFW's
-                // OpenGL context, or any context that is managed externally.
-                // LWJGL detects the context that is current in the current thread,
-                // creates the GLCapabilities instance and makes the OpenGL
-                // bindings available for use.
-                GL.createCapabilities();
-
-                glEnable(GL_BLEND);
-                glBlendFunc(GL_ONE, GL_ONE_MINUS_SRC_ALPHA);
-
-                framebuffer = new Framebuffer(3840, 2160);
-                this.pickingTexture = new PickingTexture(3840, 2160);
-                glViewport(0, 0, 3840, 2160);
-
-                int leftLimit = 97; // letter 'a'
-                int rightLimit = 122; // letter 'z'
-                int targetStringLength = 10;
-                Random random = new Random();
-                StringBuilder buffer = new StringBuilder(targetStringLength);
-                for (int i = 0; i < targetStringLength; i++) {
-                    int randomLimitedInt = leftLimit + (int)
-                            (random.nextFloat() * (rightLimit - leftLimit + 1));
-                    buffer.append((char) randomLimitedInt);
-                }
-                try {
-
-                    File dir=new File("Leveltemps");
-                    if(!dir.isDirectory()){
-                        System.out.println("FUCK,this shit ain't a directory");
-                    }
-                    cleanTemps(dir);
-                    leveltemp = File.createTempFile("level", ".tmp",dir);
-                    //File tempFile = File.createTempFile("MyAppName-", ".tmp");
-                    leveltemp.deleteOnExit();
-
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-
-                imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture,leveltemp);
-                imguiLayer.initImGui();
-                groundShader= AssetPool.getShader("assets/shaders/GroundShader.glsl");
-                defaultShader= AssetPool.getShader("assets/shaders/default.glsl");
-                pickingShader= AssetPool.getShader("assets/shaders/pickingShader.glsl");
-                invertedShader=AssetPool.getShader("assets/shaders/Inverted.glsl");
-                BlackShader=AssetPool.getShader("assets/shaders/Blackcolor.glsl");
+                     imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture, leveltemp);
+                     imguiLayer.initImGui();
+                     groundShader = AssetPool.getShader("assets/shaders/GroundShader.glsl");
+                     defaultShader = AssetPool.getShader("assets/shaders/default.glsl");
+                     pickingShader = AssetPool.getShader("assets/shaders/pickingShader.glsl");
+                     invertedShader = AssetPool.getShader("assets/shaders/Inverted.glsl");
+                     BlackShader = AssetPool.getShader("assets/shaders/Blackcolor.glsl");
 
 
-
-                Shaders.add(defaultShader);
-                Shaders.add(BlackShader);
-                Shaders.add(invertedShader);
-                Shaders.add(pickingShader);
-                Shaders.add(groundShader);
-                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
-
-
-                BuildingCreator.init();
-                UnitCreator.init();
-                MiscCreator.init();
-                ProjectileCreator.init();
-                while (!glfwWindowShouldClose(glfwWindow)) {
-
-                    try {
-
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-//TODO (fer the color, bro)     DAT  MAIN DRAW AND EDITOR LOOP SHIT IS HERE BRUVV
+                     Shaders.add(defaultShader);
+                     Shaders.add(BlackShader);
+                     Shaders.add(invertedShader);
+                     Shaders.add(pickingShader);
+                     Shaders.add(groundShader);
+                     Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
 
 
+                     BuildingCreator.init();
+                     UnitCreator.init();
+                     MiscCreator.init();
+                     ProjectileCreator.init();
+                     while (!glfwWindowShouldClose(glfwWindow)) {
+
+                         try {
+
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                            //TODO (not actual TODO it's fer the color, bro)     DAT  MAIN DRAW AND EDITOR LOOP SHIT IS HERE BRUVV
 
 
-                        starttime=UniTime.getExact();
-                        fractionPassed=1-(lastPhysics-UniTime.getExact())/physicsStep;
-                        renderGame();
-                        KeyListener.endFrame();
-                        MouseListener.endFrame();
-                        if(start){
-                            begin();
-                            start=false;
+                             starttime = UniTime.getExact();
+                             fractionPassed = 1 - (lastPhysics - UniTime.getExact()) / physicsStep;
+                             renderGame();
+                             KeyListener.endFrame();
+                             MouseListener.endFrame();
+                             if (start) {
+                                 begin();
+                                 start = false;
 
-                        }
-                        if(endPlay){
-                            endPlay=false;
-                            stop();
-                        }
-                        if(UniTime.getExact()-starttime<1/70f) {
-                            java.util.concurrent.locks.LockSupport.parkNanos((long) ((1/70f-UniTime.getExact()+starttime)*nano));
-                        }
+                             }
+                             if (endPlay) {
+                                 endPlay = false;
+                                 stop();
+                             }
+                             if (UniTime.getExact() - starttime < 1 / 70f) {
+                                 java.util.concurrent.locks.LockSupport.parkNanos((long) ((1 / 70f - UniTime.getExact() + starttime) * nano));
+                             }
 
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
-                        //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
+                             //################################################################
 
 
-                    } catch (NoSuchFieldException e) {
-                        throw new RuntimeException(e);
-                    } catch (InterruptedException e) {
-                        throw new RuntimeException(e);
-                    }
+                         } catch (NoSuchFieldException e) {
+                             throw new RuntimeException(e);
+                         } catch (InterruptedException e) {
+                             throw new RuntimeException(e);
+                         }
 
-                }
+                     }
 
-                // Destroy the audio context
-                alcDestroyContext(audioContext);
-                alcCloseDevice(audioDevice);
+                     // Destroy the audio context
+                     alcDestroyContext(audioContext);
+                     alcCloseDevice(audioDevice);
 
-                // Free the memory
-                glfwFreeCallbacks(glfwWindow);
-                glfwDestroyWindow(glfwWindow);
+                     // Free the memory
+                     glfwFreeCallbacks(glfwWindow);
+                     glfwDestroyWindow(glfwWindow);
 
-                // Terminate GLFW and the free the error callback
-                glfwTerminate();
-                glfwSetErrorCallback(null).free();
-            }
-        });
-        screen.start();
+                     // Terminate GLFW and the free the error callback
+                     glfwTerminate();
+                     glfwSetErrorCallback(null).free();
+                 }
+             });
 
+             screen.start();
+         }else{
+             EventSystem.notify(null, new Event(EventType.GameRequestPlay));
+         }
 
 
         while (!scened) {
@@ -522,8 +514,7 @@ public class Window implements Observer {
 
 
 
-        while (screen.isAlive()) {
-
+        while (!hasDrawThread||screen.isAlive()) {
 
 
             //actual physics n shite bein done here
@@ -555,6 +546,9 @@ public class Window implements Observer {
                     beginTime = UniTime.getExact();
 
                 }
+            }else if(!hasDrawThread&&start){
+                begin();
+                start = false;
             }
             if(end){
                 end=false;
@@ -722,12 +716,18 @@ public class Window implements Observer {
                 if (!ready) {
                     ready = true;
                     Cstart request = new Cstart();
-                    currentScene.save(null);
-                    request.setIdCounter(GameObject.ID_COUNTER);
-                    try {
-                        request.setLevelSave(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
-                    }catch (java.io.IOException e){
-                        e.printStackTrace();
+                    if(currentScene!=null) {
+                        currentScene.save(null);
+
+                        request.setIdCounter(GameObject.ID_COUNTER);
+                        try {
+                            request.setLevelSave(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
+                        } catch (java.io.IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else{
+                        request.setIdCounter(0);
+                        request.setLevelSave("");
                     }
                     requests.add(request);
 

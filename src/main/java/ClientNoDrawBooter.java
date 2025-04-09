@@ -6,8 +6,7 @@ import jade.Window;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 
-public class ClientBooter {
-
+public class ClientNoDrawBooter {
 
     public static void main(String[] args) throws Exception {
 
@@ -30,6 +29,7 @@ public class ClientBooter {
         //window.clientThread=clientThread;
         window.requests=requests;
         window.responses=responses;
+        Window.hasDrawThread=false;
         window.run(debugging);
 
 
