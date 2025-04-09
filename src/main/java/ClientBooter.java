@@ -1,5 +1,5 @@
-import Multiplayer.ClientData;
-import Multiplayer.ServerData;
+import Multiplayer.DataPacket.ClientData;
+import Multiplayer.DataPacket.ServerData;
 import Multiplayer.TechnicalClient;
 import jade.Window;
 

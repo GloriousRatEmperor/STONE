@@ -1,6 +1,7 @@
 package editor;
 
 import components.Component;
+import components.gamestuff.PlayerBot;
 import components.gamestuff.StateMachine;
 import components.unitcapabilities.*;
 import components.unitcapabilities.damage.Hitter;
@@ -94,6 +95,13 @@ public class PropertiesWindow {
                     for (GameObject go : activeGameObjects) {
                         if (go.getComponent(MoveContollable.class) == null) {
                             go.addComponent(new MoveContollable());
+                        }
+                    }
+                }
+                if (ImGui.menuItem("Add PlayerBot")) {
+                    for (GameObject go : activeGameObjects) {
+                        if (go.getComponent(PlayerBot.class) == null) {
+                            go.addComponent(new PlayerBot());
                         }
                     }
                 }

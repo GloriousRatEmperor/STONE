@@ -20,7 +20,7 @@ public class BuildBuilding extends Ability {
         return buildBuilding;
     }
     @Override
-    public boolean cast(final Vector2f pos, GameObject self,GameObject target){
+    public boolean cast(final Vector2f pos,GameObject self,GameObject target){
         if(getScene().addmoney(-cost.x,-cost.y,-cost.z,self.allied)) {
 
             GameObject unit = BuildingCreator.makeBuilding(buildName, new Vector2f(pos), self.allied);
@@ -47,6 +47,9 @@ public class BuildBuilding extends Ability {
         targetable=true;
         mp=0;
     }
+    public boolean Castable(float MP){
+        return getScene().haveMoney(cost.x,cost.y,cost.z,owner.gameObject.allied);
+    }
     @Override
     public void setDesc(String description) {
         String bldcost="",rockcost="",magecost="";
@@ -64,5 +67,9 @@ public class BuildBuilding extends Ability {
         }else{
             this.description= description;
         }
+    }
+    @Override
+    public boolean consider(GameObject self, boolean mpcapped){
+        return true;
     }
 }

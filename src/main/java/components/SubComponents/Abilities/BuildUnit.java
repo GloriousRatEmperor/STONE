@@ -8,6 +8,8 @@ import org.joml.Vector3f;
 import util.Img;
 import util.UnitUtils.UnitCreator;
 
+import static jade.Window.getScene;
+
 public class BuildUnit extends Ability{
     public Vector3f cost;
     public String unitName;
@@ -54,6 +56,13 @@ public class BuildUnit extends Ability{
         }else{
             this.description = description;
         }
+    }
+    public boolean Castable(float MP){
+        return getScene().haveMoney(cost.x,cost.y,cost.z,owner.gameObject.allied);
+    }
+    @Override
+    public boolean consider(GameObject self,boolean mpcapped){
+        return true;
     }
 
 

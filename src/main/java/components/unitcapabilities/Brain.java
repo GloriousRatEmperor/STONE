@@ -3,6 +3,7 @@ package components.unitcapabilities;
 import components.Component;
 import components.SubComponents.Commands.Command;
 import components.SubComponents.Commands.MoveCommand;
+import components.SubComponents.SubComponent;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.MoveContollable;
 import jade.GameObject;
@@ -22,7 +23,9 @@ public class Brain extends Component {
 
     protected transient Command currentCommand=null;
     protected transient LinkedList<Command> commandqueue=new LinkedList<>();
-
+    public Brain() {
+        subComponents = commandqueue;
+    }
     public void setGuard(boolean state){
         if(guard!=state){
             guard=state;
@@ -53,6 +56,7 @@ public class Brain extends Component {
         interruptCommand();
         commandqueue.clear();
         commandqueue.add(command);
+        update(0);
     }
     public void setAfk(boolean newstate){
 
@@ -145,5 +149,10 @@ public class Brain extends Component {
         currentCommand.update(dt,gameObject);
         stunTimer -= dt;
 
+    }
+    @Override
+    public void addSubComponent(SubComponent c) {
+        Command a=((Command)c);
+        addCommand(a);
     }
 }

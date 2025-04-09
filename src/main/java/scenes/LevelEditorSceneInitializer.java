@@ -1,8 +1,8 @@
 package scenes;
 
-import Multiplayer.ClientData;
-import Multiplayer.ServerData;
-import components.ServerInputs;
+import Multiplayer.DataPacket.ClientData;
+import Multiplayer.DataPacket.ServerData;
+import components.gamestuff.ServerInputs;
 import components.gamestuff.*;
 import components.unitcapabilities.defaults.Sprite;
 import imgui.ImGui;

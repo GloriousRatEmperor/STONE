@@ -4,13 +4,14 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import components.Component;
 import components.SubComponents.SubComponent;
-import components.gamestuff.ComponentDeserializer;
+import components.gamestuff.Deserializer.ComponentDeserializer;
+import components.gamestuff.Deserializer.GameObjectDeserializer;
+import components.gamestuff.Deserializer.SubComponentDeserializer;
 import components.gamestuff.GameCamera;
-import components.gamestuff.SubComponentDeserializer;
+import components.gamestuff.PlayerBot;
 import components.unitcapabilities.NonPickable;
 import jade.Camera;
 import jade.GameObject;
-import jade.GameObjectDeserializer;
 import jade.Transform;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
@@ -48,6 +49,7 @@ public class Scene {
     private Physics2D physics2D;
     private File leveltemp;
     private int allied;
+    private ArrayList<PlayerBot> playerBots=new ArrayList<>();
     private HashMap<Vector2i,Vector3i> floor;
 
     private SceneInitializer sceneInitializer;
@@ -59,6 +61,16 @@ public class Scene {
             return true;
         }
         return false;
+    }
+    public Boolean haveMoney(float addblood, float addrock, float addmagic,int player){
+        Vector3d moneys=money.get(player-1);
+        if(-addblood<=moneys.x&-addrock<=moneys.y&-addmagic<=moneys.z) {
+            return true;
+        }
+        return false;
+    }
+    public Vector3d getmoney(int player){
+        return money.get(player-1);
     }
     public void setAllied(int allied){
         this.allied=allied;
@@ -124,7 +136,10 @@ public class Scene {
     public Physics2D getPhysics() {
         return this.physics2D;
     }
-
+    public void addPlayerBot(PlayerBot bot){
+        playerBots.add(bot);
+        bot.setGameObjects(gameObjects);
+    }
     public void init() {
         this.camera = new Camera(new Vector2f(0, 0));
         this.sceneInitializer.loadResources(this);
@@ -359,7 +374,9 @@ public class Scene {
             }
         }
         this.physics2D.update(dt);
-
+        for(PlayerBot bot:playerBots){
+            bot.update(dt);
+        }
         for (int i=0; i < gameObjects.size(); i++) {
             GameObject go = gameObjects.get(i);
             go.update(dt);
@@ -459,6 +476,7 @@ public class Scene {
                 .setPrettyPrinting()
                 .registerTypeAdapter(SubComponent.class, new SubComponentDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
+                
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()
                 .create();
@@ -494,6 +512,7 @@ public class Scene {
                 .setPrettyPrinting()
                 .registerTypeAdapter(SubComponent.class, new SubComponentDeserializer())
                 .registerTypeAdapter(Component.class, new ComponentDeserializer())
+                
                 .registerTypeAdapter(GameObject.class, new GameObjectDeserializer())
                 .enableComplexMapKeySerialization()
                 .create();

@@ -10,8 +10,8 @@ import static components.unitcapabilities.Base.getClosestBase;
 import static jade.Window.playerAmount;
 
 public class MineralCluster {
-    public List<GameObject> minerals=new ArrayList<>();
-    private ArrayList<Base> owner;
+    public transient List<GameObject> minerals=new ArrayList<>();
+    private transient ArrayList<Base> owner;
     public Vector2f position;
     private int mineralCount=0;
     private int mineralCycle=0;

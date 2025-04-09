@@ -84,7 +84,6 @@ public class Effects extends Component {
     }
     @Override
     public void addSubComponent(SubComponent c) {
-        System.out.println("aaadddd");
         Effect e=((Effect)c);
         addEffect(e);
     }

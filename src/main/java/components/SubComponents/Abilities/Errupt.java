@@ -1,8 +1,8 @@
 package components.SubComponents.Abilities;
 
-import components.SubComponents.Frame.Frame;
-import components.SubComponents.Frame.FrameEffects.GrowSpinFrameEffect;
-import components.unitcapabilities.Animation;
+import components.SubComponents.Animation.Frame;
+import components.SubComponents.Animation.FrameEffects.GrowSpinFrameEffect;
+import components.SubComponents.Animation.Animation;
 import components.unitcapabilities.damage.Mortal;
 import enums.AbilityName;
 import jade.GameObject;
@@ -67,7 +67,7 @@ public class Errupt extends Ability{
     }
     @Override
     public boolean cast(final Vector2f pos, GameObject self,GameObject target){
-        self.die(self);
+        self.die();
         return true;
     }
 

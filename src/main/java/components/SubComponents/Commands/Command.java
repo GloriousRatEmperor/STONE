@@ -5,7 +5,7 @@ import components.unitcapabilities.Brain;
 import jade.GameObject;
 
 public class Command extends SubComponent {
-    protected Brain brain;
+    protected transient Brain brain;
 
     public void apply(GameObject self){
 

@@ -9,9 +9,11 @@ public class Player {
     private ChannelHandlerContext ctx;
     public ChannelId id;
     public State state=inactive;
+    public String name;
     public Player(ChannelHandlerContext ctx){
         this.ctx = ctx;
         this.id = ctx.channel().id();
+        this.name="player"+id;
     }
     public int allied;
     public ChannelHandlerContext getCtx(){

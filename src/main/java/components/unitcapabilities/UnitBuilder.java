@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static jade.Window.getScene;
-import static util.Img.Color;
+import static util.Img.color;
 
 public class UnitBuilder extends Component {
     public ArrayList<UNMADE> queue= new ArrayList<>();
@@ -129,7 +129,7 @@ public class UnitBuilder extends Component {
                 ImGui.image(Asprite.getTexId(), size, size, AtexCoords[2].x, AtexCoords[0].y, AtexCoords[0].x, AtexCoords[2].y);
                 if (unmade.time != unmade.maxTime) {
                     float progressBarLen = ImGui.getItemRectMaxX() - 5 - (ImGui.getItemRectMinX() + 5);
-                    ImGui.getWindowDrawList().addLine(ImGui.getItemRectMinX() + 5, ImGui.getItemRectMaxY() - 5, ImGui.getItemRectMinX() + 5 + progressBarLen * (1 - unmade.time / unmade.maxTime), ImGui.getItemRectMaxY() - 5, Color(255, 255, 255, 220), 5);
+                    ImGui.getWindowDrawList().addLine(ImGui.getItemRectMinX() + 5, ImGui.getItemRectMaxY() - 5, ImGui.getItemRectMinX() + 5 + progressBarLen * (1 - unmade.time / unmade.maxTime), ImGui.getItemRectMaxY() - 5, color(255, 255, 255, 220), 5);
                 }
             }
         }

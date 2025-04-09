@@ -97,7 +97,7 @@ public class Mortal extends Component {
 
     public void death(){
         isAlive=false;
-        gameObject.die(gameObject);
+        gameObject.die();
     }
     @Override
     public void begin(){

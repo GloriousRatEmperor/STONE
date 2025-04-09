@@ -1,6 +1,6 @@
 package components.SubComponents.Effects;
 
-import components.unitcapabilities.Animation;
+import components.SubComponents.Animation.Animation;
 import jade.GameObject;
 import util.Img;
 

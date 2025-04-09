@@ -33,7 +33,7 @@ public class TechnicalServer implements Runnable{
                         public void initChannel(SocketChannel ch)
                                 throws Exception {
                             ch.pipeline().addLast(new ServerDecoder(),
-                                    new Responder(),
+                                    new ServerEncoder(),
                                     server);
                         }
                     }).option(ChannelOption.SO_BACKLOG, 128)

@@ -1,5 +1,6 @@
 package Multiplayer;
 
+import Multiplayer.DataPacket.*;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -72,31 +73,32 @@ public class Server extends ChannelInboundHandlerAdapter {
 
 
 
-        ClientData clientData = (ClientData) msg;
+        ClientData data = (ClientData) msg;
         Player player = getPlayer(ctx.channel().id());
-        switch (clientData.getName()) {
-            case "stop" -> {
-                if (player.state!=inactive){
-                    if(player.state==waiting){
-                        playerCount-=1;
-                    }else {
-                        maxPlayerCount-=1;
-                        playerCount-=1;
-                    }
-                    player.state=inactive;
-
-                }else{
-                    System.out.println("but he wasn't playing nor ready wtf");
+        Class<? extends ClientData> dataClass=data.getClass();
+        if (dataClass.equals(Cstop.class)) {
+            Cstop clientData = (Cstop) data;
+            if (player.state != inactive) {
+                if (player.state == waiting) {
+                    playerCount -= 1;
+                } else {
+                    maxPlayerCount -= 1;
+                    playerCount -= 1;
                 }
-            }
-            case "start" -> {
-                if (player.state==inactive){
-                        player.state=waiting;
-                        playerCount += 1;
-                        if (playerCount == maxPlayerCount) {
-                            maxPlayerCount+=playerCountAdd;
+                player.state = inactive;
 
-                            HashMap<Vector2i, Vector3i> map= new HashMap<>();
+            } else {
+                System.out.println("but he wasn't playing nor ready wtf");
+            }
+        } else if (dataClass.equals(Cstart.class)) {
+            Cstart clientData = (Cstart) data;
+            if (player.state == inactive) {
+                player.state = waiting;
+                playerCount += 1;
+                if (playerCount == maxPlayerCount) {
+                    maxPlayerCount += playerCountAdd;
+
+                    HashMap<Vector2i, Vector3i> map = new HashMap<>();
 
 
 //                            for (int i=0; i<count; i++){
@@ -125,137 +127,166 @@ public class Server extends ChannelInboundHandlerAdapter {
 //                                    map.put(new Vector2i(-size/2+b*space, -size/2+i*space),new Vector2i(last/colorEmbiggen,colorRand));
 //                                }
 //                            };
-                            int boxsize= size/2;
-                            colorRand= 100;
-                            last.x=Rng.randint(colorMin,colorMax);
-                            last.y=Rng.randint(colorMin,colorMax);
-                            last.z=Rng.randint(colorMin,colorMax);
-                            map.put(new Vector2i(-boxsize,-boxsize),new Vector3i(last.x,last.y,last.z));
-                            last.x=Rng.randint(colorMin,colorMax);
-                            last.y=Rng.randint(colorMin,colorMax);
-                            last.z=Rng.randint(colorMin,colorMax);
-                            map.put(new Vector2i(boxsize,-boxsize),new Vector3i(last.x,last.y,last.z));
-                            last.x=Rng.randint(colorMin,colorMax);
-                            last.y=Rng.randint(colorMin,colorMax);
-                            last.z=Rng.randint(colorMin,colorMax);
-                            map.put(new Vector2i(boxsize,boxsize),new Vector3i(last.x,last.y,last.z));
-                            last.x=Rng.randint(colorMin,colorMax);
-                            last.y=Rng.randint(colorMin,colorMax);
-                            last.z=Rng.randint(colorMin,colorMax);
-                            map.put(new Vector2i(-boxsize,boxsize),new Vector3i(last.x,last.y,last.z));
-                            List<Vector2i> squarePositions= new ArrayList<>();
-                            for (int i = 0; i <boxCount;i++) {
+                    int boxsize = size / 2;
+                    colorRand = 100;
+                    last.x = Rng.randint(colorMin, colorMax);
+                    last.y = Rng.randint(colorMin, colorMax);
+                    last.z = Rng.randint(colorMin, colorMax);
+                    map.put(new Vector2i(-boxsize, -boxsize), new Vector3i(last.x, last.y, last.z));
+                    last.x = Rng.randint(colorMin, colorMax);
+                    last.y = Rng.randint(colorMin, colorMax);
+                    last.z = Rng.randint(colorMin, colorMax);
+                    map.put(new Vector2i(boxsize, -boxsize), new Vector3i(last.x, last.y, last.z));
+                    last.x = Rng.randint(colorMin, colorMax);
+                    last.y = Rng.randint(colorMin, colorMax);
+                    last.z = Rng.randint(colorMin, colorMax);
+                    map.put(new Vector2i(boxsize, boxsize), new Vector3i(last.x, last.y, last.z));
+                    last.x = Rng.randint(colorMin, colorMax);
+                    last.y = Rng.randint(colorMin, colorMax);
+                    last.z = Rng.randint(colorMin, colorMax);
+                    map.put(new Vector2i(-boxsize, boxsize), new Vector3i(last.x, last.y, last.z));
+                    List<Vector2i> squarePositions = new ArrayList<>();
+                    for (int i = 0; i < boxCount; i++) {
 
-                                for (int a = -size/2+boxsize ; a <size/2f;a+=boxsize*2) {
-                                    for (int c = -size/2+boxsize ; c <size/2;c+=boxsize*2) {
-                                        squarePositions.add(new Vector2i( a,  c));
-                                    }
-                                }
-
-
-                                for (Vector2i pos :squarePositions) {
-                                    last.x=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).x+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).x+
-                                            map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).x+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).x)/4;
-                                    last.y=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).y+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).y+
-                                            map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).y+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).y)/4;
-                                    last.z=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).z+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).z+
-                                            map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).z+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).z)/4;
-                                    map.put(new Vector2i(pos.x, pos.y),randomC());
-                                    last.x=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).x+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).x+
-                                            map.get(new Vector2i(pos.x,pos.y)).x)/3;
-                                    last.y=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).y+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).y+
-                                            map.get(new Vector2i(pos.x,pos.y)).y)/3;
-                                    last.z=(map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).z+map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).z+
-                                            map.get(new Vector2i(pos.x,pos.y)).z)/3;
-                                    map.put(new Vector2i(pos.x, pos.y-boxsize), randomC());
-                                    last.x+=(-map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).x+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).x)/3;
-                                    last.y+=(-map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).y+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).y)/3;
-                                    last.z+=(-map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).z+map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).z)/3;
-                                    map.put(new Vector2i(pos.x+boxsize, pos.y), randomC());
-                                    last.x+=(-map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).x+map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).x)/3;
-                                    last.y+=(-map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).y+map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).y)/3;
-                                    last.z+=(-map.get(new Vector2i(pos.x+boxsize,pos.y-boxsize)).z+map.get(new Vector2i(pos.x-boxsize,pos.y+boxsize)).z)/3;
-                                    map.put(new Vector2i(pos.x, pos.y+boxsize), randomC());
-                                    last.x+=(-map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).x+map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).x)/3;
-                                    last.y+=(-map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).y+map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).y)/3;
-                                    last.z+=(-map.get(new Vector2i(pos.x+boxsize,pos.y+boxsize)).z+map.get(new Vector2i(pos.x-boxsize,pos.y-boxsize)).z)/3;
-                                    map.put(new Vector2i(pos.x-boxsize, pos.y), randomC());
-
-
-
-
-                                }
-                                boxsize/=2;
-                                randchange/=dechaos;
-                                squarePositions.clear();
+                        for (int a = -size / 2 + boxsize; a < size / 2f; a += boxsize * 2) {
+                            for (int c = -size / 2 + boxsize; c < size / 2; c += boxsize * 2) {
+                                squarePositions.add(new Vector2i(a, c));
                             }
-
-                            long curTime=System.currentTimeMillis();
-                            time.setBeginTime(curTime);
-
-                            for (Player p:players) {
-                                if(p.state==waiting) {
-
-                                    ServerData serverData = new ServerData();
-                                    serverData.setIdCounter(clientData.getIntValue2());
-                                    serverData.setstrValue(clientData.getString());
-                                    serverData.setPlayerAmount(playerCountAdd);
-                                    serverData.setStart(curTime);
-                                    serverData.setTime(time.getTime());
-                                    serverData.setName(clientData.getName());
-                                    p.state = playing;
-                                    serverData.setIntValue(p.allied);
-                                    serverData.setIntValue2(boxsize*2);
-                                    serverData.setIntValue3(size/(boxsize*2));
-                                    List<Integer> map1=new ArrayList<>();
-                                    List<Integer> map2=new ArrayList<>();
-                                    List<Integer> map3=new ArrayList<>();
-                                    for ( Vector2i key : map.keySet() ) {
-                                        map1.add( key.x);
-                                        map2.add( key.y);
-                                        map3.add(map.get(key).x);
-                                        map3.add(map.get(key).y);
-                                        map3.add(map.get(key).z);
-                                    }
-                                    serverData.setMap(map1, map2, map3);
-                                    toclient(p, serverData);
-
-                                }
-                            }
+                        }
 
 
+                        for (Vector2i pos : squarePositions) {
+                            last.x = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).x + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).x +
+                                    map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).x + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).x) / 4;
+                            last.y = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).y + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).y +
+                                    map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).y + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).y) / 4;
+                            last.z = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).z + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).z +
+                                    map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).z + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).z) / 4;
+                            map.put(new Vector2i(pos.x, pos.y), randomC());
+                            last.x = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).x + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).x +
+                                    map.get(new Vector2i(pos.x, pos.y)).x) / 3;
+                            last.y = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).y + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).y +
+                                    map.get(new Vector2i(pos.x, pos.y)).y) / 3;
+                            last.z = (map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).z + map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).z +
+                                    map.get(new Vector2i(pos.x, pos.y)).z) / 3;
+                            map.put(new Vector2i(pos.x, pos.y - boxsize), randomC());
+                            last.x += (-map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).x + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).x) / 3;
+                            last.y += (-map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).y + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).y) / 3;
+                            last.z += (-map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).z + map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).z) / 3;
+                            map.put(new Vector2i(pos.x + boxsize, pos.y), randomC());
+                            last.x += (-map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).x + map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).x) / 3;
+                            last.y += (-map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).y + map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).y) / 3;
+                            last.z += (-map.get(new Vector2i(pos.x + boxsize, pos.y - boxsize)).z + map.get(new Vector2i(pos.x - boxsize, pos.y + boxsize)).z) / 3;
+                            map.put(new Vector2i(pos.x, pos.y + boxsize), randomC());
+                            last.x += (-map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).x + map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).x) / 3;
+                            last.y += (-map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).y + map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).y) / 3;
+                            last.z += (-map.get(new Vector2i(pos.x + boxsize, pos.y + boxsize)).z + map.get(new Vector2i(pos.x - boxsize, pos.y - boxsize)).z) / 3;
+                            map.put(new Vector2i(pos.x - boxsize, pos.y), randomC());
+
+
+                        }
+                        boxsize /= 2;
+                        randchange /= dechaos;
+                        squarePositions.clear();
                     }
-                }else{
-                    System.out.println("already playing wtf");
+
+                    long curTime = System.currentTimeMillis();
+                    time.setBeginTime(curTime);
+
+                    for (Player p : players) {
+                        if (p.state == waiting) {
+
+                            Sstart serverData = new Sstart();
+                            serverData.setIdCounter(clientData.getIdCounter());
+                            serverData.setLevelSave(clientData.getLevelSave());
+                            serverData.setPlayerAmount(playerCountAdd);
+                            serverData.setStartTime(curTime);
+                            serverData.setTime(time.getTime());
+                            p.state = playing;
+                            serverData.setPlayerAllied(p.allied);
+                            serverData.setMineralSpacing(boxsize * 2);
+                            serverData.setMineralCount(size / (boxsize * 2));
+                            List<Integer> map1 = new ArrayList<>();
+                            List<Integer> map2 = new ArrayList<>();
+                            List<Integer> map3 = new ArrayList<>();
+                            for (Vector2i key : map.keySet()) {
+                                map1.add(key.x);
+                                map2.add(key.y);
+                                map3.add(map.get(key).x);
+                                map3.add(map.get(key).y);
+                                map3.add(map.get(key).z);
+                            }
+                            serverData.setMap(map1, map2, map3);
+                            toClient(p, serverData);
+
+                        }
+                    }
+
+
                 }
+            } else {
+                System.out.println("already playing wtf");
             }
-            case "Move" -> {
+        } else if (dataClass.equals(Cmove.class)) {
+            Cmove clientData = (Cmove) data;
+            Smove serverData = new Smove();
 
-                ServerData ServerData = new ServerData();
+            serverData.setTime(time.getTime() + delay);
+            serverData.setTargetID(clientData.getTargetID());
+            serverData.setGameObjects(clientData.getGameObjects());
+            serverData.setPos(clientData.getPos());
+            serverData.setQmove(clientData.isQmove());
+            serverData.setShiftCommand(clientData.isShiftCommand());
+            toClients(serverData);
+        } else if (dataClass.equals(Ccast.class)) {
+            Ccast clientData = (Ccast) data;
+            Scast serverData = new Scast();
+            serverData.setAbilityID(clientData.getAbilityID());
+            serverData.setTarget(clientData.getTarget());
+            serverData.setShiftCommand(clientData.isShiftCommand());
+            serverData.setTime(time.getTime() + delay);
+            serverData.setGameObjects(clientData.getGameObjects());
+            serverData.setPos(clientData.getPos());
+            toClients(serverData);
+        } else if (dataClass.equals(Cmessage.class)) {
+            Cmessage clientData = (Cmessage) data;
+            if(clientData.getMessage().startsWith("rename ")){
+                String newname=clientData.getMessage().substring(7);
+                rename(player,newname);
+            }else{
+                Smessage serverData = new Smessage();
+                serverData.setTime(-1);
+                serverData.setMessage(clientData.getMessage());
+                serverData.setColor(clientData.getColor());
+                serverData.setSenderName(player.name);
 
-                ServerData.setTime(time.getTime() + delay);
-                ServerData.setIntValue(clientData.getIntValue());
-                ServerData.setGameObjects(clientData.getGameObjects());
-                ServerData.setName(clientData.getName());
-                ServerData.setPos(clientData.getPos());
-                ServerData.intValue2= clientData.getIntValue2();
-                toClients(ServerData);
+                toClients(serverData);
             }
-            case "Cast" -> {
 
-                ServerData ServerData = new ServerData();
-                ServerData.setIntValue2(clientData.getIntValue2());
-                ServerData.setIntValue3(clientData.getTarget());
-                ServerData.setIntValue(clientData.getIntValue());
-                ServerData.setTime(time.getTime() + delay);
-                ServerData.setGameObjects(clientData.getGameObjects());
-                ServerData.setName("Cast");
 
-                ServerData.setPos(clientData.getPos());
-                toClients(ServerData);
-            }
         }
     }
+    private void rename(Player player,String newname){
+        for(Player p:players){
+            if(p.name.equals(newname)){
+                sendError(p,"NAME TAKEN");
+            }
+            player.name=newname;
+        }
+    }
+    private void sendError(Player player,String message) {
+        Smessage serverData = new Smessage();
+        serverData.setTime(-1);
+        serverData.setMessage(message);
+        serverData.setColor(util.Img.color(255,0,0,255));
+        serverData.setSenderName("Server");
+        try {
+            toClient(player, serverData);
+        }catch (JsonProcessingException e){
+            System.out.println("ah FAK senderror threw error");
+        }
+    }
+
     private Player getPlayer(ChannelId id){
         for (Player p : players){
             if (p.id==id){
@@ -271,7 +302,7 @@ public class Server extends ChannelInboundHandlerAdapter {
             player.getCtx().writeAndFlush(msg);
         }
     }
-    public void toclient(Player player,ServerData msg) throws JsonProcessingException {
+    public void toClient(Player player, ServerData msg) throws JsonProcessingException {
         player.getCtx().writeAndFlush(msg);
     }
     private Vector3i randomC() {
@@ -281,8 +312,6 @@ public class Server extends ChannelInboundHandlerAdapter {
         int b=Math.max(Math.min( (last.z*colorEmbiggen+Rng.randint(-randchange,+randchange)+Rng.wild(-colorLotto,colorLotto,pow,division))/colorEmbiggen,colorMax),colorMin);
 
 
-        return new Vector3i(r,
-                g,
-                b);
+        return new Vector3i(r,g,b);
     }
 }

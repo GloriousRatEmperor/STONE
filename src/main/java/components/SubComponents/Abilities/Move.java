@@ -19,8 +19,8 @@ public class Move extends Ability{
         sprite = Img.get("move");
         targetable=true;
     }
-
-    public boolean cast(final Vector2f pos, GameObject self,GameObject target) {
+    @Override
+    public boolean cast(final Vector2f pos,GameObject self,GameObject target) {
         Brain brain=self.getComponent(Brain.class);
         if (brain!=null) {
             brain.addCommand(new MoveCommand(pos));

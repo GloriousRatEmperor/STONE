@@ -21,6 +21,16 @@ public class Heal extends Ability{
 
     }
     @Override
+    public boolean consider(GameObject self,boolean mpcapped){
+        Mortal mort=self.getComponent(Mortal.class);
+        if(mort!=null){
+            if(mort.health<=mort.maxHealth/3||(mpcapped&&mort.health<=mort.maxHealth/1.5f)){
+                return true;
+            }
+        }
+        return false;
+    }
+    @Override
     public void updateDesc(){
         setDesc("restores "+ Math.round(power*100)+"%% missing hp");
     }

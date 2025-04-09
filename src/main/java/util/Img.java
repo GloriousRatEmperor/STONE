@@ -12,5 +12,5 @@ public class Img {
 //        }
         return sprite;
     }
-    public static int Color(int r, int g, int b, int a) { int ret = a; ret <<= 8; ret += b; ret <<= 8; ret += g; ret <<= 8; ret += r; return ret; }
+    public static int color(int r, int g, int b, int a) { int ret = a; ret <<= 8; ret += b; ret <<= 8; ret += g; ret <<= 8; ret += r; return ret; }
 }

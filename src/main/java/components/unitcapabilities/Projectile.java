@@ -55,7 +55,7 @@ public abstract class Projectile extends Component {
     }
     public void death(){
         if(!gameObject.isDead()) {
-            gameObject.die(gameObject);
+            gameObject.die();
         }
     }
     @Override

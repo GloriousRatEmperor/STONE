@@ -1,8 +1,9 @@
 package components.gamestuff;
 
 import components.Component;
-import components.unitcapabilities.Animation;
-import components.SubComponents.Frame.Frame;
+import components.SubComponents.Animation.Animation;
+import components.SubComponents.Animation.Frame;
+import components.SubComponents.SubComponent;
 import imgui.ImGui;
 import imgui.type.ImString;
 import jade.GameObject;
@@ -38,9 +39,13 @@ public class StateMachine extends Component {
     }
 
     public HashMap<StateTrigger, String> stateTransfers = new HashMap<>();
-    private List<Animation> states = new ArrayList<>();
+    private transient List<Animation> states = new ArrayList<>();
     private transient Animation currentState = null;
     private String defaultStateTitle = "";
+
+    public StateMachine(){
+        this.subComponents=states;
+    }
 
     public void refreshTextures() {
         for (Animation state : states) {
@@ -110,7 +115,7 @@ public class StateMachine extends Component {
     }
 
     @Override
-    public void updateDraw() {
+    public void runningUpdateDraw() {
         if (currentState != null) {
             boolean animationFinished=currentState.updateDraw(gameObject.transform);
             if(animationFinished){
@@ -173,5 +178,9 @@ public class StateMachine extends Component {
             }
         }
         return activegameObjects;
+    }
+    @Override
+    public void addSubComponent(SubComponent s){
+        states.add((Animation) s);
     }
 }

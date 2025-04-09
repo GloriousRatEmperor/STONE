@@ -1,8 +1,8 @@
 package jade;
 
-import Multiplayer.ClientData;
-import Multiplayer.ServerData;
-import components.ServerInputs;
+import Multiplayer.DataPacket.*;
+import components.gamestuff.Message;
+import components.gamestuff.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
@@ -51,7 +51,7 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window implements Observer {
     public Thread clientThread;
-    public static ServerData startData;
+    public static Sstart startData;
     public BlockingQueue<ClientData> requests;
     public BlockingQueue<ServerData> responses;
     private int width, height;
@@ -186,7 +186,7 @@ public class Window implements Observer {
 
     }
     public void begin() {
-        start=false;
+        this.runtimePlaying = true;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
 
         UniTime.setStartNow();
@@ -196,23 +196,25 @@ public class Window implements Observer {
         UniTime.setFrame(lastPhysics);
         physicsTimes=0;
 
-        allied= startData.getIntValue();
+        allied= startData.getPlayerAllied();
         getImguiLayer().getMenu().allied=allied;
         GameObject.setCounter(startData.getIdCounter());
         try {
             FileWriter writer = new FileWriter(leveltemp);
-            String startLevel=startData.getstrValue();
+            String startLevel=startData.getLevelSave();
             writer.write(startLevel);
             writer.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+
         currentScene.load();
 
 
         Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
 
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+
         Scene scene=Window.getScene();
         scene.setFloor(floor);
         scene.initiatePlayers(startData.getPlayerAmount());
@@ -220,7 +222,7 @@ public class Window implements Observer {
         scene.setAllied(allied);
         newInputs.setTime(0f);
         Variables.start();
-        this.runtimePlaying = true;
+
         starttime=UniTime.getExact();
 
         startData=null;
@@ -469,6 +471,8 @@ public class Window implements Observer {
                         MouseListener.endFrame();
                         if(start){
                             begin();
+                            start=false;
+
                         }
                         if(endPlay){
                             endPlay=false;
@@ -524,7 +528,7 @@ public class Window implements Observer {
 
             //actual physics n shite bein done here
 
-            if (runtimePlaying) {
+            if (runtimePlaying&&!start) {
 
                 while (physicsTimes > 0) {
                     physicsTimes--;
@@ -561,40 +565,38 @@ public class Window implements Observer {
     }
     public static void sendMove(Vector2f position,List<Integer> Ids){
 
-        ClientData clientData = new ClientData();
-        clientData.setIntValue(-1);
+        Cmove clientData = new Cmove();
+        clientData.setTargetID(-1);
         clientData.setName("Move");
         clientData.setGameObjects(Ids);
         List<Float> pos = new ArrayList<>();
         pos.add(position.get(0));
         pos.add(position.get(1));
         clientData.setPos(pos);
-        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
-            clientData.setIntValue2(1);
-        }else {
-            clientData.setIntValue2(0);
-        }if(getQmove()){
-            clientData.setIntValue2(clientData.getIntValue2()+10);
+        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
+        if(getQmove()){
+            clientData.setQmove(true);
             setQmove(false);
+        }else{
+            clientData.setQmove(false);
         }
         get().requests.add(clientData);
     }
     public static void sendMove(Vector2f position,List<Integer> Ids,int targetId){
 
-        ClientData clientData = new ClientData();
-        clientData.setIntValue(targetId);
+        Cmove clientData = new Cmove();
+        clientData.setTargetID(targetId);
         clientData.setName("Move");
         clientData.setGameObjects(Ids);
         List<Float> pos = new ArrayList<>();
         pos.add(position.get(0));
         pos.add(position.get(1));
-        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
-            clientData.setIntValue2(1);
-        }else {
-            clientData.setIntValue2(0);
-        }if(getQmove()){
-            clientData.setIntValue2(clientData.getIntValue2()+10);
+        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
+        if(getQmove()){
+            clientData.setQmove(true);
             setQmove(false);
+        }else{
+            clientData.setQmove(false);
         }
         clientData.setPos(pos);
         get().requests.add(clientData);
@@ -603,24 +605,49 @@ public class Window implements Observer {
         if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
             casting = false;
         }
-        ClientData clientData = new ClientData();
+        Ccast clientData = new Ccast();
         clientData.setGameObjects(Ids);
-        clientData.setName("Cast");
-        clientData.setIntValue(AbilityID);
+        clientData.setAbilityID(AbilityID);
         List<Float> pos= new ArrayList<Float>();
         pos.add(MouseListener.getWorld().x);
         pos.add(MouseListener.getWorld().y);
-        if(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)){
-            clientData.setIntValue2(1);
-        }else {
-            clientData.setIntValue2(0);
-        }
+        clientData.setPos(pos);
+        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
         int id=getImguiLayer().getPropertiesWindow().getPickingTexture().readPixel((int)MouseListener.getScreenX(),(int)MouseListener.getScreenY());
         if( currentScene.getGameObject(id)!=null){
             clientData.setTarget(id);
         }else{
             clientData.setTarget(-1);
         }
+
+
+        get().requests.add(clientData);
+    }
+    public static void sendMessage(Message message){
+        sendMessage(message.msg,message.color);
+
+    }
+    public static void sendMessage(String message,int r,int g, int b,int a){ //0 to 255
+        sendMessage(message,util.Img.color(r,g,b,a));
+    }
+    public static void sendMessage(String message,int color){
+        Cmessage clientData=new Cmessage();
+        clientData.setMessage(message);
+        clientData.setColor(color);
+        get().requests.add(clientData);
+    }
+    public static void sendCastNotarget(List<Integer> Ids,int AbilityID){
+        if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
+            casting = false;
+        }
+        Ccast clientData = new Ccast();
+        clientData.setGameObjects(Ids);
+        clientData.setAbilityID(AbilityID);
+        List<Float> pos= new ArrayList<Float>();
+        pos.add(MouseListener.getWorld().x);
+        pos.add(MouseListener.getWorld().y);
+        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
+        clientData.setTarget(-1);
         clientData.setPos(pos);
 
         get().requests.add(clientData);
@@ -694,12 +721,11 @@ public class Window implements Observer {
             case GameRequestPlay -> {
                 if (!ready) {
                     ready = true;
-                    ClientData request = new ClientData();
-                    request.setName("start");
+                    Cstart request = new Cstart();
                     currentScene.save(null);
+                    request.setIdCounter(GameObject.ID_COUNTER);
                     try {
-                        request.setIntValue2(GameObject.ID_COUNTER);
-                        request.setString(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
+                        request.setLevelSave(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
                     }catch (java.io.IOException e){
                         e.printStackTrace();
                     }
@@ -719,8 +745,7 @@ public class Window implements Observer {
             }
             case GameEngineStopPlay -> {
                     ready=false;
-                    ClientData request = new ClientData();
-                    request.setName("stop");
+                    Cstop request = new Cstop();
                     requests.add(request);
                     this.runtimePlaying = false;
                     end=true;

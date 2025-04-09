@@ -20,7 +20,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
-import static util.Img.Color;
+import static util.Img.color;
 
 public class MasterObject {
     private GameObject object;
@@ -217,7 +217,7 @@ public class MasterObject {
             int color;
             float wide=0;
             float high=0;
-            ImGui.pushStyleColor(ImGuiCol.Text,Color(255,255,255,255));
+            ImGui.pushStyleColor(ImGuiCol.Text, color(255,255,255,255));
             for (String str:displaytexts) {
 
                 ImGui.calcTextSize(size, str, false,width);
@@ -243,33 +243,33 @@ public class MasterObject {
 
                     ImGui.getWindowDrawList().addRectFilled(mouseX, mouseY,
                             mouseX + wide,
-                            mouseY + high, Color(0, 0, 0, 255), 5);
-
+                            mouseY + high, color(0, 0, 0, 255), 5);
+                    //colors for imgui
                     for (String str:displaytexts){
                         switch (str.charAt(0)){
                             case ('0')->
-                                color=Color(220,220,220,255);
+                                color= color(220,220,220,255);
                             case ('1') ->
-                                    color=Color(255,0,0,255);
+                                    color= color(255,0,0,255);
                             case('2')->
-                                    color=Color(0,255,0,255);
+                                    color= color(0,255,0,255);
                             case('3')->
-                                    color=Color(0,0,255,255);
+                                    color= color(0,0,255,255);
                             case('4')->
-                                    color=Color(70,70,255,255);
+                                    color= color(70,70,255,255);
                             case('5')->
-                                    color=Color(90,90,90,255);
+                                    color= color(90,90,90,255);
                             case('6')->
-                                    color=Color(255,220,20,255); //yellow
+                                    color= color(255,220,20,255); //yellow
                             case('7')->
-                                color=Color(225,80,0,255);//orange
+                                color= color(225,80,0,255);//orange
                             case('8')->
-                                    color=Color(90,0,255,255);
-                            default -> color=Color(255,255,255,255);
+                                    color= color(90,0,255,255);
+                            default -> color= color(255,255,255,255);
 
 
                         }
-                        if(color!=Color(255,255,255,255)){
+                        if(color!= color(255,255,255,255)){
                             str=str.substring(1);
                         }
                         ImGui.pushStyleColor(ImGuiCol.Text,color);

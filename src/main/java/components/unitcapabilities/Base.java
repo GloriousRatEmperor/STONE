@@ -22,8 +22,8 @@ public class Base extends Component {
     private float range=15f;
     private float mineralDistance=4f;
     private boolean genned=false;
-    private static List<GameObject> bases=new ArrayList();
-    private List<MineralCluster> ownedClusters=new ArrayList<MineralCluster>();
+    private static transient List<GameObject> bases=new ArrayList();
+    private transient List<MineralCluster> ownedClusters=new ArrayList<MineralCluster>();
 
     public static void addBase(GameObject gameobject){
         Vector2f pos=gameobject.transform.position;

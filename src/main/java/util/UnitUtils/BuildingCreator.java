@@ -116,6 +116,7 @@ public class BuildingCreator {
         c.addAbility(c.makeAbility(buildwraith));
         c.addAbility(c.makeAbility(buildHeadless));
         c.addAbility(c.makeAbility(buildAlterator));
+        c.addAbility(buildBuffBird);
         c.addAbility(c.makeAbility(getBuildHeadlessHorseman));
         unit.addComponent(c);
 

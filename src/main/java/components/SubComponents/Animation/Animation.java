@@ -1,7 +1,7 @@
-package components.unitcapabilities;
+package components.SubComponents.Animation;
 
-import components.SubComponents.Frame.Frame;
-import components.SubComponents.Frame.FrameEffects.GrowSpinFrameEffect;
+import components.SubComponents.Animation.FrameEffects.GrowSpinFrameEffect;
+import components.SubComponents.SubComponent;
 import components.unitcapabilities.defaults.Sprite;
 import jade.Transform;
 import util.AssetPool;
@@ -10,30 +10,31 @@ import util.UniTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Animation {
+public class Animation extends SubComponent {
 
     public String title;
-    public List<Frame> animationFrames = new ArrayList<>();
+    public transient List<Frame> animationFrames = new ArrayList<>();
 
     private static Sprite defaultSprite = new Sprite();
     private transient int currentIndex = 0;
+    private boolean started=false;
     private boolean doesLoop = false;
     private boolean dies = false;
     private float lastTime= UniTime.getExact();
     public Animation(Animation a){
+        subComponents = animationFrames;
         title=a.title;
         animationFrames=a.animationFrames;
         currentIndex =a.currentIndex;
         doesLoop=a.doesLoop;
         dies=a.dies;
         lastTime=a.lastTime;
-        System.out.println("aaa it is used");
         for (Frame f:a.animationFrames){
             animationFrames.add(new Frame(f));
         }
     }
     public Animation(){
-
+        subComponents = animationFrames;
     }
 
     public void refreshTextures() {
@@ -72,6 +73,10 @@ public class Animation {
     }
 
     public boolean updateDraw(Transform trans) {
+        if(!started){
+            started=true;
+            lastTime=UniTime.getExact();
+        }
         float currentTime=UniTime.getExact();
         Frame currentFrame = animationFrames.get(currentIndex);
         if(currentFrame.updateDraw(trans,currentTime - lastTime)){
@@ -107,4 +112,12 @@ public class Animation {
             frame.reset(trans,undo);
         }
     }
+
+
+    public void addSubComponent(SubComponent c){
+        addFrame((Frame)c);
+    }
+
+
+
 }

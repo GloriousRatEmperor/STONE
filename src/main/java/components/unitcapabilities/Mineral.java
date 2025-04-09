@@ -13,6 +13,7 @@ public class Mineral extends Component {
     public Base getTiedBase(int allied){
         return cluster.getOwner(allied);
     }
+
     @Override
     public void destroy(){
         deplete();

@@ -1,6 +1,6 @@
 package components.gamestuff;
 
-import Multiplayer.ClientData;
+import Multiplayer.DataPacket.ClientData;
 import components.*;
 import components.unitcapabilities.NonPickable;
 import components.unitcapabilities.defaults.MoveContollable;

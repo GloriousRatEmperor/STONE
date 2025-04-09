@@ -18,7 +18,7 @@ public abstract class ShootProjectile extends Ability{
 
     }
     @Override
-    public boolean cast(final Vector2f pos, GameObject self, GameObject target){
+    public boolean cast(final Vector2f pos,GameObject self, GameObject target){
         GameObject projectile;
         if(requiresTarget){
             projectile= ProjectileCreator.makeProjectile(projectileName, self.getUid(), self.transform.position, target.transform,self.allied);

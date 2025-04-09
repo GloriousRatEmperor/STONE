@@ -2,7 +2,7 @@ package util.UnitUtils;
 
 import components.SubComponents.Effects.ImbuneAlternatorMark;
 import components.gamestuff.StateMachine;
-import components.unitcapabilities.Animation;
+import components.SubComponents.Animation.Animation;
 import components.unitcapabilities.CircleSensor;
 import components.unitcapabilities.GuidedProjectile;
 import components.unitcapabilities.LinearProjectile;

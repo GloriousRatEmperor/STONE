@@ -17,7 +17,7 @@ public class TimedLife extends Effect{
     }
     @Override
     public void expire(GameObject self){
-                self.die(self);
+                self.die();
     }
 
 

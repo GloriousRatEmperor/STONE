@@ -1,4 +1,4 @@
-package components.gamestuff;
+package components.gamestuff.Deserializer;
 
 import components.SubComponents.SubComponent;
 import com.google.gson.*;

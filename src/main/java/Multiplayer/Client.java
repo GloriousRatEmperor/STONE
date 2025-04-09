@@ -1,7 +1,8 @@
 package Multiplayer;
 
+import Multiplayer.DataPacket.ClientData;
+import Multiplayer.DataPacket.ServerData;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
@@ -14,7 +15,6 @@ public class Client extends ChannelInboundHandlerAdapter {
     ChannelHandlerContext ctx;
     BlockingQueue<ServerData> responses;
     private final Charset charset = StandardCharsets.UTF_8;
-    ObjectMapper mapper = new ObjectMapper();
 
     public Client(BlockingQueue<ServerData> responses) {
         this.responses=responses;

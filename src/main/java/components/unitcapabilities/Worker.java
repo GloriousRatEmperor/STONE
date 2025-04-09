@@ -138,7 +138,11 @@ public class Worker extends Component {
     public void start() {
         if(Window.runtimePlaying) {
             Brain brain=gameObject.getComponent(Brain.class);
-            brain.addCommand(new MoveCommand(getClosestBase(gameObject.transform.position).transform));
+            GameObject nearbase=getClosestBase(gameObject.transform.position);
+            if(nearbase==null){
+                return;
+            }
+            brain.addCommand(new MoveCommand(nearbase.transform));
             this.gameObject.getComponent(Rigidbody2D.class).friction = 0;
         }
     }

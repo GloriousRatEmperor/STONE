@@ -1,7 +1,9 @@
-package jade;
+package components.gamestuff.Deserializer;
 
 import com.google.gson.*;
 import components.Component;
+import jade.GameObject;
+import jade.Transform;
 
 import java.lang.reflect.Type;
 

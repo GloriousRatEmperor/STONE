@@ -114,7 +114,9 @@ public class Ability extends SubComponent {
             this.description = description;
         }
     }
-
+    public boolean consider(GameObject self, boolean mpcapped){
+        return false;
+    }
     @Override
     public void start(){
         if (sprite.getTexture() != null) {

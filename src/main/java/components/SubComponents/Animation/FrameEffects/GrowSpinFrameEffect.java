@@ -1,6 +1,6 @@
-package components.SubComponents.Frame.FrameEffects;
+package components.SubComponents.Animation.FrameEffects;
 
-import components.SubComponents.Frame.Frame;
+import components.SubComponents.Animation.Frame;
 import jade.Transform;
 
 public class GrowSpinFrameEffect extends FrameEffect {

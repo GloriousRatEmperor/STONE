@@ -1,18 +1,20 @@
-package components.SubComponents.Frame;
+package components.SubComponents.Animation;
 
-import components.SubComponents.Frame.FrameEffects.FrameEffect;
+import components.SubComponents.Animation.FrameEffects.FrameEffect;
 import components.SubComponents.SubComponent;
 import components.unitcapabilities.defaults.Sprite;
 import jade.Transform;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Frame extends SubComponent {
     public Sprite sprite;
     public float frameTime;
     public float time=0;
-    private ArrayList<FrameEffect> frameEffects=new ArrayList<FrameEffect>();
+    private transient ArrayList<FrameEffect> frameEffects=new ArrayList<FrameEffect>();
     public Frame(Frame f) {
+        subComponents = frameEffects;
         try {
             sprite = f.sprite.clone();
         } catch (CloneNotSupportedException e) {
@@ -22,7 +24,7 @@ public class Frame extends SubComponent {
     }
 
     public Frame() {
-
+        subComponents = frameEffects;
     }
 
     public Frame(Sprite sprite, float frameTime) {
@@ -48,9 +50,20 @@ public class Frame extends SubComponent {
         }
         time=0;
     }
+    @Override
+    public List<? extends SubComponent> getSubComponents(){
 
+        return frameEffects;
+    }
+
+    public void addSubComponent(SubComponent c){
+        addFrameEffect((FrameEffect) c);
+    }
     public void addFrameEffect(FrameEffect effect){
         frameEffects.add(effect);
+    }
+    public ArrayList<FrameEffect> getFrameEffects(){
+        return frameEffects;
     }
     public void removeFrameEffect(FrameEffect effect){
         frameEffects.remove(effect);

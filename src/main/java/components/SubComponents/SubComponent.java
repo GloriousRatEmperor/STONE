@@ -19,6 +19,37 @@ public abstract class  SubComponent{
     public int imguiGroup =0;
     public transient Component owner;
     public int id;
+    protected transient List<? extends SubComponent> subComponents;
+
+
+
+    public List<? extends SubComponent> GetAllsubComponents(){
+        return this.subComponents;
+    }
+    public void addSubComponent(SubComponent c){
+        System.out.println("ERROR, this class doesn't support subcomponents");
+    }
+    public List<? extends SubComponent>  getSubComponents(){
+        return subComponents;
+    }
+    public <T extends SubComponent> T getSubComponent(Class<T> subComponentClass) {
+        if(subComponents!=null) {
+            for (SubComponent c : subComponents) {
+                if (subComponentClass.isAssignableFrom(c.getClass())) {
+                    try {
+                        return subComponentClass.cast(c);
+                    } catch (ClassCastException e) {
+                        e.printStackTrace();
+                        assert false : "Error: Casting component.";
+                    }
+                }
+            }
+        }
+
+        return null;
+    }
+
+
     public int getID(){
         return id;
     }

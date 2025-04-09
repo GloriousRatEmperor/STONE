@@ -3,6 +3,8 @@
 
 import Multiplayer.*;
 
+import Multiplayer.DataPacket.ClientData;
+import Multiplayer.DataPacket.ServerData;
 import jade.Window;
 
 import java.util.concurrent.ArrayBlockingQueue;

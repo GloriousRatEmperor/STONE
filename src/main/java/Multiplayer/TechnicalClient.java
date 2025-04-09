@@ -1,6 +1,8 @@
 package Multiplayer;
 
 
+import Multiplayer.DataPacket.ClientData;
+import Multiplayer.DataPacket.ServerData;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import io.netty.bootstrap.Bootstrap;

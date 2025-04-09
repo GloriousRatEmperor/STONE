@@ -4,10 +4,11 @@ import components.SubComponents.Abilities.BuildBase;
 import components.SubComponents.Abilities.Errupt;
 import components.SubComponents.Effects.ExplodingProjectiles;
 import components.SubComponents.Effects.FearProjectiles;
-import components.unitcapabilities.Brain;
-import components.unitcapabilities.RangedBrain;
-import components.unitcapabilities.Shooter;
-import components.unitcapabilities.Worker;
+import components.SubComponents.Animation.Animation;
+import components.SubComponents.Animation.Frame;
+import components.SubComponents.Animation.FrameEffects.VisualMoveFrameEffect;
+import components.gamestuff.StateMachine;
+import components.unitcapabilities.*;
 import components.unitcapabilities.damage.Hitter;
 import components.unitcapabilities.damage.Mortal;
 import components.unitcapabilities.defaults.CastAbilities;
@@ -69,6 +70,8 @@ public class UnitCreator {
                     BuildSpider(name,position,allied);
             case "alterator"->
                     BuildAlterator(name,position,allied);
+            case "buffbird"->
+                    BuildBuffBird(name,position,allied);
             default->
                     BuildGeneralUnit(name,position,allied);
         };
@@ -76,6 +79,23 @@ public class UnitCreator {
 
     }
 
+    private static GameObject BuildBuffBird(String name, Vector2f position,int allied) {
+        GameObject bird= BuildGeneralUnit(name,position,allied);
+        StateMachine machine=new StateMachine();
+        Animation flap=new Animation();
+        flap.title="flap";
+        flap.setLoop(true);
+        Frame firstFrame=new Frame(getSprite("buffbird"),0.3f);
+        firstFrame.addFrameEffect(new VisualMoveFrameEffect(0,-0.2f));
+        flap.addFrame(firstFrame);
+        Frame secondFrame=new Frame(getSprite("buffbird2"),0.3f);
+        secondFrame.addFrameEffect(new VisualMoveFrameEffect(0,0.2f));
+        flap.addFrame(secondFrame);
+        machine.addState(flap);
+        machine.setDefaultState("flap");
+        bird.addComponent(machine);
+        return bird;
+    }
     private static GameObject BuildSnake(String name, Vector2f position,int allied){
         GameObject snek= BuildGeneralUnit(name,position,allied);
         Shooter fballer=new Shooter(u(name,"range"),u(name,"rangedattackspeed"),"fireball");

@@ -2,7 +2,7 @@ package util.UnitUtils;
 
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
-import components.unitcapabilities.Animation;
+import components.SubComponents.Animation.Animation;
 import components.unitcapabilities.Brain;
 import components.unitcapabilities.NonPickable;
 import components.unitcapabilities.aggroDetector;

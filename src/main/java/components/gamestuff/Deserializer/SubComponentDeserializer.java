@@ -1,9 +1,11 @@
-package components.gamestuff;
+package components.gamestuff.Deserializer;
 
-import components.SubComponents.SubComponent;
 import com.google.gson.*;
+import components.SubComponents.SubComponent;
 
 import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SubComponentDeserializer implements JsonSerializer<SubComponent>,
             JsonDeserializer<SubComponent> {
@@ -15,7 +17,16 @@ public class SubComponentDeserializer implements JsonSerializer<SubComponent>,
             JsonElement element = jsonObject.get("properties");
 
             try {
-                return context.deserialize(element, Class.forName(type));
+
+                SubComponent comp=context.deserialize(element, Class.forName(type));
+                JsonArray subComponents = jsonObject.getAsJsonArray("SUBSS");
+                if(subComponents!=null) {
+                    for (JsonElement e : subComponents) {
+                        SubComponent c = context.deserialize(e, SubComponent.class);
+                        comp.addSubComponent(c);
+                    }
+                }
+                return comp;
             } catch (ClassNotFoundException e) {
                 throw new JsonParseException("Unknown element type: " + type, e);
             }
@@ -26,6 +37,21 @@ public class SubComponentDeserializer implements JsonSerializer<SubComponent>,
             JsonObject result = new JsonObject();
             result.add("type", new JsonPrimitive(src.getClass().getCanonicalName()));
             result.add("properties", context.serialize(src, src.getClass()));
+
+            List<? extends SubComponent> subComps;
+            subComps=src.getSubComponents();
+
+            List<JsonElement> serialcomps=null;
+
+            if(subComps!=null) {
+                serialcomps = new ArrayList();
+                for (SubComponent cmp : subComps) {
+                    serialcomps.add(context.serialize(cmp, SubComponent.class));
+                }
+
+            }
+            result.add("SUBSS", context.serialize(serialcomps));
+
             return result;
         }
     }

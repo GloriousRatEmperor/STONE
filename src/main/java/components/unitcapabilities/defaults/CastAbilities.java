@@ -127,6 +127,7 @@ public class CastAbilities extends Component {
             case buildSpider -> new BuildUnit(a,"spider");
             case buildTotem ->new BuildUnit(a,"drownedtotem");
             case buildStoneborn -> new BuildUnit(a,"stoneborn");
+            case buildBuffBird -> new BuildUnit(a,"buffbird");
             case buildVolcano -> new BuildUnit(a,"volcano");
             case errupt -> new Errupt(a);
             case buildAlterator -> new BuildUnit(a,"Alterator");
@@ -153,7 +154,18 @@ public class CastAbilities extends Component {
             abilities.sort(Comparator.comparingInt(Ability::getID));
         }
     }
+    public List<Integer> consider(){
+        List<Integer> casts=new ArrayList<>();
+        for(Ability a:abilities){
+            if(isCastable(a.getID())){
+                if(a.consider(gameObject,mp==maxmp)){
+                    casts.add(a.getID());
+                }
+            }
 
+        }
+        return casts;
+    }
 
     public void addAbility(AbilityName a) {
         Ability ability = makeAbility(a);
