@@ -59,24 +59,33 @@ public class Server extends ChannelInboundHandlerAdapter {
         System.out.println("server connected to sumone");
         Player p=new Player (ctx);
         players.add(p);
-        allied+=1;
-        p.allied=allied;
-        if(allied==maxPlayerCount){
-            allied=0;
-        }
     }
 
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg)
             throws Exception {
-
-
-
         ClientData data = (ClientData) msg;
         Player player = getPlayer(ctx.channel().id());
         Class<? extends ClientData> dataClass=data.getClass();
-        if (dataClass.equals(Cstop.class)) {
+
+        if(dataClass.equals(Cregister.class)){
+            Cregister clientData=(Cregister) data;
+            if(player.state==unregistered){
+                player.state=inactive;
+                if(clientData.isBot()) {
+                    player.allied=-1;
+                }
+                else {
+                    allied += 1;
+                    player.allied = allied;
+                    if (allied == maxPlayerCount) {
+                        allied = 0;
+                    }
+                }
+            }
+        }
+        else if (dataClass.equals(Cstop.class)) {
             Cstop clientData = (Cstop) data;
             if (player.state != inactive) {
                 if (player.state == waiting) {

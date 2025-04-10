@@ -66,7 +66,6 @@ public class TechnicalClient implements Runnable{
                     while (!Objects.equals((request = requests.take()).getName(), "exit")) {
                         client.toServer(request);
                     }
-
             }
 
             //f.channel().closeFuture().sync();

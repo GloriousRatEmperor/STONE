@@ -8,7 +8,7 @@ import static Multiplayer.State.inactive;
 public class Player {
     private ChannelHandlerContext ctx;
     public ChannelId id;
-    public State state=inactive;
+    public State state=;
     public String name;
     public Player(ChannelHandlerContext ctx){
         this.ctx = ctx;

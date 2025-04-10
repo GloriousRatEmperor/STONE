@@ -176,9 +176,6 @@ public class Window implements Observer {
         results.addAll(Arrays.asList(Objects.requireNonNull(directoryFile.listFiles())));
         return results;
     }
-    public void init(Boolean debugging) {
-
-    }
     public void stop(){
         glLineWidth(2.0f);
 
@@ -503,9 +500,8 @@ public class Window implements Observer {
              });
 
              screen.start();
-         }else{
-             EventSystem.notify(null, new Event(EventType.GameRequestPlay));
          }
+        EventSystem.notify(null,new Event(EventType.Register));
 
 
         while (!scened) {
@@ -711,7 +707,11 @@ public class Window implements Observer {
     @Override
     public void onNotify(GameObject object, Event event) {
         switch (event.type) {
-
+            case Register -> {
+                Cregister request = new Cregister();
+                request.setBot(!hasDrawThread);
+                requests.add(request);
+            }
             case GameRequestPlay -> {
                 if (!ready) {
                     ready = true;
