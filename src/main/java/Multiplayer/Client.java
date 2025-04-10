@@ -3,14 +3,15 @@ package Multiplayer;
 import Multiplayer.DataPacket.ClientData;
 import Multiplayer.DataPacket.ServerData;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.BlockingQueue;
-
-public class Client extends ChannelInboundHandlerAdapter {
+@ChannelHandler.Sharable
+public class Client extends ChannelInboundHandlerAdapter  {
 
     ChannelHandlerContext ctx;
     BlockingQueue<ServerData> responses;
@@ -19,6 +20,7 @@ public class Client extends ChannelInboundHandlerAdapter {
     public Client(BlockingQueue<ServerData> responses) {
         this.responses=responses;
     }
+
 
     @Override
     public void channelActive(ChannelHandlerContext ctx)

@@ -13,6 +13,7 @@ import components.unitcapabilities.NonPickable;
 import jade.Camera;
 import jade.GameObject;
 import jade.Transform;
+import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3d;
@@ -137,8 +138,10 @@ public class Scene {
         return this.physics2D;
     }
     public void addPlayerBot(PlayerBot bot){
-        playerBots.add(bot);
-        bot.setGameObjects(gameObjects);
+        if(!Window.hasDrawThread) {
+            playerBots.add(bot);
+            bot.setGameObjects(gameObjects);
+        }
     }
     public void init() {
         this.camera = new Camera(new Vector2f(0, 0));

@@ -33,7 +33,5 @@ public class ClientBooter {
         window.run(debugging);
 
 
-
-
     }
 }

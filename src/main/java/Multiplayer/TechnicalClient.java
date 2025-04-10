@@ -4,7 +4,6 @@ package Multiplayer;
 import Multiplayer.DataPacket.ClientData;
 import Multiplayer.DataPacket.ServerData;
 import com.fasterxml.jackson.core.JsonProcessingException;
-
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
@@ -51,8 +50,16 @@ public class TechnicalClient implements Runnable{
 
                 }
             });
+            while (true)
+            {
+                ChannelFuture future = b.connect(host, port).await();
+                future.awaitUninterruptibly();
+                if (future.isSuccess())
+                {
+                    break;
+                }
+            }
 
-            ChannelFuture f = b.connect(host, port).sync();
 
             while (true) {
                 ClientData request;

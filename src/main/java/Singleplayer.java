@@ -20,8 +20,11 @@ public class Singleplayer {
 
 
         int port = 8080;
-
-        Thread serverThread= new Thread(new TechnicalServer(port,1));
+        int playerCount=1;
+        if(args.length>1){
+            playerCount= Integer.parseInt( args[1]);
+        }
+        Thread serverThread= new Thread(new TechnicalServer(port,playerCount));
         serverThread.start();
 
         BlockingQueue<ClientData> requests=new ArrayBlockingQueue<>(15);
