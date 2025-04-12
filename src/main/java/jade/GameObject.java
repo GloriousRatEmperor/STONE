@@ -24,7 +24,13 @@ import java.util.Objects;
 
 public class GameObject {
 
-    protected static int ID_COUNTER = 0;
+    protected static ThreadLocal<Integer> ID_COUNTER = new ThreadLocal<>(){
+        @Override
+        protected Integer initialValue()
+        {
+            return 0;
+        }
+    };
     transient int uid = -1;
 
     public String name;
@@ -35,7 +41,7 @@ public class GameObject {
     private boolean isDead = false;
 
     public static void setCounter(int countnumba){
-        ID_COUNTER=countnumba;
+        ID_COUNTER.set(countnumba);
     }
 
     public GameObject(String name) {
@@ -313,7 +319,7 @@ public class GameObject {
     }
 
     public static void init(int maxId) {
-        ID_COUNTER = maxId;
+        ID_COUNTER.set(maxId);
     }
 
     public int getUid() {
@@ -333,7 +339,8 @@ public class GameObject {
 
 
     public void generateUid() {
-        this.uid = ID_COUNTER++;
+        this.uid=ID_COUNTER.get();
+        ID_COUNTER.set(ID_COUNTER.get()+1);
     }
 
     public boolean doSerialization() {

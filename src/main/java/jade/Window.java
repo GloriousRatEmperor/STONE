@@ -719,7 +719,7 @@ public class Window implements Observer {
                     if(currentScene!=null) {
                         currentScene.save(null);
 
-                        request.setIdCounter(GameObject.ID_COUNTER);
+                        request.setIdCounter(GameObject.ID_COUNTER.get());
                         try {
                             request.setLevelSave(Files.readString(leveltemp.toPath(), StandardCharsets.UTF_8));
                         } catch (java.io.IOException e) {

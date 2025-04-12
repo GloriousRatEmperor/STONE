@@ -15,18 +15,19 @@ public class MineralCluster {
     public Vector2f position;
     private int mineralCount=0;
     private int mineralCycle=0;
-
-
-
-
-
-    public static List<MineralCluster> mineralClusters=new ArrayList();
+    public static ThreadLocal<List<MineralCluster>> mineralClusters = new ThreadLocal<>(){
+        @Override
+        protected List<MineralCluster> initialValue()
+        {
+            return new ArrayList();
+        }
+    };
 
     public static void addCluster(MineralCluster mineralCluster){
-        mineralClusters.add(mineralCluster);
+        mineralClusters.get().add(mineralCluster);
     }
     public static void removeCluster(MineralCluster mineralCluster){
-        mineralClusters.remove(mineralCluster);
+        mineralClusters.get().remove(mineralCluster);
     }
 
 
@@ -34,7 +35,7 @@ public class MineralCluster {
 
     public MineralCluster(int creatorAllied, Vector2f position){
         owner=new ArrayList<>();
-        mineralClusters.add(this);
+        mineralClusters.get().add(this);
         for (int i=0;i<playerAmount+2;i++){
             if(i==creatorAllied){
                 owner.add(null);
@@ -91,7 +92,7 @@ public class MineralCluster {
 
                 }
                 owner=null;
-                mineralClusters.remove(this);
+                mineralClusters.get().remove(this);
                 return true;
             } else {
 
