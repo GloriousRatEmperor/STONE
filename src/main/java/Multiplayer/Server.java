@@ -75,6 +75,7 @@ public class Server extends ChannelInboundHandlerAdapter {
 
         ClientData data = (ClientData) msg;
         Player player = getPlayer(ctx.channel().id());
+        assert (player != null);
         Class<? extends ClientData> dataClass=data.getClass();
         if (dataClass.equals(Cstop.class)) {
             Cstop clientData = (Cstop) data;
@@ -269,10 +270,11 @@ public class Server extends ChannelInboundHandlerAdapter {
     private void rename(Player player,String newname){
         for(Player p:players){
             if(p.name.equals(newname)){
-                sendError(p,"NAME TAKEN");
+                sendError(player,"NAME TAKEN");
+                return;
             }
-            player.name=newname;
         }
+        player.name=newname;
     }
     private void sendError(Player player,String message) {
         Smessage serverData = new Smessage();

@@ -22,14 +22,20 @@ public class Base extends Component {
     private float range=15f;
     private float mineralDistance=4f;
     private boolean genned=false;
-    private static transient List<GameObject> bases=new ArrayList();
+    private static transient ThreadLocal<List<GameObject>> bases=new ThreadLocal<>(){
+        @Override
+        protected List<GameObject> initialValue()
+        {
+            return new ArrayList<>();
+        }
+    };
     private transient List<MineralCluster> ownedClusters=new ArrayList<MineralCluster>();
 
     public static void addBase(GameObject gameobject){
         Vector2f pos=gameobject.transform.position;
-        bases.add(gameobject);
+        bases.get().add(gameobject);
         Base base=gameobject.getComponent(Base.class);
-        for(MineralCluster min:mineralClusters){
+        for(MineralCluster min:mineralClusters.get()){
             Base ownbase=min.getOwner(gameobject.allied);
             double dist=Maf.distance(pos, min.position);
             if(ownbase!=null) {
@@ -52,12 +58,12 @@ public class Base extends Component {
 
     }
     public static void removeBase(GameObject gameobject){
-        bases.remove(gameobject);
+        bases.get().remove(gameobject);
     }
     public static GameObject getClosestBase(Vector2f position){
         GameObject base=null;
         double lastDistance=99999999;
-        for (GameObject go:bases){
+        for (GameObject go:bases.get()){
             double  distance = Math.sqrt( Math.pow( go.transform.position.x-position.x,2)+Math.pow( go.transform.position.y-position.y,2));
             if (distance<lastDistance){
                 lastDistance=distance;
@@ -70,7 +76,7 @@ public class Base extends Component {
     public static GameObject getClosestBase(Vector2f position, int allied){
         GameObject base=null;
         double lastDistance=99999999;
-        for (GameObject go:bases){
+        for (GameObject go:bases.get()){
             if(go.allied!=allied){
                 continue;
             }
