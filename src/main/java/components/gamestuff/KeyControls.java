@@ -1,6 +1,7 @@
 package components.gamestuff;
 
 import Multiplayer.DataPacket.ClientData;
+import Multiplayer.Sender;
 import components.*;
 import components.unitcapabilities.UnitBuilder;
 import components.unitcapabilities.damage.Hitter;
@@ -68,7 +69,7 @@ public class KeyControls extends Component {
 
             }
 
-            Window.sendMove(position,ids);
+            Sender.sendMove(position,ids);
         }else if(KeyListener.keyBeginPress(GLFW_KEY_Q)){
             Qmove =true;
 

@@ -29,7 +29,6 @@ public class ClientNoDrawBooter {
         //window.clientThread=clientThread;
         window.requests=requests;
         window.responses=responses;
-        Window.hasDrawThread=false;
         window.run(debugging);
 
 

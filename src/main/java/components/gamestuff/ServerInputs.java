@@ -13,7 +13,6 @@ import observers.events.EventType;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
-import util.UniTime;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -143,14 +142,13 @@ public class ServerInputs extends Component {
         } else if (dataClass.equals(Sstart.class)) {
             Sstart serverData = (Sstart) data;
             EventSystem.notify(null, new Event(EventType.GameEngineStartPlay));
-            UniTime.setStartNow();
             HashMap<Vector2i, Vector3i> newfloor = makeMap(serverData.getxCoords(), serverData.getyCoords(), serverData.getColors());
 
             int space = serverData.getMineralSpacing();
             int count = serverData.getMineralCount();
             newfloor.put(new Vector2i(0, 1), new Vector3i(count, space, 0));
-            Window.floor = newfloor;
-            Window.startData = serverData;
+            Window.get().floor = newfloor;
+            Window.get().startData = serverData;
         } else if (dataClass.equals(Scast.class)) {
             Scast serverData = (Scast) data;
             ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());

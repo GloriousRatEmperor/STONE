@@ -1,7 +1,8 @@
 package components.gamestuff;
 
 import Multiplayer.DataPacket.ClientData;
-import components.*;
+import Multiplayer.Sender;
+import components.Component;
 import components.unitcapabilities.NonPickable;
 import components.unitcapabilities.defaults.MoveContollable;
 import editor.PropertiesWindow;
@@ -20,7 +21,9 @@ import java.util.Set;
 import java.util.concurrent.BlockingQueue;
 
 import static components.gamestuff.KeyControls.setQmove;
-import static jade.Window.*;
+import static editor.Menu.activateCast;
+import static editor.Menu.casting;
+import static jade.Window.get;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class MouseControls extends Component {
@@ -90,10 +93,10 @@ public class MouseControls extends Component {
             int gameObjectId = pickingTexture.readPixel(x, y);
             GameObject pickedObj = currentScene.getGameObject(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
-                Window.sendMove(position,ids,gameObjectId);
+                Sender.sendMove(position,ids,gameObjectId);
             }else {
 
-                Window.sendMove(position, ids);
+                Sender.sendMove(position, ids);
             }
         }
         else if (!MouseListener.isDragging() && MouseListener.mouseButtonDown(GLFW_MOUSE_BUTTON_LEFT) && debounce < 0) {

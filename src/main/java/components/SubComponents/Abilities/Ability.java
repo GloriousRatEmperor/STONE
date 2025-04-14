@@ -1,13 +1,14 @@
 package components.SubComponents.Abilities;
 
+import Multiplayer.Sender;
 import components.SubComponents.SubComponent;
 import components.unitcapabilities.defaults.CastAbilities;
 import components.unitcapabilities.defaults.Sprite;
+import editor.Menu;
 import enums.AbilityName;
 import imgui.ImGui;
 import jade.GameObject;
 import jade.KeyListener;
-import jade.Window;
 import org.joml.Vector2f;
 import renderer.DebugDraw;
 import util.AssetPool;
@@ -74,9 +75,9 @@ public class Ability extends SubComponent {
             }
             if (Ids.size()>0){
                 if(targetable) {
-                    Window.targetCast(Ids, getID());
+                    Menu.targetCast(Ids, getID());
                 }else{
-                    Window.sendCast(Ids, getID());
+                    Sender.sendCast(Ids, getID());
                 }
             }
         }ImGui.popID();

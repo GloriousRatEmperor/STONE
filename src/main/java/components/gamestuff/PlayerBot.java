@@ -1,5 +1,6 @@
 package components.gamestuff;
 
+import Multiplayer.Sender;
 import components.Component;
 import components.unitcapabilities.defaults.CastAbilities;
 import enums.BotState;
@@ -100,7 +101,7 @@ public List<List<Integer>> considerCasting(float dt) {//returns a list where the
         for(List<Integer> cast:casts){
             int abilityId=cast.get(0);
             cast.remove(0);
-            Window.sendCastNotarget(cast,abilityId);
+            Sender.sendCastNotarget(cast,abilityId);
         }
     }
 

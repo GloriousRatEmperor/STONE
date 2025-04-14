@@ -138,7 +138,7 @@ public class Scene {
         return this.physics2D;
     }
     public void addPlayerBot(PlayerBot bot){
-        if(!Window.hasDrawThread) {
+        if(!Window.get().hasDrawThread) {
             playerBots.add(bot);
             bot.setGameObjects(gameObjects);
         }

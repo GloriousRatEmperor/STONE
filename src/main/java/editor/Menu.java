@@ -1,5 +1,6 @@
 package editor;
 
+import Multiplayer.Sender;
 import components.SubComponents.Abilities.Ability;
 import components.gamestuff.Message;
 import components.gamestuff.SpriteRenderer;
@@ -8,9 +9,9 @@ import imgui.ImGui;
 import imgui.flag.ImGuiCol;
 import imgui.flag.ImGuiWindowFlags;
 import jade.GameObject;
+import jade.KeyListener;
 import jade.MasterObject;
 import jade.MouseListener;
-import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector4f;
 import renderer.PickingTexture;
@@ -18,11 +19,16 @@ import renderer.PickingTexture;
 import java.util.ArrayList;
 import java.util.List;
 
-import static jade.Window.*;
+import static Multiplayer.Sender.sendCast;
+import static jade.Window.get;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_LEFT_SHIFT;
 
 public class Menu {
     private List<GameObject> activeGameObjects;
     private static List<Message> messages=new ArrayList<>();
+    public static boolean casting;
+    private static List<Integer> targetIds;
+    private static int targetAbility;
     MasterObject MasterObject=new MasterObject(true);
     public int allied;
     private String typingString="";
@@ -80,10 +86,10 @@ public class Menu {
 
                     CastAbilities cast=go.getComponent(CastAbilities.class);
                     if(cast!=null){
-                        Ability ability=cast.getAbility(Window.targetAbility);
+                        Ability ability=cast.getAbility(Menu.targetAbility);
                         if(ability!=null){
                             ability.castGui(pos, go.transform.position);
-                            if(!massCast()){ //TODO move casting process from window to imguilayer?
+                            if(!massCast()){
                                 break;
                             }
                         }
@@ -178,9 +184,30 @@ public class Menu {
 
     public void sendMessage(){
         if(!typingString.equals("")){
-            Window.sendMessage(typingString,(int)(defautcolor.x*255),(int)(defautcolor.y*255),(int)(defautcolor.z*255),(int)(defautcolor.w*255));
+            Sender.sendMessage(typingString,(int)(defautcolor.x*255),(int)(defautcolor.y*255),(int)(defautcolor.z*255),(int)(defautcolor.w*255));
             typingString="";
         }
+    }
+    public static void targetCast(List<Integer> Ids,int AbilityID){
+        targetIds=Ids;
+        targetAbility=AbilityID;
+        casting=true;
+
+    }
+    public static void activateCast(){
+        if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
+            casting = false;
+        }
+        sendCast(targetIds,targetAbility);
+    }
+    public static void cancelCast(){
+        casting=false;
+    }
+    public static boolean massCast(){
+        if(targetIds==null){
+            return false;
+        }
+        return targetIds.size()>1;
     }
 
 }

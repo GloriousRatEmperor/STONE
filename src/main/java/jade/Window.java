@@ -1,13 +1,10 @@
 package jade;
 
 import Multiplayer.DataPacket.*;
-import components.gamestuff.Message;
 import components.gamestuff.ServerInputs;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
-import observers.events.EventType;
-import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3i;
 import org.joml.Vector4f;
@@ -41,8 +38,6 @@ import java.util.*;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-import static components.gamestuff.KeyControls.getQmove;
-import static components.gamestuff.KeyControls.setQmove;
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.openal.ALC10.*;
@@ -51,8 +46,8 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 
 public class Window implements Observer {
     public Thread clientThread;
-    public static boolean hasDrawThread=true;
-    public static Sstart startData;
+    public boolean hasDrawThread=true;
+    public Sstart startData;
     public BlockingQueue<ClientData> requests;
     public BlockingQueue<ServerData> responses;
     private int width, height;
@@ -65,7 +60,7 @@ public class Window implements Observer {
     public ImGuiLayer imguiLayer;
 
     public Framebuffer framebuffer;
-    public static HashMap<Vector2i, Vector3i> floor;
+    public HashMap<Vector2i, Vector3i> floor;
 
 
     public static boolean runtimePlaying = false;
@@ -74,7 +69,7 @@ public class Window implements Observer {
 
 
     public static ArrayList<Shader> Shaders = new ArrayList<Shader>();
-    public static boolean newFloor=false;
+    public boolean newFloor=false;
 
     private float dt;
     private final int nano=1000000000;
@@ -86,23 +81,14 @@ public class Window implements Observer {
     public static float physicsStep;
     private float lastPhysics;
     private float starttime;
-    private static Window window = null;
+    private static ThreadLocal<Window> window = new ThreadLocal<>();
 
     private long audioContext;
     private long audioDevice;
     public static boolean scened=false;
 
-    private static Scene currentScene;
+    private Scene currentScene;
     public Boolean debugging;
-    public static boolean casting;
-    private static List<Integer> targetIds;
-    public static int targetAbility;
-    public static boolean massCast(){
-        if(targetIds==null){
-            return false;
-        }
-        return targetIds.size()>1;
-    }
     public static void setAllied(int allied){
         get().allied=allied;
     }
@@ -115,15 +101,17 @@ public class Window implements Observer {
 
     }
     public static void changeScene(SceneInitializer sceneInitializer) {
-        if (currentScene != null) {
-            currentScene.destroy();
+        Scene current=get().currentScene;
+        if (current != null) {
+            current.destroy();
         }
 
         getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
-        currentScene = new Scene(sceneInitializer, get().leveltemp);
-        currentScene.load();
-        currentScene.init();
-        currentScene.start();
+        get().currentScene = new Scene(sceneInitializer, get().leveltemp);
+        current=get().currentScene;
+        current.load();
+        current.init();
+        current.start();
         scened=true;
 
     }
@@ -133,17 +121,17 @@ public class Window implements Observer {
     }
 
     public static Window get() {
-        if (Window.window == null) {
-            Window.window = new Window();
+        if (Window.window.get() == null) {
+            Window.window.set( new Window());
         }
 
-        return Window.window;
+        return Window.window.get();
     }
 
-    public static Physics2D getPhysics() { return currentScene.getPhysics(); }
+    public static Physics2D getPhysics() { return get().currentScene.getPhysics(); }
 
     public static Scene getScene() {
-        return currentScene;
+        return get().currentScene;
     }
 
     public void run(Boolean debugging) throws NoSuchFieldException, InterruptedException {
@@ -188,8 +176,9 @@ public class Window implements Observer {
 
         UniTime.setStartNow();
         inputs.setTime(0f);
-        beginTime=0f;
-        lastPhysics = 0f;
+        beginTime=0;
+        lastPhysics = 0;
+        endTime=0;
         UniTime.setFrame(lastPhysics);
         physicsTimes=0;
 
@@ -229,13 +218,14 @@ public class Window implements Observer {
 
 
     public void loop() throws NoSuchFieldException, InterruptedException {
-         beginTime = UniTime.getExact();
+         beginTime =0;
          dt = -1.0f;
          physicsTimes=0;
          fractionPassed=0f;
          physicsStep=1/60f;
-         lastPhysics=UniTime.getExact();
+         lastPhysics=0;
         Thread screen=null;
+        Window runningWindow=window.get();
          if(hasDrawThread) {
 
 
@@ -313,6 +303,8 @@ public class Window implements Observer {
                  public void run() {
                      // Setup an error callback
                      GLFWErrorCallback.createPrint(System.err).set();
+
+                     Window.window.set(runningWindow);
 
                      // Initialize GLFW
                      if (!glfwInit()) {
@@ -404,7 +396,7 @@ public class Window implements Observer {
 
                          File dir = new File("Leveltemps");
                          if (!dir.isDirectory()) {
-                             System.out.println("FUCK,this shit ain't a directory");
+                             new File("Leveltemps").mkdirs();
                          }
                          cleanTemps(dir);
                          leveltemp = File.createTempFile("level", ".tmp", dir);
@@ -458,7 +450,6 @@ public class Window implements Observer {
                              if (start) {
                                  begin();
                                  start = false;
-
                              }
                              if (endPlay) {
                                  endPlay = false;
@@ -501,7 +492,6 @@ public class Window implements Observer {
 
              screen.start();
          }
-        EventSystem.notify(null,new Event(EventType.Register));
 
 
         while (!scened) {
@@ -511,12 +501,11 @@ public class Window implements Observer {
 
 
         while (!hasDrawThread||screen.isAlive()) {
-
-
             //actual physics n shite bein done here
-
             if (runtimePlaying&&!start) {
-
+                if(util.UniTime.getStart()==0){
+                    util.UniTime.setStartNow();
+                }
                 while (physicsTimes > 0) {
                     physicsTimes--;
 
@@ -542,139 +531,35 @@ public class Window implements Observer {
                     beginTime = UniTime.getExact();
 
                 }
+                if(end){
+                    end=false;
+                    endPlay=true;
+                    while(endPlay){
+                        java.util.concurrent.locks.LockSupport.parkNanos(100);
+                    }
+                }
             }else if(!hasDrawThread&&start){
                 begin();
                 start = false;
             }
-            if(end){
-                end=false;
-                endPlay=true;
-            }
 
         }
     }
-    public static void sendMove(Vector2f position,List<Integer> Ids){
-
-        Cmove clientData = new Cmove();
-        clientData.setTargetID(-1);
-        clientData.setName("Move");
-        clientData.setGameObjects(Ids);
-        List<Float> pos = new ArrayList<>();
-        pos.add(position.get(0));
-        pos.add(position.get(1));
-        clientData.setPos(pos);
-        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
-        if(getQmove()){
-            clientData.setQmove(true);
-            setQmove(false);
-        }else{
-            clientData.setQmove(false);
-        }
-        get().requests.add(clientData);
-    }
-    public static void sendMove(Vector2f position,List<Integer> Ids,int targetId){
-
-        Cmove clientData = new Cmove();
-        clientData.setTargetID(targetId);
-        clientData.setName("Move");
-        clientData.setGameObjects(Ids);
-        List<Float> pos = new ArrayList<>();
-        pos.add(position.get(0));
-        pos.add(position.get(1));
-        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
-        if(getQmove()){
-            clientData.setQmove(true);
-            setQmove(false);
-        }else{
-            clientData.setQmove(false);
-        }
-        clientData.setPos(pos);
-        get().requests.add(clientData);
-    }
-    public static void sendCast(List<Integer> Ids,int AbilityID){
-        if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
-            casting = false;
-        }
-        Ccast clientData = new Ccast();
-        clientData.setGameObjects(Ids);
-        clientData.setAbilityID(AbilityID);
-        List<Float> pos= new ArrayList<Float>();
-        pos.add(MouseListener.getWorld().x);
-        pos.add(MouseListener.getWorld().y);
-        clientData.setPos(pos);
-        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
-        int id=getImguiLayer().getPropertiesWindow().getPickingTexture().readPixel((int)MouseListener.getScreenX(),(int)MouseListener.getScreenY());
-        if( currentScene.getGameObject(id)!=null){
-            clientData.setTarget(id);
-        }else{
-            clientData.setTarget(-1);
-        }
-
-
-        get().requests.add(clientData);
-    }
-    public static void sendMessage(Message message){
-        sendMessage(message.msg,message.color);
-
-    }
-    public static void sendMessage(String message,int r,int g, int b,int a){ //0 to 255
-        sendMessage(message,util.Img.color(r,g,b,a));
-    }
-    public static void sendMessage(String message,int color){
-        Cmessage clientData=new Cmessage();
-        clientData.setMessage(message);
-        clientData.setColor(color);
-        get().requests.add(clientData);
-    }
-    public static void sendCastNotarget(List<Integer> Ids,int AbilityID){
-        if(!KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT)) {
-            casting = false;
-        }
-        Ccast clientData = new Ccast();
-        clientData.setGameObjects(Ids);
-        clientData.setAbilityID(AbilityID);
-        List<Float> pos= new ArrayList<Float>();
-        pos.add(MouseListener.getWorld().x);
-        pos.add(MouseListener.getWorld().y);
-        clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
-        clientData.setTarget(-1);
-        clientData.setPos(pos);
-
-        get().requests.add(clientData);
-    }
-    public static void targetCast(List<Integer> Ids,int AbilityID){
-        targetIds=Ids;
-        targetAbility=AbilityID;
-        casting=true;
-
-    }
-    public static void activateCast(){
-
-        sendCast(targetIds,targetAbility);
-    }
-    public static void cancelCast(){
-        casting=false;
-    }
-//    public static void sendSelfcast(List<Integer> Ids,String AbilityName){
-//
-//        ClientData clientData = new ClientData();
-//        clientData.setName(AbilityName);
-//        clientData.setGameObjects(Ids);
-//        get().requests.add(clientData);
-//    }
     public static HashMap<Vector2i, Vector3i> getFloor(){
-        return floor;
+        return Window.get().floor;
     }
     public static Boolean checkIfNewFloor(){
-        if(newFloor){
-          newFloor=false;
+        Window wind=Window.get();
+        if(wind.newFloor){
+          wind.newFloor=false;
           return true;
         }
         return false;
     }
     public static void UpdateFloor(HashMap<Vector2i, Vector3i> flor){
-        floor=flor;
-        newFloor=true;
+        Window wind=Window.get();
+        wind.floor=flor;
+        wind.newFloor=true;
     }
     public static int getWidth() {
         return 3840;//get().width;
@@ -707,11 +592,6 @@ public class Window implements Observer {
     @Override
     public void onNotify(GameObject object, Event event) {
         switch (event.type) {
-            case Register -> {
-                Cregister request = new Cregister();
-                request.setBot(!hasDrawThread);
-                requests.add(request);
-            }
             case GameRequestPlay -> {
                 if (!ready) {
                     ready = true;

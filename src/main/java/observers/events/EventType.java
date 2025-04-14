@@ -9,6 +9,5 @@ public enum EventType {
     SaveLevel,
     ChangeLevel,
     LoadLevel,
-    Register,
     UserEvent
 }
