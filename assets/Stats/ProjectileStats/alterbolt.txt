@@ -1,0 +1,8 @@
+speed:20
+damage:1
+lifespan:2
+magicPercent:100
+sizeX:2
+sizeY:1
+health:1
+guided:0
