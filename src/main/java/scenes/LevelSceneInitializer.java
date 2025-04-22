@@ -16,16 +16,13 @@ import static jade.Window.getScene;
 
 public class LevelSceneInitializer extends SceneInitializer {
     private GameObject gamestuff;
-
-    private Thread clientThread;
     private BlockingQueue<ClientData> requests;
     private BlockingQueue<ServerData> responses;
     private Sprite bloodIcon;
     private Sprite magicIcon;
     private Sprite rockIcon;
 
-    public LevelSceneInitializer(Thread clientThread,BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
-        this.clientThread=clientThread;
+    public LevelSceneInitializer(BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
         this.requests=requests;
         this.responses=responses;
     }
@@ -37,10 +34,10 @@ public class LevelSceneInitializer extends SceneInitializer {
 
         gamestuff = scene.createGameObject("LevelEditor");
         gamestuff.setNoSerialize();
-        gamestuff.addComponent(new MouseControls(clientThread,requests));//working
-        gamestuff.addComponent(new KeyControls(clientThread,requests));
+        gamestuff.addComponent(new MouseControls(requests));//working
+        gamestuff.addComponent(new KeyControls(requests));
         gamestuff.addComponent(new GizmoSystem(gizmos)); //(whatever the f a gizmo is...) #NEW WARNING
-        gamestuff.addComponent(new ServerInputs(clientThread,responses));
+        gamestuff.addComponent(new ServerInputs(responses));
         scene.addGameObjectToScene(gamestuff);
         //added ends
 

@@ -37,10 +37,9 @@ public class MouseControls extends Component {
     private boolean boxSelectSet = false;
     private Vector2f boxSelectStart = new Vector2f();
     private Vector2f boxSelectEnd = new Vector2f();
-    private Thread clientThread;
+
     private BlockingQueue<ClientData> requests;
-    public MouseControls(Thread clientThread, BlockingQueue<ClientData> requests){
-    this.clientThread=clientThread;
+    public MouseControls( BlockingQueue<ClientData> requests){
     this.requests=requests;
     }
     public static GameObject getHoldingObject(){

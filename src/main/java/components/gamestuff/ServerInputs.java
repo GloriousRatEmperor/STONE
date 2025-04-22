@@ -24,9 +24,7 @@ public class ServerInputs extends Component {
     private ArrayList<ServerData> responseList=new ArrayList<>();
     private float time=0;
 
-    private Thread clientThread;
-    public ServerInputs(Thread clientThread, BlockingQueue<ServerData> responses) {
-        this.clientThread = clientThread;
+    public ServerInputs(BlockingQueue<ServerData> responses) {
         this.responses = responses;
     }
     @Override

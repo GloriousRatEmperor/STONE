@@ -60,6 +60,9 @@ public class Base extends Component {
     public static void removeBase(GameObject gameobject){
         bases.get().remove(gameobject);
     }
+    public static void clearBases(){
+        bases.get().clear();
+    }
     public static GameObject getClosestBase(Vector2f position){
         GameObject base=null;
         double lastDistance=99999999;
@@ -119,7 +122,7 @@ public class Base extends Component {
     public void update(float dt) {
 
         if (!this.genned){
-            if(0<=gameObject.allied&&gameObject.allied<=playerAmount+1) {
+            if(0<=gameObject.allied&&gameObject.allied<=get().playerAmount+1) {
                 genMinerals();
                 addBase(super.gameObject);
                 genned = true;

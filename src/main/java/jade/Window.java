@@ -2,6 +2,7 @@ package jade;
 
 import Multiplayer.DataPacket.*;
 import components.gamestuff.ServerInputs;
+import components.unitcapabilities.Base;
 import observers.EventSystem;
 import observers.Observer;
 import observers.events.Event;
@@ -55,7 +56,7 @@ public class Window implements Observer {
     private File leveltemp;
     public int allied=0;
     private boolean end=false;
-    public static int playerAmount;
+    public int playerAmount;
     private boolean endPlay=false;
     public ImGuiLayer imguiLayer;
 
@@ -63,7 +64,7 @@ public class Window implements Observer {
     public HashMap<Vector2i, Vector3i> floor;
 
 
-    public static boolean runtimePlaying = false;
+    public boolean runtimePlaying = false;
     private float beginTime;
     private float endTime;
 
@@ -85,7 +86,7 @@ public class Window implements Observer {
 
     private long audioContext;
     private long audioDevice;
-    public static boolean scened=false;
+    public boolean scened=false;
 
     private Scene currentScene;
     public Boolean debugging;
@@ -112,7 +113,7 @@ public class Window implements Observer {
         current.load();
         current.init();
         current.start();
-        scened=true;
+        get().scened=true;
 
     }
     public static void ChangeLevel(String lvlname){
@@ -165,11 +166,14 @@ public class Window implements Observer {
         return results;
     }
     public void stop(){
+        MineralCluster.mineralClusters.get().clear();
+        Base.clearBases();
         glLineWidth(2.0f);
 
-        Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
+        Window.changeScene(new LevelEditorSceneInitializer( requests, responses));
 
     }
+
     public void begin() {
         this.runtimePlaying = true;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
@@ -197,7 +201,7 @@ public class Window implements Observer {
         currentScene.load();
 
 
-        Window.changeScene(new LevelSceneInitializer(clientThread, requests, responses));
+        Window.changeScene(new LevelSceneInitializer( requests, responses));
 
         ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
 
@@ -421,7 +425,7 @@ public class Window implements Observer {
                      Shaders.add(invertedShader);
                      Shaders.add(pickingShader);
                      Shaders.add(groundShader);
-                     Window.changeScene(new LevelEditorSceneInitializer(clientThread, requests, responses));
+                     Window.changeScene(new LevelEditorSceneInitializer(requests, responses));
 
 
                      BuildingCreator.init();
@@ -499,11 +503,12 @@ public class Window implements Observer {
         }
 
 
-
+        boolean first=true;
         while (!hasDrawThread||screen.isAlive()) {
             //actual physics n shite bein done here
             if (runtimePlaying&&!start) {
-                if(util.UniTime.getStart()==0){
+                if(first){
+                    first=false;
                     util.UniTime.setStartNow();
                 }
                 while (physicsTimes > 0) {
@@ -532,6 +537,7 @@ public class Window implements Observer {
 
                 }
                 if(end){
+                    first=true;
                     end=false;
                     endPlay=true;
                     while(endPlay){
@@ -660,11 +666,11 @@ public class Window implements Observer {
 
 
             }
-            case LoadLevel -> Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+            case LoadLevel -> Window.changeScene(new LevelEditorSceneInitializer(requests,responses));
             case SaveLevel -> currentScene.save(event.strargs);
             case ChangeLevel -> {
                 ChangeLevel(event.strargs);
-                Window.changeScene(new LevelEditorSceneInitializer(clientThread,requests,responses));
+                Window.changeScene(new LevelEditorSceneInitializer(requests,responses));
             }
 
         }

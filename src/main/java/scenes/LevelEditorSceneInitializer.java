@@ -41,13 +41,13 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
     private GameObject levelEditorStuff;
     private BlockingQueue<ClientData> requests;
     private BlockingQueue<ServerData> responses;
-    private Thread clientThread;
+
 
     public void setAllied(int val){
         placeAllied=val;
     }
-    public LevelEditorSceneInitializer(Thread clientThread,BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
-        this.clientThread=clientThread;
+    public LevelEditorSceneInitializer(BlockingQueue<ClientData> requests,BlockingQueue<ServerData> responses) {
+
         this.requests=requests;
         this.responses=responses;
 
@@ -62,9 +62,9 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         levelEditorStuff = scene.createGameObject("LevelEditor");
         levelEditorStuff.setNoSerialize();
-        levelEditorStuff.addComponent(new MouseControls(clientThread,requests));
-        levelEditorStuff.addComponent(new KeyControls(clientThread,requests));
-        levelEditorStuff.addComponent(new ServerInputs(clientThread,responses));
+        levelEditorStuff.addComponent(new MouseControls(requests));
+        levelEditorStuff.addComponent(new KeyControls(requests));
+        levelEditorStuff.addComponent(new ServerInputs(responses));
         levelEditorStuff.addComponent(new GridLines());
         levelEditorStuff.addComponent(new EditorCamera(scene.camera()));
         levelEditorStuff.addComponent(new GizmoSystem(gizmos));

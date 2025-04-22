@@ -12,6 +12,8 @@ import org.joml.Vector3d;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jade.Window.get;
+
 public class PlayerBot extends Component {
     public int allied;
     private List<GameObject> gameObjects;
@@ -26,7 +28,7 @@ public class PlayerBot extends Component {
     }
     @Override
     public void start(){
-        if(Window.runtimePlaying) {
+        if(get().runtimePlaying) {
             gameObject.removeComponent(this);
             Window.getScene().addPlayerBot(this);
         }

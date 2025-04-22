@@ -6,13 +6,13 @@ import components.unitcapabilities.defaults.MoveContollable;
 import jade.GameObject;
 import jade.MineralCluster;
 import jade.Transform;
-import jade.Window;
 import org.jbox2d.dynamics.contacts.Contact;
 import org.joml.Vector2f;
 import org.joml.Vector3d;
 import physics2d.components.Rigidbody2D;
 
 import static components.unitcapabilities.Base.getClosestBase;
+import static jade.Window.get;
 import static jade.Window.getScene;
 
 public class Worker extends Component {
@@ -136,7 +136,7 @@ public class Worker extends Component {
     }
     @Override
     public void start() {
-        if(Window.runtimePlaying) {
+        if(get().runtimePlaying) {
             Brain brain=gameObject.getComponent(Brain.class);
             GameObject nearbase=getClosestBase(gameObject.transform.position);
             if(nearbase==null){

@@ -39,9 +39,7 @@ public class KeyControls extends Component {
     private float last=0;
     private ArrayList<GameObject> copiedObjects=new ArrayList<>();
 
-    private Thread clientThread;
-    public KeyControls(Thread clientThread, BlockingQueue<ClientData> requests) {
-        this.clientThread=clientThread;
+    public KeyControls(BlockingQueue<ClientData> requests) {
         this.requests=requests;
     }
     @Override

@@ -1,18 +1,18 @@
 [
   {
-    "name": "Sprite_Object_Gen",
+    "name": "morticum",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 30.675,
-            "y": 16.875
+            "x": 5.875,
+            "y": 22.875
           },
           "drawPos": {
-            "x": 30.675,
-            "y": 16.875
+            "x": 5.875,
+            "y": 22.875
           },
           "drawOffset": {
             "x": 0.0,
@@ -21,17 +21,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 30.675,
-            "y": 16.875
+            "x": 5.875,
+            "y": 22.875
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.9,
+            "y": 0.9
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 55
         }
       },
       {
@@ -44,34 +44,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 388.0,
+            "height": 365.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.20738328
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8072987,
+                "y": 0.20738328
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8072987,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 56
         }
       },
       {
@@ -91,32 +91,990 @@
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 57
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 58
+        },
+        "SUBS": []
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.45,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 59
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 180.0,
+          "maxHealth": 180.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 60
+        }
+      },
+      {
+        "type": "components.unitcapabilities.UnitBuilder",
+        "properties": {
+          "queue": [],
+          "alliedB": 1,
+          "buildSpeed": 1.0,
+          "icon": {
+            "width": 388.0,
+            "height": 365.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "uid": 61
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 62
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 20.0,
+                "y": 0.0,
+                "z": 180.0
+              },
+              "unitName": "headless",
+              "type": "buildHeadless",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 537.0,
+                "height": 579.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.5332011,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.5332011,
+                    "y": 0.3713355
+                  },
+                  {
+                    "x": 0.49059898,
+                    "y": 0.3713355
+                  },
+                  {
+                    "x": 0.49059898,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a headless undead sworsman|2 costs: 20.0 Blood 180.0 Magic |1 Health200.0|7 Attack35.0|6 Attackspeed0.55|2 Speed2.5|0 size 0.65 buildtime 8.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 10.0,
+                "y": 0.0,
+                "z": 80.0
+              },
+              "unitName": "wraith",
+              "type": "buildwraith",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 472.0,
+                "height": 818.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.2384768,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.111834966
+                  },
+                  {
+                    "x": 0.20103134,
+                    "y": 0.111834966
+                  },
+                  {
+                    "x": 0.20103134,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a wraith|2 costs: 10.0 Blood 80.0 Magic |1 Health40.0|7 Attack7.0|6 Attackspeed2.0|2 Speed1.7|0 range 3.0 buildtime 2.5 rangedattackspeed 1.25 size 0.5",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 50.0,
+                "y": 0.0,
+                "z": 250.0
+              },
+              "unitName": "headlesshorseman",
+              "type": "getBuildHeadlessHorseman",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 348.0,
+                "height": 779.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.36049187,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.36049187,
+                    "y": 0.15418024
+                  },
+                  {
+                    "x": 0.33288378,
+                    "y": 0.15418024
+                  },
+                  {
+                    "x": 0.33288378,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a headless undead horseman|2 costs: 50.0 Blood 250.0 Magic |1 Health175.0|7 Attack35.0|6 Attackspeed1.0|2 Speed8.0|0 chargebonus 3.0 acceleration 0.02 buildtime 9.0 turn 0.03 size 0.75",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 375.0
+              },
+              "unitName": "Alterator",
+              "type": "buildAlterator",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 465.0,
+                "height": 413.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.6324474,
+                    "y": 0.47339848
+                  },
+                  {
+                    "x": 0.6324474,
+                    "y": 0.024972856
+                  },
+                  {
+                    "x": 0.59555733,
+                    "y": 0.024972856
+                  },
+                  {
+                    "x": 0.59555733,
+                    "y": 0.47339848
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds an alternator, a powerful spellcaster that marks enemy units|2 costs: 375.0 Magic |1 Health320.0|7 Attack80.0|6 Attackspeed1.0|2 Speed3.5|0 buildtime 16.0 size 1.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 175.0
+              },
+              "unitName": "buffbird",
+              "type": "buildBuffBird",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 327.0,
+                "height": 211.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0
+                  },
+                  {
+                    "x": 0.40261802,
+                    "y": 0.0
+                  },
+                  {
+                    "x": 0.40261802,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "this is no ordinary bird, it used magical prowess to mold itself into the perfect weapon|2 costs: 175.0 Magic |1 Health150.0|7 Attack20.0|6 Attackspeed3.0|2 Speed10.0|0 size 0.5 buildtime 10.0 acceleration 0.01 chargebonus 5.0 turn 0.005",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "morticum",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 41.625,
+            "y": 22.625
+          },
+          "drawPos": {
+            "x": 41.625,
+            "y": 22.625
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 41.625,
+            "y": 22.625
+          },
+          "scale": {
+            "x": 0.9,
+            "y": 0.9
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 55
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 388.0,
+            "height": 365.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 56
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 57
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 58
+        },
+        "SUBS": []
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.45,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 59
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 180.0,
+          "maxHealth": 180.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 60
+        }
+      },
+      {
+        "type": "components.unitcapabilities.UnitBuilder",
+        "properties": {
+          "queue": [],
+          "alliedB": 2,
+          "buildSpeed": 1.0,
+          "icon": {
+            "width": 388.0,
+            "height": 365.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.20738328
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "uid": 61
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 62
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 20.0,
+                "y": 0.0,
+                "z": 180.0
+              },
+              "unitName": "headless",
+              "type": "buildHeadless",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 537.0,
+                "height": 579.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.5332011,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.5332011,
+                    "y": 0.3713355
+                  },
+                  {
+                    "x": 0.49059898,
+                    "y": 0.3713355
+                  },
+                  {
+                    "x": 0.49059898,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a headless undead sworsman|2 costs: 20.0 Blood 180.0 Magic |1 Health200.0|7 Attack35.0|6 Attackspeed0.55|2 Speed2.5|0 size 0.65 buildtime 8.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 10.0,
+                "y": 0.0,
+                "z": 80.0
+              },
+              "unitName": "wraith",
+              "type": "buildwraith",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 472.0,
+                "height": 818.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.2384768,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.111834966
+                  },
+                  {
+                    "x": 0.20103134,
+                    "y": 0.111834966
+                  },
+                  {
+                    "x": 0.20103134,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a wraith|2 costs: 10.0 Blood 80.0 Magic |1 Health40.0|7 Attack7.0|6 Attackspeed2.0|2 Speed1.7|0 range 3.0 buildtime 2.5 rangedattackspeed 1.25 size 0.5",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 50.0,
+                "y": 0.0,
+                "z": 250.0
+              },
+              "unitName": "headlesshorseman",
+              "type": "getBuildHeadlessHorseman",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 348.0,
+                "height": 779.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.36049187,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.36049187,
+                    "y": 0.15418024
+                  },
+                  {
+                    "x": 0.33288378,
+                    "y": 0.15418024
+                  },
+                  {
+                    "x": 0.33288378,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a headless undead horseman|2 costs: 50.0 Blood 250.0 Magic |1 Health175.0|7 Attack35.0|6 Attackspeed1.0|2 Speed8.0|0 chargebonus 3.0 acceleration 0.02 buildtime 9.0 turn 0.03 size 0.75",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 375.0
+              },
+              "unitName": "Alterator",
+              "type": "buildAlterator",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 465.0,
+                "height": 413.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.6324474,
+                    "y": 0.47339848
+                  },
+                  {
+                    "x": 0.6324474,
+                    "y": 0.024972856
+                  },
+                  {
+                    "x": 0.59555733,
+                    "y": 0.024972856
+                  },
+                  {
+                    "x": 0.59555733,
+                    "y": 0.47339848
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds an alternator, a powerful spellcaster that marks enemy units|2 costs: 375.0 Magic |1 Health320.0|7 Attack80.0|6 Attackspeed1.0|2 Speed3.5|0 buildtime 16.0 size 1.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 175.0
+              },
+              "unitName": "buffbird",
+              "type": "buildBuffBird",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 327.0,
+                "height": 211.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0
+                  },
+                  {
+                    "x": 0.40261802,
+                    "y": 0.0
+                  },
+                  {
+                    "x": 0.40261802,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "this is no ordinary bird, it used magical prowess to mold itself into the perfect weapon|2 costs: 175.0 Magic |1 Health150.0|7 Attack20.0|6 Attackspeed3.0|2 Speed10.0|0 size 0.5 buildtime 10.0 acceleration 0.01 chargebonus 5.0 turn 0.005",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "magicbase",
+    "allied": 1,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 6.625,
+            "y": 17.625
+          },
+          "drawPos": {
+            "x": 6.625,
+            "y": 17.625
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 6.625,
+            "y": 17.625
+          },
+          "scale": {
+            "x": 1.86,
+            "y": 1.86
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 64
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 407.0,
+            "height": 378.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8072987,
+                "y": 0.5081433
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.5081433
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 65
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Static",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 66
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 67
+        },
+        "SUBS": []
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.93,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 68
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 1600.0,
+          "maxHealth": 1600.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 69
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Base",
+        "properties": {
+          "range": 15.0,
+          "mineralDistance": 4.0,
+          "genned": false,
+          "uid": 70
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 71
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 50.0
+              },
+              "unitName": "wisp",
+              "type": "buildWisp",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 279.0,
+                "height": 269.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.93716776,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.93716776,
+                    "y": 0.70792615
+                  },
+                  {
+                    "x": 0.9150337,
+                    "y": 0.70792615
+                  },
+                  {
+                    "x": 0.9150337,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a Wisp, a fragile magic worker with a decent attack (compared to other workers)|2 costs: 50.0 Magic |1 Health30.0|7 Attack10.0|6 Attackspeed1.0|2 Speed1.5|0 size 0.2 harvestamount 2.5 buildtime 3.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.UnitBuilder",
+        "properties": {
+          "queue": [],
+          "alliedB": 1,
+          "buildSpeed": 1.0,
+          "icon": {
+            "width": 407.0,
+            "height": 378.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8072987,
+                "y": 0.5081433
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.5081433
+              }
+            ]
+          },
+          "uid": 72
         }
       }
     ],
@@ -124,18 +1082,18 @@
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "name": "magicbase",
+    "allied": 5,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 30.925,
+            "x": 40.875,
             "y": 16.625
           },
           "drawPos": {
-            "x": 30.925,
+            "x": 40.875,
             "y": 16.625
           },
           "drawOffset": {
@@ -145,17 +1103,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 30.925,
+            "x": 40.875,
             "y": 16.625
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 1.86,
+            "y": 1.86
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 64
         }
       },
       {
@@ -168,34 +1126,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 407.0,
+            "height": 378.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8072987,
+                "y": 0.5081433
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8072987,
+                "y": 0.09771987
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.77500993,
+                "y": 0.09771987
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.77500993,
+                "y": 0.5081433
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 65
         }
       },
       {
@@ -215,32 +1173,162 @@
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 66
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 67
+        },
+        "SUBS": []
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.93,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 68
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 1600.0,
+          "maxHealth": 1600.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 69
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Base",
+        "properties": {
+          "range": 15.0,
+          "mineralDistance": 4.0,
+          "genned": false,
+          "uid": 70
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 71
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.BuildUnit",
+            "properties": {
+              "cost": {
+                "x": 0.0,
+                "y": 0.0,
+                "z": 50.0
+              },
+              "unitName": "wisp",
+              "type": "buildWisp",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 279.0,
+                "height": 269.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.93716776,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.93716776,
+                    "y": 0.70792615
+                  },
+                  {
+                    "x": 0.9150337,
+                    "y": 0.70792615
+                  },
+                  {
+                    "x": 0.9150337,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "Builds a Wisp, a fragile magic worker with a decent attack (compared to other workers)|2 costs: 50.0 Magic |1 Health30.0|7 Attack10.0|6 Attackspeed1.0|2 Speed1.5|0 size 0.2 harvestamount 2.5 buildtime 3.0",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.UnitBuilder",
+        "properties": {
+          "queue": [],
+          "alliedB": 2,
+          "buildSpeed": 1.0,
+          "icon": {
+            "width": 407.0,
+            "height": 378.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8072987,
+                "y": 0.5081433
+              },
+              {
+                "x": 0.8072987,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.09771987
+              },
+              {
+                "x": 0.77500993,
+                "y": 0.5081433
+              }
+            ]
+          },
+          "uid": 72
+        }
+      },
+      {
+        "type": "components.gamestuff.PlayerBot",
+        "properties": {
+          "allied": 2,
+          "updateInterval": 1.0,
+          "updateClock": 0.0,
+          "state": "Agressive",
+          "uid": 101
         }
       }
     ],
@@ -248,19 +1336,19 @@
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "priest",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 31.175,
-            "y": 16.375
+            "x": 20.875,
+            "y": 18.875
           },
           "drawPos": {
-            "x": 31.175,
-            "y": 16.375
+            "x": 20.875,
+            "y": 18.875
           },
           "drawOffset": {
             "x": 0.0,
@@ -269,17 +1357,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 31.175,
-            "y": 16.375
+            "x": 20.875,
+            "y": 18.875
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.7,
+            "y": 0.7
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 74
         }
       },
       {
@@ -292,34 +1380,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 531.0,
+            "height": 739.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.40261802,
+                "y": 1.0
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.40261802,
+                "y": 0.19761129
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.36049187,
+                "y": 0.19761129
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.36049187,
+                "y": 1.0
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 75
         }
       },
       {
@@ -334,57 +1422,215 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 76
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": false,
+          "pullrange": 6.0,
+          "uid": 77
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 78
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.35,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 79
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 80
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 50.0,
+          "mpRegen": 0.1,
+          "maxmp": 100.0,
+          "uid": 81
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.Heal",
+            "properties": {
+              "power": 0.5,
+              "type": "heal",
+              "mp": 50.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 128.0,
+                "height": 128.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.24863149,
+                    "y": 0.14332248
+                  },
+                  {
+                    "x": 0.24863149,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.14332248
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 20.0,
+          "alliedH": 1,
+          "attackSpeed": 1.12,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 16,
+            "magical": 0.0
+          },
+          "uid": 82
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 350.0,
+          "maxHealth": 350.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": false,
+          "chargeDefense": 0.0,
+          "uid": 83
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 2.3,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 84
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 85
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "name": "priest",
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 31.425,
-            "y": 16.125
+            "x": 33.125,
+            "y": 18.375
           },
           "drawPos": {
-            "x": 31.425,
-            "y": 16.125
+            "x": 33.125,
+            "y": 18.375
           },
           "drawOffset": {
             "x": 0.0,
@@ -393,17 +1639,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 31.425,
-            "y": 16.125
+            "x": 33.125,
+            "y": 18.375
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.7,
+            "y": 0.7
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 74
         }
       },
       {
@@ -416,34 +1662,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 531.0,
+            "height": 739.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.40261802,
+                "y": 1.0
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.40261802,
+                "y": 0.19761129
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.36049187,
+                "y": 0.19761129
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.36049187,
+                "y": 1.0
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 75
         }
       },
       {
@@ -458,57 +1704,215 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 76
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": false,
+          "pullrange": 6.0,
+          "uid": 77
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 78
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.35,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 79
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 80
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 50.0,
+          "mpRegen": 0.1,
+          "maxmp": 100.0,
+          "uid": 81
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.Heal",
+            "properties": {
+              "power": 0.5,
+              "type": "heal",
+              "mp": 50.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 128.0,
+                "height": 128.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.24863149,
+                    "y": 0.14332248
+                  },
+                  {
+                    "x": 0.24863149,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.2384768,
+                    "y": 0.14332248
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "restores 50%% missing hp|4 costs50mp",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 20.0,
+          "alliedH": 2,
+          "attackSpeed": 1.12,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 17,
+            "magical": 0.0
+          },
+          "uid": 82
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 350.0,
+          "maxHealth": 350.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": false,
+          "chargeDefense": 0.0,
+          "uid": 83
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 2.3,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 84
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 85
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "rock",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 31.675,
-            "y": 15.625
+            "x": 4.625,
+            "y": 19.625
           },
           "drawPos": {
-            "x": 31.675,
-            "y": 15.625
+            "x": 4.625,
+            "y": 19.625
           },
           "drawOffset": {
             "x": 0.0,
@@ -517,17 +1921,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 31.675,
-            "y": 15.625
+            "x": 4.625,
+            "y": 19.625
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -540,34 +1944,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -582,57 +1986,280 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 1,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 19,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "rock",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 31.925,
-            "y": 15.375
+            "x": 6.375,
+            "y": 19.375
           },
           "drawPos": {
-            "x": 31.925,
-            "y": 15.375
+            "x": 6.375,
+            "y": 19.375
           },
           "drawOffset": {
             "x": 0.0,
@@ -641,17 +2268,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 31.925,
-            "y": 15.375
+            "x": 6.375,
+            "y": 19.375
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -664,34 +2291,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -706,57 +2333,280 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 1,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 20,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "rock",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 32.175,
-            "y": 14.875
+            "x": 7.625,
+            "y": 19.125
           },
           "drawPos": {
-            "x": 32.175,
-            "y": 14.875
+            "x": 7.625,
+            "y": 19.125
           },
           "drawOffset": {
             "x": 0.0,
@@ -765,17 +2615,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 32.175,
-            "y": 14.875
+            "x": 7.625,
+            "y": 19.125
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -788,34 +2638,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -830,57 +2680,280 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 1,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 21,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "rock",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 32.424995,
-            "y": 14.625
+            "x": 8.375,
+            "y": 19.125
           },
           "drawPos": {
-            "x": 32.424995,
-            "y": 14.625
+            "x": 8.375,
+            "y": 19.125
           },
           "drawOffset": {
             "x": 0.0,
@@ -889,17 +2962,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 32.424995,
-            "y": 14.625
+            "x": 8.375,
+            "y": 19.125
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -912,34 +2985,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -954,57 +3027,280 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 1,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 22,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
+    "name": "rock",
     "allied": 1,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 32.424995,
-            "y": 14.375
+            "x": 8.875,
+            "y": 18.875
           },
           "drawPos": {
-            "x": 32.424995,
-            "y": 14.375
+            "x": 8.875,
+            "y": 18.875
           },
           "drawOffset": {
             "x": 0.0,
@@ -1013,17 +3309,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 32.424995,
-            "y": 14.375
+            "x": 8.875,
+            "y": 18.875
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -1036,34 +3332,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -1078,57 +3374,280 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 1,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 23,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 1,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,
     "isDead": false
   },
   {
-    "name": "Sprite_Object_Gen",
-    "allied": 1,
+    "name": "rock",
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
         "properties": {
           "position": {
-            "x": 32.674995,
-            "y": 14.375
+            "x": 37.875,
+            "y": 19.875
           },
           "drawPos": {
-            "x": 32.674995,
-            "y": 14.375
+            "x": 37.875,
+            "y": 19.875
           },
           "drawOffset": {
             "x": 0.0,
@@ -1137,17 +3656,17 @@
           "flippedX": false,
           "flippedY": false,
           "pastPos": {
-            "x": 32.674995,
-            "y": 14.375
+            "x": 37.875,
+            "y": 19.875
           },
           "scale": {
-            "x": 0.25,
-            "y": 0.25
+            "x": 0.3,
+            "y": 0.3
           },
           "rotation": 0.0,
           "drawRotation": 0.0,
           "zIndex": 0,
-          "uid": 21
+          "uid": 87
         }
       },
       {
@@ -1160,34 +3679,34 @@
             "w": 1.0
           },
           "sprite": {
-            "width": 16.0,
-            "height": 16.0,
+            "width": 324.0,
+            "height": 357.0,
             "texture": {
-              "filepath": "assets/images/spritesheets/decorationsAndBlocks.png",
-              "width": 112,
-              "height": 192
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
             },
             "texCoords": [
               {
-                "x": 0.2857143,
-                "y": 0.9166667
+                "x": 0.8637842,
+                "y": 0.60369164
               },
               {
-                "x": 0.2857143,
-                "y": 0.8333333
+                "x": 0.8637842,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.8333333
+                "x": 0.8380801,
+                "y": 0.21606949
               },
               {
-                "x": 0.14285715,
-                "y": 0.9166667
+                "x": 0.8380801,
+                "y": 0.60369164
               }
             ]
           },
           "shaderIndex": 0,
-          "uid": 22
+          "uid": 88
         }
       },
       {
@@ -1202,38 +3721,3037 @@
           "moveDamping": 0.0,
           "stopDamping": 8.0E7,
           "mass": 0.0,
-          "bodyType": "Static",
+          "bodyType": "Dynamic",
           "friction": 0.1,
           "angularVelocity": 0.0,
           "gravityScale": 1.0,
           "isSensor": false,
-          "fixedRotation": false,
+          "fixedRotation": true,
           "continuousCollision": 0,
-          "uid": 23
+          "uid": 89
         }
       },
       {
-        "type": "physics2d.components.Box2DCollider",
+        "type": "components.unitcapabilities.Brain",
         "properties": {
-          "origin": {
-            "x": 0.0,
-            "y": 0.0
-          },
-          "halfSize": {
-            "x": 0.25,
-            "y": 0.25
-          },
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
           "collisionGroup": 1,
           "allyOVerride": 0,
           "isSensor": false,
-          "resetFixtureNextFrame": true,
+          "resetFixtureNextFrame": false,
           "enabled": true,
           "offset": {
             "x": 0.0,
             "y": 0.0
           },
-          "uid": 24
+          "uid": 92
         }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 24,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 38.125,
+            "y": 19.875
+          },
+          "drawPos": {
+            "x": 38.125,
+            "y": 19.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 38.125,
+            "y": 19.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 25,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 38.875,
+            "y": 19.875
+          },
+          "drawPos": {
+            "x": 38.875,
+            "y": 19.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 38.875,
+            "y": 19.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 26,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 40.125,
+            "y": 19.875
+          },
+          "drawPos": {
+            "x": 40.125,
+            "y": 19.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 40.125,
+            "y": 19.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 27,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 41.625,
+            "y": 19.875
+          },
+          "drawPos": {
+            "x": 41.625,
+            "y": 19.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 41.625,
+            "y": 19.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 28,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 42.375,
+            "y": 19.875
+          },
+          "drawPos": {
+            "x": 42.375,
+            "y": 19.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 42.375,
+            "y": 19.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 29,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 43.375,
+            "y": 19.625
+          },
+          "drawPos": {
+            "x": 43.375,
+            "y": 19.625
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 43.375,
+            "y": 19.625
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 30,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 44.375,
+            "y": 19.125
+          },
+          "drawPos": {
+            "x": 44.375,
+            "y": 19.125
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 44.375,
+            "y": 19.125
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "??UNKNOWN ABILITY??",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "Builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 31,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
+      }
+    ],
+    "doSerialization": true,
+    "isDead": false
+  },
+  {
+    "name": "rock",
+    "allied": 2,
+    "components": [
+      {
+        "type": "jade.Transform",
+        "properties": {
+          "position": {
+            "x": 44.625,
+            "y": 18.875
+          },
+          "drawPos": {
+            "x": 44.625,
+            "y": 18.875
+          },
+          "drawOffset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "flippedX": false,
+          "flippedY": false,
+          "pastPos": {
+            "x": 44.625,
+            "y": 18.875
+          },
+          "scale": {
+            "x": 0.3,
+            "y": 0.3
+          },
+          "rotation": 0.0,
+          "drawRotation": 0.0,
+          "zIndex": 0,
+          "uid": 87
+        }
+      },
+      {
+        "type": "components.gamestuff.SpriteRenderer",
+        "properties": {
+          "color": {
+            "x": 1.0,
+            "y": 1.0,
+            "z": 1.0,
+            "w": 1.0
+          },
+          "sprite": {
+            "width": 324.0,
+            "height": 357.0,
+            "texture": {
+              "filepath": "assets/images/spritesheets/joined.png",
+              "width": 12605,
+              "height": 921
+            },
+            "texCoords": [
+              {
+                "x": 0.8637842,
+                "y": 0.60369164
+              },
+              {
+                "x": 0.8637842,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.21606949
+              },
+              {
+                "x": 0.8380801,
+                "y": 0.60369164
+              }
+            ]
+          },
+          "shaderIndex": 0,
+          "uid": 88
+        }
+      },
+      {
+        "type": "physics2d.components.Rigidbody2D",
+        "properties": {
+          "velocity": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "angularDamping": 0.9,
+          "linearDamping": 8.0E7,
+          "moveDamping": 0.0,
+          "stopDamping": 8.0E7,
+          "mass": 0.0,
+          "bodyType": "Dynamic",
+          "friction": 0.1,
+          "angularVelocity": 0.0,
+          "gravityScale": 1.0,
+          "isSensor": false,
+          "fixedRotation": true,
+          "continuousCollision": 0,
+          "uid": 89
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Brain",
+        "properties": {
+          "stunTimer": 0.0,
+          "afk": true,
+          "guard": true,
+          "pullrange": 6.0,
+          "uid": 90
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.aggroDetector",
+        "properties": {
+          "range": 2.5,
+          "active": true,
+          "uid": 91
+        }
+      },
+      {
+        "type": "physics2d.components.CircleCollider",
+        "properties": {
+          "radius": 0.15,
+          "collisionGroup": 1,
+          "allyOVerride": 0,
+          "isSensor": false,
+          "resetFixtureNextFrame": false,
+          "enabled": true,
+          "offset": {
+            "x": 0.0,
+            "y": 0.0
+          },
+          "uid": 92
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 93
+        },
+        "SUBS": []
+      },
+      {
+        "type": "components.unitcapabilities.defaults.CastAbilities",
+        "properties": {
+          "mp": 0.0,
+          "mpRegen": 0.01,
+          "maxmp": 0.0,
+          "uid": 94
+        },
+        "SUBS": [
+          {
+            "type": "components.SubComponents.Abilities.GuardMode",
+            "properties": {
+              "type": "guardMode",
+              "mp": 0.0,
+              "range": -1.0,
+              "sprite": {
+                "width": 181.0,
+                "height": 207.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.44291946,
+                    "y": 0.22909881
+                  },
+                  {
+                    "x": 0.44291946,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.0043431055
+                  },
+                  {
+                    "x": 0.4285601,
+                    "y": 0.22909881
+                  }
+                ]
+              },
+              "targetable": false,
+              "requiresTarget": false,
+              "description": "toggles guard mode, preventing units from chasing after nearby enemies, Q-move to remove",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBase",
+            "properties": {
+              "race": 2,
+              "cost": {
+                "x": 0.0,
+                "y": 800.0,
+                "z": 0.0
+              },
+              "buildName": "rockbase",
+              "type": "buildBaseG",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 388.0,
+                "height": 365.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.86886156,
+                    "y": 1.0
+                  },
+                  {
+                    "x": 0.86886156,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 0.60369164
+                  },
+                  {
+                    "x": 0.8380801,
+                    "y": 1.0
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a rock base|4 costs800.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          },
+          {
+            "type": "components.SubComponents.Abilities.BuildBuilding",
+            "properties": {
+              "cost": {
+                "x": 40.0,
+                "y": 100.0,
+                "z": 0.0
+              },
+              "buildName": "barracks",
+              "type": "buildBarracks",
+              "mp": 0.0,
+              "range": 0.1,
+              "sprite": {
+                "width": 735.0,
+                "height": 391.0,
+                "texture": {
+                  "filepath": "assets/images/spritesheets/joined.png",
+                  "width": 12605,
+                  "height": 921
+                },
+                "texCoords": [
+                  {
+                    "x": 0.77500993,
+                    "y": 0.48534203
+                  },
+                  {
+                    "x": 0.77500993,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.060803473
+                  },
+                  {
+                    "x": 0.7166997,
+                    "y": 0.48534203
+                  }
+                ]
+              },
+              "targetable": true,
+              "requiresTarget": false,
+              "description": "builds a barracs|4 costs40.0 Blood100.0 Rock",
+              "imguiGroup": 1,
+              "id": 0
+            }
+          }
+        ]
+      },
+      {
+        "type": "components.unitcapabilities.damage.Hitter",
+        "properties": {
+          "dmg": 8.0,
+          "alliedH": 2,
+          "attackSpeed": 3.0,
+          "nextSmak": 0.0,
+          "chargeBonus": 0.0,
+          "damage": {
+            "allDmg": 0.0,
+            "physical": 0.0,
+            "owner": 32,
+            "magical": 0.0
+          },
+          "uid": 95
+        }
+      },
+      {
+        "type": "components.unitcapabilities.damage.Mortal",
+        "properties": {
+          "health": 75.0,
+          "maxHealth": 75.0,
+          "isAlive": true,
+          "alliedM": 2,
+          "armor": 0.0,
+          "magicArmor": 0.0,
+          "guardMode": true,
+          "chargeDefense": 0.0,
+          "uid": 96
+        }
+      },
+      {
+        "type": "components.unitcapabilities.Worker",
+        "properties": {
+          "harvestAmount": 2.5,
+          "conserveMineral": false,
+          "cargo": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+          },
+          "uid": 97
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.MoveContollable",
+        "properties": {
+          "speed": 1.5,
+          "turn": 0.0,
+          "acceleration": 1.0,
+          "uid": 98
+        }
+      },
+      {
+        "type": "components.unitcapabilities.defaults.Effects",
+        "properties": {
+          "uid": 99
+        },
+        "SUBS": []
       }
     ],
     "doSerialization": true,

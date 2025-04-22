@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static components.unitcapabilities.Base.getClosestBase;
-import static jade.Window.playerAmount;
+import static jade.Window.get;
 
 public class MineralCluster {
     public transient List<GameObject> minerals=new ArrayList<>();
@@ -36,7 +36,7 @@ public class MineralCluster {
     public MineralCluster(int creatorAllied, Vector2f position){
         owner=new ArrayList<>();
         mineralClusters.get().add(this);
-        for (int i=0;i<playerAmount+2;i++){
+        for (int i=0;i<get().playerAmount+2;i++){
             if(i==creatorAllied){
                 owner.add(null);
                 continue;
