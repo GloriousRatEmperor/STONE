@@ -61,7 +61,13 @@ public class Base extends Component {
         bases.get().remove(gameobject);
     }
     public static void clearBases(){
-        bases.get().clear();
+        bases=new ThreadLocal<>(){
+            @Override
+            protected List<GameObject> initialValue()
+            {
+                return new ArrayList<>();
+            }
+        };
     }
     public static GameObject getClosestBase(Vector2f position){
         GameObject base=null;

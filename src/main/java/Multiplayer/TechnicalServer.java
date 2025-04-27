@@ -9,6 +9,8 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
+import java.util.concurrent.TimeUnit;
+
 public class TechnicalServer implements Runnable{
 
     private final int port;
@@ -40,7 +42,14 @@ public class TechnicalServer implements Runnable{
                     .childOption(ChannelOption.SO_KEEPALIVE, true);
 
             ChannelFuture f = b.bind(port).sync();
+            f.channel().eventLoop().scheduleAtFixedRate(new Runnable() {
+                @Override
+                public void run() {
+                    server.update();
+                }
+            }, 1000L,100L, TimeUnit.MILLISECONDS);
             f.channel().closeFuture().sync();
+
         }catch (InterruptedException e) {
             throw new RuntimeException(e);
         }finally {

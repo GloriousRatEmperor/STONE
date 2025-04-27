@@ -4,7 +4,6 @@ import Multiplayer.DataPacket.ClientData;
 import Multiplayer.DataPacket.Cstart;
 import Multiplayer.DataPacket.ServerData;
 import Multiplayer.DataPacket.Sstart;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import io.netty.channel.ChannelId;
 import jade.Time;
 import org.joml.Vector2i;
@@ -24,6 +23,7 @@ public class Game {
     private int capacity;
     public State state=State.inactive;
     Thread botThread;
+    Player botAccount;
     private Time time=new Time();
     private BlockingQueue<ClientData> BotToServer =new ArrayBlockingQueue<>(15);
     private BlockingQueue<ServerData> ServerToBot =new ArrayBlockingQueue<>(150);
@@ -41,7 +41,7 @@ public class Game {
     public ArrayList<Player> getPlayers(){
         return players;
     }
-    public void toClients(ServerData data) throws JsonProcessingException {
+    public void toClients(ServerData data) {
         for(Player player:players){
             server.toClient(player,data);
         }
@@ -103,7 +103,10 @@ public class Game {
 
             BotToServer.clear();
             ServerToBot.clear();
+            botAccount=new Player(null);
+            botAccount.isBot =true;
             botThread= new Thread(new BotThread(BotToServer,ServerToBot));
+            botThread.start();
     }
 
     private void startGame(Cstart start){
@@ -115,13 +118,15 @@ public class Game {
 
         for (Player p : getPlayers()) {
             if (p.state == waiting) {
+                p.state = playing;
+
                 Sstart serverData = new Sstart();
                 serverData.setIdCounter(start.getIdCounter());
                 serverData.setLevelSave(start.getLevelSave());
-                serverData.setPlayerAmount(capacity+1);
+                serverData.setPlayerAmount(capacity);
                 serverData.setStartTime(curTime);
                 serverData.setTime(time.getTime());
-                p.state = playing;
+
                 serverData.setPlayerAllied(p.allied);
                 serverData.setMineralSpacing(maker.boxsize * 2);
                 serverData.setMineralCount(maker.size / (maker.boxsize * 2));
@@ -142,8 +147,37 @@ public class Game {
                 System.out.println("uh oh game started but not all players are waiting!");
             }
         }
+        Sstart serverData = new Sstart();
+        serverData.setIdCounter(start.getIdCounter());
+        serverData.setLevelSave(start.getLevelSave());
+        serverData.setPlayerAmount(capacity);
+        serverData.setStartTime(curTime);
+        serverData.setTime(time.getTime());
+
+        serverData.setPlayerAllied(-1);
+        serverData.setMineralSpacing(maker.boxsize * 2);
+        serverData.setMineralCount(maker.size / (maker.boxsize * 2));
+        List<Integer> map1 = new ArrayList<>();
+        List<Integer> map2 = new ArrayList<>();
+        List<Integer> map3 = new ArrayList<>();
+        for (Vector2i key : map.keySet()) {
+            map1.add(key.x);
+            map2.add(key.y);
+            map3.add(map.get(key).x);
+            map3.add(map.get(key).y);
+            map3.add(map.get(key).z);
+        }
+        serverData.setMap(map1, map2, map3);
+        ServerToBot.add(serverData);
     }
     public float getTime(){
         return time.getTime();
     }
+
+    public void update(){
+        for(ClientData cdata:BotToServer){
+            server.apply( botAccount,cdata);
+        }
+    }
+
 }

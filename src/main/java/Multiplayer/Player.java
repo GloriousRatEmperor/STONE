@@ -10,10 +10,16 @@ public class Player {
     public ChannelId id;
     public State state=inactive;
     public String name;
+    static int botID=0;
     public Game game=null;
+    public boolean isBot=false;
     public Player(ChannelHandlerContext ctx){
         this.ctx = ctx;
-        this.id = ctx.channel().id();
+        if(ctx!=null){
+            this.id = ctx.channel().id();
+        }else{
+            id=null;
+        }
         this.name="player"+id;
     }
     public int allied;

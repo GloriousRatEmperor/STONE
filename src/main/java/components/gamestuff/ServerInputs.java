@@ -19,6 +19,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
 
+import static jade.Window.get;
+
 public class ServerInputs extends Component {
     private BlockingQueue<ServerData> responses;
     private ArrayList<ServerData> responseList=new ArrayList<>();
@@ -145,8 +147,8 @@ public class ServerInputs extends Component {
             int space = serverData.getMineralSpacing();
             int count = serverData.getMineralCount();
             newfloor.put(new Vector2i(0, 1), new Vector3i(count, space, 0));
-            Window.get().floor = newfloor;
-            Window.get().startData = serverData;
+            get().floor = newfloor;
+            get().startData = serverData;
         } else if (dataClass.equals(Scast.class)) {
             Scast serverData = (Scast) data;
             ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());

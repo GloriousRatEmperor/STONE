@@ -15,6 +15,16 @@ public class MineralCluster {
     public Vector2f position;
     private int mineralCount=0;
     private int mineralCycle=0;
+    public static void clearMineralClusters(){
+        mineralClusters=new ThreadLocal<>(){
+            @Override
+            protected List<MineralCluster> initialValue()
+            {
+                return new ArrayList();
+            }
+        };
+    }
+
     public static ThreadLocal<List<MineralCluster>> mineralClusters = new ThreadLocal<>(){
         @Override
         protected List<MineralCluster> initialValue()

@@ -165,16 +165,19 @@ public class Window implements Observer {
         results.addAll(Arrays.asList(Objects.requireNonNull(directoryFile.listFiles())));
         return results;
     }
-    public void stop(){
-        MineralCluster.mineralClusters.get().clear();
+    public void clearStatics(){
+        MineralCluster.clearMineralClusters();
         Base.clearBases();
+    }
+    public void stop(){
         glLineWidth(2.0f);
-
+        clearStatics();
         Window.changeScene(new LevelEditorSceneInitializer( requests, responses));
 
     }
 
     public void begin() {
+        clearStatics();
         this.runtimePlaying = true;
         ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
 
@@ -230,6 +233,10 @@ public class Window implements Observer {
          lastPhysics=0;
         Thread screen=null;
         Window runningWindow=window.get();
+        BuildingCreator.init();
+        UnitCreator.init();
+        MiscCreator.init();
+        ProjectileCreator.init();
          if(hasDrawThread) {
 
 
@@ -305,6 +312,7 @@ public class Window implements Observer {
 
                  @Override
                  public void run() {
+
                      // Setup an error callback
                      GLFWErrorCallback.createPrint(System.err).set();
 
@@ -428,10 +436,7 @@ public class Window implements Observer {
                      Window.changeScene(new LevelEditorSceneInitializer(requests, responses));
 
 
-                     BuildingCreator.init();
-                     UnitCreator.init();
-                     MiscCreator.init();
-                     ProjectileCreator.init();
+
                      while (!glfwWindowShouldClose(glfwWindow)) {
 
                          try {
@@ -505,6 +510,7 @@ public class Window implements Observer {
 
         boolean first=true;
         while (!hasDrawThread||screen.isAlive()) {
+
             //actual physics n shite bein done here
             if (runtimePlaying&&!start) {
                 if(first){
@@ -547,6 +553,8 @@ public class Window implements Observer {
             }else if(!hasDrawThread&&start){
                 begin();
                 start = false;
+            }else if(!hasDrawThread){
+                currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class).update(0);
             }
 
         }

@@ -68,6 +68,7 @@ public class AssetPool {
         if (!AssetPool.mapsheets.containsKey(file.getAbsolutePath())) {
             assert false : "Error: Tried to access mapsheet '" + resourceName + "' and it has not been added to asset pool.";
         }
+
         return AssetPool.mapsheets.getOrDefault(file.getAbsolutePath(), null);
     }
     

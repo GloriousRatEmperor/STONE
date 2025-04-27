@@ -1,8 +1,8 @@
 package util.UnitUtils;
 
+import components.SubComponents.Animation.Animation;
 import components.gamestuff.MapSpriteSheet;
 import components.gamestuff.StateMachine;
-import components.SubComponents.Animation.Animation;
 import components.unitcapabilities.Brain;
 import components.unitcapabilities.NonPickable;
 import components.unitcapabilities.aggroDetector;
@@ -28,7 +28,7 @@ import static jade.Window.getScene;
 
 public class CreatorTools {
 
-    static MapSpriteSheet items = AssetPool.getMapSheet("assets/images/spritesheets/joined.png");
+    private static MapSpriteSheet items;
 
     public static void initStats(String statsPath, HashMap<String,Float> intoStats, ArrayList<String> names){
         File directoryPath = new File(statsPath);
@@ -64,7 +64,7 @@ public class CreatorTools {
 
     static GameObject genBase(String name, Vector2f position, int allied){
 
-        GameObject newObject = generateSpriteObject(items.getSprite(name), 0.18f, 0.18f,name,position);
+        GameObject newObject = generateSpriteObject(getSprite(name), 0.18f, 0.18f,name,position);
         newObject.allied=allied;
         Rigidbody2D rb = new Rigidbody2D();
         rb.setBodyType(BodyType.Dynamic);
@@ -83,6 +83,9 @@ public class CreatorTools {
         return newObject;
     }
     public static Sprite getSprite(String name){
+        if(items==null){
+            items=AssetPool.getMapSheet("assets/images/spritesheets/joined.png");
+        }
         return items.getSprite(name);
     }
     public static void generateAnimation(Vector2f position, float sizeX, float sizeY, Animation animation) {

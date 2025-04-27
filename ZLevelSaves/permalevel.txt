@@ -1083,7 +1083,7 @@
   },
   {
     "name": "magicbase",
-    "allied": 5,
+    "allied": 2,
     "components": [
       {
         "type": "jade.Transform",
@@ -1577,7 +1577,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 16,
+            "owner": 4,
             "magical": 0.0
           },
           "uid": 82
@@ -1859,7 +1859,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 17,
+            "owner": 5,
             "magical": 0.0
           },
           "uid": 82
@@ -2093,7 +2093,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2129,7 +2129,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2193,7 +2193,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 19,
+            "owner": 6,
             "magical": 0.0
           },
           "uid": 95
@@ -2440,7 +2440,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2476,7 +2476,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2540,7 +2540,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 20,
+            "owner": 7,
             "magical": 0.0
           },
           "uid": 95
@@ -2787,7 +2787,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -2823,7 +2823,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -2887,7 +2887,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 21,
+            "owner": 8,
             "magical": 0.0
           },
           "uid": 95
@@ -3134,7 +3134,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -3170,7 +3170,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3234,7 +3234,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 22,
+            "owner": 9,
             "magical": 0.0
           },
           "uid": 95
@@ -3481,7 +3481,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -3517,7 +3517,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3581,7 +3581,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 23,
+            "owner": 10,
             "magical": 0.0
           },
           "uid": 95
@@ -3828,7 +3828,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -3864,7 +3864,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -3928,7 +3928,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 24,
+            "owner": 11,
             "magical": 0.0
           },
           "uid": 95
@@ -4175,7 +4175,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4211,7 +4211,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4275,7 +4275,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 25,
+            "owner": 12,
             "magical": 0.0
           },
           "uid": 95
@@ -4522,7 +4522,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4558,7 +4558,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4622,7 +4622,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 26,
+            "owner": 13,
             "magical": 0.0
           },
           "uid": 95
@@ -4869,7 +4869,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -4905,7 +4905,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -4969,7 +4969,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 27,
+            "owner": 14,
             "magical": 0.0
           },
           "uid": 95
@@ -5216,7 +5216,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5252,7 +5252,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5316,7 +5316,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 28,
+            "owner": 15,
             "magical": 0.0
           },
           "uid": 95
@@ -5563,7 +5563,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5599,7 +5599,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -5663,7 +5663,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 29,
+            "owner": 16,
             "magical": 0.0
           },
           "uid": 95
@@ -5910,7 +5910,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -5946,7 +5946,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6010,7 +6010,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 30,
+            "owner": 17,
             "magical": 0.0
           },
           "uid": 95
@@ -6257,7 +6257,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -6293,7 +6293,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "Builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6357,7 +6357,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 31,
+            "owner": 18,
             "magical": 0.0
           },
           "uid": 95
@@ -6604,7 +6604,7 @@
               "race": 2,
               "cost": {
                 "x": 0.0,
-                "y": 800.0,
+                "y": 0.0,
                 "z": 0.0
               },
               "buildName": "rockbase",
@@ -6640,7 +6640,7 @@
               },
               "targetable": true,
               "requiresTarget": false,
-              "description": "builds a rock base|4 costs800.0 Rock",
+              "description": "Builds a rock base",
               "imguiGroup": 1,
               "id": 0
             }
@@ -6704,7 +6704,7 @@
           "damage": {
             "allDmg": 0.0,
             "physical": 0.0,
-            "owner": 32,
+            "owner": 19,
             "magical": 0.0
           },
           "uid": 95

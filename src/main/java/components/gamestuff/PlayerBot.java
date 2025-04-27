@@ -117,6 +117,7 @@ public List<List<Integer>> considerCasting(float dt) {//returns a list where the
         }
         List<List<Integer>> casts=considerCasting(dt);
         cleanseCasts(casts);
+        System.out.println("GGGGA");
         sendCasts(casts);
         
     }

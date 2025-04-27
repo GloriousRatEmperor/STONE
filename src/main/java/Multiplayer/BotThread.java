@@ -20,6 +20,7 @@ public class BotThread implements Runnable{
 
         try {
             Window window = Window.get();
+            window.hasDrawThread=false;
             window.clientThread = null;
             window.requests = requests;
             window.responses = responses;

@@ -61,10 +61,15 @@ public class Server extends ChannelInboundHandlerAdapter {
             throws Exception {
         ClientData data = (ClientData) msg;
         Player player = getPlayer(ctx.channel().id());
+
+
+        apply(player, data);
+
+    }
+
+    public void apply(Player player,ClientData data){
         Game game=player.game;
         Class<? extends ClientData> dataClass=data.getClass();
-
-
         if (dataClass.equals(Cstop.class)) {
             Cstop clientData = (Cstop) data;
             game.setNotReady(player);
@@ -145,5 +150,10 @@ public class Server extends ChannelInboundHandlerAdapter {
     }
     public void toClient(Player player, ServerData msg) {
         player.getCtx().writeAndFlush(msg);
+    }
+    public void update(){
+        for(Game gam:games){
+            gam.update();
+        }
     }
 }
