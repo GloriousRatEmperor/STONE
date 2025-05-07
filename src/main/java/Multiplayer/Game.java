@@ -105,12 +105,12 @@ public class Game {
             ServerToBot.clear();
             botAccount=new Player(null);
             botAccount.isBot =true;
-            botThread= new Thread(new BotThread(BotToServer,ServerToBot));
-            botThread.start();
+            //botThread= new Thread(new BotThread(BotToServer,ServerToBot));
+            //botThread.start();
     }
 
     private void startGame(Cstart start){
-
+        System.out.println("starting game");
         util.MapMaker maker=new MapMaker();
         HashMap<Vector2i, Vector3i> map=maker.generate();
         long curTime = System.currentTimeMillis();

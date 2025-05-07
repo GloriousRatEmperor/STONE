@@ -12,6 +12,7 @@ import util.Img;
 
 import java.util.concurrent.BlockingQueue;
 
+import static jade.Window.get;
 import static jade.Window.getScene;
 
 public class LevelSceneInitializer extends SceneInitializer {
@@ -29,25 +30,30 @@ public class LevelSceneInitializer extends SceneInitializer {
 
     @Override
     public void init(Scene scene) {
-        //added this
-        Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
-
         gamestuff = scene.createGameObject("LevelEditor");
         gamestuff.setNoSerialize();
-        gamestuff.addComponent(new MouseControls(requests));//working
-        gamestuff.addComponent(new KeyControls(requests));
-        gamestuff.addComponent(new GizmoSystem(gizmos)); //(whatever the f a gizmo is...) #NEW WARNING
+
+        if(get().hasDrawThread) {
+            Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
+
+            gamestuff.addComponent(new MouseControls(requests));
+            gamestuff.addComponent(new KeyControls(requests));
+            gamestuff.addComponent(new GizmoSystem(gizmos)); //(whatever the f a gizmo is...) #NEW WARNING
+            GameObject cameraObject = scene.createGameObject("GameCamera");
+            cameraObject.addComponent(new GameCamera(scene.camera()));
+            cameraObject.start();
+            scene.addGameObjectToScene(cameraObject);
+            bloodIcon= Img.get("blood");
+            magicIcon=Img.get("magic");
+            rockIcon=Img.get("rockicon");
+
+        }
         gamestuff.addComponent(new ServerInputs(responses));
         scene.addGameObjectToScene(gamestuff);
         //added ends
 
-        GameObject cameraObject = scene.createGameObject("GameCamera");
-        cameraObject.addComponent(new GameCamera(scene.camera()));
-        cameraObject.start();
-        scene.addGameObjectToScene(cameraObject);
-        bloodIcon= Img.get("blood");
-        magicIcon=Img.get("magic");
-        rockIcon=Img.get("rockicon");
+
+
     }
 
     @Override

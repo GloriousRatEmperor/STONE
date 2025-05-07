@@ -28,6 +28,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.BlockingQueue;
 
+import static jade.Window.get;
 import static util.UnitUtils.BuildingCreator.buildNames;
 import static util.UnitUtils.UnitCreator.unitNames;
 
@@ -55,19 +56,24 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
     @Override
     public void init(Scene scene) {
-
-        sprites = AssetPool.getSpritesheet("assets/images/spritesheets/decorationsAndBlocks.png");
-        extraSprites=AssetPool.getMapSheet("assets/images/spritesheets/joined.png").getSprites();
-        Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
-
         levelEditorStuff = scene.createGameObject("LevelEditor");
         levelEditorStuff.setNoSerialize();
-        levelEditorStuff.addComponent(new MouseControls(requests));
-        levelEditorStuff.addComponent(new KeyControls(requests));
+        if(get().hasDrawThread){
+            sprites = AssetPool.getSpritesheet("assets/images/spritesheets/decorationsAndBlocks.png");
+            extraSprites=AssetPool.getMapSheet("assets/images/spritesheets/joined.png").getSprites();
+            Spritesheet gizmos = AssetPool.getSpritesheet("assets/images/gizmos.png");
+            levelEditorStuff.addComponent(new MouseControls(requests));
+            levelEditorStuff.addComponent(new KeyControls(requests));
+            levelEditorStuff.addComponent(new GridLines());
+            levelEditorStuff.addComponent(new EditorCamera(scene.camera()));
+            levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+        }
+
+
+
         levelEditorStuff.addComponent(new ServerInputs(responses));
-        levelEditorStuff.addComponent(new GridLines());
-        levelEditorStuff.addComponent(new EditorCamera(scene.camera()));
-        levelEditorStuff.addComponent(new GizmoSystem(gizmos));
+
+
         scene.addGameObjectToScene(levelEditorStuff);
     }
 

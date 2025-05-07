@@ -29,6 +29,7 @@ public class PlayerBot extends Component {
     @Override
     public void start(){
         if(get().runtimePlaying) {
+            System.out.println(get().hasDrawThread);
             gameObject.removeComponent(this);
             Window.getScene().addPlayerBot(this);
         }

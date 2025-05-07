@@ -73,9 +73,6 @@ public class CreatorTools {
         newObject.addComponent(new Brain());
         newObject.addComponent(new aggroDetector());
 
-
-
-
         CircleCollider circleCollider = new CircleCollider();
         circleCollider.setRadius(0.08f);
         newObject.addComponent(circleCollider);

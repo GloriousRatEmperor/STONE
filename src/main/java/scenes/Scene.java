@@ -13,7 +13,6 @@ import components.unitcapabilities.NonPickable;
 import jade.Camera;
 import jade.GameObject;
 import jade.Transform;
-import jade.Window;
 import org.joml.Vector2f;
 import org.joml.Vector2i;
 import org.joml.Vector3d;
@@ -33,6 +32,8 @@ import java.util.Optional;
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import static jade.Window.get;
 
 public class Scene {
 
@@ -138,14 +139,16 @@ public class Scene {
         return this.physics2D;
     }
     public void addPlayerBot(PlayerBot bot){
-        if(!Window.get().hasDrawThread) {
+        if(!get().hasDrawThread) {
             playerBots.add(bot);
             bot.setGameObjects(gameObjects);
         }
     }
     public void init() {
-        this.camera = new Camera(new Vector2f(0, 0));
-        this.sceneInitializer.loadResources(this);
+        if(get().hasDrawThread) {
+            this.camera = new Camera(new Vector2f(0, 0));
+            this.sceneInitializer.loadResources(this);
+        }
         this.sceneInitializer.init(this);
     }
 

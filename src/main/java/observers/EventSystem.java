@@ -7,14 +7,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventSystem {
-    private static List<Observer> observers = new ArrayList<>();
+    private static ThreadLocal<List<Observer>>  observers = new ThreadLocal<>(){
+        @Override
+        protected List<Observer> initialValue()
+        {
+            return new ArrayList<>();
+        }
+    };
 
     public static void addObserver(Observer observer) {
-        observers.add(observer);
+        observers.get().add(observer);
     }
 
     public static void notify(GameObject obj, Event event) {
-        for (Observer observer : observers) {
+        for (Observer observer : observers.get()) {
             observer.onNotify(obj, event);
         }
     }

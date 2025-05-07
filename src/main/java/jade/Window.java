@@ -106,8 +106,9 @@ public class Window implements Observer {
         if (current != null) {
             current.destroy();
         }
-
-        getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
+        if(get().hasDrawThread) {
+            getImguiLayer().getPropertiesWindow().setActiveGameObject(null);
+        }
         get().currentScene = new Scene(sceneInitializer, get().leveltemp);
         current=get().currentScene;
         current.load();
@@ -225,6 +226,9 @@ public class Window implements Observer {
 
 
     public void loop() throws NoSuchFieldException, InterruptedException {
+        if(!hasDrawThread){
+            TimeUnit.SECONDS.sleep(1); //TODO find out why this is necessary, it dies on some font bs without this in singleplayer...
+        }
          beginTime =0;
          dt = -1.0f;
          physicsTimes=0;
@@ -237,7 +241,20 @@ public class Window implements Observer {
         UnitCreator.init();
         MiscCreator.init();
         ProjectileCreator.init();
-         if(hasDrawThread) {
+        try {
+
+            File dir = new File("Leveltemps");
+            if (!dir.isDirectory()) {
+                new File("Leveltemps").mkdirs();
+            }
+            cleanTemps(dir);
+            leveltemp = File.createTempFile("level", ".tmp", dir);
+            leveltemp.deleteOnExit();
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if(hasDrawThread) {
 
 
              screen = new Thread(new Runnable() {
@@ -404,20 +421,6 @@ public class Window implements Observer {
                                  (random.nextFloat() * (rightLimit - leftLimit + 1));
                          buffer.append((char) randomLimitedInt);
                      }
-                     try {
-
-                         File dir = new File("Leveltemps");
-                         if (!dir.isDirectory()) {
-                             new File("Leveltemps").mkdirs();
-                         }
-                         cleanTemps(dir);
-                         leveltemp = File.createTempFile("level", ".tmp", dir);
-                         //File tempFile = File.createTempFile("MyAppName-", ".tmp");
-                         leveltemp.deleteOnExit();
-
-                     } catch (IOException e) {
-                         throw new RuntimeException(e);
-                     }
 
                      imguiLayer = new ImGuiLayer(glfwWindow, pickingTexture, leveltemp);
                      imguiLayer.initImGui();
@@ -501,10 +504,12 @@ public class Window implements Observer {
 
              screen.start();
          }
-
-
-        while (!scened) {
-            TimeUnit.MILLISECONDS.sleep(100);
+        if(hasDrawThread) {
+            while (!scened) {
+                TimeUnit.MILLISECONDS.sleep(100);
+            }
+        }else{
+            Window.changeScene(new LevelEditorSceneInitializer(requests, responses));
         }
 
 

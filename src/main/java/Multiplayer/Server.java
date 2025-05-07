@@ -68,6 +68,7 @@ public class Server extends ChannelInboundHandlerAdapter {
     }
 
     public void apply(Player player,ClientData data){
+        System.out.println("recieved stuff");
         Game game=player.game;
         Class<? extends ClientData> dataClass=data.getClass();
         if (dataClass.equals(Cstop.class)) {
