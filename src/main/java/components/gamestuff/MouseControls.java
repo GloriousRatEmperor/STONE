@@ -90,7 +90,7 @@ public class MouseControls extends Component {
             int x = (int) MouseListener.getScreenX();
             int y = (int) MouseListener.getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
-            GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+            GameObject pickedObj = currentScene.getGameObjectByName(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                 Sender.sendMove(position,ids,gameObjectId);
             }else {
@@ -107,7 +107,7 @@ public class MouseControls extends Component {
                 int x = (int) MouseListener.getScreenX();
                 int y = (int) MouseListener.getScreenY();
                 int gameObjectId = pickingTexture.readPixel(x, y);
-                GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+                GameObject pickedObj = currentScene.getGameObjectByName(gameObjectId);
                 if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                     Window.getImguiLayer().getMenu().setActiveGameObject(pickedObj);
                 } else if (pickedObj == null && !MouseListener.isDragging()) {
@@ -168,7 +168,7 @@ public class MouseControls extends Component {
             }
 
             for (Integer gameObjectId : uniqueGameObjectIds) {
-                GameObject pickedObj = Window.getScene().getGameObject(gameObjectId);
+                GameObject pickedObj = Window.getScene().getGameObjectByName(gameObjectId);
                 if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                     Window.getImguiLayer().getMenu().addActiveGameObject(pickedObj);
                 }
@@ -224,7 +224,7 @@ public class MouseControls extends Component {
             int x = (int)MouseListener.getScreenX();
             int y = (int)MouseListener.getScreenY();
             int gameObjectId = pickingTexture.readPixel(x, y);
-            GameObject pickedObj = currentScene.getGameObject(gameObjectId);
+            GameObject pickedObj = currentScene.getGameObjectByName(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                 Window.getImguiLayer().getPropertiesWindow().setActiveGameObject(pickedObj);
             } else if (pickedObj == null && !MouseListener.isDragging()) {
@@ -277,7 +277,7 @@ public class MouseControls extends Component {
             }
 
             for (Integer gameObjectId : uniqueGameObjectIds) {
-                GameObject pickedObj = Window.getScene().getGameObject(gameObjectId);
+                GameObject pickedObj = Window.getScene().getGameObjectByName(gameObjectId);
                 if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                     Window.getImguiLayer().getPropertiesWindow().addActiveGameObject(pickedObj);
                 }
@@ -297,7 +297,7 @@ public class MouseControls extends Component {
 
         for (int i = 0; i < gameObjectIds.length; i++) {
             if (gameObjectIds[i] >= 0) {
-                GameObject pickedObj = Window.getScene().getGameObject((int)gameObjectIds[i]);
+                GameObject pickedObj = Window.getScene().getGameObjectByName((int)gameObjectIds[i]);
                 if (pickedObj.getComponent(NonPickable.class) == null) {
                     return true;
                 }

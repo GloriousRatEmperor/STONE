@@ -36,27 +36,28 @@ public class ServerInputs extends Component {
             while (!responses.isEmpty()) {
                 ServerData response = responses.take();
                 responseList.add(response);
-                responseList.sort((s1, s2) -> (int) (s1.getTime()-s2.getTime()) );
+                responseList.sort((s1, s2) -> (int) (s1.getTime() - s2.getTime()));
 
             }
-            while(!responseList.isEmpty()){
-                ServerData response=responseList.get(0);
-                if(responseList.get(0).getTime()<time){
-                    if(response.getTime()<time-dt){
-                        if(response.getTime()!=-1){
+            while (!responseList.isEmpty()) {
+                ServerData response = responseList.get(0);
+                if (responseList.get(0).getTime() < time) {
+                    if (response.getTime() < time - dt) {
+                        if (response.getTime() != -1) {
                             System.out.println("FUCK, got message really fucking late");
-                            System.out.println("frames late: "+ ((time-response.getTime())/dt));
+                            System.out.println("frames late: " + ((time - response.getTime()) / dt));
                         }
 
                     }
                     apply(response);
                     responseList.remove(response);
-                }else{
+                } else {
                     break;
                 }
             }
+
         } catch (InterruptedException e) {
-        throw new RuntimeException(e);
+            throw new RuntimeException(e);
         }
     }
 
@@ -77,11 +78,11 @@ public class ServerInputs extends Component {
         Class<? extends ServerData> dataClass=data.getClass();
         if (dataClass.equals(Smove.class)) {
             Smove serverData = (Smove) data;
-            ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
+            ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjectsRunning(serverData.getGameObjects());
             List<Float> pos = serverData.getPos();
             GameObject target = null;
             if (serverData.getTargetID() != -1) {
-                target = Window.getScene().runningGetGameObject(serverData.getTargetID());
+                target = Window.getScene().getGameObjectRunning(serverData.getTargetID());
                 if (target == null) {
                     return;
                 }
@@ -151,7 +152,7 @@ public class ServerInputs extends Component {
             get().startData = serverData;
         } else if (dataClass.equals(Scast.class)) {
             Scast serverData = (Scast) data;
-            ArrayList<GameObject> selectedObjects = Window.getScene().runningGetGameObjects(serverData.getGameObjects());
+            ArrayList<GameObject> selectedObjects = Window.getScene().getGameObjectsRunning(serverData.getGameObjects());
             for (GameObject go :
                     selectedObjects) {
                 Brain brain = go.getComponent(Brain.class);

@@ -17,7 +17,7 @@ public class ClientBooter {
 
         Boolean debugging= Boolean.valueOf(args[1]);
         BlockingQueue<ClientData> requests=new ArrayBlockingQueue<>(15);
-        BlockingQueue<ServerData> responses=new ArrayBlockingQueue<>(150);
+        BlockingQueue<ServerData> responses=new ArrayBlockingQueue<>(500);
         Thread.UncaughtExceptionHandler h = (th, ex) -> System.out.println("Uncaught exception: " + ex);
         String adress=args[0];
 

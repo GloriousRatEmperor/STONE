@@ -67,7 +67,7 @@ public class Sender {
         clientData.setPos(pos);
         clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
         int id=get().imguiLayer.getPropertiesWindow().getPickingTexture().readPixel((int)MouseListener.getScreenX(),(int)MouseListener.getScreenY());
-        if( getScene().getGameObject(id)!=null){
+        if( getScene().getGameObjectByName(id)!=null){
             clientData.setTarget(id);
         }else{
             clientData.setTarget(-1);
@@ -95,8 +95,8 @@ public class Sender {
         clientData.setGameObjects(Ids);
         clientData.setAbilityID(AbilityID);
         List<Float> pos= new ArrayList<Float>();
-        pos.add(MouseListener.getWorld().x);
-        pos.add(MouseListener.getWorld().y);
+        pos.add(0f);
+        pos.add(0f);
         clientData.setShiftCommand(KeyListener.isKeyPressed(GLFW_KEY_LEFT_SHIFT));
         clientData.setTarget(-1);
         clientData.setPos(pos);

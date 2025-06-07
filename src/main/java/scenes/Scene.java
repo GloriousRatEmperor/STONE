@@ -65,6 +65,9 @@ public class Scene {
         return false;
     }
     public Boolean haveMoney(float addblood, float addrock, float addmagic,int player){
+        if(player>money.size()){
+            return false;
+        }
         Vector3d moneys=money.get(player-1);
         if(-addblood<=moneys.x&-addrock<=moneys.y&-addmagic<=moneys.z) {
             return true;
@@ -126,9 +129,12 @@ public class Scene {
     public Scene(SceneInitializer sceneInitializer, File leveltemp) {
         this.sceneInitializer = sceneInitializer;
         this.physics2D = new Physics2D();
-        this.renderer = new Renderer();
+        if(get().hasDrawThread){
+            this.renderer = new Renderer();
+            this.drawObjects = new ArrayList<>();
+        }
         this.gameObjects = new ArrayList<>();
-        this.drawObjects = new ArrayList<>();
+
         this.drawObjectsPending = new ArrayBlockingQueue<>(5000);
         this.pendingObjects = new ArrayList<>();
         this.isRunning = false;
@@ -159,14 +165,20 @@ public class Scene {
             go.start();
             this.physics2D.add(go);
             //drawObjectsPending.add(go);
-            drawObjects.add(go);
-            this.renderer.add(go);
+            if(get().hasDrawThread){
+                drawObjects.add(go);
+                this.renderer.add(go);
+            }
+
         }
         isRunning = true;
     }
     public void setFloor(HashMap<Vector2i, Vector3i> newmap){
         floor=newmap;
-        renderer.setFloor(floor);
+        if(renderer!=null){
+            renderer.setFloor(floor);
+        }
+
     }
     public void initiatePlayers(int playeramount){
         for (int i=0;i<playeramount;i++){
@@ -210,14 +222,14 @@ public class Scene {
         return null;
     }
 
-    public List<GameObject> getGameObjects() {
+    public List<GameObject> getGameObjectsDraw() {
         return this.gameObjects;
     }
     public List<GameObject> getDrawObjects() {
         return this.drawObjects;
     }
-
-    public GameObject getGameObject(int gameObjectId) {
+    //for drawthread use
+    public GameObject getGameObjectByName(int gameObjectId) {
 
         Optional<GameObject> result = this.drawObjects.stream()
                     .filter(gameObject -> gameObject.getUid() == gameObjectId)
@@ -225,18 +237,19 @@ public class Scene {
             return result.orElse(null);
 
     }
-
-    public ArrayList<GameObject> getGameObjects(List<Integer> gameObjectIds) {
+    //for drawthread use
+    public ArrayList<GameObject> getGameObjectsDraw(List<Integer> gameObjectIds) {
         ArrayList<GameObject> selected = new ArrayList<>();
         for (Integer gameObjectId : gameObjectIds) {
-            GameObject pickedObj = getGameObject(gameObjectId);
+            GameObject pickedObj = getGameObjectByName(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                 selected.add(pickedObj);
             }
         }
         return selected;
     }
-    public GameObject runningGetGameObject(int gameObjectId) {
+    //for non-drawthread use
+    public GameObject getGameObjectRunning(int gameObjectId) {
 
         Optional<GameObject> result = this.gameObjects.stream()
                 .filter(gameObject -> gameObject.getUid() == gameObjectId)
@@ -244,11 +257,11 @@ public class Scene {
         return result.orElse(null);
 
     }
-
-    public ArrayList<GameObject> runningGetGameObjects(List<Integer> gameObjectIds) {
+    //for non-drawthread use
+    public ArrayList<GameObject> getGameObjectsRunning(List<Integer> gameObjectIds) {
         ArrayList<GameObject> selected = new ArrayList<>();
         for (Integer gameObjectId : gameObjectIds) {
-            GameObject pickedObj = runningGetGameObject(gameObjectId);
+            GameObject pickedObj = getGameObjectRunning(gameObjectId);
             if (pickedObj != null && pickedObj.getComponent(NonPickable.class) == null) {
                 selected.add(pickedObj);
             }
@@ -326,7 +339,7 @@ public class Scene {
 
     }
 
-    public GameObject getGameObject(String gameObjectName) {
+    public GameObject getGameObjectByName(String gameObjectName) {
         Optional<GameObject> result = this.gameObjects.stream()
                 .filter(gameObject -> gameObject.name.equals(gameObjectName))
                 .findFirst();

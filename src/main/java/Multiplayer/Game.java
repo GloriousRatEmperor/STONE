@@ -24,9 +24,10 @@ public class Game {
     public State state=State.inactive;
     Thread botThread;
     Player botAccount;
+    private int botCapacity=1;
     private Time time=new Time();
-    private BlockingQueue<ClientData> BotToServer =new ArrayBlockingQueue<>(15);
-    private BlockingQueue<ServerData> ServerToBot =new ArrayBlockingQueue<>(150);
+    private BlockingQueue<ClientData> BotToServer =new ArrayBlockingQueue<>(500);
+    private BlockingQueue<ServerData> ServerToBot =new ArrayBlockingQueue<>(500);
     private ArrayList<Player> players=new ArrayList<>();
 
     public Game(Server ownserver,int capacity){
@@ -104,13 +105,13 @@ public class Game {
             BotToServer.clear();
             ServerToBot.clear();
             botAccount=new Player(null);
+            botAccount.game=this;
             botAccount.isBot =true;
-            //botThread= new Thread(new BotThread(BotToServer,ServerToBot));
-            //botThread.start();
+            botThread= new Thread(new BotThread(BotToServer,ServerToBot));
+            botThread.start();
     }
 
     private void startGame(Cstart start){
-        System.out.println("starting game");
         util.MapMaker maker=new MapMaker();
         HashMap<Vector2i, Vector3i> map=maker.generate();
         long curTime = System.currentTimeMillis();
@@ -123,7 +124,7 @@ public class Game {
                 Sstart serverData = new Sstart();
                 serverData.setIdCounter(start.getIdCounter());
                 serverData.setLevelSave(start.getLevelSave());
-                serverData.setPlayerAmount(capacity);
+                serverData.setPlayerAmount(capacity+botCapacity);
                 serverData.setStartTime(curTime);
                 serverData.setTime(time.getTime());
 
@@ -150,7 +151,7 @@ public class Game {
         Sstart serverData = new Sstart();
         serverData.setIdCounter(start.getIdCounter());
         serverData.setLevelSave(start.getLevelSave());
-        serverData.setPlayerAmount(capacity);
+        serverData.setPlayerAmount(capacity+botCapacity);
         serverData.setStartTime(curTime);
         serverData.setTime(time.getTime());
 
@@ -175,8 +176,12 @@ public class Game {
     }
 
     public void update(){
-        for(ClientData cdata:BotToServer){
-            server.apply( botAccount,cdata);
+        try {
+            while (!BotToServer.isEmpty()) {
+                server.apply(botAccount,BotToServer.take());
+            }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 

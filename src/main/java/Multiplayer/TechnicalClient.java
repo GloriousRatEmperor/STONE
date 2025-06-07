@@ -17,9 +17,9 @@ import java.util.Objects;
 import java.util.concurrent.BlockingQueue;
 
 public class TechnicalClient implements Runnable{
-    String host;
-    BlockingQueue<ClientData> requests;
-    BlockingQueue<ServerData> responses;
+    private String host;
+    private BlockingQueue<ClientData> requests;
+    private BlockingQueue<ServerData> responses;
     public TechnicalClient(String host, BlockingQueue<ClientData> requests, BlockingQueue<ServerData> responses){
         this.host=host;
         this.requests=requests;

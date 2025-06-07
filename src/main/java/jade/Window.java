@@ -37,7 +37,6 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.*;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
@@ -171,7 +170,9 @@ public class Window implements Observer {
         Base.clearBases();
     }
     public void stop(){
-        glLineWidth(2.0f);
+        if(hasDrawThread){
+            glLineWidth(2.0f);
+        }
         clearStatics();
         Window.changeScene(new LevelEditorSceneInitializer( requests, responses));
 
@@ -180,7 +181,7 @@ public class Window implements Observer {
     public void begin() {
         clearStatics();
         this.runtimePlaying = true;
-        ServerInputs inputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+        ServerInputs inputs= currentScene.getGameObjectByName("LevelEditor").getComponent(ServerInputs.class);
 
         UniTime.setStartNow();
         inputs.setTime(0f);
@@ -189,9 +190,10 @@ public class Window implements Observer {
         endTime=0;
         UniTime.setFrame(lastPhysics);
         physicsTimes=0;
-
-        allied= startData.getPlayerAllied();
-        getImguiLayer().getMenu().allied=allied;
+        if(hasDrawThread) {
+            allied = startData.getPlayerAllied();
+            getImguiLayer().getMenu().allied = allied;
+        }
         GameObject.setCounter(startData.getIdCounter());
         try {
             FileWriter writer = new FileWriter(leveltemp);
@@ -207,7 +209,7 @@ public class Window implements Observer {
 
         Window.changeScene(new LevelSceneInitializer( requests, responses));
 
-        ServerInputs newInputs= currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class);
+        ServerInputs newInputs= currentScene.getGameObjectByName("LevelEditor").getComponent(ServerInputs.class);
 
         Scene scene=Window.getScene();
         scene.setFloor(floor);
@@ -220,15 +222,15 @@ public class Window implements Observer {
         starttime=UniTime.getExact();
 
         startData=null;
-        glLineWidth(4.5f);
+        if(hasDrawThread){
+            glLineWidth(4.5f);
+        }
+
     }
 
 
 
     public void loop() throws NoSuchFieldException, InterruptedException {
-        if(!hasDrawThread){
-            TimeUnit.SECONDS.sleep(1); //TODO find out why this is necessary, it dies on some font bs without this in singleplayer...
-        }
          beginTime =0;
          dt = -1.0f;
          physicsTimes=0;
@@ -241,11 +243,17 @@ public class Window implements Observer {
         UnitCreator.init();
         MiscCreator.init();
         ProjectileCreator.init();
+        String filepath;
+        if(!hasDrawThread) {
+            filepath="ServerLevelTemps";
+        }else{
+            filepath="Leveltemps";
+        }
         try {
 
-            File dir = new File("Leveltemps");
+            File dir = new File(filepath);
             if (!dir.isDirectory()) {
-                new File("Leveltemps").mkdirs();
+                new File(filepath).mkdirs();
             }
             cleanTemps(dir);
             leveltemp = File.createTempFile("level", ".tmp", dir);
@@ -334,6 +342,7 @@ public class Window implements Observer {
                      GLFWErrorCallback.createPrint(System.err).set();
 
                      Window.window.set(runningWindow);
+                     EventSystem.addObserver(window.get());
 
                      // Initialize GLFW
                      if (!glfwInit()) {
@@ -504,17 +513,19 @@ public class Window implements Observer {
 
              screen.start();
          }
+
         if(hasDrawThread) {
             while (!scened) {
-                TimeUnit.MILLISECONDS.sleep(100);
+                Thread.sleep(100);
             }
         }else{
             Window.changeScene(new LevelEditorSceneInitializer(requests, responses));
         }
-
-
+        if(!hasDrawThread){
+            Thread.sleep(1000); //TODO find out why this is necessary, it dies on some font bs without this in singleplayer...
+        }
         boolean first=true;
-        while (!hasDrawThread||screen.isAlive()) {
+        while (!hasDrawThread||(screen!=null&&screen.isAlive())) {
 
             //actual physics n shite bein done here
             if (runtimePlaying&&!start) {
@@ -548,6 +559,7 @@ public class Window implements Observer {
 
                 }
                 if(end){
+                    clearStatics();
                     first=true;
                     end=false;
                     endPlay=true;
@@ -559,7 +571,7 @@ public class Window implements Observer {
                 begin();
                 start = false;
             }else if(!hasDrawThread){
-                currentScene.getGameObject("LevelEditor").getComponent(ServerInputs.class).update(0);
+                currentScene.getGameObjectByName("LevelEditor").getComponent(ServerInputs.class).editorUpdateDraw();
             }
 
         }
@@ -653,7 +665,7 @@ public class Window implements Observer {
             }
             case Scan -> {
                 List<GameObject> GoSel=getImguiLayer().getPropertiesWindow().getActiveGameObjects();
-                List<GameObject> Go= currentScene.getGameObjects();
+                List<GameObject> Go= currentScene.getGameObjectsDraw();
                 HashSet<Vector4f> positions=new HashSet<>(Go.size());
                 if (GoSel.isEmpty()) {
                     for (GameObject go : Go) {

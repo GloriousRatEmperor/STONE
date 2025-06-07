@@ -31,7 +31,7 @@ public class CastCommand extends Command{
         CastAbilities cast=self.getComponent(CastAbilities.class);
         Ability ability=cast.getAbility(castID);
         float range=ability.range;
-        GameObject target= Window.getScene().getGameObject(targetId);
+        GameObject target= Window.getScene().getGameObjectRunning(targetId);
         if(target!=null&&!target.isDead()){
 
             pos=target.transform.position;

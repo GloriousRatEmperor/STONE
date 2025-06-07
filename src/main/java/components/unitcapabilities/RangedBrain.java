@@ -33,7 +33,7 @@ public class RangedBrain extends Brain{
     @Override
     public void considerAggro(int enemyID){
         if(afk){
-            GameObject enemy= Window.getScene().runningGetGameObject(enemyID);
+            GameObject enemy= Window.getScene().getGameObjectRunning(enemyID);
             if(enemy!=null){
                 if(enemy.allied!=gameObject.allied&& Maf.distance(gameObject.transform.position,enemy.transform.position)<=pullrange){
                     setCommand(new SkirmishCommand(enemy.transform,range*0.875f,range*0.99f));

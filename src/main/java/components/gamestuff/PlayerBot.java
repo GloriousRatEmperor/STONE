@@ -18,7 +18,7 @@ public class PlayerBot extends Component {
     public int allied;
     private List<GameObject> gameObjects;
 
-    public float updateInterval=1;
+    public float updateInterval=2;
     private float updateClock=0;
     private BotState state=BotState.Agressive;
 
@@ -29,7 +29,6 @@ public class PlayerBot extends Component {
     @Override
     public void start(){
         if(get().runtimePlaying) {
-            System.out.println(get().hasDrawThread);
             gameObject.removeComponent(this);
             Window.getScene().addPlayerBot(this);
         }
@@ -116,9 +115,9 @@ public List<List<Integer>> considerCasting(float dt) {//returns a list where the
             updateClock -= dt;
             return;
         }
+
         List<List<Integer>> casts=considerCasting(dt);
         cleanseCasts(casts);
-        System.out.println("GGGGA");
         sendCasts(casts);
         
     }

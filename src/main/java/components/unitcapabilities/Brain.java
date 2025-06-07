@@ -72,7 +72,7 @@ public class Brain extends Component {
     public void considerAggro(int enemyID){
 
         if(afk){
-            GameObject enemy=Window.getScene().runningGetGameObject(enemyID);
+            GameObject enemy=Window.getScene().getGameObjectRunning(enemyID);
             if(enemy!=null){
                 if(enemy.allied!=gameObject.allied&& Maf.distance(gameObject.transform.position,enemy.transform.position)<=pullrange){
                     setCommand(new MoveCommand(enemy.transform));

@@ -157,7 +157,7 @@ public class CastAbilities extends Component {
     public List<Integer> consider(){
         List<Integer> casts=new ArrayList<>();
         for(Ability a:abilities){
-            if(isCastable(a.getID())){
+            if(a.Castable(mp)){
                 if(a.consider(gameObject,mp==maxmp)){
                     casts.add(a.getID());
                 }
@@ -172,6 +172,7 @@ public class CastAbilities extends Component {
         if (ability == null) {
             System.out.println("wtf you tyina add bruv?");
         } else {
+            ability.owner=this;
             abilities.add(ability);
             abilities.sort(Comparator.comparingInt(Ability::getID));
         }

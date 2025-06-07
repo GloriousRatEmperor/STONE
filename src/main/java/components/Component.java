@@ -404,10 +404,11 @@ public abstract class Component {
 
 
             for (Field field : fields) {
-                boolean isTransient = Modifier.isTransient(field.getModifiers());
-                if (isTransient) {
+                boolean isPermissible = Modifier.isTransient(field.getModifiers()) || Modifier.isProtected(field.getModifiers()) || Modifier.isFinal(field.getModifiers());
+                if (isPermissible) {
                     continue;
                 }
+
 
                 boolean isPrivate = Modifier.isPrivate(field.getModifiers());
                 if (isPrivate) {

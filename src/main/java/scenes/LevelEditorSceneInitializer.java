@@ -161,7 +161,7 @@ public class LevelEditorSceneInitializer extends SceneInitializer {
 
         AssetPool.getSound(("assets/sounds/main-theme-overworld.ogg")).stop();
 
-        for (GameObject g : scene.getGameObjects()) {
+        for (GameObject g : scene.getGameObjectsDraw()) {
             if (g.getComponent(SpriteRenderer.class) != null) {
                 SpriteRenderer spr = g.getComponent(SpriteRenderer.class);
                 if (spr.getTexture() != null) {
