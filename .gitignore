@@ -3,6 +3,8 @@ build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/Leveltemps/**
+!**/ServerLevelTemps/**
+!**/Unrelated/**
 !**assets/images/kras/
 !**/imgui.ini
 imgui.ini
